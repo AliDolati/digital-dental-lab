@@ -1,0 +1,17 @@
+<section class="technology-section">
+  <div class="container">
+    <h2 class="section-title">تکنولوژی‌های پیشرفته</h2>
+    <p class="section-subtitle">استفاده از آخرین فناوری‌های دنیای دندانپزشکی دیجیتال</p>
+    
+    <div class="tech-grid">
+      <div class="tech-card" *ngFor="let tech of technologies">
+        <div class="tech-icon">{{ tech.icon }}</div>
+        <h3 class="tech-title">{{ tech.title }}</h3>
+        <p class="tech-description">{{ tech.description }}</p>
+        <ul class="tech-features">
+          <li *ngFor="let feature of tech.features">{{ feature }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

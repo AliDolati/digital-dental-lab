@@ -1,0 +1,26 @@
+<header class="header">
+  <nav class="nav">
+    <div class="logo">
+      <h2>{{ translation.getCurrentLanguage() === 'fa' ? 'دنتال لب' : 'Dental Lab' }}</h2>
+    </div>
+
+    <ul class="nav-links" [class.active]="isMenuOpen">
+      <li><a routerLink="/home" routerLinkActive="active" (click)="onLinkClick()">{{ translation.translate('HEADER.HOME') }}</a></li>
+      <li><a routerLink="/services" routerLinkActive="active" (click)="onLinkClick()">{{ translation.translate('HEADER.SERVICES') }}</a></li>
+      <li><a routerLink="/technology" routerLinkActive="active" (click)="onLinkClick()">{{ translation.translate('HEADER.TECHNOLOGY') }}</a></li>
+      <li><a routerLink="/gallery" routerLinkActive="active" (click)="onLinkClick()">{{ translation.translate('HEADER.GALLERY') }}</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active" (click)="onLinkClick()">{{ translation.translate('HEADER.CONTACT') }}</a></li>
+    </ul>
+
+    <div class="language-switcher" [class.active]="isMenuOpen">
+      <button (click)="switchLanguage('fa')" [class.active]="translation.getCurrentLanguage() === 'fa'">فا</button>
+      <button (click)="switchLanguage('en')" [class.active]="translation.getCurrentLanguage() === 'en'">EN</button>
+    </div>
+
+    <div class="mobile-menu" [class.active]="isMenuOpen" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+</header>

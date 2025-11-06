@@ -1,0 +1,83 @@
+/* Reset و فونت‌ها */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: #f8f9fa;
+}
+/* استایل‌های پویا برای RTL/LTR */
+[dir="rtl"] {
+  text-align: right;
+  
+  .container {
+    direction: rtl;
+  }
+  
+  .hero-content,
+  .contact-content {
+    direction: rtl;
+  }
+}
+
+[dir="ltr"] {
+  text-align: left;
+  
+  .container {
+    direction: ltr;
+  }
+  
+  .hero-content,
+  .contact-content {
+    direction: ltr;
+  }
+}
+
+/* استایل برای تغییر جهت در کامپوننت‌ها */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+.ltr {
+  direction: ltr;
+  text-align: left;
+}
+/* استایل برای اسکرول بار */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #1a73e8, #00bcd4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #1565c0, #0097a7);
+}
+
+/* محتوای اصلی */
+main {
+  margin-top: 80px; /* برای فیکس بودن هدر */
+  min-height: calc(100vh - 80px);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}

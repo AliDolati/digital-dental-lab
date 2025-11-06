@@ -1,0 +1,117 @@
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-content">
+      <!-- اطلاعات تماس -->
+      <div class="contact-info">
+        <h2 class="section-title">{{ translation.translate('CONTACT.TITLE') }}</h2>
+        <p class="section-subtitle">{{ translation.translate('CONTACT.SUBTITLE') }}</p>
+
+        <div class="info-items">
+          <div class="info-item">
+            <div class="info-icon">📞</div>
+            <div class="info-text">
+              <h4>تلفن تماس</h4>
+              <p>۰۲۱-۱۲۳۴۵۶۷۸</p>
+              <p>۰۹۱۲-۱۲۳-۴۵۶۷</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📧</div>
+            <div class="info-text">
+              <h4>ایمیل</h4>
+              <p>info@dentallab.com</p>
+              <p>support@dentallab.com</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">📍</div>
+            <div class="info-text">
+              <h4>آدرس</h4>
+              <p>تهران، خیابان ولیعصر</p>
+              <p>پلاک ۱۲۳۴، طبقه دوم</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- فرم تماس -->
+      <div class="contact-form">
+        <h3>{{ translation.translate('CONTACT.FORM_TITLE') }}</h3>
+        
+        <div *ngIf="isSubmitted" class="success-message">
+          ✅ {{ translation.getCurrentLanguage() === 'fa' ? 'پیام شما با موفقیت ارسال شد!' : 'Your message has been sent successfully!' }}
+        </div>
+
+        <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+          <div class="form-group">
+            <label for="name">{{ translation.translate('CONTACT.NAME') }}</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name"
+              [(ngModel)]="contactInfo.name"
+              required
+              #name="ngModel">
+          </div>
+
+          <div class="form-group">
+            <label for="email">{{ translation.translate('CONTACT.EMAIL') }}</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email"
+              [(ngModel)]="contactInfo.email"
+              required
+              #email="ngModel">
+          </div>
+
+          <div class="form-group">
+            <label for="phone">{{ translation.translate('CONTACT.PHONE') }}</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone"
+              [(ngModel)]="contactInfo.phone"
+              required
+              #phone="ngModel">
+          </div>
+
+          <div class="form-group">
+            <label for="service">{{ translation.translate('CONTACT.SERVICE_TYPE') }}</label>
+            <select 
+              id="service" 
+              name="service"
+              [(ngModel)]="contactInfo.service"
+              required
+              #service="ngModel">
+              <option value="">{{ translation.getCurrentLanguage() === 'fa' ? 'انتخاب کنید' : 'Select' }}</option>
+              <option *ngFor="let service of services" [value]="service">
+                {{ getServiceName(service) }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">{{ translation.translate('CONTACT.MESSAGE') }}</label>
+            <textarea 
+              id="message" 
+              name="message"
+              [(ngModel)]="contactInfo.message"
+              rows="5"
+              required
+              #message="ngModel"></textarea>
+          </div>
+
+          <button 
+            type="submit" 
+            class="submit-btn"
+            [disabled]="contactForm.invalid">
+            {{ translation.translate('CONTACT.SUBMIT') }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

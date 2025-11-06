@@ -1,0 +1,42 @@
+<!-- Hero Section -->
+<app-hero></app-hero>
+
+<!-- Services Preview -->
+<section class="home-services-preview">
+  <div class="container">
+    <h2 class="section-title">{{ translation.translate('SERVICES.TITLE') }}</h2>
+    <p class="section-subtitle">{{ translation.translate('SERVICES.SUBTITLE') }}</p>
+    
+    <div class="preview-grid">
+      <div class="preview-card" *ngFor="let service of [1,2,3,4]">
+        <div class="preview-icon">{{ ['🦷', '✨', '🔩', '🦿'][service-1] }}</div>
+        <h3>{{ translation.translate('SERVICES.' + ['DIGITAL_CROWN', 'VENEERS', 'IMPLANTS', 'DENTURES'][service-1]) }}</h3>
+        <button class="preview-btn" routerLink="/services">مشاهده همه خدمات</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="home-stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">کار انجام شده</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">99%</div>
+        <div class="stat-label">رضایت مشتری</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">۵+</div>
+        <div class="stat-label">سال تجربه</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">۲۴/۷</div>
+        <div class="stat-label">پشتیبانی</div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,36 @@
+{
+  "HEADER": {
+    "HOME": "Home",
+    "SERVICES": "Services",
+    "TECHNOLOGY": "Technology",
+    "GALLERY": "Gallery",
+    "CONTACT": "Contact",
+    "LANGUAGE": "Language"
+  },
+  "HERO": {
+    "TITLE": "Digital Dental Laboratory",
+    "SUBTITLE": "Advanced digital dental services with the latest world technologies",
+    "CTA_PRIMARY": "View Services",
+    "CTA_SECONDARY": "Contact Us"
+  },
+  "SERVICES": {
+    "TITLE": "Our Specialized Services",
+    "SUBTITLE": "Using the most advanced technologies in the world",
+    "DIGITAL_CROWN": "Digital Crown",
+    "VENEERS": "Ceramic Veneers",
+    "IMPLANTS": "Implants",
+    "DENTURES": "Removable Dentures",
+    "MORE_INFO": "More Info"
+  },
+  "CONTACT": {
+    "TITLE": "Contact Us",
+    "SUBTITLE": "We are ready to answer your questions",
+    "FORM_TITLE": "Consultation Request Form",
+    "NAME": "Full Name",
+    "EMAIL": "Email",
+    "PHONE": "Phone Number",
+    "MESSAGE": "Message",
+    "SERVICE_TYPE": "Desired Service Type",
+    "SUBMIT": "Submit Request"
+  }
+}

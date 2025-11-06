@@ -1,0 +1,15 @@
+<section class="services-section">
+  <div class="container">
+    <h2 class="section-title">{{ translation.translate('SERVICES.TITLE') }}</h2>
+    <p class="section-subtitle">{{ translation.translate('SERVICES.SUBTITLE') }}</p>
+    
+    <div class="services-grid">
+      <div class="service-card" *ngFor="let service of services">
+        <div class="service-icon">{{ service.icon }}</div>
+        <h3 class="service-title">{{ translation.translate('SERVICES.' + service.key) }}</h3>
+        <p class="service-description">{{ service.descriptionKey }}</p>
+        <button class="service-btn">{{ translation.translate('SERVICES.MORE_INFO') }}</button>
+      </div>
+    </div>
+  </div>
+</section>

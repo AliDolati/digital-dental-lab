@@ -1,0 +1,35 @@
+<section class="gallery-section">
+  <div class="container">
+    <h2 class="section-title">گالری کارهای انجام شده</h2>
+    <p class="section-subtitle">نمونه‌ای از کارهای موفق ما</p>
+
+    <!-- فیلتر دسته‌بندی -->
+    <div class="gallery-filters">
+      <button 
+        *ngFor="let category of categories" 
+        [class.active]="selectedCategory === category"
+        (click)="filterGallery(category)"
+        class="filter-btn">
+        {{ category }}
+      </button>
+    </div>
+
+    <!-- گالری -->
+    <div class="gallery-grid">
+      <div class="gallery-item" *ngFor="let item of filteredItems">
+        <div class="gallery-card">
+          <h3 class="gallery-category">{{ item.category }}</h3>
+          <div class="comparison">
+            <div class="comparison-item">
+              <div class="image-placeholder before">{{ item.before }}</div>
+            </div>
+            <div class="comparison-item">
+              <div class="image-placeholder after">{{ item.after }}</div>
+            </div>
+          </div>
+          <p class="gallery-description">{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

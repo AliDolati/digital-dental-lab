@@ -1,0 +1,17 @@
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title">{{ translation.translate('HERO.TITLE') }}</h1>
+      <p class="hero-subtitle">{{ translation.translate('HERO.SUBTITLE') }}</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary">{{ translation.translate('HERO.CTA_PRIMARY') }}</button>
+        <button class="btn btn-secondary">{{ translation.translate('HERO.CTA_SECONDARY') }}</button>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="placeholder-image">
+        🦷 {{ translation.getCurrentLanguage() === 'fa' ? 'تصویر خدمات دندانپزشکی' : 'Dental Services Image' }}
+      </div>
+    </div>
+  </div>
+</section>
