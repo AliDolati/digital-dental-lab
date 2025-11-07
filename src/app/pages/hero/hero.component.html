@@ -1,0 +1,12 @@
+<div class="hero-section">
+  <div class="slide" *ngFor="let img of sliderImages; let i = index" [class.active]="i === currentSlide">
+    <img [src]="img" alt="Hero Image" />
+    <div class="overlay">
+      <h1>لابراتوار نوآدنتال</h1>
+      <p>ساخت روکش‌ها و پروتزهای دندانی با فناوری دیجیتال</p>
+      <button mat-raised-button color="primary">مشاهده خدمات</button>
+    </div>
+  </div>
+  <button class="prev" (click)="prevSlide()">&#10094;</button>
+  <button class="next" (click)="nextSlide()">&#10095;</button>
+</div>

@@ -1,0 +1,9 @@
+<div class="testimonials-section">
+  <div class="testimonial" *ngFor="let t of testimonials; let i = index" [class.active]="i === currentTestimonial">
+    <img [src]="t.avatar" alt="{{t.name}}">
+    <p>{{t.text}}</p>
+    <h4>{{t.name}}</h4>
+  </div>
+  <button class="prev" (click)="prevTestimonial()">&#10094;</button>
+  <button class="next" (click)="nextTestimonial()">&#10095;</button>
+</div>

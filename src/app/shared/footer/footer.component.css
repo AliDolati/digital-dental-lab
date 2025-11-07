@@ -1,0 +1,51 @@
+.footer {
+  background: #f7f8fb;
+  color: #333;
+  padding: 32px 20px 18px;
+  font-family: inherit;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer .about h3 {
+  margin: 0 0 8px;
+  color: #1976d2;
+}
+
+.footer .links a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  margin: 6px 0;
+}
+
+.footer .contact p {
+  margin: 6px 0;
+}
+
+.footer .links a:hover {
+  color: #1976d2;
+}
+
+.copyright {
+  max-width: 1200px;
+  margin: 18px auto 0;
+  text-align: center;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 860px) {
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
