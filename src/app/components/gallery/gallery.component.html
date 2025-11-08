@@ -1,8 +1,36 @@
 <section class="gallery-section">
-  <div class="container">
-    <h2 class="section-title">گالری کارهای انجام شده</h2>
-    <p class="section-subtitle">نمونه‌ای از کارهای موفق ما</p>
-
+  
+  <div class="gallery-tabs">
+    <button 
+      class="tab-btn" 
+      [class.active]="activeTab === 'gallery'"
+      (click)="setActiveTab('gallery')">
+      🖼️ گالری عکس
+    </button>
+    <button 
+      class="tab-btn" 
+      [class.active]="activeTab === 'videos'"
+      (click)="setActiveTab('videos')">
+      🎥 ویدئوهای آموزشی
+    </button>
+  </div>
+<!-- بعد از تب‌ها اضافه کن -->
+<div style="background: #f0f8ff; padding: 20px; margin: 20px 0; border: 2px solid blue;">
+  <h3>🔍 تست لود عکس‌ها:</h3>
+  <div style="display: flex; gap: 10px;">
+    <div>
+      <img src="assets/images/gallery/crown-before.jpg" style="width: 100px; border: 2px solid green;">
+      <p>crown-before.jpg</p>
+    </div>
+    <div>
+      <img src="assets/images/gallery/veneer-after.jpg" style="width: 100px; border: 2px solid green;">
+      <p>veneer-after.jpg</p>
+    </div>
+  </div>
+</div>
+  <!-- محتوای تب گالری عکس -->
+  <div class="tab-content" *ngIf="activeTab === 'gallery'">
+    
     <!-- فیلتر دسته‌بندی -->
     <div class="gallery-filters">
       <button 
@@ -14,20 +42,175 @@
       </button>
     </div>
 
-    <!-- گالری -->
+    <!-- گالری عکس‌ها -->
     <div class="gallery-grid">
-      <div class="gallery-item" *ngFor="let item of filteredItems">
+      <div class="gallery-item" 
+           *ngFor="let item of filteredItems" 
+           [class.featured]="item.featured">
+        
         <div class="gallery-card">
-          <h3 class="gallery-category">{{ item.category }}</h3>
-          <div class="comparison">
-            <div class="comparison-item">
-              <div class="image-placeholder before">{{ item.before }}</div>
+          <!-- هدر کارت -->
+          <div class="gallery-card-header">
+            <h3 class="gallery-category">{{ item.category }}</h3>
+            <div class="tech-badge">{{ item.technology }}</div>
+          </div>
+
+          <!-- بدنه کارت -->
+          <div class="gallery-image-container">
+            <div class="image-comparison">
+              <div class="image-half before" (click)="$event.stopPropagation(); openLightbox(item, 'before')">
+                <div class="image-placeholder">
+                  <div class="image-badge before-badge">قبل</div>
+                  <div class="image-content">
+                    <div class="placeholder-icon">📸</div>
+                    <span class="placeholder-text">{{ item.before.placeholder }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="image-half after" (click)="$event.stopPropagation(); openLightbox(item, 'after')">
+                <div class="image-placeholder">
+                  <div class="image-badge after-badge">بعد</div>
+                  <div class="image-content">
+                    <div class="placeholder-icon">✨</div>
+                    <span class="placeholder-text">{{ item.after.placeholder }}</span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="comparison-item">
-              <div class="image-placeholder after">{{ item.after }}</div>
+            
+            <!-- overlay برای hover effects -->
+            <div class="gallery-overlay">
+              <div class="overlay-content">
+                <div class="overlay-buttons">
+                  <button class="overlay-btn before-btn" (click)="$event.stopPropagation(); openLightbox(item, 'before')">
+                    مشاهده قبل
+                  </button>
+                  <button class="overlay-btn after-btn" (click)="$event.stopPropagation(); openLightbox(item, 'after')">
+                    مشاهده بعد
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          <p class="gallery-description">{{ item.description }}</p>
+
+          <!-- اطلاعات کارت -->
+          <div class="gallery-info">
+            <p class="gallery-description">{{ item.description }}</p>
+            
+            <div class="gallery-meta">
+              <div class="meta-item">
+                <span class="meta-icon">⏱️</span>
+                <span class="meta-text">مدت درمان: {{ item.duration }}</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-icon">🎯</span>
+                <span class="meta-text">نتیجه: {{ item.result }}</span>
+              </div>
+            </div>
+
+            <div class="gallery-actions">
+              <button class="action-btn compare-btn" (click)="$event.stopPropagation(); openLightbox(item, 'before')">
+                مقایسه قبل و بعد
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- محتوای تب ویدئوها -->
+  <div class="tab-content" *ngIf="activeTab === 'videos'">
+    
+    <div class="videos-grid">
+      <div class="video-card" *ngFor="let video of videoTutorials">
+        <div class="video-thumbnail" (click)="openVideo(video)">
+          <div class="thumbnail-placeholder">
+            <div class="play-button">
+              <div class="play-icon">▶</div>
+            </div>
+            <div class="video-duration">{{ video.duration }}</div>
+            <div class="video-category">{{ video.category }}</div>
+          </div>
+        </div>
+        
+        <div class="video-info">
+          <h3 class="video-title">{{ video.title }}</h3>
+          <p class="video-description">{{ video.description }}</p>
+          <button class="video-watch-btn" (click)="openVideo(video)">
+            تماشای ویدئو
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox برای عکس‌ها -->
+  <div class="lightbox" [class.active]="lightboxOpen" (click)="closeLightbox()">
+    <div class="lightbox-content" (click)="$event.stopPropagation()">
+      <button class="lightbox-close" (click)="closeLightbox()">×</button>
+      
+      <div class="lightbox-nav">
+        <button class="nav-btn prev" (click)="prevImage()">‹</button>
+        <button class="nav-btn next" (click)="nextImage()">›</button>
+      </div>
+
+      <div class="lightbox-image" *ngIf="selectedImage">
+        <div class="lightbox-header">
+          <h3>{{ selectedImage.item.category }}</h3>
+          <span class="image-type {{selectedImage.type}}-badge">
+            {{ selectedImage.title }}
+          </span>
+        </div>
+        
+        <div class="image-container">
+          <div class="lightbox-placeholder {{selectedImage.type}}-placeholder">
+            <div class="placeholder-content">
+              <div class="placeholder-icon">{{ selectedImage.type === 'before' ? '📸' : '✨' }}</div>
+              <div class="placeholder-title">{{ selectedImage.title }}</div>
+              <div class="placeholder-description">{{ selectedImage.description }}</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="lightbox-details">
+          <div class="detail-item">
+            <strong>تکنولوژی:</strong> {{ selectedImage.item.technology }}
+          </div>
+          <div class="detail-item">
+            <strong>مدت درمان:</strong> {{ selectedImage.item.duration }}
+          </div>
+          <div class="detail-item">
+            <strong>نتیجه:</strong> {{ selectedImage.item.result }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- مودال برای ویدئوها -->
+  <div class="video-modal" [class.active]="videoModalOpen" (click)="closeVideo()">
+    <div class="video-modal-content" (click)="$event.stopPropagation()">
+      <button class="modal-close" (click)="closeVideo()">×</button>
+      
+      <div class="video-player" *ngIf="selectedVideo">
+        <div class="video-header">
+          <h3>{{ selectedVideo.title }}</h3>
+          <span class="video-category-badge">{{ selectedVideo.category }}</span>
+        </div>
+        
+        <div class="video-container">
+          <div class="video-placeholder">
+            <div class="video-placeholder-content">
+              <div class="video-icon">🎥</div>
+              <div class="video-message">پخش ویدئو آموزشی</div>
+              <div class="video-duration-modal">مدت: {{ selectedVideo.duration }}</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="video-description-modal">
+          <p>{{ selectedVideo.description }}</p>
         </div>
       </div>
     </div>

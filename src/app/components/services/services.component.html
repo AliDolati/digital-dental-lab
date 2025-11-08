@@ -1,14 +1,216 @@
-<section class="services-section">
+<section class="services-hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">خدمات تخصصی لابراتوار دندانپزشکی</h1>
+      <p class="hero-description">
+        با بهره‌گیری از پیشرفته‌ترین تکنولوژی‌های روز دنیا و تیم متخصص، 
+        کیفیت و دقت بی‌نظیری را در ساخت پروتزهای دندانی ارائه می‌دهیم
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" (click)="scrollToServices()">
+          مشاهده خدمات
+        </button>
+        <button class="btn btn-secondary">
+          دریافت مشاوره رایگان
+        </button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-cards">
+        <div class="floating-card card-1">
+          <div class="card-icon">🦷</div>
+          <span>لمینیت سرامیکی</span>
+        </div>
+        <div class="floating-card card-2">
+          <div class="card-icon">🌟</div>
+          <span>روکش دیجیتال</span>
+        </div>
+        <div class="floating-card card-3">
+          <div class="card-icon">🔩</div>
+          <span>ایمپلنت</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- بخش خدمات اصلی -->
+<section class="main-services" id="main-services">
   <div class="container">
-    <h2 class="section-title">{{ translation.translate('SERVICES.TITLE') }}</h2>
-    <p class="section-subtitle">{{ translation.translate('SERVICES.SUBTITLE') }}</p>
-    
+    <div class="section-header">
+      <h2 class="section-title">خدمات تخصصی ما</h2>
+      <p class="section-description">
+        با دقت و کیفیت فوق‌العاده در ساخت انواع پروتزهای دندانی
+      </p>
+    </div>
+
     <div class="services-grid">
-      <div class="service-card" *ngFor="let service of services">
-        <div class="service-icon">{{ service.icon }}</div>
-        <h3 class="service-title">{{ translation.translate('SERVICES.' + service.key) }}</h3>
-        <p class="service-description">{{ service.descriptionKey }}</p>
-        <button class="service-btn">{{ translation.translate('SERVICES.MORE_INFO') }}</button>
+      <!-- کارت خدمات ۱ -->
+      <div class="service-card">
+        <div class="service-icon">
+          <div class="icon-wrapper">
+            🌟
+          </div>
+        </div>
+        <h3 class="service-title">لمینیت سرامیکی</h3>
+        <p class="service-description">
+          طراحی و ساخت لمینیت‌های سرامیکی نازک با بالاترین درجه شفافیت و طبیعی‌بودن
+        </p>
+        <ul class="service-features">
+          <li>ضخامت ۰.۳ تا ۰.۵ میلی‌متر</li>
+          <li>مقاومت فوق‌العاده در برابر سایش</li>
+          <li>طبیعی‌ترین ظاهر ممکن</li>
+        </ul>
+        <div class="service-actions">
+          <button class="service-btn primary" (click)="openServiceDetail('veneer')">
+            اطلاعات کامل
+          </button>
+          <button class="service-btn secondary">
+            نمونه کارها
+          </button>
+        </div>
+      </div>
+
+      <!-- کارت خدمات ۲ -->
+      <div class="service-card featured">
+        <div class="service-icon">
+          <div class="icon-wrapper">
+            🦷
+          </div>
+        </div>
+        <h3 class="service-title">روکش دیجیتال (CAD/CAM)</h3>
+        <p class="service-description">
+          ساخت روکش‌های تمام سرامیکی با تکنولوژی CAD/CAM و دقت میکرونی
+        </p>
+        <ul class="service-features">
+          <li>دقت ۲۰ میکرون</li>
+          <li>زمان تحویل ۲۴ ساعته</li>
+          <li>ساخته شده از زیرکونیوم</li>
+        </ul>
+        <div class="service-actions">
+          <button class="service-btn primary" (click)="openServiceDetail('crown')">
+            اطلاعات کامل
+          </button>
+          <button class="service-btn secondary">
+            نمونه کارها
+          </button>
+        </div>
+      </div>
+
+      <!-- کارت خدمات ۳ -->
+      <div class="service-card">
+        <div class="service-icon">
+          <div class="icon-wrapper">
+            🔩
+          </div>
+        </div>
+        <h3 class="service-title">ایمپلنت و پروتز ثابت</h3>
+        <p class="service-description">
+          ساخت پروتزهای ثابت روی ایمپلنت با بهترین کیفیت و انطباق کامل
+        </p>
+        <ul class="service-features">
+          <li>انطباق کامل با پایه ایمپلنت</li>
+          <li>استحکام و دوام بالا</li>
+          <li>زیبایی طبیعی</li>
+        </ul>
+        <div class="service-actions">
+          <button class="service-btn primary" (click)="openServiceDetail('implant')">
+            اطلاعات کامل
+          </button>
+          <button class="service-btn secondary">
+            نمونه کارها
+          </button>
+        </div>
+      </div>
+
+      <!-- کارت خدمات ۴ -->
+      <div class="service-card">
+        <div class="service-icon">
+          <div class="icon-wrapper">
+            🦿
+          </div>
+        </div>
+        <h3 class="service-title">پروتز متحرک</h3>
+        <p class="service-description">
+          ساخت پروتزهای متحرک با کیفیت عالی، راحتی و ظاهر طبیعی
+        </p>
+        <ul class="service-features">
+          <li>راحتی کامل بیمار</li>
+          <li>ظاهر کاملاً طبیعی</li>
+          <li>استحکام بالا</li>
+        </ul>
+        <div class="service-actions">
+          <button class="service-btn primary" (click)="openServiceDetail('denture')">
+            اطلاعات کامل
+          </button>
+          <button class="service-btn secondary">
+            نمونه کارها
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- بخش فرآیند کار -->
+<section class="work-process">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">فرآیند کار در لابراتوار ما</h2>
+      <p class="section-description">
+        از دریافت قالب تا تحویل کار نهایی، همه مراحل با دقت و کیفیت انجام می‌شود
+      </p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-number">۱</div>
+        <div class="step-content">
+          <h3>دریافت قالب</h3>
+          <p>دریافت قالب دیجیتال یا فیزیکی از مطب دندانپزشک</p>
+        </div>
+      </div>
+      
+      <div class="process-step">
+        <div class="step-number">۲</div>
+        <div class="step-content">
+          <h3>طراحی دیجیتال</h3>
+          <p>طراحی دقیق با نرم‌افزارهای CAD پیشرفته</p>
+        </div>
+      </div>
+      
+      <div class="process-step">
+        <div class="step-number">۳</div>
+        <div class="step-content">
+          <h3>ساخت</h3>
+          <p>ساخت با دستگاه‌های CAM و چاپگرهای سه بعدی</p>
+        </div>
+      </div>
+      
+      <div class="process-step">
+        <div class="step-number">۴</div>
+        <div class="step-content">
+          <h3>کنترل کیفیت</h3>
+          <p>کنترل دقیق کیفیت قبل از تحویل</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA نهایی -->
+<section class="services-cta">
+  <div class="container">
+    <div class="cta-content">
+      <h2>آماده‌ای خدمات حرفه‌ای ما رو تجربه کنی؟</h2>
+      <p>برای دریافت مشاوره رایگان و اطلاعات بیشتر با ما در تماس باش</p>
+      <div class="cta-actions">
+        <button class="btn btn-large btn-primary">
+          📞 تماس با ما
+        </button>
+        <button class="btn btn-large btn-secondary">
+          📝 درخواست مشاوره
+        </button>
       </div>
     </div>
   </div>

@@ -1,83 +1,389 @@
-/* Reset و فونت‌ها */
+/* ===== RESET & BASE STYLES ===== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+:root {
+  /* Color System - Modern Dental Clinic Colors */
+  --primary-blue: #1a73e8;
+  --primary-dark: #1565c0;
+  --medical-teal: #00bcd4;
+  --medical-light: #80deea;
+  --accent-gold: #ffb300;
+  --accent-coral: #ff6b6b;
+  
+  /* Neutral Colors */
+  --dark-charcoal: #2c3e50;
+  --gray-dark: #34495e;
+  --gray-medium: #7f8c8d;
+  --gray-light: #bdc3c7;
+  --gray-lighter: #ecf0f1;
+  --pure-white: #ffffff;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--primary-blue), var(--medical-teal));
+  --gradient-dark: linear-gradient(135deg, var(--dark-charcoal), var(--gray-dark));
+  --gradient-accent: linear-gradient(135deg, var(--accent-gold), var(--accent-coral));
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.2);
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 50px;
+  
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  
+  /* Typography */
+  --font-primary: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-heading: 'Poppins', var(--font-primary);
+}
+
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background: #f8f9fa;
+  font-family: var(--font-primary);
+  line-height: 1.7;
+  color: var(--dark-charcoal);
+  background: var(--pure-white);
+  overflow-x: hidden;
 }
-/* استایل‌های پویا برای RTL/LTR */
-[dir="rtl"] {
-  text-align: right;
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: var(--space-md);
+  color: var(--dark-charcoal);
+}
+
+h1 {
+  font-size: 3.5rem;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   
-  .container {
-    direction: rtl;
-  }
-  
-  .hero-content,
-  .contact-content {
-    direction: rtl;
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
   }
 }
 
-[dir="ltr"] {
-  text-align: left;
+h2 {
+  font-size: 2.5rem;
+  position: relative;
   
-  .container {
-    direction: ltr;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
   }
   
-  .hero-content,
-  .contact-content {
-    direction: ltr;
+  @media (max-width: 768px) {
+    font-size: 2rem;
   }
 }
 
-/* استایل برای تغییر جهت در کامپوننت‌ها */
-.rtl {
-  direction: rtl;
-  text-align: right;
+h3 {
+  font-size: 1.8rem;
 }
 
-.ltr {
-  direction: ltr;
-  text-align: left;
+p {
+  margin-bottom: var(--space-md);
+  color: var(--gray-medium);
+  font-size: 1.1rem;
 }
-/* استایل برای اسکرول بار */
+
+/* ===== LAYOUT & CONTAINER ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  
+  @media (max-width: 768px) {
+    padding: 0 var(--space-md);
+  }
+}
+
+/* ===== BUTTONS ===== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+  
+  &-primary {
+    background: var(--gradient-primary);
+    color: var(--pure-white);
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+  
+  &-secondary {
+    background: transparent;
+    color: var(--primary-blue);
+    border: 2px solid var(--primary-blue);
+    
+    &:hover {
+      background: var(--primary-blue);
+      color: var(--pure-white);
+      transform: translateY(-3px);
+    }
+  }
+  
+  &-accent {
+    background: var(--gradient-accent);
+    color: var(--pure-white);
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+  }
+  
+  &-white {
+    background: var(--pure-white);
+    color: var(--primary-blue);
+    
+    &:hover {
+      background: var(--primary-blue);
+      color: var(--pure-white);
+      transform: translateY(-3px);
+    }
+  }
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: var(--pure-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+  }
+  
+  &-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-lg);
+    font-size: 2rem;
+  }
+}
+
+/* ===== SECTIONS ===== */
+.section {
+  padding: var(--space-2xl) 0;
+  
+  &-title {
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    
+    &::after {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  
+  &-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--gray-medium);
+    max-width: 600px;
+    margin: 0 auto var(--space-2xl);
+  }
+}
+
+/* ===== GRID SYSTEM ===== */
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+  
+  &-2 {
+    grid-template-columns: repeat(2, 1fr);
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &-3 {
+    grid-template-columns: repeat(3, 1fr);
+    
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  &-4 {
+    grid-template-columns: repeat(4, 1fr);
+    
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+
+.mt-0 { margin-top: 0; }
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+
+/* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--gray-lighter);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #1a73e8, #00bcd4);
-  border-radius: 4px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #1565c0, #0097a7);
+  background: var(--primary-dark);
 }
 
-/* محتوای اصلی */
+/* ===== ANIMATIONS ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.animate-fadeInLeft {
+  animation: fadeInLeft 0.8s ease forwards;
+}
+
+.animate-fadeInRight {
+  animation: fadeInRight 0.8s ease forwards;
+}
+
+/* ===== RTL SUPPORT ===== */
+[dir="rtl"] {
+  .section-title::after {
+    right: 50%;
+    left: auto;
+    transform: translateX(50%);
+  }
+}
+
+/* ===== MAIN CONTENT ===== */
 main {
-  margin-top: 80px; /* برای فیکس بودن هدر */
+  margin-top: 80px; /* Header height */
   min-height: calc(100vh - 80px);
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
 }

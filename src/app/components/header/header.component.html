@@ -1,22 +1,35 @@
+<header class="header" [class.scrolled]="isScrolled">
 <header class="header">
   <nav class="nav">
+    <!-- لوگو -->
     <div class="logo">
-      <h2>{{ translation.getCurrentLanguage() === 'fa' ? 'دنتال لب' : 'Dental Lab' }}</h2>
+      <div class="logo-icon">🦷</div>
+      <h2>دنتال لب</h2>
     </div>
 
+    <!-- منوی اصلی -->
     <ul class="nav-links" [class.active]="isMenuOpen">
-      <li><a routerLink="/home" routerLinkActive="active" (click)="onLinkClick()">{{ translation.translate('HEADER.HOME') }}</a></li>
-      <li><a routerLink="/services" routerLinkActive="active" (click)="onLinkClick()">{{ translation.translate('HEADER.SERVICES') }}</a></li>
-      <li><a routerLink="/technology" routerLinkActive="active" (click)="onLinkClick()">{{ translation.translate('HEADER.TECHNOLOGY') }}</a></li>
-      <li><a routerLink="/gallery" routerLinkActive="active" (click)="onLinkClick()">{{ translation.translate('HEADER.GALLERY') }}</a></li>
-      <li><a routerLink="/contact" routerLinkActive="active" (click)="onLinkClick()">{{ translation.translate('HEADER.CONTACT') }}</a></li>
+      <li><a routerLink="/home" routerLinkActive="active" (click)="onLinkClick()">خانه</a></li>
+      <li><a routerLink="/services" routerLinkActive="active" (click)="onLinkClick()">خدمات</a></li>
+      <li><a routerLink="/technology" routerLinkActive="active" (click)="onLinkClick()">تکنولوژی</a></li>
+      <li><a routerLink="/gallery" routerLinkActive="active" (click)="onLinkClick()">گالری</a></li>
+      <li><a routerLink="/blog" routerLinkActive="active" (click)="onLinkClick()">بلاگ</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active" (click)="onLinkClick()">تماس</a></li>
     </ul>
 
-    <div class="language-switcher" [class.active]="isMenuOpen">
-      <button (click)="switchLanguage('fa')" [class.active]="translation.getCurrentLanguage() === 'fa'">فا</button>
-      <button (click)="switchLanguage('en')" [class.active]="translation.getCurrentLanguage() === 'en'">EN</button>
+    <!-- اقدامات -->
+    <div class="nav-actions">
+      <!-- سوییچ زبان -->
+      <div class="language-switcher">
+        <button (click)="switchLanguage('fa')" [class.active]="translation.getCurrentLanguage() === 'fa'">فا</button>
+        <button (click)="switchLanguage('en')" [class.active]="translation.getCurrentLanguage() === 'en'">EN</button>
+      </div>
+
+      <!-- دکمه CTA -->
+      <button class="cta-button" routerLink="/contact">دریافت مشاوره</button>
     </div>
 
+    <!-- منوی موبایل -->
     <div class="mobile-menu" [class.active]="isMenuOpen" (click)="toggleMenu()">
       <span></span>
       <span></span>

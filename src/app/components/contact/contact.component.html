@@ -1,117 +1,341 @@
-<section class="contact-section">
-  <div class="container">
-    <div class="contact-content">
-      <!-- اطلاعات تماس -->
-      <div class="contact-info">
-        <h2 class="section-title">{{ translation.translate('CONTACT.TITLE') }}</h2>
-        <p class="section-subtitle">{{ translation.translate('CONTACT.SUBTITLE') }}</p>
-
-        <div class="info-items">
-          <div class="info-item">
-            <div class="info-icon">📞</div>
-            <div class="info-text">
-              <h4>تلفن تماس</h4>
-              <p>۰۲۱-۱۲۳۴۵۶۷۸</p>
-              <p>۰۹۱۲-۱۲۳-۴۵۶۷</p>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-icon">📧</div>
-            <div class="info-text">
-              <h4>ایمیل</h4>
-              <p>info@dentallab.com</p>
-              <p>support@dentallab.com</p>
-            </div>
-          </div>
-
-          <div class="info-item">
-            <div class="info-icon">📍</div>
-            <div class="info-text">
-              <h4>آدرس</h4>
-              <p>تهران، خیابان ولیعصر</p>
-              <p>پلاک ۱۲۳۴، طبقه دوم</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- فرم تماس -->
-      <div class="contact-form">
-        <h3>{{ translation.translate('CONTACT.FORM_TITLE') }}</h3>
-        
-        <div *ngIf="isSubmitted" class="success-message">
-          ✅ {{ translation.getCurrentLanguage() === 'fa' ? 'پیام شما با موفقیت ارسال شد!' : 'Your message has been sent successfully!' }}
-        </div>
-
-        <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
-          <div class="form-group">
-            <label for="name">{{ translation.translate('CONTACT.NAME') }}</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name"
-              [(ngModel)]="contactInfo.name"
-              required
-              #name="ngModel">
-          </div>
-
-          <div class="form-group">
-            <label for="email">{{ translation.translate('CONTACT.EMAIL') }}</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email"
-              [(ngModel)]="contactInfo.email"
-              required
-              #email="ngModel">
-          </div>
-
-          <div class="form-group">
-            <label for="phone">{{ translation.translate('CONTACT.PHONE') }}</label>
-            <input 
-              type="tel" 
-              id="phone" 
-              name="phone"
-              [(ngModel)]="contactInfo.phone"
-              required
-              #phone="ngModel">
-          </div>
-
-          <div class="form-group">
-            <label for="service">{{ translation.translate('CONTACT.SERVICE_TYPE') }}</label>
-            <select 
-              id="service" 
-              name="service"
-              [(ngModel)]="contactInfo.service"
-              required
-              #service="ngModel">
-              <option value="">{{ translation.getCurrentLanguage() === 'fa' ? 'انتخاب کنید' : 'Select' }}</option>
-              <option *ngFor="let service of services" [value]="service">
-                {{ getServiceName(service) }}
-              </option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="message">{{ translation.translate('CONTACT.MESSAGE') }}</label>
-            <textarea 
-              id="message" 
-              name="message"
-              [(ngModel)]="contactInfo.message"
-              rows="5"
-              required
-              #message="ngModel"></textarea>
-          </div>
-
-          <button 
-            type="submit" 
-            class="submit-btn"
-            [disabled]="contactForm.invalid">
-            {{ translation.translate('CONTACT.SUBMIT') }}
+<section class="contact-page">
+  <!-- Hero Section -->
+  <div class="contact-hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">در تماس باشید</h1>
+        <p class="hero-description">
+          ما اینجا هستیم تا به سوالات شما پاسخ دهیم و بهترین خدمات را ارائه کنیم
+        </p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" (click)="scrollToForm()">
+            ارسال پیام
           </button>
-        </form>
+          <button class="btn btn-secondary" (click)="scrollToInfo()">
+            اطلاعات تماس
+          </button>
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- Contact Info -->
+  <section class="contact-info" id="contact-info">
+    <div class="container">
+      <div class="info-grid">
+        <!-- Info Card 1 -->
+        <div class="info-card">
+          <div class="card-icon">
+            <div class="icon-wrapper">
+              📍
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>آدرس ما</h3>
+            <p>تهران، خیابان ولیعصر، پلاک ۱۲۳۴</p>
+            <p>طبقه دوم، واحد ۵</p>
+            <button class="card-link" (click)="openMap()">
+              مشاهده روی نقشه →
+            </button>
+          </div>
+        </div>
+
+        <!-- Info Card 2 -->
+        <div class="info-card">
+          <div class="card-icon">
+            <div class="icon-wrapper">
+              📞
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>تلفن تماس</h3>
+            <p class="phone-number">۰۲۱-۱۲۳۴۵۶۷۸</p>
+            <p class="phone-number">۰۹۱۲-۱۲۳-۴۵۶۷</p>
+            <button class="card-link" (click)="makeCall('02112345678')">
+              تماس تلفنی →
+            </button>
+          </div>
+        </div>
+
+        <!-- Info Card 3 -->
+        <div class="info-card">
+          <div class="card-icon">
+            <div class="icon-wrapper">
+              ✉️
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>ایمیل ما</h3>
+            <p>info@dentallab.com</p>
+            <p>support@dentallab.com</p>
+            <button class="card-link" (click)="sendEmail('info@dentallab.com')">
+              ارسال ایمیل →
+            </button>
+          </div>
+        </div>
+
+        <!-- Info Card 4 -->
+        <div class="info-card">
+          <div class="card-icon">
+            <div class="icon-wrapper">
+              ⏰
+            </div>
+          </div>
+          <div class="card-content">
+            <h3>ساعات کاری</h3>
+            <p>شنبه تا چهارشنبه: ۸:۰۰ - ۱۸:۰۰</p>
+            <p>پنجشنبه: ۸:۰۰ - ۱۴:۰۰</p>
+            <p class="holiday">جمعه‌ها: تعطیل</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="contact-main">
+    <div class="container">
+      <div class="content-grid">
+        <!-- Contact Form -->
+        <div class="form-section" id="contact-form">
+          <div class="form-header">
+            <h2>پیام خود را ارسال کنید</h2>
+            <p>فرم زیر را پر کنید تا در اسرع وقت با شما تماس بگیریم</p>
+          </div>
+
+          <form class="contact-form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">نام *</label>
+                <input 
+                  type="text" 
+                  id="firstName" 
+                  formControlName="firstName"
+                  placeholder="نام خود را وارد کنید"
+                  [class.error]="isFieldInvalid('firstName')">
+                <div class="error-message" *ngIf="isFieldInvalid('firstName')">
+                  نام الزامی است
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="lastName">نام خانوادگی *</label>
+                <input 
+                  type="text" 
+                  id="lastName" 
+                  formControlName="lastName"
+                  placeholder="نام خانوادگی خود را وارد کنید"
+                  [class.error]="isFieldInvalid('lastName')">
+                <div class="error-message" *ngIf="isFieldInvalid('lastName')">
+                  نام خانوادگی الزامی است
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">تلفن تماس *</label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  formControlName="phone"
+                  placeholder="09xxxxxxxxx"
+                  [class.error]="isFieldInvalid('phone')">
+                <div class="error-message" *ngIf="isFieldInvalid('phone')">
+                  شماره تلفن معتبر وارد کنید
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">ایمیل</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  formControlName="email"
+                  placeholder="email@example.com"
+                  [class.error]="isFieldInvalid('email')">
+                <div class="error-message" *ngIf="isFieldInvalid('email')">
+                  ایمیل معتبر وارد کنید
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="serviceType">نوع خدمات مورد نظر</label>
+              <select id="serviceType" formControlName="serviceType">
+                <option value="">انتخاب کنید</option>
+                <option value="veneer">لمینیت سرامیکی</option>
+                <option value="crown">روکش دیجیتال</option>
+                <option value="implant">ایمپلنت</option>
+                <option value="denture">پروتز متحرک</option>
+                <option value="consultation">مشاوره</option>
+                <option value="other">سایر</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">پیام شما *</label>
+              <textarea 
+                id="message" 
+                formControlName="message"
+                placeholder="پیام خود را بنویسید..."
+                rows="5"
+                [class.error]="isFieldInvalid('message')"></textarea>
+              <div class="error-message" *ngIf="isFieldInvalid('message')">
+                پیام الزامی است
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button 
+                type="submit" 
+                class="btn btn-primary btn-large"
+                [disabled]="contactForm.invalid || isSubmitting">
+                <span *ngIf="!isSubmitting">ارسال پیام</span>
+                <span *ngIf="isSubmitting">
+                  <div class="loading-spinner"></div>
+                  در حال ارسال...
+                </span>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="contact-sidebar">
+          <!-- Quick Contact -->
+          <div class="sidebar-widget quick-contact">
+            <h3>تماس سریع</h3>
+            <p>برای پاسخگویی فوری با شماره‌های زیر تماس بگیرید</p>
+            <div class="quick-numbers">
+              <a href="tel:+982112345678" class="quick-number">
+                <span class="number-icon">📞</span>
+                <span class="number-info">
+                  <span class="number-label">تلفن ثابت</span>
+                  <span class="number">۰۲۱-۱۲۳۴۵۶۷۸</span>
+                </span>
+              </a>
+              <a href="tel:+989121234567" class="quick-number">
+                <span class="number-icon">📱</span>
+                <span class="number-info">
+                  <span class="number-label">موبایل</span>
+                  <span class="number">۰۹۱۲-۱۲۳-۴۵۶۷</span>
+                </span>
+              </a>
+              <a href="https://wa.me/989121234567" class="quick-number" target="_blank">
+                <span class="number-icon">💬</span>
+                <span class="number-info">
+                  <span class="number-label">واتساپ</span>
+                  <span class="number">ارسال پیام</span>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- FAQ -->
+          <div class="sidebar-widget faq-widget">
+            <h3>سوالات متداول</h3>
+            <div class="faq-list">
+              <div class="faq-item" *ngFor="let faq of faqs; let i = index">
+                <div class="faq-question" (click)="toggleFaq(i)">
+                  <span>{{ faq.question }}</span>
+                  <span class="faq-icon">{{ faq.open ? '−' : '+' }}</span>
+                </div>
+                <div class="faq-answer" [class.open]="faq.open">
+                  <p>{{ faq.answer }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Media -->
+          <div class="sidebar-widget social-widget">
+            <h3>ما را دنبال کنید</h3>
+            <p>در شبکه‌های اجتماعی با ما در ارتباط باشید</p>
+            <div class="social-links">
+              <a href="#" class="social-link instagram">
+                <span class="social-icon">📷</span>
+                <span>اینستاگرام</span>
+              </a>
+              <a href="#" class="social-link telegram">
+                <span class="social-icon">✈️</span>
+                <span>تلگرام</span>
+              </a>
+              <a href="#" class="social-link linkedin">
+                <span class="social-icon">💼</span>
+                <span>لینکدین</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Map Section -->
+  <section class="map-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>ما اینجا هستیم</h2>
+        <p>برای ملاقات حضوری به آدرس ما مراجعه کنید</p>
+      </div>
+      
+      <div class="map-container">
+        <div class="map-placeholder">
+          <div class="placeholder-content">
+            <div class="map-icon">🗺️</div>
+            <h3>نقشه دسترسی</h3>
+            <p>آدرس: تهران، خیابان ولیعصر، پلاک ۱۲۳۴</p>
+            <button class="btn btn-outline" (click)="openMap()">
+              مشاهده در Google Maps
+            </button>
+          </div>
+        </div>
+        
+        <div class="map-info">
+          <div class="info-item">
+            <div class="info-icon">🚇</div>
+            <div class="info-content">
+              <h4>دسترسی مترو</h4>
+              <p>ایستگاه مترو ولیعصر - ۵ دقیقه پیاده‌روی</p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon">🚌</div>
+            <div class="info-content">
+              <h4>اتوبوس</h4>
+              <p>خطوط BRT ولیعصر - ایستگاه پارک وی</p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon">🅿️</div>
+            <div class="info-content">
+              <h4>پارکینگ</h4>
+              <p>پارکینگ عمومی در مجاورت مطب موجود است</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="contact-cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>آماده شروع همکاری هستید؟</h2>
+        <p>همین حالا با ما تماس بگیرید یا فرم را پر کنید تا مشاوره رایگان دریافت کنید</p>
+        <div class="cta-actions">
+          <a href="tel:+982112345678" class="btn btn-large btn-primary">
+            📞 تماس فوری
+          </a>
+          <button class="btn btn-large btn-secondary" (click)="scrollToForm()">
+            ✍️ پر کردن فرم
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 </section>

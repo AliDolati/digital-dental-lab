@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { TranslationService } from '../../services/translation.service';
@@ -11,11 +11,17 @@ import { TranslationService } from '../../services/translation.service';
 })
 export class HeaderComponent {
   isMenuOpen = false;
+  isScrolled = false;
 
   constructor(
     private router: Router,
     public translation: TranslationService
   ) {}
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isScrolled = window.scrollY > 50;
+  }
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;

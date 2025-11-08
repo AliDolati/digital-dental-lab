@@ -1,42 +1,210 @@
-<!-- Hero Section -->
-<app-hero></app-hero>
+<section class="home-page">
+  
+  <!-- اسلایدر -->
+  <div class="hero-slider">
+    <div class="slider-container">
+      
+      <!-- اسلاید ۱ -->
+      <div class="slide slide-1" [class.active]="currentSlide === 0">
+        <div class="slide-content">
+          <h1 class="slide-title">لابراتوار تخصصی دندانپزشکی دیجیتال</h1>
+          <p class="slide-description">با پیشرفته‌ترین تکنولوژی‌های CAD/CAM و چاپ سه بعدی، کیفیتی بی‌نظیر ارائه می‌دهیم</p>
+          <div class="slide-actions">
+            <button class="btn btn-primary" (click)="navigateTo('/services')">مشاهده خدمات</button>
+          </div>
+        </div>
+      </div>
 
-<!-- Services Preview -->
-<section class="home-services-preview">
-  <div class="container">
-    <h2 class="section-title">{{ translation.translate('SERVICES.TITLE') }}</h2>
-    <p class="section-subtitle">{{ translation.translate('SERVICES.SUBTITLE') }}</p>
-    
-    <div class="preview-grid">
-      <div class="preview-card" *ngFor="let service of [1,2,3,4]">
-        <div class="preview-icon">{{ ['🦷', '✨', '🔩', '🦿'][service-1] }}</div>
-        <h3>{{ translation.translate('SERVICES.' + ['DIGITAL_CROWN', 'VENEERS', 'IMPLANTS', 'DENTURES'][service-1]) }}</h3>
-        <button class="preview-btn" routerLink="/services">مشاهده همه خدمات</button>
+      <!-- اسلاید ۲ -->
+      <div class="slide slide-2" [class.active]="currentSlide === 1">
+        <div class="slide-content">
+          <h1 class="slide-title">لمینیت سرامیکی با کیفیت عالی</h1>
+          <p class="slide-description">طراحی و ساخت لمینیت‌های سرامیکی نازک با طبیعی‌ترین ظاهر ممکن</p>
+          <div class="slide-actions">
+            <button class="btn btn-primary" (click)="navigateTo('/gallery')">نمونه کارها</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- اسلاید ۳ -->
+      <div class="slide slide-3" [class.active]="currentSlide === 2">
+        <div class="slide-content">
+          <h1 class="slide-title">ایمپلنت و پروتزهای ثابت</h1>
+          <p class="slide-description">ساخت پروتزهای ثابت روی ایمپلنت با انطباق کامل و زیبایی طبیعی</p>
+          <div class="slide-actions">
+            <button class="btn btn-primary" (click)="navigateTo('/services')">اطلاعات بیشتر</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <button class="slider-nav prev" (click)="prevSlide()">‹</button>
+      <button class="slider-nav next" (click)="nextSlide()">›</button>
+      
+      <!-- Dots -->
+      <div class="slider-dots">
+        <button *ngFor="let i of [0,1,2]" 
+                [class.active]="currentSlide === i"
+                (click)="goToSlide(i)"
+                class="dot">
+        </button>
       </div>
     </div>
   </div>
-</section>
 
-<!-- Stats Section -->
-<section class="home-stats">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item">
-        <div class="stat-number">500+</div>
-        <div class="stat-label">کار انجام شده</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">99%</div>
-        <div class="stat-label">رضایت مشتری</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">۵+</div>
-        <div class="stat-label">سال تجربه</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-number">۲۴/۷</div>
-        <div class="stat-label">پشتیبانی</div>
+  <!-- بخش درباره ما -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <h2>لابراتوار تخصصی دندانپزشکی دیجیتال</h2>
+          <p class="lead">
+            با بیش از <strong>۱۵ سال تجربه</strong> در زمینه ساخت پروتزهای دندانی، 
+            با بهره‌گیری از <strong>پیشرفته‌ترین تکنولوژی‌های CAD/CAM</strong> 
+            و تیمی از متخصصان مجرب، کیفیتی بی‌نظیر ارائه می‌دهیم.
+          </p>
+          
+          <div class="features-grid">
+            <div class="feature">
+              <div class="feature-icon">🎯</div>
+              <div class="feature-content">
+                <h4>دقت فوق‌العاده</h4>
+                <p>دقت ۲۰ میکرون در ساخت پروتزها با دستگاه‌های پیشرفته</p>
+              </div>
+            </div>
+            
+            <div class="feature">
+              <div class="feature-icon">⚡</div>
+              <div class="feature-content">
+                <h4>تحویل سریع</h4>
+                <p>تحویل ۲۴ ساعته در موارد اورژانسی با حفظ کیفیت</p>
+              </div>
+            </div>
+            
+            <div class="feature">
+              <div class="feature-icon">🔬</div>
+              <div class="feature-content">
+                <h4>تکنولوژی روز</h4>
+                <p>استفاده از مدرن‌ترین دستگاه‌های اسکن و چاپ سه بعدی</p>
+              </div>
+            </div>
+
+            <div class="feature">
+              <div class="feature-icon">💎</div>
+              <div class="feature-content">
+                <h4>مواد درجه یک</h4>
+                <p>استفاده از بهترین مواد آلمانی و سوئیسی در ساخت پروتزها</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-actions">
+            <button class="btn btn-primary" (click)="navigateTo('/about')">
+              درباره ما بیشتر بدانید
+            </button>
+          </div>
+        </div>
+        
+        <div class="about-visual">
+          <div class="visual-card">
+            <div class="card-image">
+              <div class="placeholder-image about-placeholder">
+                <div class="placeholder-content">
+                  <div class="placeholder-icon">🦷</div>
+                  <span>تجهیزات پیشرفته لابراتوار</span>
+                </div>
+              </div>
+            </div>
+            <div class="card-badge">
+              <span>۱۵+ سال تجربه</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- بخش خدمات ویژه -->
+  <section class="featured-services">
+    <div class="container">
+      <div class="section-header">
+        <h2>خدمات تخصصی ما</h2>
+        <p>با کیفیت و دقت بی‌نظیر در ساخت انواع پروتزهای دندانی</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card" *ngFor="let service of featuredServices; let i = index" 
+             [class.featured]="i === 1">
+          <div class="service-header">
+            <div class="service-icon">{{ service.icon }}</div>
+            <h3>{{ service.title }}</h3>
+          </div>
+          <p class="service-description">{{ service.description }}</p>
+          <ul class="service-features">
+            <li *ngFor="let feature of service.features">
+              <span class="check-icon">✓</span>
+              {{ feature }}
+            </li>
+          </ul>
+          <div class="service-actions">
+            <button class="btn btn-outline" (click)="navigateTo(service.link)">
+              اطلاعات بیشتر
+            </button>
+            <button class="btn btn-primary" (click)="navigateTo('/contact')">
+              درخواست مشاوره
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- بخش آمار و ارقام -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number">+1500</div>
+          <div class="stat-label">پروژه موفق</div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-number">۱۵+</div>
+          <div class="stat-label">سال تجربه</div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-number">۹۸٪</div>
+          <div class="stat-label">رضایت مشتری</div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-number">۵۰+</div>
+          <div class="stat-label">همکاری مطب</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA پایانی -->
+  <section class="final-cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>آماده‌ای لبخندی زیبا و سالم داشته باشی؟</h2>
+        <p>برای دریافت مشاوره رایگان و اطلاعات بیشتر با ما در تماس باش. متخصصان ما آماده پاسخگویی به سوالات شما هستند.</p>
+        <div class="cta-actions">
+          <button class="btn btn-large btn-primary" (click)="navigateToContact()">
+            📞 تماس با ما
+          </button>
+          <button class="btn btn-large btn-secondary" (click)="navigateToServices()">
+            🦷 مشاهده خدمات
+          </button>
+          <button class="btn btn-large btn-outline" (click)="navigateToGallery()">
+            🌟 نمونه کارها
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
 </section>

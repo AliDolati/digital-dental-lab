@@ -4,9 +4,12 @@
     "SERVICES": "Services",
     "TECHNOLOGY": "Technology",
     "GALLERY": "Gallery",
+    "BLOG": "Blog",
     "CONTACT": "Contact",
     "LANGUAGE": "Language"
   },
+  // ... بقیه ترجمه‌ها
+},
   "HERO": {
     "TITLE": "Digital Dental Laboratory",
     "SUBTITLE": "Advanced digital dental services with the latest world technologies",

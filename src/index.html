@@ -2,28 +2,88 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="utf-8">
-  <title>لابراتوار دندانپزشکی دیجیتال - Digital Dental Laboratory</title>
+  <title>لابراتوار دندانپزشکی دیجیتال | Digital Dental Lab</title>
   <base href="/">
+  
+  <!-- Viewport برای رسپانسیو -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   
-  <!-- Meta Tags برای SEO -->
-  <meta name="description" content="پیشرفته‌ترین خدمات دندانپزشکی دیجیتال با جدیدترین تکنولوژی‌های روز دنیا - روکش دیجیتال، لمینیت، ایمپلنت">
-  <meta name="keywords" content="دندانپزشکی دیجیتال, روکش دندان, لمینیت, ایمپلنت, پروتز, CAD/CAM">
+  <!-- Meta Tags برای سئو -->
+  <meta name="description" content="لابراتوار تخصصی دندانپزشکی دیجیتال - ارائه خدمات لمینیت سرامیکی، روکش دیجیتال، ایمپلنت و پروتزهای دندانی با پیشرفته‌ترین تکنولوژی‌ها">
+  <meta name="keywords" content="لابراتوار دندانپزشکی, لمینیت سرامیکی, روکش دیجیتال, ایمپلنت, پروتز دندانی, دندانپزشکی دیجیتال">
   <meta name="author" content="Digital Dental Lab">
   
-  <!-- Open Graph -->
+  <!-- Open Graph برای شبکه‌های اجتماعی -->
   <meta property="og:title" content="لابراتوار دندانپزشکی دیجیتال">
-  <meta property="og:description" content="پیشرفته‌ترین خدمات دندانپزشکی دیجیتال">
+  <meta property="og:description" content="خدمات تخصصی دندانپزشکی دیجیتال با بالاترین کیفیت">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="/assets/og-image.jpg">
+  <meta property="og:locale" content="fa_IR">
   
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="لابراتوار دندانپزشکی دیجیتال">
-  <meta name="twitter:description" content="پیشرفته‌ترین خدمات دندانپزشکی دیجیتال">
+  <!-- فونت Vazirmatn برای فارسی -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazirmatn@33.003/miscellaneous/Farsi-Digits/font-face.css">
+  
+  <!-- فونت Inter برای انگلیسی -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- استایل اولیه برای فونت‌ها -->
+  <style>
+    /* پیش‌بارگذاری فونت‌ها */
+    html {
+      font-family: 'Vazirmatn', 'Inter', sans-serif;
+    }
+    
+    /* جلوگیری از فلیکر در لود فونت */
+    .fonts-loading * {
+      visibility: hidden;
+    }
+    
+    .fonts-loaded * {
+      visibility: visible;
+    }
+  </style>
+  
+  <!-- Structured Data برای سئو -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "DentalClinic",
+    "name": "لابراتوار دندانپزشکی دیجیتال",
+    "description": "ارائه خدمات تخصصی دندانپزشکی دیجیتال شامل لمینیت، روکش، ایمپلنت و پروتزهای دندانی",
+    "url": "https://yourdomain.com",
+    "telephone": "+98-21-12345678",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Tehran",
+      "addressCountry": "IR"
+    },
+    "openingHours": "Sa-Th 08:00-18:00",
+    "medicalSpecialty": "Dentistry"
+  }
+  </script>
 </head>
-<body>
+
+<body class="fonts-loading">
   <app-root></app-root>
+  
+  <script>
+    // بررسی لود فونت‌ها
+    document.fonts.ready.then(function() {
+      document.body.classList.remove('fonts-loading');
+      document.body.classList.add('fonts-loaded');
+    });
+    
+    // فال‌بک برای اگر فونت لود نشد
+    setTimeout(function() {
+      if (document.body.classList.contains('fonts-loading')) {
+        document.body.classList.remove('fonts-loading');
+        document.body.classList.add('fonts-loaded');
+      }
+    }, 3000);
+  </script>
 </body>
 </html>

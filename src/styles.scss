@@ -1,1 +1,101 @@
-/* You can add global styles to this file, and also import other style files */
+/* تنظیمات فونت برای کل پروژه */
+* {
+  font-family: 'Vazirmatn', 'Inter', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Vazirmatn', 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  direction: rtl;
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #334155;
+}
+
+/* هدرها */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Vazirmatn', 'Inter', sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+  color: #1e293b;
+  margin: 0 0 1rem 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* متن‌های معمولی */
+p, span, div, li {
+  font-family: 'Vazirmatn', 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+p {
+  margin: 0 0 1rem 0;
+}
+
+/* دکمه‌ها */
+button, .btn {
+  font-family: 'Vazirmatn', 'Inter', sans-serif;
+  font-weight: 600;
+}
+
+/* input ها */
+input, textarea, select {
+  font-family: 'Vazirmatn', 'Inter', sans-serif;
+}
+
+/* لینک‌ها */
+a {
+  font-family: 'Vazirmatn', 'Inter', sans-serif;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* لیست‌ها */
+ul, ol {
+  padding-right: 1.5rem;
+  margin: 0 0 1rem 0;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* وزن‌های مختلف برای استفاده در کامپوننت‌ها */
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+
+/* رسپانسیو تایپوگرافی */
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.25rem; }
+  body { font-size: 0.95rem; }
+}
