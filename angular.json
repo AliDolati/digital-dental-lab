@@ -27,7 +27,12 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.scss"
@@ -63,10 +68,6 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "port": 4200,
-            "open": true
-          },
           "configurations": {
             "production": {
               "buildTarget": "digital-dental-lab-v2:build:production"

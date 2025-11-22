@@ -1,241 +1,412 @@
 <section class="technology-page">
   <!-- Hero Section -->
-  <div class="tech-hero">
+  <div class="technology-hero">
     <div class="container">
       <div class="hero-content">
-        <h1 class="hero-title">تکنولوژی‌های پیشرفته دندانپزشکی</h1>
+        <h1 class="hero-title">تکنولوژی‌های پیشرفته دندانپزشکی دیجیتال</h1>
         <p class="hero-description">
-          با بهره‌گیری از مدرن‌ترین تجهیزات و تکنولوژی‌های روز دنیا، 
-          دقت و کیفیتی بی‌نظیر در ساخت پروتزهای دندانی ارائه می‌دهیم
+          با استفاده از مدرن‌ترین تجهیزات و نرم‌افزارهای تخصصی، بالاترین کیفیت خدمات دندانپزشکی دیجیتال را ارائه می‌دهیم
         </p>
-        <div class="hero-stats">
-          <div class="stat">
-            <div class="stat-number">۹۹.۷٪</div>
-            <div class="stat-label">دقت ساخت</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">۲۰μm</div>
-            <div class="stat-label">حداکثر خطا</div>
-          </div>
-          <div class="stat">
-            <div class="stat-number">۲۴h</div>
-            <div class="stat-label">تحویل سریع</div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
 
-  <!-- Technology Showcase -->
-  <section class="tech-showcase">
+  <!-- Main Content -->
+  <section class="technology-main">
     <div class="container">
+      <!-- Technologies Section -->
       <div class="section-header">
-        <h2>سیستم کامل CAD/CAM</h2>
-        <p>از اسکن دیجیتال تا ساخت نهایی - همه چیز تحت یک سیستم یکپارچه</p>
+        <h2>تجهیزات و تکنولوژی‌های ما</h2>
+        <p>مجهز به آخرین دستاوردهای تکنولوژی دندانپزشکی دیجیتال</p>
       </div>
 
-      <div class="showcase-grid">
-        <div class="showcase-item" *ngFor="let tech of technologies; let i = index"
-             [class.featured]="tech.featured">
-          <div class="tech-card">
-            <div class="tech-header">
-              <div class="tech-icon">
-                <div class="icon-wrapper">{{ tech.icon }}</div>
-              </div>
-              <div class="tech-badge" *ngIf="tech.featured">پیشرفته</div>
-            </div>
-            
-            <div class="tech-content">
-              <h3 class="tech-title">{{ tech.title }}</h3>
-              <p class="tech-description">{{ tech.description }}</p>
-              
-              <div class="tech-specs">
-                <div class="spec" *ngFor="let spec of tech.specs">
-                  <span class="spec-label">{{ spec.label }}</span>
-                  <span class="spec-value">{{ spec.value }}</span>
-                </div>
-              </div>
-              
-              <div class="tech-features">
-                <h4>ویژگی‌های کلیدی:</h4>
-                <ul>
-                  <li *ngFor="let feature of tech.features">
-                    <span class="feature-icon">✓</span>
-                    {{ feature }}
-                  </li>
-                </ul>
-              </div>
-            </div>
-            
-            <div class="tech-footer">
-              <button class="tech-btn primary" (click)="showTechDetails(tech)">
-                مشاهده جزئیات
-              </button>
-              <button class="tech-btn secondary" (click)="requestDemo(tech)">
-                درخواست دمو
-              </button>
-            </div>
+      <div class="technologies-grid">
+        <!-- Technology Card 1 -->
+        <div class="technology-card" 
+             [class.active]="technologies[0].active"
+             (click)="toggleTechnology(1)">
+          <div class="card-header">
+            <h3 class="card-title">اسکنرهای دیجیتال سه‌بعدی</h3>
+            <span class="card-badge">دقت ۵ میکرون</span>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Workflow Section -->
-  <section class="workflow-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>فرآیند تولید دیجیتال</h2>
-        <p>از طراحی تا ساخت - همه مراحل با دقت و کیفیت بالا</p>
-      </div>
-
-      <div class="workflow-steps">
-        <div class="workflow-track"></div>
-        
-        <div class="step" *ngFor="let step of workflowSteps; let i = index">
-          <div class="step-number">{{ i + 1 }}</div>
-          <div class="step-content">
-            <div class="step-icon">{{ step.icon }}</div>
-            <h3 class="step-title">{{ step.title }}</h3>
-            <p class="step-description">{{ step.description }}</p>
-            <div class="step-details">
-              <div class="detail" *ngFor="let detail of step.details">
-                <span class="detail-icon">▶</span>
-                <span>{{ detail }}</span>
-              </div>
+          <div class="card-content">
+            <p class="card-description">
+              دقیق‌ترین تکنولوژی اسکن داخل دهانی با دقت ۵ میکرون برای ثبت کامل آناتومی دندان
+            </p>
+            <div class="card-features">
+              <ul class="feature-list">
+                <li>اسکن فول آرک در کمتر از ۲ دقیقه</li>
+                <li>قابلیت اسکن رنگ برای تطابق کامل</li>
+                <li>خروجی STL با بالاترین کیفیت</li>
+                <li>سازگاری با تمام سیستم‌های CAD/CAM</li>
+              </ul>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Equipment Gallery -->
-  <section class="equipment-gallery">
-    <div class="container">
-      <div class="section-header">
-        <h2>گالری تجهیزات</h2>
-        <p>مدرن‌ترین دستگاه‌ها و تجهیزات لابراتوار</p>
-      </div>
-
-      <div class="gallery-grid">
-        <div class="gallery-item" *ngFor="let equipment of equipments">
-          <div class="equipment-card">
-            <div class="equipment-image">
-              <div class="image-placeholder">
-                <div class="placeholder-content">
-                  <div class="placeholder-icon">{{ equipment.icon }}</div>
-                  <span class="image-label">{{ equipment.name }}</span>
-                </div>
-              </div>
-              <div class="equipment-overlay">
-                <button class="view-btn" (click)="viewEquipment(equipment)">
-                  🔍 مشاهده
-                </button>
-              </div>
-            </div>
-            
-            <div class="equipment-info">
-              <h3 class="equipment-name">{{ equipment.name }}</h3>
-              <p class="equipment-model">{{ equipment.model }}</p>
-              <div class="equipment-specs">
+            <div class="specifications">
+              <div class="specs-grid">
                 <div class="spec-item">
-                  <span class="spec-label">کشور سازنده:</span>
-                  <span class="spec-value">{{ equipment.country }}</span>
+                  <div class="spec-label">دقت</div>
+                  <div class="spec-value">۵ میکرون</div>
                 </div>
                 <div class="spec-item">
-                  <span class="spec-label">دقت:</span>
-                  <span class="spec-value">{{ equipment.accuracy }}</span>
+                  <div class="spec-label">زمان اسکن</div>
+                  <div class="spec-value">۲ دقیقه</div>
                 </div>
                 <div class="spec-item">
-                  <span class="spec-label">سال نصب:</span>
-                  <span class="spec-value">{{ equipment.year }}</span>
+                  <div class="spec-label">رزولوشن</div>
+                  <div class="spec-value">۲۰ مگاپیکسل</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technology Card 2 -->
+        <div class="technology-card" 
+             [class.active]="technologies[1].active"
+             (click)="toggleTechnology(2)">
+          <div class="card-header">
+            <h3 class="card-title">سیستم CAD/CAM پیشرفته</h3>
+            <span class="card-badge">طراحی هوشمند</span>
+          </div>
+          <div class="card-content">
+            <p class="card-description">
+              طراحی و ساخت دیجیتال با نرم‌افزارهای تخصصی دندانپزشکی برای نتایج دقیق و قابل پیش‌بینی
+            </p>
+            <div class="card-features">
+              <ul class="feature-list">
+                <li>طراحی بیومکانیکال دندان</li>
+                <li>شبیه‌سازی اکلوژن دینامیک</li>
+                <li>آنالیز استرس و فشار</li>
+                <li>کتابخانه دیجیتال دندان‌های طبیعی</li>
+              </ul>
+            </div>
+            <div class="specifications">
+              <div class="specs-grid">
+                <div class="spec-item">
+                  <div class="spec-label">نرم‌افزار</div>
+                  <div class="spec-value">3Shape, Exocad</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">زمان طراحی</div>
+                  <div class="spec-value">۱۵-۳۰ دقیقه</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">سازگاری</div>
+                  <div class="spec-value">تمام مواد دندانی</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technology Card 3 -->
+        <div class="technology-card" 
+             [class.active]="technologies[2].active"
+             (click)="toggleTechnology(3)">
+          <div class="card-header">
+            <h3 class="card-title">فرزینگ CNC 5 محوره</h3>
+            <span class="card-badge">دقت ۱۰ میکرون</span>
+          </div>
+          <div class="card-content">
+            <p class="card-description">
+              دستگاه‌های فرز با دقت ۱۰ میکرون برای ساخت پروتزهای دندانی با کیفیت صنعتی
+            </p>
+            <div class="card-features">
+              <ul class="feature-list">
+                <li>فرز همزمان ۵ محوره</li>
+                <li>قابلیت کار با زیرکونیا و تیتانیوم</li>
+                <li>سیستم خنک‌کننده پیشرفته</li>
+                <li>کنترل کیفیت آنلاین</li>
+              </ul>
+            </div>
+            <div class="specifications">
+              <div class="specs-grid">
+                <div class="spec-item">
+                  <div class="spec-label">دقت</div>
+                  <div class="spec-value">۱۰ میکرون</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">مواد</div>
+                  <div class="spec-value">زیرکونیا، تیتانیوم، کبالت-کروم</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">محورها</div>
+                  <div class="spec-value">۵ محوره</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technology Card 4 -->
+        <div class="technology-card" 
+             [class.active]="technologies[3].active"
+             (click)="toggleTechnology(4)">
+          <div class="card-header">
+            <h3 class="card-title">پرینتر سه‌بعدی DLP/LCD</h3>
+            <span class="card-badge">رزولوشن ۴K</span>
+          </div>
+          <div class="card-content">
+            <p class="card-description">
+              پرینت رزینی با رزولوشن ۴K برای مدل‌های جراحی و پروتز با بالاترین دقت
+            </p>
+            <div class="card-features">
+              <ul class="feature-list">
+                <li>رزولوشن ۳۸۵۰ × ۲۴۰۰ پیکسل</li>
+                <li>پرینت همزمان ۲۰ مدل</li>
+                <li>مواد بیوکامپتیبل</li>
+                <li>پس‌پردازش خودکار</li>
+              </ul>
+            </div>
+            <div class="specifications">
+              <div class="specs-grid">
+                <div class="spec-item">
+                  <div class="spec-label">تکنولوژی</div>
+                  <div class="spec-value">DLP/LCD</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">رزولوشن</div>
+                  <div class="spec-value">4K</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">ضخامت لایه</div>
+                  <div class="spec-value">۲۵-۱۰۰ میکرون</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technology Card 5 -->
+        <div class="technology-card" 
+             [class.active]="technologies[4].active"
+             (click)="toggleTechnology(5)">
+          <div class="card-header">
+            <h3 class="card-title">کوره‌های پیشرفته زیرکونیا</h3>
+            <span class="card-badge">۱۶۰۰ درجه</span>
+          </div>
+          <div class="card-content">
+            <p class="card-description">
+              سیستم‌های سینترینگ تمام اتوماتیک با کنترل دمای دقیق برای استحکام نهایی زیرکونیا
+            </p>
+            <div class="card-features">
+              <ul class="feature-list">
+                <li>کنترل دمای تا ۱۶۰۰ درجه سانتیگراد</li>
+                <li>برنامه‌ریزی هوشمند سینترینگ</li>
+                <li>خنک‌کنندگی کنترل شده</li>
+                <li>مانیتورینگ آنلاین فرآیند</li>
+              </ul>
+            </div>
+            <div class="specifications">
+              <div class="specs-grid">
+                <div class="spec-item">
+                  <div class="spec-label">حداکثر دما</div>
+                  <div class="spec-value">۱۶۰۰°C</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">فرآیند</div>
+                  <div class="spec-value">اتوماتیک</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">ظرفیت</div>
+                  <div class="spec-value">۴۰ واحد</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Technology Card 6 -->
+        <div class="technology-card" 
+             [class.active]="technologies[5].active"
+             (click)="toggleTechnology(6)">
+          <div class="card-header">
+            <h3 class="card-title">سیستم رنگ‌سازی دیجیتال</h3>
+            <span class="card-badge">ΔE < 1.5</span>
+          </div>
+          <div class="card-content">
+            <p class="card-description">
+              تکنولوژی تطابق رنگ با دقت بالا برای دندان‌های طبیعی با گارانتی تطابق کامل
+            </p>
+            <div class="card-features">
+              <ul class="feature-list">
+                <li>اسکنر رنگ VITA</li>
+                <li>دیتابیس ۲۰۰۰ رنگ دندان</li>
+                <li>سیستم میکس خودکار رنگ</li>
+                <li>گارانتی تطابق رنگ</li>
+              </ul>
+            </div>
+            <div class="specifications">
+              <div class="specs-grid">
+                <div class="spec-item">
+                  <div class="spec-label">سیستم رنگ</div>
+                  <div class="spec-value">VITA 3D-Master</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">دقت</div>
+                  <div class="spec-value">ΔE < 1.5</div>
+                </div>
+                <div class="spec-item">
+                  <div class="spec-label">رنگ‌ها</div>
+                  <div class="spec-value">۲۰۰۰+</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Materials Section -->
-  <section class="materials-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>مواد اولیه درجه یک</h2>
-        <p>استفاده از بهترین مواد آلمانی و سوئیسی برای کیفیت بی‌نظیر</p>
-      </div>
+      <!-- Materials Section -->
+      <div class="materials-section">
+        <div class="section-header">
+          <h2>مواد دندانی پیشرفته</h2>
+          <p>استفاده از باکیفیت‌ترین مواد دندانی با گارانتی کیفیت</p>
+        </div>
 
-      <div class="materials-grid">
-        <div class="material-category" *ngFor="let category of materialCategories">
-          <div class="category-header">
-            <h3 class="category-title">{{ category.title }}</h3>
-            <div class="category-badge">{{ category.origin }}</div>
+        <div class="materials-grid">
+          <!-- Material Card 1 -->
+          <div class="material-card">
+            <div class="material-header">
+              <h3 class="material-name">زیرکونیا Monolithic</h3>
+            </div>
+            <div class="material-specs">
+              <div class="spec-row">
+                <span class="spec-label">استحکام:</span>
+                <span class="spec-value">۱۴۰۰-۱۲۰۰ MPa</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">شفافیت:</span>
+                <span class="spec-value">High</span>
+              </div>
+            </div>
+            <div class="material-indication">
+              <div class="indication-label">کاربرد:</div>
+              <div class="indication-text">روکش‌های تمام زیبایی، بریج‌های ۴ واحدی</div>
+            </div>
           </div>
-          
-          <div class="materials-list">
-            <div class="material-item" *ngFor="let material of category.materials">
-              <div class="material-info">
-                <h4 class="material-name">{{ material.name }}</h4>
-                <p class="material-brand">{{ material.brand }}</p>
-                <div class="material-properties">
-                  <span class="property" *ngFor="let prop of material.properties">
-                    {{ prop }}
-                  </span>
-                </div>
+
+          <!-- Material Card 2 -->
+          <div class="material-card">
+            <div class="material-header">
+              <h3 class="material-name">زیرکونیا High-Translucent</h3>
+            </div>
+            <div class="material-specs">
+              <div class="spec-row">
+                <span class="spec-label">استحکام:</span>
+                <span class="spec-value">۱۱۰۰-۸۵۰ MPa</span>
               </div>
-              
-              <div class="material-actions">
-                <span class="material-certificate" 
-                      [class.certified]="material.certified">
-                  {{ material.certified ? '✅ دارای گواهی' : '🔄 در حال بررسی' }}
-                </span>
+              <div class="spec-row">
+                <span class="spec-label">شفافیت:</span>
+                <span class="spec-value">Very High</span>
               </div>
+            </div>
+            <div class="material-indication">
+              <div class="indication-label">کاربرد:</div>
+              <div class="indication-text">لمینیت، ونیر، اینله و انله</div>
+            </div>
+          </div>
+
+          <!-- Material Card 3 -->
+          <div class="material-card">
+            <div class="material-header">
+              <h3 class="material-name">تیتانیوم گرید ۵</h3>
+            </div>
+            <div class="material-specs">
+              <div class="spec-row">
+                <span class="spec-label">استحکام:</span>
+                <span class="spec-value">۱۱۰۰-۹۰۰ MPa</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label">شفافیت:</span>
+                <span class="spec-value">Opaque</span>
+              </div>
+            </div>
+            <div class="material-indication">
+              <div class="indication-label">کاربرد:</div>
+              <div class="indication-text">ایمپلنت، پروتزهای متحرک، بارهای ایمپلنت</div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Comparison Section -->
-  <section class="comparison-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>مقایسه تکنولوژی‌ها</h2>
-        <p>تفاوت روش‌های سنتی و دیجیتال در دندانپزشکی</p>
-      </div>
-
-      <div class="comparison-table">
-        <div class="table-header">
-          <div class="table-cell"></div>
-          <div class="table-cell traditional">
-            <h3>روش سنتی</h3>
-          </div>
-          <div class="table-cell digital">
-            <h3>روش دیجیتال</h3>
-          </div>
+      <!-- Workflow Section -->
+      <div class="workflow-section">
+        <div class="section-header">
+          <h2>فرآیند تولید دیجیتال</h2>
+          <p>از اسکن تا تحویل نهایی با بالاترین استانداردهای کیفیت</p>
         </div>
 
-        <div class="table-row" *ngFor="let item of comparisonData">
-          <div class="table-cell criteria">
-            <span class="criteria-icon">{{ item.icon }}</span>
-            <span class="criteria-text">{{ item.criteria }}</span>
+        <div class="workflow-steps">
+          <!-- Step 1 -->
+          <div class="workflow-step">
+            <div class="step-content">
+              <h3>اسکن دیجیتال</h3>
+              <p>تهیه ایمپرشن دیجیتال با اسکنر داخل دهانی با دقت ۹۹.۸%</p>
+              <div class="step-meta">
+                <div class="meta-item">
+                  <div class="meta-label">زمان</div>
+                  <div class="meta-value">۱۰-۵ دقیقه</div>
+                </div>
+                <div class="meta-item">
+                  <div class="meta-label">دقت</div>
+                  <div class="meta-value">۹۹.۸%</div>
+                </div>
+              </div>
+            </div>
           </div>
-          
-          <div class="table-cell traditional">
-            <span class="value" [class.negative]="item.traditional.negative">
-              {{ item.traditional.value }}
-            </span>
-            <span class="description">{{ item.traditional.description }}</span>
+
+          <!-- Step 2 -->
+          <div class="workflow-step">
+            <div class="step-content">
+              <h3>طراحی CAD</h3>
+              <p>طراحی سه‌بعدی پروتز با نرم‌افزار تخصصی دندانپزشکی</p>
+              <div class="step-meta">
+                <div class="meta-item">
+                  <div class="meta-label">زمان</div>
+                  <div class="meta-value">۴۵-۱۵ دقیقه</div>
+                </div>
+                <div class="meta-item">
+                  <div class="meta-label">دقت</div>
+                  <div class="meta-value">۱۰۰% دیجیتال</div>
+                </div>
+              </div>
+            </div>
           </div>
-          
-          <div class="table-cell digital">
-            <span class="value" [class.positive]="item.digital.positive">
-              {{ item.digital.value }}
-            </span>
-            <span class="description">{{ item.digital.description }}</span>
+
+          <!-- Step 3 -->
+          <div class="workflow-step">
+            <div class="step-content">
+              <h3>ساخت CAM</h3>
+              <p>تولید پروتز با دستگاه فرز یا پرینتر سه‌بعدی با دقت میکرونی</p>
+              <div class="step-meta">
+                <div class="meta-item">
+                  <div class="meta-label">زمان</div>
+                  <div class="meta-value">۹۰-۲۰ دقیقه</div>
+                </div>
+                <div class="meta-item">
+                  <div class="meta-label">دقت</div>
+                  <div class="meta-value">۵۰-۲۵ میکرون</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="workflow-step">
+            <div class="step-content">
+              <h3>پست‌پردازش</h3>
+              <p>پولیش، رنگ‌سازی و کنترل کیفیت نهایی قبل از تحویل</p>
+              <div class="step-meta">
+                <div class="meta-item">
+                  <div class="meta-label">زمان</div>
+                  <div class="meta-value">۳۰-۱۵ دقیقه</div>
+                </div>
+                <div class="meta-item">
+                  <div class="meta-label">کنترل</div>
+                  <div class="meta-value">۱۰۰% کیفیت</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -243,76 +414,20 @@
   </section>
 
   <!-- CTA Section -->
-  <section class="tech-cta">
+  <section class="technology-cta">
     <div class="container">
       <div class="cta-content">
-        <div class="cta-text">
-          <h2>آماده تجربه دندانپزشکی دیجیتال؟</h2>
-          <p>برای بازدید از لابراتوار و آشنایی با تکنولوژی‌های ما با ما تماس بگیرید</p>
-        </div>
-        
+        <h2>آماده تجربه دندانپزشکی دیجیتال هستید؟</h2>
+        <p>برای مشاوره رایگان و دریافت اطلاعات بیشتر درباره تکنولوژی‌های ما با ما تماس بگیرید</p>
         <div class="cta-actions">
-          <button class="btn btn-primary btn-large" (click)="scheduleTour()">
-            🗓️ رزرو بازدید
-          </button>
-          <button class="btn btn-secondary btn-large" (click)="downloadBrochure()">
-            📥 دریافت بروشور
-          </button>
-          <button class="btn btn-outline btn-large" (click)="contactExpert()">
-            👨‍💼 مشاوره با متخصص
+          <a href="tel:+982112345678" class="btn btn-primary btn-large">
+            تماس برای مشاوره
+          </a>
+          <button class="btn btn-secondary btn-large">
+            دریافت کاتالوگ تکنولوژی‌ها
           </button>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Tech Modal -->
-  <div class="tech-modal" [class.active]="selectedTech">
-    <div class="modal-content" *ngIf="selectedTech">
-      <button class="modal-close" (click)="closeModal()">×</button>
-      
-      <div class="modal-header">
-        <div class="tech-icon large">{{ selectedTech.icon }}</div>
-        <div class="header-content">
-          <h2>{{ selectedTech.title }}</h2>
-          <p>{{ selectedTech.fullDescription }}</p>
-        </div>
-      </div>
-      
-      <div class="modal-body">
-        <div class="tech-details">
-          <div class="detail-section">
-            <h3>مشخصات فنی</h3>
-            <div class="specs-grid">
-              <div class="spec-item" *ngFor="let spec of selectedTech.specs">
-                <span class="spec-name">{{ spec.label }}</span>
-                <span class="spec-value">{{ spec.value }}</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="detail-section">
-            <h3>کاربردها</h3>
-            <div class="applications">
-              <span class="application" *ngFor="let app of selectedTech.applications">
-                {{ app }}
-              </span>
-            </div>
-          </div>
-        </div>
-        
-        <div class="tech-gallery">
-          <h3>تصاویر نمونه</h3>
-          <div class="gallery-preview">
-            <div class="preview-item" *ngFor="let img of selectedTech.images">
-              <div class="preview-placeholder">
-                <div class="placeholder-icon">🖼️</div>
-                <span>نمونه کار</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>

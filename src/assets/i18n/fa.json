@@ -1,4 +1,196 @@
 {
+  "SITE": {
+    "TITLE": "لابراتوار دندانپزشکی دیجیتال",
+    "DESCRIPTION": "پیشرفته‌ترین لابراتوار دندانپزشکی دیجیتال با آخرین تکنولوژی‌های روز دنیا"
+  },
+  "NAV": {
+    "HOME": "خانه",
+    "SERVICES": "خدمات",
+    "GALLERY": "گالری",
+    "BLOG": "بلاگ",
+    "TECHNOLOGY": "تکنولوژی",
+    "CONTACT": "تماس",
+    "LANGUAGE": "زبان",
+    "PERSIAN": "فارسی",
+    "ENGLISH": "انگلیسی"
+  },
+  "HOME": {
+    "TITLE": "لابراتوار دندانپزشکی دیجیتال - صفحه اصلی",
+    "HERO": {
+      "TITLE": "لبخندی زیبا، با تکنولوژی روز",
+      "SUBTITLE": "تخصص ما در ساخت پروتزهای دندانی دیجیتال با دقت میکرونی",
+      "BUTTON": "مشاهده خدمات"
+    }
+  },
+  "SERVICES": {
+    "TITLE": "خدمات تخصصی ما",
+    "SUBTITLE": "با استفاده از پیشرفته‌ترین دستگاه‌های CAD/CAM",
+    "CATEGORY_TITLE": "خدمات {{category}}",
+    "DETAIL_TITLE": "جزئیات {{service}}",
+    "ZIRCONIA_CROWN": {
+      "TITLE": "کراون زیرکونیا",
+      "DESCRIPTION": "کراون‌های تمام زیرکونیا با استحکام فوق‌العاده و زیبایی طبیعی"
+    },
+    "EMAX_CROWN": {
+      "TITLE": "کراون E-max",
+      "DESCRIPTION": "کراون‌های سرامیکی با شفافیت و زیبایی بی‌نظیر"
+    },
+    "CERAMIC_VENEER": {
+      "TITLE": "ونیر سرامیکی",
+      "DESCRIPTION": "لمینت‌های سرامیکی برای لبخندی هالیوودی"
+    },
+    "IMPLANT_PROSTHETIC": {
+      "TITLE": "پروتز ایمپلنت",
+      "DESCRIPTION": "ساخت پروتزهای ثابت و متحرک بر روی ایمپلنت"
+    },
+    "DENTURE": {
+      "TITLE": "دندان مصنوعی",
+      "DESCRIPTION": "ساخت دندان‌های مصنوعی کامل و پارسیل با کیفیت عالی"
+    },
+    "NIGHT_GUARD": {
+      "TITLE": "نایت گارد",
+      "DESCRIPTION": "محافظ شبانه برای جلوگیری از سایش دندان‌ها"
+    },
+    "CATEGORIES": {
+      "ALL": "همه خدمات",
+      "CROWN_BRIDGE": "کراون و بریج",
+      "ESTHETIC": "زیبایی",
+      "IMPLANT": "ایمپلنت",
+      "PROSTHETIC": "پروتز",
+      "PROTECTIVE": "محافظتی",
+      "DIGITAL_DENTISTRY": "دندانپزشکی دیجیتال",
+      "VENEERS": "ونیرها",
+      "OCCLUSAL_APPLIANCES": "وسایل اکلوژال",
+      "IMPLANT_SOLUTIONS": "راه‌حل‌های ایمپلنت",
+      "PROVISIONALS": "پروتزهای موقت",
+      "THERMOFORMING": "ترموفرمینگ"
+    },
+    "FEATURES": {
+      "HIGH_STRENGTH": "استحکام فوق‌العاده",
+      "BIOCOMPATIBLE": "سازگار با بدن",
+      "AESTHETIC": "زیبایی طبیعی",
+      "HIGH_ESTHETIC": "زیبایی بی‌نظیر",
+      "DURABLE": "بادوام",
+      "NATURAL_LOOK": "ظاهر طبیعی",
+      "TRANSFORMATIVE": "دگرگون‌کننده",
+      "STAIN_RESISTANT": "مقاوم در برابر لک",
+      "MINIMAL_PREP": "تراش مینیمال",
+      "PERMANENT_SOLUTION": "راه‌حل دائمی",
+      "BONE_PRESERVATION": "حفظ استخوان",
+      "FUNCTIONAL": "کاربردی",
+      "FULL_RECONSTRUCTION": "بازسازی کامل",
+      "COMFORTABLE": "راحت",
+      "BRUXISM_PROTECTION": "محافظت در برابر دندان قروچه"
+    },
+    "DURATION": {
+      "2_3_DAYS": "۲-۳ روز",
+      "3_4_DAYS": "۳-۴ روز",
+      "4_5_DAYS": "۴-۵ روز",
+      "5_7_DAYS": "۵-۷ روز",
+      "7_10_DAYS": "۷-۱۰ روز"
+    },
+    "PRICE": {
+      "AFFORDABLE": "مقرون به صرفه",
+      "MEDIUM": "متوسط",
+      "HIGH": "بالا",
+      "PREMIUM": "پریمیوم"
+    }
+  },
+  "GALLERY": {
+    "TITLE": "گالری کارهای ما",
+    "SUBTITLE": "نمونه کارهای قبل و بعد از درمان",
+    "CROWN_RESTORATION": "بازسازی با کراون",
+    "VENEER_TRANSFORMATION": "دگرگونی با ونیر",
+    "IMPLANT_RESTORATION": "بازسازی با ایمپلنت",
+    "DENTURE_MAKEOVER": "تغییر با دندان مصنوعی",
+    "CROWN_DESCRIPTION": "بازسازی دندان با کراون زیرکونیا",
+    "VENEER_DESCRIPTION": "اصلاح فرم و رنگ دندان با ونیر سرامیکی",
+    "IMPLANT_DESCRIPTION": "جایگزینی دندان از دست رفته با ایمپلنت",
+    "DENTURE_DESCRIPTION": "بازسازی کامل دندان‌ها با پروتز متحرک",
+    "PROCEDURE": {
+      "ZIRCONIA_CROWN": "کراون زیرکونیا",
+      "CERAMIC_VENEERS": "ونیرهای سرامیکی",
+      "IMPLANT_CROWN": "کراون ایمپلنت",
+      "COMPLETE_DENTURE": "دندان مصنوعی کامل"
+    },
+    "DURATION": {
+      "2_DAYS": "۲ روز",
+      "5_DAYS": "۵ روز",
+      "10_DAYS": "۱۰ روز",
+      "3_MONTHS": "۳ ماه"
+    },
+    "CATEGORIES": {
+      "ALL": "همه",
+      "CROWNS": "کراون",
+      "VENEERS": "ونیر",
+      "IMPLANTS": "ایمپلنت",
+      "DENTURES": "دندان مصنوعی"
+    },
+    "BEFORE": "قبل",
+    "AFTER": "بعد"
+  },
+  "TECHNOLOGY": {
+    "TITLE": "تکنولوژی‌های ما",
+    "SUBTITLE": "با آخرین دستگاه‌های دیجیتال دندانپزشکی",
+    "CAD_CAM": {
+      "TITLE": "سیستم CAD/CAM",
+      "DESCRIPTION": "طراحی و ساخت کامپیوتری با دقت میکرونی"
+    },
+    "DIGITAL_SCANNING": {
+      "TITLE": "اسکنر دیجیتال",
+      "DESCRIPTION": "اسکن سه‌بعدی بدون نیاز به قالب‌گیری سنتی"
+    },
+    "3D_PRINTING": {
+      "TITLE": "پرینتر سه‌بعدی",
+      "DESCRIPTION": "چاپ دقیق مدل‌ها و پروتزهای موقت"
+    },
+    "MILLING_MACHINE": {
+      "TITLE": "دستگاه فرز CNC",
+      "DESCRIPTION": "فرزکاری دقیق زیرکونیا و سرامیک"
+    }
+  },
+  "CONTACT": {
+    "TITLE": "تماس با ما",
+    "SUBTITLE": "آماده پاسخگویی به سوالات شما هستیم",
+    "ADDRESS": "آدرس",
+    "PHONE": "تلفن",
+    "EMAIL": "ایمیل",
+    "WORKING_HOURS": "ساعات کاری",
+    "NAME": "نام",
+    "EMAIL_PLACEHOLDER": "ایمیل شما",
+    "MESSAGE": "پیام",
+    "SEND": "ارسال پیام",
+    "SUCCESS": "پیام شما با موفقیت ارسال شد",
+    "FORM_TITLE": "فرم درخواست مشاوره",
+    "PHONE_PLACEHOLDER": "تلفن همراه",
+    "SERVICE_TYPE": "نوع خدمت مورد نظر",
+    "SUBMIT": "ارسال درخواست"
+  },
+  "FOOTER": {
+    "DESCRIPTION": "پیشرفته‌ترین لابراتوار دندانپزشکی دیجیتال در منطقه",
+    "QUICK_LINKS": "لینک‌های سریع",
+    "CONTACT_INFO": "اطلاعات تماس",
+    "COPYRIGHT": "کلیه حقوق محفوظ است"
+  },
+  "BUTTONS": {
+    "SEE_MORE": "مشاهده بیشتر",
+    "CONTACT_US": "تماس با ما",
+    "VIEW_ALL": "مشاهده همه",
+    "READ_MORE": "ادامه مطلب",
+    "SEND_MESSAGE": "ارسال پیام",
+    "LEARN_MORE": "اطلاعات بیشتر",
+    "MORE_INFO": "اطلاعات بیشتر",
+    "CTA_PRIMARY": "مشاهده خدمات",
+    "CTA_SECONDARY": "تماس با ما"
+  },
+  "COMMON": {
+    "LOADING": "در حال بارگذاری...",
+    "ERROR": "خطا در بارگذاری",
+    "RETRY": "تلاش مجدد",
+    "CLOSE": "بستن",
+    "NEXT": "بعدی",
+    "PREVIOUS": "قبلی"
+  },
   "HEADER": {
     "HOME": "خانه",
     "SERVICES": "خدمات",
@@ -13,25 +205,5 @@
     "SUBTITLE": "پیشرفته‌ترین خدمات دندانپزشکی دیجیتال با جدیدترین تکنولوژی‌های روز دنیا",
     "CTA_PRIMARY": "مشاهده خدمات",
     "CTA_SECONDARY": "تماس با ما"
-  },
-  "SERVICES": {
-    "TITLE": "خدمات تخصصی ما",
-    "SUBTITLE": "با استفاده از پیشرفته‌ترین تکنولوژی‌های روز دنیا",
-    "DIGITAL_CROWN": "روکش دیجیتال",
-    "VENEERS": "لمینیت سرامیکی",
-    "IMPLANTS": "ایمپلنت",
-    "DENTURES": "پروتز متحرک",
-    "MORE_INFO": "اطلاعات بیشتر"
-  },
-  "CONTACT": {
-    "TITLE": "تماس با ما",
-    "SUBTITLE": "آماده پاسخگویی به سوالات شما هستیم",
-    "FORM_TITLE": "فرم درخواست مشاوره",
-    "NAME": "نام کامل",
-    "EMAIL": "ایمیل",
-    "PHONE": "تلفن همراه",
-    "MESSAGE": "پیام",
-    "SERVICE_TYPE": "نوع خدمت مورد نظر",
-    "SUBMIT": "ارسال درخواست"
   }
 }

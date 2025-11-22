@@ -109,7 +109,6 @@ export class ContactComponent implements OnInit {
   }
 
   openMap() {
-    // در حالت واقعی به Google Maps هدایت می‌شود
     const address = 'تهران، خیابان ولیعصر، پلاک ۱۲۳۴';
     const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
     window.open(mapUrl, '_blank');

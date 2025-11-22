@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Documentation Hub - Digital Dental Lab</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --text: #333;
+            --text-muted: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif; 
+            direction: rtl; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-attachment: fixed;
+            margin: 0; 
+            padding: 20px;
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container { 
+            max-width: 1400px; 
+            margin: 0 auto;
+        }
+        
+        .header { 
+            background: rgba(255,255,255,0.95); 
+            backdrop-filter: blur(10px);
+            padding: 2rem; 
+            border-radius: 20px; 
+            margin-bottom: 2rem; 
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .header h1 {
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .meta {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .dashboard { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 1.5rem; 
+            margin-bottom: 2rem; 
+        }
+        
+        .card { 
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem; 
+            border-radius: 15px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card h2 {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--primary);
+            font-size: 1.3rem;
+        }
+        
+        .file-list { 
+            max-height: 400px; 
+            overflow-y: auto; 
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            background: rgba(248,249,250,0.5);
+        }
+        
+        .file-item { 
+            padding: 0.8rem; 
+            border-bottom: 1px solid rgba(0,0,0,0.1); 
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        
+        .file-item:hover {
+            background: rgba(0,0,0,0.03);
+        }
+        
+        .file-item:last-child {
+            border-bottom: none;
+        }
+        
+        .status-badge { 
+            padding: 0.3rem 0.8rem; 
+            border-radius: 20px; 
+            font-size: 0.8rem; 
+            font-weight: bold;
+            white-space: nowrap;
+        }
+        
+        .status-active { background: var(--warning); color: white; }
+        .status-stable { background: var(--secondary); color: white; }
+        .status-high { background: var(--danger); color: white; }
+        .status-info { background: var(--primary); color: white; }
+        
+        .meta { color: var(--text-muted); font-size: 0.9rem; }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(255,255,255,0.5);
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        
+        .ai-context {
+            background: rgba(52, 152, 219, 0.1);
+            border-right: 4px solid var(--primary);
+        }
+        
+        .issue-item {
+            padding: 0.5rem;
+            margin: 0.3rem 0;
+            background: rgba(231, 76, 60, 0.1);
+            border-radius: 5px;
+            border-right: 3px solid var(--danger);
+        }
+        
+        .next-step-item {
+            padding: 0.5rem;
+            margin: 0.3rem 0;
+            background: rgba(46, 204, 113, 0.1);
+            border-radius: 5px;
+            border-right: 3px solid var(--secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 AI Documentation Hub</h1>
+            <p>Digital Dental Lab v2 - سیستم مستندسازی هوشمند</p>
+            <div class="meta">
+                <span><strong>ورژن:</strong> 2.0.0</span>
+                <span><strong>تاریخ اسکن:</strong> ۱۴۰۴/۸/۲۸, ۱۳:۱۷:۳۷</span>
+                <span><strong>فایل‌ها:</strong> 97</span>
+                <span><strong>خطوط کد:</strong> 32720</span>
+            </div>
+        </div>
+
+        <div class="dashboard">
+            <div class="card">
+                <h2>📊 وضعیت پروژه</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">24</span>
+                        <span class="stat-label">کامپوننت</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">سرویس</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">19</span>
+                        <span class="stat-label">مسیر</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">38</span>
+                        <span class="stat-label">فایل TypeScript</span>
+                    </div>
+                </div>
+                <p><strong>وضعیت:</strong> <span class="status-badge status-active">در حال توسعه</span></p>
+                <p><strong>فریم‌ورک:</strong> Angular ^17.3.0</p>
+            </div>
+
+            <div class="card ai-context">
+                <h2>🎯 راهنمای AI</h2>
+                <p><strong>تمرکز فعلی:</strong> تکمیل سیستم مستندسازی و رفع مشکلات موجود</p>
+                <p><strong>اولویت:</strong> <span class="status-badge status-high">high</span></p>
+                <p><strong>سلامت پروژه:</strong> ✅ خوب</p>
+                <p><strong>فایل‌های اخیر:</strong> src\app\components\home\home.component.scss, package.json, ai-documentation-hub.html</p>
+            </div>
+
+            <div class="card">
+                <h2>🏗️ معماری</h2>
+                <p><strong>فریم‌ورک:</strong> Angular</p>
+                <p><strong>ورژن:</strong> ^17.3.0</p>
+                <p><strong>وابستگی‌ها:</strong> 22</p>
+                <p><strong>تکنولوژی‌ها:</strong> @angular/animations, @angular/common, @angular/compiler, @angular/core, @angular/forms</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📁 فایل‌های پروژه (97 فایل)</h2>
+            <div class="file-list">
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>src\app\components\home\home.component.scss</strong>
+                            <div class="meta">877 خط | 15.6 KB | ۱۴۰۴/۸/۲۸</div>
+                        </div>
+                        <span class="status-badge status-stable">.scss</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>package.json</strong>
+                            <div class="meta">50 خط | 1.8 KB | ۱۴۰۴/۸/۲۸</div>
+                        </div>
+                        <span class="status-badge status-stable">.json</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>ai-documentation-hub.html</strong>
+                            <div class="meta">522 خط | 21.19 KB | ۱۴۰۴/۸/۲۸</div>
+                        </div>
+                        <span class="status-badge status-stable">.html</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>CHANGELOG.md</strong>
+                            <div class="meta">57 خط | 2.82 KB | ۱۴۰۴/۸/۲۸</div>
+                        </div>
+                        <span class="status-badge status-stable">.md</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>project-memory.json</strong>
+                            <div class="meta">1252 خط | 193.39 KB | ۱۴۰۴/۸/۲۸</div>
+                        </div>
+                        <span class="status-badge status-stable">.json</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>angular.json</strong>
+                            <div class="meta">112 خط | 3.14 KB | ۱۴۰۴/۸/۲۸</div>
+                        </div>
+                        <span class="status-badge status-stable">.json</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>src\app\app.routes.ts</strong>
+                            <div class="meta">62 خط | 1.87 KB | ۱۴۰۴/۸/۲۸</div>
+                        </div>
+                        <span class="status-badge status-stable">.ts</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>src\app\components\docs\docs.component.ts</strong>
+                            <div class="meta">49 خط | 1.25 KB | ۱۴۰۴/۸/۲۸</div>
+                        </div>
+                        <span class="status-badge status-stable">.ts</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>scripts\ai-docs-generator.js</strong>
+                            <div class="meta">831 خط | 31.68 KB | ۱۴۰۴/۸/۲۸</div>
+                        </div>
+                        <span class="status-badge status-stable">.js</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>src\app\components\home\home.component.ts</strong>
+                            <div class="meta">320 خط | 11.16 KB | ۱۴۰۴/۸/۲۷</div>
+                        </div>
+                        <span class="status-badge status-stable">.ts</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>src\app\components\home\home.component.html</strong>
+                            <div class="meta">188 خط | 6.91 KB | ۱۴۰۴/۸/۲۷</div>
+                        </div>
+                        <span class="status-badge status-stable">.html</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>scripts\file-tracker.js</strong>
+                            <div class="meta">98 خط | 3.09 KB | ۱۴۰۴/۸/۲۷</div>
+                        </div>
+                        <span class="status-badge status-stable">.js</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>scripts\version-manager.js</strong>
+                            <div class="meta">80 خط | 2.31 KB | ۱۴۰۴/۸/۲۷</div>
+                        </div>
+                        <span class="status-badge status-stable">.js</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>scripts\project-scanner.js</strong>
+                            <div class="meta">137 خط | 4.94 KB | ۱۴۰۴/۸/۲۷</div>
+                        </div>
+                        <span class="status-badge status-stable">.js</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>auto-docs.html</strong>
+                            <div class="meta">165 خط | 7.12 KB | ۱۴۰۴/۸/۲۷</div>
+                        </div>
+                        <span class="status-badge status-stable">.html</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>smart-docs.html</strong>
+                            <div class="meta">217 خط | 8.79 KB | ۱۴۰۴/۸/۲۷</div>
+                        </div>
+                        <span class="status-badge status-stable">.html</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>src\app\components\header\header.component.ts</strong>
+                            <div class="meta">99 خط | 2.43 KB | ۱۴۰۴/۸/۲۶</div>
+                        </div>
+                        <span class="status-badge status-stable">.ts</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>src\app\components\hero\hero.component.ts</strong>
+                            <div class="meta">140 خط | 3.1 KB | ۱۴۰۴/۸/۲۶</div>
+                        </div>
+                        <span class="status-badge status-stable">.ts</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>src\assets\i18n\en.json</strong>
+                            <div class="meta">209 خط | 6.59 KB | ۱۴۰۴/۸/۲۶</div>
+                        </div>
+                        <span class="status-badge status-stable">.json</span>
+                    </div>
+                
+                    <div class="file-item">
+                        <div>
+                            <strong>src\assets\i18n\fa.json</strong>
+                            <div class="meta">209 خط | 8.3 KB | ۱۴۰۴/۸/۲۶</div>
+                        </div>
+                        <span class="status-badge status-stable">.json</span>
+                    </div>
+                
+                
+                    <div class="file-item">
+                        <div class="meta">... و 77 فایل دیگر</div>
+                    </div>
+                
+            </div>
+        </div>
+
+        <div class="dashboard">
+            <div class="card">
+                <h2>⚠️ مشکلات شناسایی شده</h2>
+                <div>
+                    
+                        <div class="issue-item">فایل project-build\AI_NOTES.md بسیار کوچک است (3 خط)</div>
+                    
+                        <div class="issue-item">فایل project-build\TODO.md بسیار کوچک است (3 خط)</div>
+                    
+                        <div class="issue-item">کامپوننت src\app\components\blog\blog.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)</div>
+                    
+                        <div class="issue-item">کامپوننت src\app\components\blog\post\post.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)</div>
+                    
+                        <div class="issue-item">کامپوننت src\app\components\contact\contact.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)</div>
+                    
+                        <div class="issue-item">کامپوننت src\app\components\footer\footer.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)</div>
+                    
+                        <div class="issue-item">کامپوننت src\app\components\gallery\gallery.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)</div>
+                    
+                        <div class="issue-item">کامپوننت src\app\components\header\header.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)</div>
+                    
+                        <div class="issue-item">کامپوننت src\app\components\hero\hero.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)</div>
+                    
+                        <div class="issue-item">کامپوننت src\app\components\home\home.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)</div>
+                    
+                        <div class="issue-item">کامپوننت src\app\components\services\services.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)</div>
+                    
+                        <div class="issue-item">کامپوننت src\app\components\technology\technology.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)</div>
+                    
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🚀 اقدامات بعدی</h2>
+                <div>
+                    
+                        <div class="next-step-item">تکمیل سیستم چندزبانه</div>
+                    
+                        <div class="next-step-item">رفع مشکلات navigation</div>
+                    
+                        <div class="next-step-item">اضافه کردن انیمیشن‌ها</div>
+                    
+                        <div class="next-step-item">تست responsiveness</div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>🔍 آمار فایل‌ها</h2>
+            <div class="stats-grid">
+                
+                    <div class="stat-item">
+                        <span class="stat-number">14</span>
+                        <span class="stat-label">.scss فایل</span>
+                    </div>
+                
+                    <div class="stat-item">
+                        <span class="stat-number">17</span>
+                        <span class="stat-label">.json فایل</span>
+                    </div>
+                
+                    <div class="stat-item">
+                        <span class="stat-number">18</span>
+                        <span class="stat-label">.html فایل</span>
+                    </div>
+                
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">.md فایل</span>
+                    </div>
+                
+                    <div class="stat-item">
+                        <span class="stat-number">38</span>
+                        <span class="stat-label">.ts فایل</span>
+                    </div>
+                
+                    <div class="stat-item">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">.js فایل</span>
+                    </div>
+                
+            </div>
+            <p class="meta">تولید شده در ۱۴۰۴/۸/۲۸, ۱۳:۱۷:۳۷ - سیستم مستندسازی هوشمند</p>
+        </div>
+    </div>
+</body>
+</html>

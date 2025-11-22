@@ -1,0 +1,179 @@
+:host {
+  --primary-color: #1e88e5;
+  --primary-dark: #1565c0;
+  --primary-light: #64b5f6;
+  --secondary-color: #f44336;
+  --text-primary: #424750;
+  --text-secondary: #5a5f69;
+  --text-light: #81858b;
+  --background: #f5f7f9;
+  --white: #ffffff;
+  --border: #e0e0e6;
+  --border-light: #f0f0f1;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category-page {
+  background: var(--background);
+  min-height: 100vh;
+  direction: rtl;
+  font-family: 'Yekan Bakh', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// Category Hero
+.category-hero {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  padding: 3rem 0;
+  color: var(--white);
+  text-align: center;
+  
+  .hero-content {
+    .category-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .category-description {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Services Grid
+.services-section {
+  padding: 3rem 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+  }
+  
+  .service-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background: var(--background);
+  }
+  
+  .service-content {
+    padding: 1.5rem;
+    
+    .service-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+    
+    .service-description {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    
+    .service-features {
+      margin-bottom: 1rem;
+      
+      .feature-tag {
+        display: inline-block;
+        background: var(--primary-light);
+        color: var(--primary-dark);
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        margin-left: 0.5rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+    
+    .service-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-light);
+      
+      .duration, .warranty {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        
+        strong {
+          color: var(--text-primary);
+        }
+      }
+    }
+  }
+}
+
+// Back Navigation
+.back-nav {
+  padding: 1.5rem 0;
+  
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: var(--primary-dark);
+    }
+  }
+}
+
+// رسپانسیو
+@media (max-width: 768px) {
+  .category-hero {
+    padding: 2rem 0;
+    
+    .category-title {
+      font-size: 2rem;
+    }
+    
+    .category-description {
+      font-size: 1rem;
+    }
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .service-card .service-content {
+    padding: 1.25rem;
+  }
+}

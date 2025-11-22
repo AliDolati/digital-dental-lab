@@ -1,0 +1,127 @@
+<section class="service-detail-page" *ngIf="currentService">
+  <!-- Breadcrumb Navigation -->
+  <div class="container">
+    <div class="breadcrumb-nav">
+      <div class="breadcrumb">
+        <a [routerLink]="['/services']">خدمات</a>
+        <span class="separator">/</span>
+        <a [routerLink]="['/services', categorySlug]">{{ getCategoryTitle() }}</a>
+        <span class="separator">/</span>
+        <span class="current">{{ currentService.title }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Service Hero -->
+  <div class="container">
+    <div class="service-hero">
+      <div class="hero-content">
+        <div class="service-info">
+          <h1 class="service-title">{{ currentService.title }}</h1>
+          <p class="service-description">{{ currentService.description }}</p>
+          <p class="detailed-description" *ngIf="currentService.detailedDescription">
+            {{ currentService.detailedDescription }}
+          </p>
+        </div>
+        
+        <div class="service-image-side">
+          <img 
+  [src]="currentService.image" 
+  [alt]="currentService.title"
+  class="main-image"
+  (error)="currentService.image = '/assets/images/placeholder.jpg'">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Brand Selection -->
+  <div class="container" *ngIf="currentService.brands && currentService.brands.length > 0">
+    <div class="brand-section">
+      <h2 class="section-title">انتخاب برند</h2>
+      <div class="brands-grid">
+        <div 
+          class="brand-option" 
+          *ngFor="let brand of currentService.brands"
+          [class.selected]="currentService.selectedBrand === brand"
+          (click)="changeBrand(brand)">
+          <div class="brand-name">{{ brand }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Service Details -->
+  <div class="container">
+    <div class="details-grid">
+      <div class="detail-card">
+        <div class="detail-label">مدت زمان ساخت</div>
+        <div class="detail-value">{{ currentService.duration }}</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-label">گارانتی</div>
+        <div class="detail-value">{{ currentService.warranty }}</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-label">برند انتخابی</div>
+        <div class="detail-value">{{ currentService.selectedBrand }}</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-label">دسته‌بندی</div>
+        <div class="detail-value">{{ getCategoryTitle() }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features & Specifications -->
+  <div class="container" *ngIf="currentService.features || currentService.technicalSpecs">
+    <div class="features-specs">
+      <!-- Features -->
+      <div class="features-section" *ngIf="currentService.features">
+        <h2 class="section-title">ویژگی‌های اصلی</h2>
+        <ul class="features-list">
+          <li *ngFor="let feature of currentService.features">{{ feature }}</li>
+        </ul>
+      </div>
+
+      <!-- Technical Specifications -->
+      <div class="specs-section" *ngIf="currentService.technicalSpecs">
+        <h2 class="section-title">مشخصات فنی</h2>
+        <div class="specs-grid">
+          <div class="spec-item" *ngFor="let spec of currentService.technicalSpecs | keyvalue">
+            <span class="spec-label">{{ spec.key }}</span>
+            <span class="spec-value">{{ spec.value }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Indications -->
+  <div class="container" *ngIf="currentService.indications">
+    <div class="indications-section">
+      <h2 class="section-title">موارد کاربرد</h2>
+      <ul class="indications-list">
+        <li *ngFor="let indication of currentService.indications">{{ indication }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="container">
+    <div class="service-cta">
+      <h2 class="cta-title">آماده سفارش این خدمت هستید؟</h2>
+      <p class="cta-description">
+        برای دریافت مشاوره رایگان و ثبت سفارش {{ currentService.title }} با ما تماس بگیرید
+      </p>
+      <div class="cta-actions">
+        <a href="tel:+982112345678" class="btn btn-primary">
+          تماس برای مشاوره
+        </a>
+        <a [routerLink]="['/services', categorySlug]" class="btn btn-secondary">
+          مشاهده خدمات مشابه
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

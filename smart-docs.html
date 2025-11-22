@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مستندات هوشمند - Digital Dental Lab</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333; 
+            min-height: 100vh; 
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto;
+        }
+        
+        .header { 
+            background: rgba(255,255,255,0.95); 
+            backdrop-filter: blur(10px);
+            padding: 2rem; 
+            border-radius: 20px; 
+            margin-bottom: 2rem; 
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 { 
+            color: #2c3e50; 
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+        
+        .ai-context {
+            background: rgba(52, 152, 219, 0.1);
+            border-right: 4px solid #3498db;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+        }
+        
+        .dashboard { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 1.5rem; 
+            margin-bottom: 2rem; 
+        }
+        
+        .card { 
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem; 
+            border-radius: 15px; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .card h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        .status-badge { 
+            display: inline-block; 
+            padding: 0.3rem 0.8rem; 
+            border-radius: 20px; 
+            font-size: 0.8rem; 
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+        
+        .status-active { background: #f39c12; color: white; }
+        .status-stable { background: #2ecc71; color: white; }
+        .status-high { background: #e74c3c; color: white; }
+        
+        .file-list {
+            list-style: none;
+        }
+        
+        .file-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #ecf0f1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .tech-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 مستندات هوشمند پروژه</h1>
+            <p>Digital Dental Lab v2 - لابراتوار دندانپزشکی دیجیتال</p>
+            <div class="last-update" style="background: #e74c3c; color: white; padding: 0.5rem 1rem; border-radius: 25px; display: inline-block; margin-top: 1rem;">
+                🔄 آخرین بروزرسانی: ۱۴۰۴/۸/۲۷, ۱۰:۱۸:۱۱
+            </div>
+        </div>
+
+        <!-- Context برای AI -->
+        <div class="card">
+            <h2>🎯 راهنمای هوش مصنوعی</h2>
+            <div class="ai-context">
+                <p><strong>تمرکز فعلی:</strong> تکمیل سیستم چندزبانه و رفع باگ‌های navigation</p>
+                <p><strong>اولویت:</strong> <span class="status-badge status-high">high</span></p>
+                <p><strong>کار اخیر:</strong> بروزرسانی header و home components</p>
+                <p><strong>اقدام بعدی:</strong> بررسی فایل home.component.ts و رفع خطاهای ترجمه</p>
+                <p><strong>فایل‌های مهم:</strong> src/app/components/home/home.component.ts, src/app/components/header/header.component.ts, src/assets/i18n/fa.json, src/assets/i18n/en.json</p>
+            </div>
+        </div>
+
+        <div class="dashboard">
+            <!-- وضعیت فعلی -->
+            <div class="card">
+                <h2>📊 وضعیت فعلی</h2>
+                <p><strong>تمرکز:</strong> رفع مشکلات چندزبانه در هدر و هوم پیج</p>
+                <p><strong>وضعیت:</strong> <span class="status-badge status-active">in-progress</span></p>
+                <p><strong>اولویت:</strong> <span class="status-badge status-high">high</span></p>
+                <p><strong>شرح:</strong> سیستم translate pipe در header کار نمی‌کند</p>
+            </div>
+
+            <!-- فایل‌های فعال -->
+            <div class="card">
+                <h2>📁 فایل‌های فعال</h2>
+                <ul class="file-list">
+                    
+                        <li>
+                            <div>
+                                <strong>src/app/components/header/header.component.ts</strong>
+                                <div style="font-size: 0.9rem; color: #7f8c8d;">رفع مشکل dropdown و translate pipe</div>
+                                <div style="font-size: 0.8rem; color: #95a5a6;">آخرین تغییر: ۱۴۰۴/۸/۲۶, ۲۱:۲۳:۵۸</div>
+                            </div>
+                            <span class="status-badge status-active">فعال</span>
+                        </li>
+                    
+                        <li>
+                            <div>
+                                <strong>src/app/components/home/home.component.ts</strong>
+                                <div style="font-size: 0.9rem; color: #7f8c8d;">صفحه اصلی با اسلایدر و خدمات</div>
+                                <div style="font-size: 0.8rem; color: #95a5a6;">آخرین تغییر: ۱۴۰۴/۸/۲۴, ۱۹:۴۸:۴۶</div>
+                            </div>
+                            <span class="status-badge status-stable">پایدار</span>
+                        </li>
+                    
+                        <li>
+                            <div>
+                                <strong>src/assets/i18n/fa.json</strong>
+                                <div style="font-size: 0.9rem; color: #7f8c8d;">فایل ترجمه فارسی</div>
+                                <div style="font-size: 0.8rem; color: #95a5a6;">آخرین تغییر: ۱۴۰۴/۸/۲۶, ۲۱:۱۲:۳۸</div>
+                            </div>
+                            <span class="status-badge status-modified">پایدار</span>
+                        </li>
+                    
+                </ul>
+            </div>
+
+            <!-- مشکلات شناخته شده -->
+            <div class="card">
+                <h2>⚠️ مشکلات شناخته شده</h2>
+                <ul style="padding-right: 1.5rem;">
+                    <li>مشکل translate pipe در header component</li><li>dropdown منوی خدمات کار نمی‌کند</li><li>نیاز به تست کامل responsive</li><li>سیستم چندزبانه نیاز به تکمیل دارد</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- مراحل بعدی -->
+        <div class="card">
+            <h2>🚀 مراحل بعدی</h2>
+            <ol style="padding-right: 1.5rem;">
+                <li>رفع خطاهای translate pipe در header</li><li>تکمیل سیستم چندزبانه برای تمام کامپوننت‌ها</li><li>اضافه کردن انیمیشن‌های صفحه‌بندی</li><li>تست cross-browser compatibility</li><li>اضافه کردن سرویس API برای مدیریت محتوا</li>
+            </ol>
+        </div>
+
+        <!-- اطلاعات فنی -->
+        <div class="card">
+            <h2>🔧 اطلاعات فنی</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <strong>Angular</strong>
+                    <div>^17.3.0</div>
+                </div>
+                <div class="tech-item">
+                    <strong>کامپوننت‌ها</strong>
+                    <div>9 عدد</div>
+                </div>
+                <div class="tech-item">
+                    <strong>مسیرها</strong>
+                    <div>10 عدد</div>
+                </div>
+                <div class="tech-item">
+                    <strong>سرویس‌ها</strong>
+                    <div>3 عدد</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

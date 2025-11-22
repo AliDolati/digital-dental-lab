@@ -1,0 +1,1252 @@
+{
+  "meta": {
+    "name": "Digital Dental Lab v2",
+    "version": "2.0.0",
+    "lastScan": "2025-11-19T09:47:37.826Z",
+    "totalFiles": 97,
+    "totalLines": 32720,
+    "scanDate": "۱۴۰۴/۸/۲۸, ۱۳:۱۷:۳۷",
+    "scanTimestamp": 1763545657851
+  },
+  "architecture": {
+    "framework": "Angular",
+    "version": "^17.3.0",
+    "dependencies": [
+      "@angular/animations",
+      "@angular/common",
+      "@angular/compiler",
+      "@angular/core",
+      "@angular/forms",
+      "@angular/platform-browser",
+      "@angular/platform-browser-dynamic",
+      "@angular/platform-server",
+      "@angular/router",
+      "@angular/ssr",
+      "@ngx-translate/core",
+      "@ngx-translate/http-loader",
+      "express",
+      "rxjs",
+      "tslib"
+    ],
+    "totalDependencies": 22
+  },
+  "files": [
+    {
+      "path": "src\\app\\components\\home\\home.component.scss",
+      "content": "// home.component.scss - نسخه قبلی\r\n:host {\r\n  // پالت رنگ استاندارد لابراتوار دندانسازی\r\n  --white-clean: #ffffff;\r\n  --white-off: #f8f9fa;\r\n  --gray-light: #e9ecef;\r\n  --gray-medium: #6c757d;\r\n  --gray-dark: #343a40;\r\n  --navy-blue: #1a237e;      // آبی نفتی پزشکی\r\n  --medical-blue: #1565c0;   // آبی پزشکی\r\n  --teal-modern: #00695c;    // سبز فیروزه‌ای\r\n  --ice-blue: #4fc3f7;       // آبی یخی\r\n  --black-luxury: #212121;   // مشکی لوکس\r\n  --charcoal: #424242;       // طوسی پررنگ\r\n  \r\n  // استفاده در کامپوننت‌ها\r\n  --primary: var(--navy-blue);\r\n  --secondary: var(--teal-modern);\r\n  --accent: var(--ice-blue);\r\n  --background: var(--white-clean);\r\n  --text-dark: var(--black-luxury);\r\n  --text-muted: var(--gray-medium);\r\n  --border-color: var(--gray-light);\r\n}\r\n.home-page {\r\n  overflow-x: hidden;\r\n  font-family: 'Vazir', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\r\n  line-height: 1.6;\r\n  color: var(--dark-text);\r\n  font-size: 14px;\r\n  margin: 0;\r\n  padding: 0;\r\n  background: var(--background);\r\n  width: 100%;\r\n  max-width: 100%;\r\n}\r\n\r\n.container {\r\n  max-width: 100%;\r\n  margin: 0 auto;\r\n  padding: 0 16px;\r\n  \r\n  @media (max-width: 1200px) {\r\n    max-width: 100%;\r\n  }\r\n  \r\n  @media (max-width: 768px) {\r\n    max-width: 100%;\r\n    padding: 0 12px;\r\n  }\r\n}\r\n\r\n.top-bar {\r\n  background: var(--gray-900);\r\n  color: white;\r\n  padding: 10px 0;\r\n  font-size: 12px;\r\n  border-bottom: none;\r\n  width: 100%;\r\n  \r\n  .container {\r\n    max-width: 100%;\r\n  }\r\n  \r\n  .top-bar-content {\r\n    display: flex;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n    height: 36px;\r\n    \r\n    @media (max-width: 768px) {\r\n      flex-direction: column;\r\n      height: auto;\r\n      gap: 8px;\r\n    }\r\n  }\r\n  \r\n  .contact-info {\r\n    display: flex;\r\n    gap: 24px;\r\n    align-items: center;\r\n    \r\n    .phone {\r\n      font-weight: 500;\r\n      font-size: 13px;\r\n    }\r\n    \r\n    .delivery-time {\r\n      color: var(--gray-300);\r\n      font-size: 11px;\r\n    }\r\n    \r\n    @media (max-width: 480px)",
+      "size": 15970,
+      "lines": 877,
+      "modified": "2025-11-19T09:46:26.724Z",
+      "created": "2025-11-06T20:24:18.755Z",
+      "extension": ".scss"
+    },
+    {
+      "path": "package.json",
+      "content": "{\r\n  \"name\": \"digital-dental-lab-v2\",\r\n  \"version\": \"0.0.0\",\r\n  \"scripts\": {\r\n    \"ng\": \"ng\",\r\n    \"start\": \"ng serve\",\r\n    \"build\": \"ng build\", \r\n    \"watch\": \"ng build --watch --configuration development\",\r\n    \"test\": \"ng test\",\r\n      \"dev\": \"npm run docs:ai && npx ng serve --poll=1000 --no-watch\",\r\n    \"dev:clean\": \"npx ng cache clean && npm run dev\",\r\n    \"serve:only\": \"npx ng serve --poll=1000 --no-watch\",\r\n    \"docs:only\": \"node scripts/ai-docs-generator.js\",\r\n    \"docs:ai\": \"node scripts/ai-docs-generator.js\",\r\n    \"docs:smart\": \"node scripts/smart-docs.js || echo 'Smart docs script running...'\",\r\n    \"docs:update\": \"node scripts/update-docs.js || echo 'Docs script not found, continuing...'\",\r\n    \"docs:scan\": \"node scripts/project-scanner.js\",\r\n    \"serve:ssr\": \"node dist/digital-dental-lab-v2/server/server.mjs\",\r\n    \"build:ssr\": \"ng build && ng run digital-dental-lab-v2:server\", \r\n    \"prerender\": \"ng run digital-dental-lab-v2:prerender\"\r\n  \r\n},\r\n  \"private\": true,\r\n  \"dependencies\": {\r\n    \"@angular/animations\": \"^17.3.0\",\r\n    \"@angular/common\": \"^17.3.0\",\r\n    \"@angular/compiler\": \"^17.3.0\",\r\n    \"@angular/core\": \"^17.3.0\",\r\n    \"@angular/forms\": \"^17.3.0\",\r\n    \"@angular/platform-browser\": \"^17.3.0\",\r\n    \"@angular/platform-browser-dynamic\": \"^17.3.0\",\r\n    \"@angular/platform-server\": \"^17.3.0\",\r\n    \"@angular/router\": \"^17.3.0\",\r\n    \"@angular/ssr\": \"^17.3.8\",\r\n    \"@ngx-translate/core\": \"^15.0.0\",\r\n    \"@ngx-translate/http-loader\": \"^8.0.0\",\r\n    \"express\": \"^4.18.2\",\r\n    \"rxjs\": \"~7.8.0\",\r\n    \"tslib\": \"^2.3.0\",\r\n    \"zone.js\": \"~0.14.0\"\r\n  },\r\n  \"devDependencies\": {\r\n    \"@angular-devkit/build-angular\": \"^17.3.0\",\r\n    \"@angular/cli\": \"^17.3.0\",\r\n    \"@angular/compiler-cli\": \"^17.3.0\",\r\n    \"@types/express\": \"^4.17.17\",\r\n    \"@types/node\": \"^18.18.0\",\r\n    \"typescript\": \"~5.3.0\"\r\n  }\r\n}",
+      "size": 1839,
+      "lines": 50,
+      "modified": "2025-11-19T09:42:27.837Z",
+      "created": "2025-11-06T18:37:24.205Z",
+      "extension": ".json"
+    },
+    {
+      "path": "ai-documentation-hub.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"fa\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>AI Documentation Hub - Digital Dental Lab</title>\n    <style>\n        :root {\n            --primary: #3498db;\n            --secondary: #2ecc71;\n            --warning: #f39c12;\n            --danger: #e74c3c;\n            --dark: #2c3e50;\n            --light: #ecf0f1;\n            --text: #333;\n            --text-muted: #7f8c8d;\n        }\n        \n        * {\n            margin: 0;\n            padding: 0;\n            box-sizing: border-box;\n        }\n        \n        body { \n            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif; \n            direction: rtl; \n            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n            background-attachment: fixed;\n            margin: 0; \n            padding: 20px;\n            color: var(--text);\n            line-height: 1.6;\n            min-height: 100vh;\n        }\n        \n        .container { \n            max-width: 1400px; \n            margin: 0 auto;\n        }\n        \n        .header { \n            background: rgba(255,255,255,0.95); \n            backdrop-filter: blur(10px);\n            padding: 2rem; \n            border-radius: 20px; \n            margin-bottom: 2rem; \n            text-align: center;\n            box-shadow: 0 10px 30px rgba(0,0,0,0.1);\n            border: 1px solid rgba(255,255,255,0.2);\n        }\n        \n        .header h1 {\n            color: var(--dark);\n            margin-bottom: 0.5rem;\n            font-size: 2.5rem;\n            background: linear-gradient(135deg, var(--primary), var(--secondary));\n            -webkit-background-clip: text;\n            -webkit-text-fill-color: transparent;\n            background-clip: text;\n        }\n        \n        .meta {\n            color: var(--text-muted);\n            font-size: 0.9rem;\n            margin-top: 1rem;\n            display: flex;\n            justify-content: center;\n",
+      "size": 21701,
+      "lines": 522,
+      "modified": "2025-11-19T09:38:43.264Z",
+      "created": "2025-11-18T08:10:12.717Z",
+      "extension": ".html"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "content": "# Changelog - Digital Dental Lab v2\n\n## 2.0.0 - ۱۴۰۴/۸/۲۸, ۱۳:۰۸:۴۳\n\n### سیستم مستندسازی راه‌اندازی شد\n- ایجاد سیستم مستندسازی هوشمند AI-Optimized\n- اسکن 97 فایل پروژه\n- شناسایی 24 کامپوننت\n- شناسایی 2 سرویس\n- شناسایی 19 مسیر\n\n### وضعیت فعلی\n- کل خطوط کد: 32717\n- فایل‌های شناسایی شده: 97\n- حجم کل پروژه: 1.2 MB\n- وضعیت پروژه: در حال توسعه\n\n### معماری\n- فریم‌ورک: Angular\n- ورژن: ^17.3.0\n- وابستگی‌ها: 22\n\n### مشکلات شناسایی شده\n- فایل project-build\\AI_NOTES.md بسیار کوچک است (3 خط)\n- فایل project-build\\TODO.md بسیار کوچک است (3 خط)\n- کامپوننت src\\app\\components\\blog\\blog.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)\n- کامپوننت src\\app\\components\\blog\\post\\post.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)\n- کامپوننت src\\app\\components\\contact\\contact.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)\n- کامپوننت src\\app\\components\\footer\\footer.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)\n- کامپوننت src\\app\\components\\gallery\\gallery.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)\n- کامپوننت src\\app\\components\\header\\header.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)\n- کامپوننت src\\app\\components\\hero\\hero.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)\n- کامپوننت src\\app\\components\\home\\home.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)\n- کامپوننت src\\app\\components\\services\\services.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)\n- کامپوننت src\\app\\components\\technology\\technology.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)\n\n### اقدامات بعدی  \n- تکمیل سیستم چندزبانه\n- رفع مشکلات navigation\n- اضافه کردن انیمیشن‌ها\n- تست responsiveness\n\n### فایل‌های کلیدی\n- package.json (48 خط)\n- ai-documentation-hub.html (522 خط)\n- CHANGELOG.md (57 خط)\n- project-memory.json (1252 خط)\n- angular.json (112 خط)\n- src\\app\\app.routes.ts (62 خط)\n- src\\app\\components\\docs\\docs.component.ts (49 خط)\n- scripts\\ai-docs-generator.js (831 خط)\n- src\\app\\compo",
+      "size": 2884,
+      "lines": 57,
+      "modified": "2025-11-19T09:38:43.264Z",
+      "created": "2025-11-18T08:26:54.382Z",
+      "extension": ".md"
+    },
+    {
+      "path": "project-memory.json",
+      "content": "{\n  \"meta\": {\n    \"name\": \"Digital Dental Lab v2\",\n    \"version\": \"2.0.0\",\n    \"lastScan\": \"2025-11-19T09:38:43.145Z\",\n    \"totalFiles\": 97,\n    \"totalLines\": 32717,\n    \"scanDate\": \"۱۴۰۴/۸/۲۸, ۱۳:۰۸:۴۳\",\n    \"scanTimestamp\": 1763545123252\n  },\n  \"architecture\": {\n    \"framework\": \"Angular\",\n    \"version\": \"^17.3.0\",\n    \"dependencies\": [\n      \"@angular/animations\",\n      \"@angular/common\",\n      \"@angular/compiler\",\n      \"@angular/core\",\n      \"@angular/forms\",\n      \"@angular/platform-browser\",\n      \"@angular/platform-browser-dynamic\",\n      \"@angular/platform-server\",\n      \"@angular/router\",\n      \"@angular/ssr\",\n      \"@ngx-translate/core\",\n      \"@ngx-translate/http-loader\",\n      \"express\",\n      \"rxjs\",\n      \"tslib\"\n    ],\n    \"totalDependencies\": 22\n  },\n  \"files\": [\n    {\n      \"path\": \"package.json\",\n      \"content\": \"{\\r\\n  \\\"name\\\": \\\"digital-dental-lab-v2\\\",\\r\\n  \\\"version\\\": \\\"0.0.0\\\",\\r\\n  \\\"scripts\\\": {\\r\\n    \\\"ng\\\": \\\"ng\\\",\\r\\n    \\\"start\\\": \\\"ng serve\\\",\\r\\n    \\\"build\\\": \\\"ng build\\\", \\r\\n    \\\"watch\\\": \\\"ng build --watch --configuration development\\\",\\r\\n    \\\"test\\\": \\\"ng test\\\",\\r\\n     \\\"dev\\\": \\\"npm run docs:ai && npx ng serve --no-cache\\\",\\r\\n    \\\"clean-dev\\\": \\\"npx ng cache clean && npm run dev\\\",\\r\\n    \\\"docs:ai\\\": \\\"node scripts/ai-docs-generator.js\\\",\\r\\n    \\\"docs:smart\\\": \\\"node scripts/smart-docs.js || echo 'Smart docs script running...'\\\",\\r\\n    \\\"docs:update\\\": \\\"node scripts/update-docs.js || echo 'Docs script not found, continuing...'\\\",\\r\\n    \\\"docs:scan\\\": \\\"node scripts/project-scanner.js\\\",\\r\\n    \\\"serve:ssr\\\": \\\"node dist/digital-dental-lab-v2/server/server.mjs\\\",\\r\\n    \\\"build:ssr\\\": \\\"ng build && ng run digital-dental-lab-v2:server\\\", \\r\\n    \\\"prerender\\\": \\\"ng run digital-dental-lab-v2:prerender\\\"\\r\\n  \\r\\n},\\r\\n  \\\"private\\\": true,\\r\\n  \\\"dependencies\\\": {\\r\\n    \\\"@angular/animations\\\": \\\"^17.3.0\\\",\\r\\n    \\\"@angular/common\\\": \\\"^17.3.0\\\",\\r\\n    \\\"@angular/compiler\\\": \\\"^17.3.0\\\",\\r\\n    \\\"@angular/core\\\": ",
+      "size": 198027,
+      "lines": 1252,
+      "modified": "2025-11-19T09:38:43.264Z",
+      "created": "2025-11-18T08:19:10.846Z",
+      "extension": ".json"
+    },
+    {
+      "path": "angular.json",
+      "content": "{\r\n  \"$schema\": \"./node_modules/@angular/cli/lib/config/schema.json\",\r\n  \"version\": 1,\r\n  \"newProjectRoot\": \"projects\",\r\n  \"projects\": {\r\n    \"digital-dental-lab-v2\": {\r\n      \"projectType\": \"application\",\r\n      \"schematics\": {\r\n        \"@schematics/angular:component\": {\r\n          \"style\": \"scss\"\r\n        }\r\n      },\r\n      \"root\": \"\",\r\n      \"sourceRoot\": \"src\",\r\n      \"prefix\": \"app\",\r\n      \"architect\": {\r\n        \"build\": {\r\n          \"builder\": \"@angular-devkit/build-angular:browser\",\r\n          \"options\": {\r\n            \"outputPath\": \"dist/digital-dental-lab-v2\",\r\n            \"index\": \"src/index.html\",\r\n            \"main\": \"src/main.ts\",\r\n            \"polyfills\": [\r\n              \"zone.js\"\r\n            ],\r\n            \"tsConfig\": \"tsconfig.app.json\",\r\n            \"inlineStyleLanguage\": \"scss\",\r\n            \"assets\": [\r\n              \"src/favicon.ico\",\r\n              \"src/assets\",\r\n              {\r\n                \"glob\": \"**/*\",\r\n                \"input\": \"./\",\r\n                \"output\": \"/\"\r\n              }\r\n            ],\r\n            \"styles\": [\r\n              \"src/styles.scss\"\r\n            ],\r\n            \"scripts\": []\r\n          },\r\n          \"configurations\": {\r\n            \"production\": {\r\n              \"budgets\": [\r\n                {\r\n                  \"type\": \"initial\",\r\n                  \"maximumWarning\": \"500kb\",\r\n                  \"maximumError\": \"1mb\"\r\n                },\r\n                {\r\n                  \"type\": \"anyComponentStyle\",\r\n                  \"maximumWarning\": \"2kb\",\r\n                  \"maximumError\": \"4kb\"\r\n                }\r\n              ],\r\n              \"outputHashing\": \"all\"\r\n            },\r\n            \"development\": {\r\n              \"buildOptimizer\": false,\r\n              \"optimization\": false,\r\n              \"vendorChunk\": true,\r\n              \"extractLicenses\": false,\r\n              \"sourceMap\": true,\r\n              \"namedChunks\": true\r\n            }\r\n          },\r\n          \"defaultConfiguration\": \"production\"\r\n        },\r",
+      "size": 3218,
+      "lines": 112,
+      "modified": "2025-11-19T07:29:32.191Z",
+      "created": "2025-11-06T18:37:24.205Z",
+      "extension": ".json"
+    },
+    {
+      "path": "src\\app\\app.routes.ts",
+      "content": "// src/app/app.routes.ts - نسخه نهایی اصلاح شده\r\nimport { Routes } from '@angular/router';\r\n\r\nexport const routes: Routes = [\r\n    {\r\n        path: '',\r\n        loadComponent: () => import('./components/home/home.component').then(m => m.HomeComponent),\r\n    },\r\n    {\r\n        path: 'home',\r\n        loadComponent: () => import('./components/home/home.component').then(m => m.HomeComponent),\r\n    },\r\n\r\n{\r\n    path: 'docs',\r\n    loadComponent: () => import('./components/docs/docs.component').then(m => m.DocsComponent),\r\n},\r\n    {\r\n        path: 'services',\r\n        loadComponent: () => import('./components/services/services.component').then(m => m.ServicesComponent),\r\n    },\r\n    {\r\n        path: 'contact',\r\n        loadComponent: () => import('./components/contact/contact.component').then(m => m.ContactComponent),\r\n    },\r\n    {\r\n        path: 'gallery',\r\n        loadComponent: () => import('./components/gallery/gallery.component').then(m => m.GalleryComponent),\r\n    },\r\n    {\r\n        path: 'blog',\r\n        loadComponent: () => import('./components/blog/blog.component').then(m => m.BlogComponent),\r\n    },\r\n    {\r\n        path: 'technology',\r\n        loadComponent: () => import('./components/technology/technology.component').then(m => m.TechnologyComponent),\r\n    },\r\n    \r\n    // routes برای مستندات - بدون کامپوننت‌های missing\r\n    { \r\n        path: 'ai-docs', \r\n        redirectTo: '/ai-documentation-hub.html',\r\n        pathMatch: 'full'\r\n    },\r\n    { \r\n        path: 'project-memory', \r\n        redirectTo: '/project-memory.json',\r\n        pathMatch: 'full'\r\n    },\r\n    { \r\n        path: 'changelog', \r\n        redirectTo: '/CHANGELOG.md',\r\n        pathMatch: 'full'\r\n    },\r\n    \r\n    // redirect برای هر مسیر دیگر به هوم پیج\r\n    { \r\n        path: '**', \r\n        redirectTo: '',\r\n        pathMatch: 'full'\r\n    }\r\n];",
+      "size": 1910,
+      "lines": 62,
+      "modified": "2025-11-19T07:26:12.537Z",
+      "created": "2025-11-12T11:53:13.207Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\docs\\docs.component.ts",
+      "content": "// src/app/components/docs/docs.component.ts\r\nimport { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-docs',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  template: `\r\n    <div class=\"docs-container\">\r\n      <h1>🧠 مستندات پروژه</h1>\r\n      <div class=\"docs-links\">\r\n        <a href=\"/ai-documentation-hub.html\" target=\"_blank\" class=\"doc-link\">\r\n          📄 مرکز مستندات کامل\r\n        </a>\r\n        <a href=\"/project-memory.json\" target=\"_blank\" class=\"doc-link\">\r\n          💾 حافظه پروژه\r\n        </a>\r\n        <a href=\"/CHANGELOG.md\" target=\"_blank\" class=\"doc-link\">\r\n          📋 تاریخچه تغییرات\r\n        </a>\r\n      </div>\r\n    </div>\r\n  `,\r\n  styles: [`\r\n    .docs-container {\r\n      padding: 2rem;\r\n      text-align: center;\r\n    }\r\n    .docs-links {\r\n      display: flex;\r\n      flex-direction: column;\r\n      gap: 1rem;\r\n      margin-top: 2rem;\r\n    }\r\n    .doc-link {\r\n      padding: 1rem;\r\n      background: #1a237e;\r\n      color: white;\r\n      text-decoration: none;\r\n      border-radius: 8px;\r\n      transition: background 0.3s;\r\n    }\r\n    .doc-link:hover {\r\n      background: #1565c0;\r\n    }\r\n  `]\r\n})\r\nexport class DocsComponent {}",
+      "size": 1285,
+      "lines": 49,
+      "modified": "2025-11-19T07:25:41.623Z",
+      "created": "2025-11-18T09:56:09.476Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "scripts\\ai-docs-generator.js",
+      "content": "// scripts/ai-docs-generator.js - نسخه اصلاح شده\r\nconst fs = require('fs');\r\nconst path = require('path');\r\n\r\nclass AIDocsGenerator {\r\n    constructor() {\r\n        this.projectRoot = process.cwd();\r\n        this.outputFiles = {\r\n            hub: path.join(this.projectRoot, 'ai-documentation-hub.html'),\r\n            memory: path.join(this.projectRoot, 'project-memory.json'),\r\n            changelog: path.join(this.projectRoot, 'CHANGELOG.md')\r\n        };\r\n    }\r\n\r\n    async generateDocumentation() {\r\n        console.log('🧠 شروع تولید مستندات هوشمند...');\r\n        \r\n        try {\r\n            // ۱. اسکن کامل پروژه\r\n            const projectState = await this.scanDeep();\r\n            \r\n            // ۲. تولید حافظه پروژه\r\n            const projectMemory = {\r\n                meta: {\r\n                    name: 'Digital Dental Lab v2',\r\n                    version: '2.0.0',\r\n                    lastScan: new Date().toISOString(),\r\n                    totalFiles: projectState.files ? projectState.files.length : 0,\r\n                    totalLines: projectState.stats ? projectState.stats.totalLines : 0,\r\n                    scanDate: new Date().toLocaleString('fa-IR'),\r\n                    scanTimestamp: Date.now()\r\n                },\r\n                architecture: projectState.architecture || {},\r\n                files: projectState.files || [],\r\n                components: projectState.components || [],\r\n                routes: projectState.routes || [],\r\n                services: projectState.services || [],\r\n                knownIssues: this.detectIssues(projectState),\r\n                nextSteps: this.generateNextSteps(projectState),\r\n                aiContext: this.generateAIContext(projectState)\r\n            };\r\n            \r\n            // ۳. ذخیره حافظه پروژه\r\n            fs.writeFileSync(this.outputFiles.memory, JSON.stringify(projectMemory, null, 2));\r\n            \r\n            // ۴. تولید HTML Hub\r\n            const html = this.generateHubHTML(projectMemory);\r\n   ",
+      "size": 32445,
+      "lines": 831,
+      "modified": "2025-11-19T07:17:35.401Z",
+      "created": "2025-11-18T07:46:24.497Z",
+      "extension": ".js"
+    },
+    {
+      "path": "src\\app\\components\\home\\home.component.ts",
+      "content": "// home.component.ts - نسخه قبلی\r\nimport { Component, OnInit, HostListener, ElementRef, ViewChild } from '@angular/core';\r\nimport { Router } from '@angular/router';\r\nimport { CommonModule } from '@angular/common';\r\n\r\ninterface HeroSlide {\r\n  image: string;\r\n  title: string;\r\n  subtitle: string;\r\n  description: string;\r\n  ctaText: string;\r\n  ctaLink: string;\r\n}\r\n\r\ninterface Service {\r\n  id: string;\r\n  title: string;\r\n  description: string;\r\n  features: string[];\r\n  deliveryTime: string;\r\n  accuracy: string;\r\n  link: string;\r\n  backgroundImage: string;\r\n}\r\n\r\ninterface BlogPost {\r\n  id: string;\r\n  title: string;\r\n  excerpt: string;\r\n  image: string;\r\n  date: string;\r\n  readTime: string;\r\n  link: string;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-home',\r\n  imports: [CommonModule],\r\n  templateUrl: './home.component.html',\r\n  styleUrls: ['./home.component.scss']\r\n})\r\nexport class HomeComponent implements OnInit {\r\n  \r\n  @ViewChild('techVideo') techVideo!: ElementRef<HTMLVideoElement>;\r\n  \r\n  currentSlide = 0;\r\n  slideInterval: any;\r\n  private autoSlideDelay = 6000;\r\n  isMobile = false;\r\n  isVideoPlaying = false;\r\n\r\n  heroSlides: HeroSlide[] = [\r\n    {\r\n      image: 'assets/images/hero/digital-lab-hero.jpg',\r\n      title: 'پیشرفته‌ترین لابراتوار دندان‌سازی دیجیتال',\r\n      subtitle: 'تکنولوژی روز دنیا',\r\n      description: 'با دستگاه‌های CAD/CAM پیشرفته، اسکنرهای سه‌بعدی و چاپگرهای دیجیتال، دقیق‌ترین پروتزهای دندانی را ارائه می‌دهیم',\r\n      ctaText: 'مشاهده تکنولوژی‌ها',\r\n      ctaLink: '/technology'\r\n    },\r\n    {\r\n      image: 'assets/images/hero/ceramic-works.jpg',\r\n      title: 'لمینیت و روکش‌های تمام سرامیکی',\r\n      subtitle: 'زیبایی طبیعی',\r\n      description: 'ساخت زیرکونیوم، ایمکس و سرامیک با بالاترین کیفیت و گارانتی معتبر - طبیعی‌ترین ظاهر ممکن',\r\n      ctaText: 'گالری نمونه کارها',\r\n      ctaLink: '/gallery'\r\n    },\r\n    {\r\n      image: 'assets/images/hero/veneer-build.jpg', \r\n      title: 'ساخت لمینیت سرامیکی',\r\n      subtitle: 'دقت و زیبایی',\r\n      description: 'س",
+      "size": 11423,
+      "lines": 320,
+      "modified": "2025-11-18T16:40:00.694Z",
+      "created": "2025-11-06T20:24:18.754Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\home\\home.component.html",
+      "content": "<!-- home.component.html - نسخه قبلی -->\r\n<div class=\"home-page\">\r\n  \r\n  <!-- Top Bar -->\r\n  <div class=\"top-bar\">\r\n    <div class=\"container\">\r\n      <div class=\"top-bar-content\">\r\n        <div class=\"contact-info\">\r\n          <span class=\"phone\">۰۲۱-۱۲۳۴۵۶۷۸</span>\r\n          <span class=\"delivery-time\">تحویل ۴۸-۷۲ ساعته</span>\r\n        </div>\r\n        <div class=\"auth-links\">\r\n          <button class=\"auth-btn\" (click)=\"navigateTo('/login')\">ورود پزشکان</button>\r\n          <button class=\"auth-btn primary\" (click)=\"navigateTo('/lab-login')\">ورود به پنل لابراتوار</button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Hero Section -->\r\n  <section class=\"hero-section\">\r\n    <div class=\"hero-slider\">\r\n      <div class=\"slider-container\">\r\n        <div *ngFor=\"let slide of heroSlides; let i = index\" \r\n             class=\"hero-slide\" \r\n             [class.active]=\"currentSlide === i\">\r\n          \r\n          <div class=\"media-container\">\r\n            <div class=\"hero-image\" [style.background-image]=\"'url(' + slide.image + ')'\"></div>\r\n            <div class=\"image-overlay\"></div>\r\n          </div>\r\n          \r\n          <div class=\"container\">\r\n            <div class=\"hero-content\">\r\n              <h1 class=\"hero-title\">{{ slide.title }}</h1>\r\n              <h2 class=\"hero-subtitle\">{{ slide.subtitle }}</h2>\r\n              <p class=\"hero-description\">{{ slide.description }}</p>\r\n              \r\n              <div class=\"hero-actions\">\r\n                <button class=\"btn btn-primary btn-large\" \r\n                        (click)=\"navigateTo(slide.ctaLink)\">\r\n                  {{ slide.ctaText }}\r\n                </button>\r\n                <button class=\"btn btn-outline btn-large\" \r\n                        (click)=\"scrollToSection('services')\">\r\n                  مشاهده خدمات\r\n                </button>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <!-- کنترل‌های اسلایدر -->\r\n      <div class=\"slider-control",
+      "size": 7080,
+      "lines": 188,
+      "modified": "2025-11-18T16:39:39.833Z",
+      "created": "2025-11-12T10:56:05.994Z",
+      "extension": ".html"
+    },
+    {
+      "path": "scripts\\file-tracker.js",
+      "content": "// scripts/file-tracker.js\r\nconst fs = require('fs');\r\nconst path = require('path');\r\nconst crypto = require('crypto');\r\n\r\nclass FileTracker {\r\n    constructor() {\r\n        this.trackerFile = path.join(process.cwd(), '.ai-file-tracker.json');\r\n        this.previousState = this.loadPreviousState();\r\n    }\r\n\r\n    loadPreviousState() {\r\n        try {\r\n            if (fs.existsSync(this.trackerFile)) {\r\n                return JSON.parse(fs.readFileSync(this.trackerFile, 'utf8'));\r\n            }\r\n        } catch (e) {\r\n            console.warn('❌ خطا در بارگذاری وضعیت قبلی:', e.message);\r\n        }\r\n        \r\n        return { files: {}, lastScan: null };\r\n    }\r\n\r\n    detectChanges(currentFiles) {\r\n        const changes = {\r\n            hasChanges: false,\r\n            fileChanges: [],\r\n            stats: {\r\n                added: 0,\r\n                modified: 0,\r\n                deleted: 0\r\n            }\r\n        };\r\n\r\n        const currentFileHashes = {};\r\n        \r\n        // محاسبه hash برای فایل‌های فعلی\r\n        currentFiles.forEach(file => {\r\n            const hash = this.calculateHash(file.content + file.path);\r\n            currentFileHashes[file.path] = hash;\r\n            \r\n            // بررسی تغییرات\r\n            if (!this.previousState.files[file.path]) {\r\n                // فایل جدید\r\n                changes.fileChanges.push({\r\n                    file: file.path,\r\n                    type: 'added',\r\n                    lines: file.lines\r\n                });\r\n                changes.stats.added++;\r\n            } else if (this.previousState.files[file.path] !== hash) {\r\n                // فایل تغییر کرده\r\n                changes.fileChanges.push({\r\n                    file: file.path,\r\n                    type: 'modified',\r\n                    lines: file.lines\r\n                });\r\n                changes.stats.modified++;\r\n            }\r\n        });\r\n        \r\n        // بررسی فایل‌های حذف شده\r\n        Object.keys(this.previousState.files).forEach(filePath =",
+      "size": 3161,
+      "lines": 98,
+      "modified": "2025-11-18T07:48:22.044Z",
+      "created": "2025-11-18T07:47:59.952Z",
+      "extension": ".js"
+    },
+    {
+      "path": "scripts\\version-manager.js",
+      "content": "// scripts/version-manager.js\r\nconst fs = require('fs');\r\nconst path = require('path');\r\n\r\nclass VersionManager {\r\n    constructor() {\r\n        this.versionsFile = path.join(process.cwd(), '.ai-versions.json');\r\n        this.versions = this.loadVersions();\r\n    }\r\n\r\n    loadVersions() {\r\n        try {\r\n            if (fs.existsSync(this.versionsFile)) {\r\n                return JSON.parse(fs.readFileSync(this.versionsFile, 'utf8'));\r\n            }\r\n        } catch (e) {\r\n            console.warn('❌ خطا در بارگذاری نسخه‌ها:', e.message);\r\n        }\r\n        \r\n        return [{\r\n            version: '1.0.0',\r\n            timestamp: new Date().toISOString(),\r\n            changes: 'نسخه اولیه - شروع پروژه'\r\n        }];\r\n    }\r\n\r\n    async recordVersion(changes) {\r\n        const lastVersion = this.versions[this.versions.length - 1];\r\n        const newVersion = this.incrementVersion(lastVersion.version);\r\n        \r\n        const versionEntry = {\r\n            version: newVersion,\r\n            timestamp: new Date().toISOString(),\r\n            changes: `اتوماتیک: ${changes.fileChanges.length} فایل تغییر کرد`,\r\n            fileChanges: changes.fileChanges,\r\n            stats: changes.stats\r\n        };\r\n        \r\n        this.versions.push(versionEntry);\r\n        this.saveVersions();\r\n        \r\n        console.log(`✅ نسخه ${newVersion} ثبت شد`);\r\n        return newVersion;\r\n    }\r\n\r\n    incrementVersion(currentVersion) {\r\n        const parts = currentVersion.split('.').map(Number);\r\n        parts[2] += 1; // افزایش patch version\r\n        \r\n        if (parts[2] >= 10) {\r\n            parts[2] = 0;\r\n            parts[1] += 1;\r\n            \r\n            if (parts[1] >= 10) {\r\n                parts[1] = 0;\r\n                parts[0] += 1;\r\n            }\r\n        }\r\n        \r\n        return parts.join('.');\r\n    }\r\n\r\n    saveVersions() {\r\n        try {\r\n            fs.writeFileSync(this.versionsFile, JSON.stringify(this.versions, null, 2));\r\n        } catch (e) {\r\n            console.",
+      "size": 2370,
+      "lines": 80,
+      "modified": "2025-11-18T07:47:51.736Z",
+      "created": "2025-11-18T07:47:28.685Z",
+      "extension": ".js"
+    },
+    {
+      "path": "scripts\\project-scanner.js",
+      "content": "// scripts/project-scanner.js\r\nconst fs = require('fs');\r\nconst path = require('path');\r\n\r\nclass ProjectScanner {\r\n    constructor() {\r\n        this.projectRoot = process.cwd();\r\n        this.ignoreDirs = ['node_modules', '.git', 'dist', 'build'];\r\n    }\r\n\r\n    async scanDeep() {\r\n        console.log('🔍 در حال اسکن عمیق پروژه...');\r\n        \r\n        const files = [];\r\n        let totalLines = 0;\r\n        \r\n        const scanDirectory = async (dir) => {\r\n            if (this.ignoreDirs.some(ignore => dir.includes(ignore))) return;\r\n            \r\n            try {\r\n                const items = fs.readdirSync(dir);\r\n                \r\n                for (const item of items) {\r\n                    const fullPath = path.join(dir, item);\r\n                    const stat = fs.statSync(fullPath);\r\n                    \r\n                    if (stat.isDirectory()) {\r\n                        await scanDirectory(fullPath);\r\n                    } else if (this.isCodeFile(item)) {\r\n                        try {\r\n                            const content = fs.readFileSync(fullPath, 'utf8');\r\n                            const lines = content.split('\\n').length;\r\n                            totalLines += lines;\r\n                            \r\n                            files.push({\r\n                                path: fullPath.replace(this.projectRoot + path.sep, ''),\r\n                                content: content,\r\n                                size: stat.size,\r\n                                lines: lines,\r\n                                modified: stat.mtime,\r\n                                created: stat.birthtime\r\n                            });\r\n                        } catch (e) {\r\n                            console.warn(`❌ خطا در خواندن فایل ${fullPath}:`, e.message);\r\n                        }\r\n                    }\r\n                }\r\n            } catch (error) {\r\n                console.warn(`❌ خطا در اسکن پوشه ${dir}:`, error.message);\r\n            }\r\n      ",
+      "size": 5059,
+      "lines": 137,
+      "modified": "2025-11-18T07:47:16.599Z",
+      "created": "2025-11-16T10:03:15.765Z",
+      "extension": ".js"
+    },
+    {
+      "path": "auto-docs.html",
+      "content": "// scripts/ai-docs-generator.js\nconst fs = require('fs');\nconst path = require('path');\n\nclass AIDocsGenerator {\n    constructor() {\n        this.projectRoot = process.cwd();\n        this.hubFile = path.join(this.projectRoot, 'ai-project-hub.html');\n    }\n\n    generateAIHub() {\n        console.log('🧠 ساخت AI Documentation Hub...');\n        \n        const projectData = this.scanProjectDeep();\n        const html = this.createHubHTML(projectData);\n        \n        fs.writeFileSync(this.hubFile, html);\n        console.log('✅ AI Hub ایجاد شد: ai-project-hub.html');\n        console.log('🌐 دسترسی: http://localhost:4200/ai-project-hub.html');\n    }\n\n    scanProjectDeep() {\n        // اسکن عمیق واقعی پروژه\n        const files = [];\n        \n        const scanDir = (dir) => {\n            if (!fs.existsSync(dir)) return;\n            \n            const items = fs.readdirSync(dir);\n            items.forEach(item => {\n                if (item === 'node_modules' || item === '.git') return;\n                \n                const fullPath = path.join(dir, item);\n                const stat = fs.statSync(fullPath);\n                \n                if (stat.isDirectory()) {\n                    scanDir(fullPath);\n                } else if (this.isCodeFile(item)) {\n                    try {\n                        const content = fs.readFileSync(fullPath, 'utf8');\n                        files.push({\n                            path: fullPath.replace(this.projectRoot + path.sep, ''),\n                            content: content,\n                            size: stat.size,\n                            modified: stat.mtime,\n                            lines: content.split('\\n').length\n                        });\n                    } catch (e) {\n                        // skip unreadable files\n                    }\n                }\n            });\n        };\n        \n        scanDir(this.projectRoot);\n        return files;\n    }\n\n    isCodeFile(filename) {\n        const ext = path.extna",
+      "size": 7287,
+      "lines": 165,
+      "modified": "2025-11-18T07:39:02.547Z",
+      "created": "2025-11-16T09:52:13.656Z",
+      "extension": ".html"
+    },
+    {
+      "path": "smart-docs.html",
+      "content": "<!DOCTYPE html>\n<html lang=\"fa\" dir=\"rtl\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>مستندات هوشمند - Digital Dental Lab</title>\n    <style>\n        * { margin: 0; padding: 0; box-sizing: border-box; }\n        body { \n            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif; \n            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n            color: #333; \n            min-height: 100vh; \n            line-height: 1.6;\n            padding: 20px;\n        }\n        \n        .container { \n            max-width: 1200px; \n            margin: 0 auto;\n        }\n        \n        .header { \n            background: rgba(255,255,255,0.95); \n            backdrop-filter: blur(10px);\n            padding: 2rem; \n            border-radius: 20px; \n            margin-bottom: 2rem; \n            text-align: center;\n            box-shadow: 0 10px 30px rgba(0,0,0,0.1);\n        }\n        \n        .header h1 { \n            color: #2c3e50; \n            margin-bottom: 0.5rem;\n            font-size: 2.5rem;\n        }\n        \n        .ai-context {\n            background: rgba(52, 152, 219, 0.1);\n            border-right: 4px solid #3498db;\n            padding: 1.5rem;\n            margin: 1rem 0;\n            border-radius: 10px;\n        }\n        \n        .dashboard { \n            display: grid; \n            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); \n            gap: 1.5rem; \n            margin-bottom: 2rem; \n        }\n        \n        .card { \n            background: rgba(255,255,255,0.95);\n            backdrop-filter: blur(10px);\n            padding: 1.5rem; \n            border-radius: 15px; \n            box-shadow: 0 5px 15px rgba(0,0,0,0.1);\n        }\n        \n        .card h2 {\n            color: #2c3e50;\n            margin-bottom: 1rem;\n            padding-bottom: 0.5rem;\n            border-bottom: 3px solid #3498db;\n        }\n        \n        .status-badge { \n   ",
+      "size": 9006,
+      "lines": 217,
+      "modified": "2025-11-18T06:48:11.174Z",
+      "created": "2025-11-18T06:48:11.174Z",
+      "extension": ".html"
+    },
+    {
+      "path": "src\\app\\components\\header\\header.component.ts",
+      "content": "// src/app/components/header/header.component.ts\r\nimport { Component } from '@angular/core';\r\nimport { RouterModule } from '@angular/router';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-header',\r\n  standalone: true,\r\n  imports: [RouterModule, CommonModule],\r\n  template: `\r\n    <header class=\"header\">\r\n      <nav class=\"nav-container\">\r\n        <div class=\"logo\">\r\n          <a routerLink=\"/\">لابراتوار دندانپزشکی دیجیتال</a>\r\n        </div>\r\n\r\n        <ul class=\"nav-menu\">\r\n          <li><a routerLink=\"/\" routerLinkActive=\"active\">خانه</a></li>\r\n          <li><a routerLink=\"/services\" routerLinkActive=\"active\">خدمات</a></li>\r\n          <li><a routerLink=\"/gallery\" routerLinkActive=\"active\">گالری</a></li>\r\n          <li><a routerLink=\"/blog\" routerLinkActive=\"active\">بلاگ</a></li>\r\n          <li><a routerLink=\"/technology\" routerLinkActive=\"active\">تکنولوژی</a></li>\r\n          <li><a routerLink=\"/contact\" routerLinkActive=\"active\">تماس</a></li>\r\n        </ul>\r\n\r\n        <div class=\"language-switcher\">\r\n          <button>فارسی</button>\r\n          <button>English</button>\r\n        </div>\r\n      </nav>\r\n    </header>\r\n  `,\r\n  styles: [`\r\n    .header {\r\n      position: fixed;\r\n      top: 0;\r\n      width: 100%;\r\n      background: white;\r\n      box-shadow: 0 2px 10px rgba(0,0,0,0.1);\r\n      z-index: 1000;\r\n    }\r\n    \r\n    .nav-container {\r\n      display: flex;\r\n      justify-content: space-between;\r\n      align-items: center;\r\n      padding: 1rem 2rem;\r\n      max-width: 1200px;\r\n      margin: 0 auto;\r\n    }\r\n    \r\n    .logo a {\r\n      font-size: 1.5rem;\r\n      font-weight: bold;\r\n      color: #2c3e50;\r\n      text-decoration: none;\r\n    }\r\n    \r\n    .nav-menu {\r\n      display: flex;\r\n      list-style: none;\r\n      gap: 2rem;\r\n    }\r\n    \r\n    .nav-menu a {\r\n      text-decoration: none;\r\n      color: #333;\r\n      font-weight: 500;\r\n    }\r\n    \r\n    .nav-menu a.active {\r\n      color: #3498db;\r\n    }\r\n    \r\n    .language-switcher {\r\n      ",
+      "size": 2487,
+      "lines": 99,
+      "modified": "2025-11-17T17:53:58.244Z",
+      "created": "2025-11-12T12:06:55.673Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\hero\\hero.component.ts",
+      "content": "// src/app/components/hero/hero.component.ts\r\nimport { Component } from '@angular/core';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\nimport { RouterModule } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-hero',\r\n  standalone: true,\r\n  imports: [TranslateModule, RouterModule],\r\n  template: `\r\n    <section class=\"hero-section\">\r\n      <div class=\"hero-container\">\r\n        <div class=\"hero-content\">\r\n          <h1 class=\"hero-title\">{{ 'HERO.TITLE' | translate }}</h1>\r\n          <p class=\"hero-subtitle\">{{ 'HERO.SUBTITLE' | translate }}</p>\r\n          <div class=\"hero-buttons\">\r\n            <button class=\"btn btn-primary\" routerLink=\"/services\">\r\n              {{ 'HERO.CTA_PRIMARY' | translate }}\r\n            </button>\r\n            <button class=\"btn btn-secondary\" routerLink=\"/contact\">\r\n              {{ 'HERO.CTA_SECONDARY' | translate }}\r\n            </button>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </section>\r\n  `,\r\n  styles: [`\r\n    .hero-section {\r\n      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\r\n      color: white;\r\n      padding: 6rem 2rem;\r\n      text-align: center;\r\n      min-height: 60vh;\r\n      display: flex;\r\n      align-items: center;\r\n      justify-content: center;\r\n    }\r\n    \r\n    .hero-container {\r\n      max-width: 1200px;\r\n      margin: 0 auto;\r\n    }\r\n    \r\n    .hero-content {\r\n      max-width: 600px;\r\n      margin: 0 auto;\r\n    }\r\n    \r\n    .hero-title {\r\n      font-size: 3.5rem;\r\n      font-weight: bold;\r\n      margin-bottom: 1.5rem;\r\n      line-height: 1.2;\r\n    }\r\n    \r\n    .hero-subtitle {\r\n      font-size: 1.3rem;\r\n      margin-bottom: 2.5rem;\r\n      opacity: 0.9;\r\n      line-height: 1.6;\r\n    }\r\n    \r\n    .hero-buttons {\r\n      display: flex;\r\n      gap: 1rem;\r\n      justify-content: center;\r\n      flex-wrap: wrap;\r\n    }\r\n    \r\n    .btn {\r\n      padding: 1rem 2rem;\r\n      border: none;\r\n      border-radius: 50px;\r\n      font-size: 1.1rem;\r\n      font-weight: 600;\r\n      cursor: pointe",
+      "size": 3170,
+      "lines": 140,
+      "modified": "2025-11-17T17:50:03.426Z",
+      "created": "2025-11-06T19:14:08.792Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\assets\\i18n\\en.json",
+      "content": "{\r\n  \"SITE\": {\r\n    \"TITLE\": \"Digital Dental Laboratory\",\r\n    \"DESCRIPTION\": \"Advanced digital dental laboratory with the latest technologies\"\r\n  },\r\n  \"NAV\": {\r\n    \"HOME\": \"Home\",\r\n    \"SERVICES\": \"Services\",\r\n    \"GALLERY\": \"Gallery\",\r\n    \"BLOG\": \"Blog\",\r\n    \"TECHNOLOGY\": \"Technology\",\r\n    \"CONTACT\": \"Contact\",\r\n    \"LANGUAGE\": \"Language\",\r\n    \"PERSIAN\": \"Persian\",\r\n    \"ENGLISH\": \"English\"\r\n  },\r\n  \"HOME\": {\r\n    \"TITLE\": \"Digital Dental Laboratory - Home\",\r\n    \"HERO\": {\r\n      \"TITLE\": \"Beautiful Smile, Modern Technology\",\r\n      \"SUBTITLE\": \"Our expertise in digital dental prosthetics with micron precision\",\r\n      \"BUTTON\": \"View Services\"\r\n    }\r\n  },\r\n  \"SERVICES\": {\r\n    \"TITLE\": \"Our Specialized Services\",\r\n    \"SUBTITLE\": \"Using the most advanced CAD/CAM equipment\",\r\n    \"CATEGORY_TITLE\": \"{{category}} Services\",\r\n    \"DETAIL_TITLE\": \"{{service}} Details\",\r\n    \"ZIRCONIA_CROWN\": {\r\n      \"TITLE\": \"Zirconia Crown\",\r\n      \"DESCRIPTION\": \"Full zirconia crowns with exceptional strength and natural beauty\"\r\n    },\r\n    \"EMAX_CROWN\": {\r\n      \"TITLE\": \"E-max Crown\",\r\n      \"DESCRIPTION\": \"Ceramic crowns with unmatched transparency and beauty\"\r\n    },\r\n    \"CERAMIC_VENEER\": {\r\n      \"TITLE\": \"Ceramic Veneer\",\r\n      \"DESCRIPTION\": \"Ceramic laminates for a Hollywood smile\"\r\n    },\r\n    \"IMPLANT_PROSTHETIC\": {\r\n      \"TITLE\": \"Implant Prosthetic\",\r\n      \"DESCRIPTION\": \"Fixed and removable prosthetics on implants\"\r\n    },\r\n    \"DENTURE\": {\r\n      \"TITLE\": \"Denture\",\r\n      \"DESCRIPTION\": \"Complete and partial dentures with excellent quality\"\r\n    },\r\n    \"NIGHT_GUARD\": {\r\n      \"TITLE\": \"Night Guard\",\r\n      \"DESCRIPTION\": \"Night protection to prevent teeth grinding\"\r\n    },\r\n    \"CATEGORIES\": {\r\n      \"ALL\": \"All Services\",\r\n      \"CROWN_BRIDGE\": \"Crown & Bridge\",\r\n      \"ESTHETIC\": \"Esthetic\",\r\n      \"IMPLANT\": \"Implant\",\r\n      \"PROSTHETIC\": \"Prosthetic\",\r\n      \"PROTECTIVE\": \"Protective\",\r\n      \"DIGITAL_DENTISTRY\": \"Digital Dentistry\",\r\n      \"VENEERS",
+      "size": 6753,
+      "lines": 209,
+      "modified": "2025-11-17T17:43:59.052Z",
+      "created": "2025-11-06T18:40:10.905Z",
+      "extension": ".json"
+    },
+    {
+      "path": "src\\assets\\i18n\\fa.json",
+      "content": "{\r\n  \"SITE\": {\r\n    \"TITLE\": \"لابراتوار دندانپزشکی دیجیتال\",\r\n    \"DESCRIPTION\": \"پیشرفته‌ترین لابراتوار دندانپزشکی دیجیتال با آخرین تکنولوژی‌های روز دنیا\"\r\n  },\r\n  \"NAV\": {\r\n    \"HOME\": \"خانه\",\r\n    \"SERVICES\": \"خدمات\",\r\n    \"GALLERY\": \"گالری\",\r\n    \"BLOG\": \"بلاگ\",\r\n    \"TECHNOLOGY\": \"تکنولوژی\",\r\n    \"CONTACT\": \"تماس\",\r\n    \"LANGUAGE\": \"زبان\",\r\n    \"PERSIAN\": \"فارسی\",\r\n    \"ENGLISH\": \"انگلیسی\"\r\n  },\r\n  \"HOME\": {\r\n    \"TITLE\": \"لابراتوار دندانپزشکی دیجیتال - صفحه اصلی\",\r\n    \"HERO\": {\r\n      \"TITLE\": \"لبخندی زیبا، با تکنولوژی روز\",\r\n      \"SUBTITLE\": \"تخصص ما در ساخت پروتزهای دندانی دیجیتال با دقت میکرونی\",\r\n      \"BUTTON\": \"مشاهده خدمات\"\r\n    }\r\n  },\r\n  \"SERVICES\": {\r\n    \"TITLE\": \"خدمات تخصصی ما\",\r\n    \"SUBTITLE\": \"با استفاده از پیشرفته‌ترین دستگاه‌های CAD/CAM\",\r\n    \"CATEGORY_TITLE\": \"خدمات {{category}}\",\r\n    \"DETAIL_TITLE\": \"جزئیات {{service}}\",\r\n    \"ZIRCONIA_CROWN\": {\r\n      \"TITLE\": \"کراون زیرکونیا\",\r\n      \"DESCRIPTION\": \"کراون‌های تمام زیرکونیا با استحکام فوق‌العاده و زیبایی طبیعی\"\r\n    },\r\n    \"EMAX_CROWN\": {\r\n      \"TITLE\": \"کراون E-max\",\r\n      \"DESCRIPTION\": \"کراون‌های سرامیکی با شفافیت و زیبایی بی‌نظیر\"\r\n    },\r\n    \"CERAMIC_VENEER\": {\r\n      \"TITLE\": \"ونیر سرامیکی\",\r\n      \"DESCRIPTION\": \"لمینت‌های سرامیکی برای لبخندی هالیوودی\"\r\n    },\r\n    \"IMPLANT_PROSTHETIC\": {\r\n      \"TITLE\": \"پروتز ایمپلنت\",\r\n      \"DESCRIPTION\": \"ساخت پروتزهای ثابت و متحرک بر روی ایمپلنت\"\r\n    },\r\n    \"DENTURE\": {\r\n      \"TITLE\": \"دندان مصنوعی\",\r\n      \"DESCRIPTION\": \"ساخت دندان‌های مصنوعی کامل و پارسیل با کیفیت عالی\"\r\n    },\r\n    \"NIGHT_GUARD\": {\r\n      \"TITLE\": \"نایت گارد\",\r\n      \"DESCRIPTION\": \"محافظ شبانه برای جلوگیری از سایش دندان‌ها\"\r\n    },\r\n    \"CATEGORIES\": {\r\n      \"ALL\": \"همه خدمات\",\r\n      \"CROWN_BRIDGE\": \"کراون و بریج\",\r\n      \"ESTHETIC\": \"زیبایی\",\r\n      \"IMPLANT\": \"ایمپلنت\",\r\n      \"PROSTHETIC\": \"پروتز\",\r\n      \"PROTECTIVE\": \"محافظتی\",\r\n      \"DIGITAL_DENTISTRY\": \"دندانپزشکی دیجیتال\",\r\n      \"VENEERS\": \"ونیرها\",\r\n      \"OCCLUSAL_APPLIANCES\": \"وسایل اکلوژال\",\r\n  ",
+      "size": 8500,
+      "lines": 209,
+      "modified": "2025-11-17T17:42:38.950Z",
+      "created": "2025-11-06T18:40:15.504Z",
+      "extension": ".json"
+    },
+    {
+      "path": "src\\app\\services\\translation.service.ts",
+      "content": "// src/app/services/translation.service.ts\r\nimport { Injectable } from '@angular/core';\r\nimport { TranslateService } from '@ngx-translate/core';\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\nexport class TranslationService {\r\n  \r\n  constructor(private translate: TranslateService) {\r\n    this.initializeTranslation();\r\n  }\r\n\r\n  private initializeTranslation(): void {\r\n    // زبان‌های پشتیبانی شده\r\n    this.translate.addLangs(['fa', 'en']);\r\n    \r\n    // زبان پیش‌فرض\r\n    this.translate.setDefaultLang('fa');\r\n    \r\n    // تشخیص زبان مرورگر یا ذخیره شده کاربر\r\n    const browserLang = this.translate.getBrowserLang();\r\n    const savedLang = localStorage.getItem('preferred-language');\r\n    const useLang = savedLang || (browserLang && this.translate.getLangs().includes(browserLang) ? browserLang : 'fa');\r\n    \r\n    this.setLanguage(useLang);\r\n  }\r\n\r\n  setLanguage(lang: string): void {\r\n    if (this.isLanguageSupported(lang)) {\r\n      this.translate.use(lang);\r\n      this.applyLanguageDirection(lang);\r\n      localStorage.setItem('preferred-language', lang);\r\n    }\r\n  }\r\n\r\n  private applyLanguageDirection(lang: string): void {\r\n    const direction = lang === 'fa' ? 'rtl' : 'ltr';\r\n    document.documentElement.dir = direction;\r\n    document.documentElement.lang = lang;\r\n    \r\n    document.body.classList.remove('ltr-direction', 'rtl-direction');\r\n    document.body.classList.add(`${direction}-direction`);\r\n  }\r\n\r\n  getCurrentLanguage(): string {\r\n    return this.translate.currentLang;\r\n  }\r\n\r\n  isLanguageSupported(lang: string): boolean {\r\n    return this.translate.getLangs().includes(lang);\r\n  }\r\n}",
+      "size": 1673,
+      "lines": 53,
+      "modified": "2025-11-17T17:37:26.311Z",
+      "created": "2025-11-06T20:07:52.253Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\header\\header.component.html",
+      "content": "<!-- src/app/components/header/header.component.html -->\r\n<header class=\"header\">\r\n  <div class=\"header-container\">\r\n    \r\n    <!-- Logo -->\r\n    <div class=\"logo\">\r\n      <a [routerLink]=\"['/home']\" class=\"logo-link\" (click)=\"closeAllMenus()\">\r\n        دیجیتال دنتال لب\r\n      </a>\r\n    </div>\r\n\r\n    <!-- Mobile Menu Button -->\r\n    <button class=\"mobile-menu-btn\" (click)=\"toggleMobileMenu()\">\r\n      <span></span>\r\n      <span></span>\r\n      <span></span>\r\n    </button>\r\n\r\n    <!-- Main Navigation -->\r\n    <nav class=\"main-nav\" [class.mobile-open]=\"isMobileMenuOpen\">\r\n      <ul class=\"nav-list\">\r\n        <li class=\"nav-item\">\r\n          <a [routerLink]=\"['/home']\" class=\"nav-link\" (click)=\"closeAllMenus()\">خانه</a>\r\n        </li>\r\n\r\n        <!-- Services Menu -->\r\n        <li class=\"nav-item services-menu\">\r\n          <a class=\"nav-link services-trigger\" \r\n             (click)=\"toggleServicesMenu()\"\r\n             (mouseenter)=\"setActiveCategory(null, $event)\">\r\n            خدمات تخصصی\r\n            <span class=\"chevron\" [class.rotated]=\"isServicesMenuOpen\">▼</span>\r\n          </a>\r\n          \r\n          <div class=\"services-dropdown\" [class.active]=\"isServicesMenuOpen\">\r\n            <div class=\"dropdown-content\">\r\n              <!-- ستون دسته‌بندی‌های اصلی -->\r\n              <div class=\"categories-column\">\r\n                <div class=\"categories-list\">\r\n                  <a *ngFor=\"let category of serviceCategories\"\r\n                     class=\"category-item\"\r\n                     [class.active]=\"activeCategory === category.slug\"\r\n                     (mouseenter)=\"setActiveCategory(category.slug, $event)\"\r\n                     [routerLink]=\"['/services', category.slug]\"\r\n                     (click)=\"closeAllMenus()\">\r\n                    <span class=\"category-title\">{{ category.title }}</span>\r\n                    <span class=\"category-arrow\">›</span>\r\n                  </a>\r\n                </div>\r\n              </div>\r\n\r\n              <!-- ستون زیرمنوها -->\r\n    ",
+      "size": 5178,
+      "lines": 121,
+      "modified": "2025-11-17T16:13:32.991Z",
+      "created": "2025-11-15T06:53:44.786Z",
+      "extension": ".html"
+    },
+    {
+      "path": "src\\app\\components\\header\\header.component.scss",
+      "content": "// src/app/components/header/header.component.scss\r\n:host {\r\n  --primary-color: #1e88e5;\r\n  --primary-dark: #1565c0;\r\n  --primary-light: #e3f2fd;\r\n  --primary-lighter: #f3f8ff;\r\n  --text-primary: #232933;\r\n  --text-secondary: #62666d;\r\n  --text-light: #81858b;\r\n  --background: #f9f9f9;\r\n  --white: #ffffff;\r\n  --border: #e0e0e6;\r\n  --border-light: #f0f0f1;\r\n  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);\r\n  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n.header {\r\n  background: var(--white);\r\n  border-bottom: 1px solid var(--border);\r\n  position: sticky;\r\n  top: 0;\r\n  z-index: 1000;\r\n  box-shadow: var(--shadow);\r\n}\r\n\r\n.header-container {\r\n  max-width: 1200px;\r\n  margin: 0 auto;\r\n  padding: 0 24px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: space-between;\r\n  height: 70px;\r\n  position: relative;\r\n}\r\n\r\n// لوگو\r\n.logo {\r\n  .logo-link {\r\n    font-size: 1.5rem;\r\n    font-weight: 700;\r\n    color: var(--primary-color);\r\n    text-decoration: none;\r\n    \r\n    &:hover {\r\n      color: var(--primary-dark);\r\n    }\r\n  }\r\n}\r\n\r\n// Mobile Menu Button\r\n.mobile-menu-btn {\r\n  display: none;\r\n  flex-direction: column;\r\n  background: none;\r\n  border: none;\r\n  cursor: pointer;\r\n  padding: 8px;\r\n  gap: 4px;\r\n  \r\n  span {\r\n    width: 25px;\r\n    height: 3px;\r\n    background: var(--text-primary);\r\n    transition: all 0.3s ease;\r\n    border-radius: 2px;\r\n  }\r\n  \r\n  @media (max-width: 768px) {\r\n    display: flex;\r\n  }\r\n}\r\n\r\n// منوی اصلی\r\n.main-nav {\r\n  .nav-list {\r\n    display: flex;\r\n    align-items: center;\r\n    list-style: none;\r\n    margin: 0;\r\n    padding: 0;\r\n    height: 70px;\r\n  }\r\n\r\n  .nav-item {\r\n    height: 100%;\r\n    display: flex;\r\n    align-items: center;\r\n    position: relative;\r\n    \r\n    // لینک‌های معمولی\r\n    .nav-link {\r\n      display: flex;\r\n      align-items: center;\r\n      padding: 0 20px;\r\n      height: 70px;\r\n      color: var(--text-secondary);\r\n      text-decoration: none;\r\n      font-weight: 500;\r\n      font",
+      "size": 10913,
+      "lines": 465,
+      "modified": "2025-11-17T16:01:18.681Z",
+      "created": "2025-11-15T07:15:17.068Z",
+      "extension": ".scss"
+    },
+    {
+      "path": "project-build\\AI_NOTES.md",
+      "content": "# یادداشت‌های AI\n\nپروژه Digital Dental Lab v2 با Angular 20 ایجاد شده است. دارای ساختار کامپوننت‌محور پیشرفته، سیستم چندزبانه کامل (فارسی/انگلیسی)، routing با lazy loading، سرویس‌های ماژولار و معماری scalable. از Vazirmatn برای پشتیبانی بهینه از فارسی استفاده شده است.",
+      "size": 427,
+      "lines": 3,
+      "modified": "2025-11-17T12:37:43.558Z",
+      "created": "2025-11-17T09:37:30.414Z",
+      "extension": ".md"
+    },
+    {
+      "path": "project-build\\package.json",
+      "content": "{\n  \"name\": \"digital-dental-lab-v2\",\n  \"version\": \"0.0.0\",\n  \"private\": true\n}",
+      "size": 78,
+      "lines": 5,
+      "modified": "2025-11-17T12:37:43.558Z",
+      "created": "2025-11-17T09:37:30.407Z",
+      "extension": ".json"
+    },
+    {
+      "path": "project-build\\README.md",
+      "content": "# Digital Dental Lab v2 - لابراتوار دندانپزشکی دیجیتال\n\n## خلاصه پروژه\nسیستم مدیریت پیشرفته کلینیک دندانپزشکی دیجیتال با Angular - دارای گالری کارهای انجام شده، خدمات تخصصی، بلاگ آموزشی، پنل چندزبانه و رابط کاربری مدرن\n\n## معماری سیستم\nAngular 20 SPA با معماری کامپوننت‌محور، پشتیبانی از i18n (فارسی/انگلیسی)، routing پیشرفته، سرویس‌های ماژولار، state management و رابط کاربری ریسپانسیو با طراحی مدرن\n\n## تاریخچه تغییرات\n- **2.0.0** - آپدیت کامل پروژه - افزودن routing پیشرفته، سیستم چندزبانه کامل، سرویس ترجمه، فایل‌های پیکربندی و مستندات جامع\n- **1.0.0** - ایجاد پروژه اولیه با CLI\n\n## فایل‌های پروژه\n- `src/main.ts`\n- `src/app/app.routes.ts`\n- `src/app/app.component.ts`\n- `src/app/app.config.ts`\n- `src/app/services/translation.service.ts`\n- `src/assets/i18n/fa.json`\n- `src/assets/i18n/en.json`\n- `package.json`\n\n> تولید شده توسط AI Project Hub CLI\n",
+      "size": 1263,
+      "lines": 24,
+      "modified": "2025-11-17T12:37:43.558Z",
+      "created": "2025-11-17T09:37:30.407Z",
+      "extension": ".md"
+    },
+    {
+      "path": "project-build\\src\\assets\\i18n\\en.json",
+      "content": "{\n  \"SITE\": {\n    \"TITLE\": \"Digital Dental Laboratory\",\n    \"DESCRIPTION\": \"Advanced digital dental laboratory with the latest technologies\"\n  },\n  \"NAV\": {\n    \"HOME\": \"Home\",\n    \"SERVICES\": \"Services\",\n    \"GALLERY\": \"Gallery\",\n    \"BLOG\": \"Blog\",\n    \"TECHNOLOGY\": \"Technology\",\n    \"CONTACT\": \"Contact\",\n    \"LANGUAGE\": \"Language\",\n    \"PERSIAN\": \"Persian\",\n    \"ENGLISH\": \"English\"\n  },\n  \"HOME\": {\n    \"TITLE\": \"Digital Dental Laboratory - Home\",\n    \"HERO\": {\n      \"TITLE\": \"Beautiful Smile, Modern Technology\",\n      \"SUBTITLE\": \"Our expertise in digital dental prosthetics with micron precision\",\n      \"BUTTON\": \"View Services\"\n    }\n  },\n  \"SERVICES\": {\n    \"TITLE\": \"Our Specialized Services\",\n    \"SUBTITLE\": \"Using the most advanced CAD/CAM equipment\",\n    \"CATEGORY_TITLE\": \"{{category}} Services\",\n    \"DETAIL_TITLE\": \"{{service}} Details\",\n    \"ZIRCONIA_CROWN\": {\n      \"TITLE\": \"Zirconia Crown\",\n      \"DESCRIPTION\": \"Full zirconia crowns with exceptional strength and natural beauty\"\n    },\n    \"EMAX_CROWN\": {\n      \"TITLE\": \"E-max Crown\",\n      \"DESCRIPTION\": \"Ceramic crowns with unmatched transparency and beauty\"\n    },\n    \"CERAMIC_VENEER\": {\n      \"TITLE\": \"Ceramic Veneer\",\n      \"DESCRIPTION\": \"Ceramic laminates for a Hollywood smile\"\n    },\n    \"IMPLANT_PROSTHETIC\": {\n      \"TITLE\": \"Implant Prosthetic\",\n      \"DESCRIPTION\": \"Fixed and removable prosthetics on implants\"\n    },\n    \"DENTURE\": {\n      \"TITLE\": \"Denture\",\n      \"DESCRIPTION\": \"Complete and partial dentures with excellent quality\"\n    },\n    \"NIGHT_GUARD\": {\n      \"TITLE\": \"Night Guard\",\n      \"DESCRIPTION\": \"Night protection to prevent teeth grinding\"\n    },\n    \"CATEGORIES\": {\n      \"ALL\": \"All Services\",\n      \"CROWN_BRIDGE\": \"Crown & Bridge\",\n      \"ESTHETIC\": \"Esthetic\",\n      \"IMPLANT\": \"Implant\",\n      \"PROSTHETIC\": \"Prosthetic\",\n      \"PROTECTIVE\": \"Protective\"\n    },\n    \"FEATURES\": {\n      \"HIGH_STRENGTH\": \"Exceptional Strength\",\n      \"BIOCOMPATIBLE\": \"Biocompatible\",\n      \"AESTH",
+      "size": 5612,
+      "lines": 181,
+      "modified": "2025-11-17T12:37:43.558Z",
+      "created": "2025-11-17T12:37:43.558Z",
+      "extension": ".json"
+    },
+    {
+      "path": "project-build\\TODO.md",
+      "content": "# کارهای باقی‌مانده\n\nپیاده‌سازی کامپوننت هدر با قابلیت تغییر زبان\\nتکمیل کامپوننت خدمات با فیلتر و جستجو\\nایجاد کامپوننت گالری با مودال نمایش\\nپیاده‌سازی کامپوننت تماس با فرم ارسال\\nاضافه کردن انیمیشن‌های صفحه‌بندی\\nبهینه‌سازی برای موبایل و تبلت\\nاضافه کردن سرویس API برای مدیریت محتوا",
+      "size": 521,
+      "lines": 3,
+      "modified": "2025-11-17T12:37:43.558Z",
+      "created": "2025-11-17T09:37:30.414Z",
+      "extension": ".md"
+    },
+    {
+      "path": "project-build\\src\\app\\app.config.ts",
+      "content": "import { ApplicationConfig, importProvidersFrom } from '@angular/core';\nimport { provideRouter } from '@angular/router';\nimport { provideHttpClient } from '@angular/common/http';\nimport { TranslateModule, TranslateLoader } from '@ngx-translate/core';\nimport { TranslateHttpLoader } from '@ngx-translate/http-loader';\nimport { HttpClient } from '@angular/common/http';\n\nimport { routes } from './app.routes';\n\n/**\n * Factory function برای TranslateLoader\n */\nexport function HttpLoaderFactory(http: HttpClient) {\n  return new TranslateHttpLoader(http, './assets/i18n/', '.json');\n}\n\n/**\n * پیکربندی اصلی برنامه Angular\n */\nexport const appConfig: ApplicationConfig = {\n  providers: [\n    provideRouter(routes),\n    provideHttpClient(),\n    importProvidersFrom(\n      TranslateModule.forRoot({\n        loader: {\n          provide: TranslateLoader,\n          useFactory: HttpLoaderFactory,\n          deps: [HttpClient]\n        },\n        defaultLanguage: 'fa'\n      })\n    )\n  ]\n};",
+      "size": 1000,
+      "lines": 35,
+      "modified": "2025-11-17T12:37:43.555Z",
+      "created": "2025-11-17T12:37:43.548Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "project-build\\src\\app\\services\\translation.service.ts",
+      "content": "import { Injectable } from '@angular/core';\nimport { TranslateService } from '@ngx-translate/core';\n\n/**\n * سرویس مدیریت ترجمه و چندزبانه\n * پشتیبانی از فارسی و انگلیسی با قابلیت تغییر داینامیک\n */\n@Injectable({\n  providedIn: 'root'\n})\nexport class TranslationService {\n  \n  constructor(private translate: TranslateService) {\n    this.initializeTranslation();\n  }\n\n  /**\n   * مقداردهی اولیه سیستم ترجمه\n   */\n  private initializeTranslation(): void {\n    // زبان‌های پشتیبانی شده\n    this.translate.addLangs(['fa', 'en']);\n    \n    // زبان پیش‌فرض\n    this.translate.setDefaultLang('fa');\n    \n    // تشخیص و تنظیم زبان مرورگر\n    this.detectAndSetBrowserLanguage();\n  }\n\n  /**\n   * تشخیص و تنظیم زبان مرورگر\n   */\n  private detectAndSetBrowserLanguage(): void {\n    const browserLang = this.translate.getBrowserLang();\n    const supportedLangs = this.translate.getLangs();\n    const useLang = supportedLangs.includes(browserLang || '') ? browserLang : 'fa';\n    \n    this.switchLanguage(useLang || 'fa');\n  }\n\n  /**\n   * تغییر زبان برنامه\n   */\n  switchLanguage(lang: string): void {\n    if (this.isLanguageSupported(lang)) {\n      this.translate.use(lang);\n      \n      // اعمال تغییرات مربوط به RTL/LTR\n      this.applyLanguageDirection(lang);\n      \n      // ذخیره انتخاب کاربر\n      localStorage.setItem('preferred-language', lang);\n    }\n  }\n\n  /**\n   * اعمال جهت نوشتار بر اساس زبان\n   */\n  private applyLanguageDirection(lang: string): void {\n    const direction = lang === 'fa' ? 'rtl' : 'ltr';\n    document.documentElement.dir = direction;\n    document.documentElement.lang = lang;\n    \n    // اعمال کلاس جهت برای استایل‌های خاص\n    document.body.classList.remove('ltr-direction', 'rtl-direction');\n    document.body.classList.add(`${direction}-direction`);\n  }\n\n  /**\n   * دریافت زبان فعلی\n   */\n  getCurrentLanguage(): string {\n    return this.translate.currentLang;\n  }\n\n  /**\n   * چک کردن پشتیبانی زبان\n   */\n  isLanguageSupported(lang: string): boolean {\n    return this.translate.getL",
+      "size": 2777,
+      "lines": 100,
+      "modified": "2025-11-17T12:37:43.555Z",
+      "created": "2025-11-17T11:47:11.700Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "project-build\\src\\assets\\i18n\\fa.json",
+      "content": "{\n  \"SITE\": {\n    \"TITLE\": \"لابراتوار دندانپزشکی دیجیتال\",\n    \"DESCRIPTION\": \"پیشرفته‌ترین لابراتوار دندانپزشکی دیجیتال با آخرین تکنولوژی‌های روز دنیا\"\n  },\n  \"NAV\": {\n    \"HOME\": \"خانه\",\n    \"SERVICES\": \"خدمات\",\n    \"GALLERY\": \"گالری\",\n    \"BLOG\": \"بلاگ\",\n    \"TECHNOLOGY\": \"تکنولوژی\",\n    \"CONTACT\": \"تماس\",\n    \"LANGUAGE\": \"زبان\",\n    \"PERSIAN\": \"فارسی\",\n    \"ENGLISH\": \"انگلیسی\"\n  },\n  \"HOME\": {\n    \"TITLE\": \"لابراتوار دندانپزشکی دیجیتال - صفحه اصلی\",\n    \"HERO\": {\n      \"TITLE\": \"لبخندی زیبا، با تکنولوژی روز\",\n      \"SUBTITLE\": \"تخصص ما در ساخت پروتزهای دندانی دیجیتال با دقت میکرونی\",\n      \"BUTTON\": \"مشاهده خدمات\"\n    }\n  },\n  \"SERVICES\": {\n    \"TITLE\": \"خدمات تخصصی ما\",\n    \"SUBTITLE\": \"با استفاده از پیشرفته‌ترین دستگاه‌های CAD/CAM\",\n    \"CATEGORY_TITLE\": \"خدمات {{category}}\",\n    \"DETAIL_TITLE\": \"جزئیات {{service}}\",\n    \"ZIRCONIA_CROWN\": {\n      \"TITLE\": \"کراون زیرکونیا\",\n      \"DESCRIPTION\": \"کراون‌های تمام زیرکونیا با استحکام فوق‌العاده و زیبایی طبیعی\"\n    },\n    \"EMAX_CROWN\": {\n      \"TITLE\": \"کراون E-max\",\n      \"DESCRIPTION\": \"کراون‌های سرامیکی با شفافیت و زیبایی بی‌نظیر\"\n    },\n    \"CERAMIC_VENEER\": {\n      \"TITLE\": \"ونیر سرامیکی\",\n      \"DESCRIPTION\": \"لمینت‌های سرامیکی برای لبخندی هالیوودی\"\n    },\n    \"IMPLANT_PROSTHETIC\": {\n      \"TITLE\": \"پروتز ایمپلنت\",\n      \"DESCRIPTION\": \"ساخت پروتزهای ثابت و متحرک بر روی ایمپلنت\"\n    },\n    \"DENTURE\": {\n      \"TITLE\": \"دندان مصنوعی\",\n      \"DESCRIPTION\": \"ساخت دندان‌های مصنوعی کامل و پارسیل با کیفیت عالی\"\n    },\n    \"NIGHT_GUARD\": {\n      \"TITLE\": \"نایت گارد\",\n      \"DESCRIPTION\": \"محافظ شبانه برای جلوگیری از سایش دندان‌ها\"\n    },\n    \"CATEGORIES\": {\n      \"ALL\": \"همه خدمات\",\n      \"CROWN_BRIDGE\": \"کراون و بریج\",\n      \"ESTHETIC\": \"زیبایی\",\n      \"IMPLANT\": \"ایمپلنت\",\n      \"PROSTHETIC\": \"پروتز\",\n      \"PROTECTIVE\": \"محافظتی\"\n    },\n    \"FEATURES\": {\n      \"HIGH_STRENGTH\": \"استحکام فوق‌العاده\",\n      \"BIOCOMPATIBLE\": \"سازگار با بدن\",\n      \"AESTHETIC\": \"زیبایی طبیعی\",\n      \"HIGH_ESTHETIC\": \"زیبایی بی‌نظیر\",\n  ",
+      "size": 7086,
+      "lines": 181,
+      "modified": "2025-11-17T12:37:43.555Z",
+      "created": "2025-11-17T12:37:43.555Z",
+      "extension": ".json"
+    },
+    {
+      "path": "project-build\\src\\app\\app.component.ts",
+      "content": "import { Component } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\nimport { HeaderComponent } from './components/header/header.component';\nimport { FooterComponent } from './components/footer/footer.component';\n\n/**\n * کامپوننت اصلی برنامه\n * شامل هدر، فوتر و router-outlet\n * مسئول ساختار کلی layout\n */\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  imports: [RouterOutlet, HeaderComponent, FooterComponent],\n  template: `\n    <app-header></app-header>\n    <main class=\"main-content\">\n      <router-outlet></router-outlet>\n    </main>\n    <app-footer></app-footer>\n  `,\n  styles: [`\n    .main-content {\n      min-height: calc(100vh - 140px);\n      padding-top: 80px; /* برای fixed header */\n    }\n    \n    @media (max-width: 768px) {\n      .main-content {\n        padding-top: 70px;\n        min-height: calc(100vh - 120px);\n      }\n    }\n  `]\n})\nexport class AppComponent {\n  title = 'Digital Dental Lab v2';\n}",
+      "size": 997,
+      "lines": 38,
+      "modified": "2025-11-17T12:37:43.548Z",
+      "created": "2025-11-17T11:47:11.700Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "project-build\\src\\app\\app.routes.ts",
+      "content": "import { Routes } from '@angular/router';\n\n/**\n * Routing اصلی برنامه دندانپزشکی دیجیتال\n * ساختار مسیرهای SPA با lazy loading\n */\nexport const routes: Routes = [\n  {\n    path: '',\n    loadComponent: () => import('./components/home/home.component').then(m => m.HomeComponent),\n    title: 'HOME.TITLE',\n    data: { animation: 'HomePage' }\n  },\n  {\n    path: 'services',\n    loadComponent: () => import('./components/services/services.component').then(m => m.ServicesComponent),\n    title: 'SERVICES.TITLE',\n    data: { animation: 'ServicesPage' }\n  },\n  {\n    path: 'services/:category',\n    loadComponent: () => import('./components/services/service-category/service-category.component').then(m => m.ServiceCategoryComponent),\n    title: 'SERVICES.CATEGORY_TITLE',\n    data: { animation: 'CategoryPage' }\n  },\n  {\n    path: 'services/detail/:id',\n    loadComponent: () => import('./components/services/service-detail/service-detail.component').then(m => m.ServiceDetailComponent),\n    title: 'SERVICES.DETAIL_TITLE',\n    data: { animation: 'DetailPage' }\n  },\n  {\n    path: 'gallery',\n    loadComponent: () => import('./components/gallery/gallery.component').then(m => m.GalleryComponent),\n    title: 'GALLERY.TITLE',\n    data: { animation: 'GalleryPage' }\n  },\n  {\n    path: 'blog',\n    loadComponent: () => import('./components/blog/blog.component').then(m => m.BlogComponent),\n    title: 'BLOG.TITLE',\n    data: { animation: 'BlogPage' }\n  },\n  {\n    path: 'blog/post/:id',\n    loadComponent: () => import('./components/blog/post/post.component').then(m => m.PostComponent),\n    title: 'BLOG.POST_TITLE',\n    data: { animation: 'PostPage' }\n  },\n  {\n    path: 'technology',\n    loadComponent: () => import('./components/technology/technology.component').then(m => m.TechnologyComponent),\n    title: 'TECHNOLOGY.TITLE',\n    data: { animation: 'TechnologyPage' }\n  },\n  {\n    path: 'contact',\n    loadComponent: () => import('./components/contact/contact.component').then(m => m.ContactComponent),\n ",
+      "size": 2222,
+      "lines": 68,
+      "modified": "2025-11-17T12:37:43.545Z",
+      "created": "2025-11-17T11:47:11.700Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "project-build\\src\\main.ts",
+      "content": "import { bootstrapApplication } from '@angular/platform-browser';\nimport { appConfig } from './app/app.config';\nimport { AppComponent } from './app/app.component';\n\n/**\n * نقطه شروع برنامه Digital Dental Lab\n * ورژن 2.0.0 - سیستم کامل دندانپزشکی دیجیتال\n */\nbootstrapApplication(AppComponent, appConfig)\n  .catch((err) => console.error(err));",
+      "size": 386,
+      "lines": 10,
+      "modified": "2025-11-17T12:37:43.545Z",
+      "created": "2025-11-17T09:37:30.406Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "project.json",
+      "content": "{\n  \"meta\": {\n    \"title\": \"Digital Dental Lab v2 - لابراتوار دندانپزشکی دیجیتال\",\n    \"version\": \"2.0.0\",\n    \"updated\": \"2025-11-17T12:25:00.000Z\"\n  },\n  \"summary\": \"سیستم مدیریت پیشرفته کلینیک دندانپزشکی دیجیتال با Angular - دارای گالری کارهای انجام شده، خدمات تخصصی، بلاگ آموزشی، پنل چندزبانه و رابط کاربری مدرن\",\n  \"architecture\": \"Angular 20 SPA با معماری کامپوننت‌محور، پشتیبانی از i18n (فارسی/انگلیسی)، routing پیشرفته، سرویس‌های ماژولار، state management و رابط کاربری ریسپانسیو با طراحی مدرن\",\n  \"files\": {\n    \"src/main.ts\": {\n      \"content\": \"import { bootstrapApplication } from '@angular/platform-browser';\\nimport { appConfig } from './app/app.config';\\nimport { AppComponent } from './app/app.component';\\n\\n/**\\n * نقطه شروع برنامه Digital Dental Lab\\n * ورژن 2.0.0 - سیستم کامل دندانپزشکی دیجیتال\\n */\\nbootstrapApplication(AppComponent, appConfig)\\n  .catch((err) => console.error(err));\",\n      \"created\": \"2025-11-17T12:18:29.213Z\",\n      \"updated\": \"2025-11-17T12:25:00.000Z\"\n    },\n\n    \"src/app/app.routes.ts\": {\n      \"content\": \"import { Routes } from '@angular/router';\\n\\n/**\\n * Routing اصلی برنامه دندانپزشکی دیجیتال\\n * ساختار مسیرهای SPA با lazy loading\\n */\\nexport const routes: Routes = [\\n  {\\n    path: '',\\n    loadComponent: () => import('./components/home/home.component').then(m => m.HomeComponent),\\n    title: 'HOME.TITLE',\\n    data: { animation: 'HomePage' }\\n  },\\n  {\\n    path: 'services',\\n    loadComponent: () => import('./components/services/services.component').then(m => m.ServicesComponent),\\n    title: 'SERVICES.TITLE',\\n    data: { animation: 'ServicesPage' }\\n  },\\n  {\\n    path: 'services/:category',\\n    loadComponent: () => import('./components/services/service-category/service-category.component').then(m => m.ServiceCategoryComponent),\\n    title: 'SERVICES.CATEGORY_TITLE',\\n    data: { animation: 'CategoryPage' }\\n  },\\n  {\\n    path: 'services/detail/:id',\\n    loadComponent: () => import('./components/services/service-detail/",
+      "size": 25576,
+      "lines": 86,
+      "modified": "2025-11-17T12:37:28.082Z",
+      "created": "2025-11-17T09:37:30.257Z",
+      "extension": ".json"
+    },
+    {
+      "path": "hub-cli.js",
+      "content": "#!/usr/bin/env node\r\n\r\nconst fs = require('fs');\r\nconst path = require('path');\r\nconst { Command } = require('commander');\r\nconst chalk = require('chalk');\r\n\r\nclass HubCLI {\r\n  constructor() {\r\n    this.program = new Command();\r\n    this.setupCLI();\r\n  }\r\n\r\n  setupCLI() {\r\n    this.program\r\n      .name('hub')\r\n      .description('AI Project Hub CLI - مدیریت پروژه Digital Dental Lab')\r\n      .version('0.0.0');\r\n\r\n    // دستور build\r\n    this.program\r\n      .command('build')\r\n      .description('ساخت پروژه از فایل JSON هاب')\r\n      .argument('[json-file]', 'فایل JSON خروجی از AI Hub', 'project.json')\r\n      .option('-o, --output <dir>', 'پوشه خروجی', './project-build')\r\n      .action(this.build.bind(this));\r\n\r\n    // دستور update\r\n    this.program\r\n      .command('update')\r\n      .description('آپدیت پروژه موجود با JSON جدید')\r\n      .argument('[json-file]', 'فایل JSON جدید', 'project.json')\r\n      .option('-t, --target <dir>', 'پوشه پروژه هدف', './')\r\n      .action(this.update.bind(this));\r\n\r\n    // دستور tree\r\n    this.program\r\n      .command('tree')\r\n      .description('نمایش ساختار درختی پروژه')\r\n      .option('-d, --depth <level>', 'عمق نمایش', '3')\r\n      .option('-p, --path <dir>', 'پوشه هدف', './')\r\n      .action(this.tree.bind(this));\r\n\r\n    // دستور zip\r\n    this.program\r\n      .command('zip')\r\n      .description('ساخت فایل ZIP از پروژه')\r\n      .option('-s, --source <dir>', 'پوشه منبع', './')\r\n      .option('-o, --output <file>', 'فایل خروجی', './digital-dental-lab.zip')\r\n      .action(this.zip.bind(this));\r\n\r\n    // دستور show\r\n    this.program\r\n      .command('show')\r\n      .description('نمایش اطلاعات پروژه')\r\n      .option('-f, --files', 'نمایش لیست فایل‌ها')\r\n      .option('-v, --versions', 'نمایش تاریخچه نسخه‌ها')\r\n      .option('-i, --info', 'نمایش اطلاعات کلی')\r\n      .action(this.show.bind(this));\r\n\r\n    // دستور init (جدید)\r\n    this.program\r\n      .command('init')\r\n      .description('ایجاد فایل نمونه project.json')\r\n      .action(this.init.bind(th",
+      "size": 10774,
+      "lines": 296,
+      "modified": "2025-11-17T09:36:54.584Z",
+      "created": "2025-11-17T09:30:04.351Z",
+      "extension": ".js"
+    },
+    {
+      "path": "package-lock.json",
+      "content": "{\r\n  \"name\": \"digital-dental-lab-v2\",\r\n  \"version\": \"0.0.0\",\r\n  \"lockfileVersion\": 3,\r\n  \"requires\": true,\r\n  \"packages\": {\r\n    \"\": {\r\n      \"name\": \"digital-dental-lab-v2\",\r\n      \"version\": \"0.0.0\",\r\n      \"dependencies\": {\r\n        \"@angular/common\": \"^20.3.0\",\r\n        \"@angular/compiler\": \"^20.3.0\",\r\n        \"@angular/core\": \"^20.3.0\",\r\n        \"@angular/forms\": \"^20.3.0\",\r\n        \"@angular/platform-browser\": \"^20.3.0\",\r\n        \"@angular/router\": \"^20.3.0\",\r\n        \"@ngx-translate/core\": \"^17.0.0\",\r\n        \"@ngx-translate/http-loader\": \"^17.0.0\",\r\n        \"chalk\": \"^4.1.2\",\r\n        \"commander\": \"^9.4.1\",\r\n        \"countup.js\": \"^2.9.0\",\r\n        \"rxjs\": \"~7.8.0\",\r\n        \"tslib\": \"^2.3.0\",\r\n        \"vazirmatn\": \"^33.0.3\",\r\n        \"zone.js\": \"~0.15.0\"\r\n      },\r\n      \"bin\": {\r\n        \"hub\": \"hub-cli.js\"\r\n      },\r\n      \"devDependencies\": {\r\n        \"@angular-devkit/build-angular\": \"^20.3.9\",\r\n        \"@angular-devkit/core\": \"^20.3.9\",\r\n        \"@angular-devkit/schematics\": \"^20.3.9\",\r\n        \"@angular/build\": \"^20.3.9\",\r\n        \"@angular/cli\": \"^20.3.9\",\r\n        \"@angular/compiler-cli\": \"^20.3.0\",\r\n        \"@types/jasmine\": \"~5.1.0\",\r\n        \"jasmine-core\": \"~5.9.0\",\r\n        \"karma\": \"~6.4.0\",\r\n        \"karma-chrome-launcher\": \"~3.2.0\",\r\n        \"karma-coverage\": \"~2.2.0\",\r\n        \"karma-jasmine\": \"~5.1.0\",\r\n        \"karma-jasmine-html-reporter\": \"~2.1.0\",\r\n        \"typescript\": \"~5.9.2\"\r\n      }\r\n    },\r\n    \"node_modules/@algolia/abtesting\": {\r\n      \"version\": \"1.1.0\",\r\n      \"resolved\": \"https://registry.npmjs.org/@algolia/abtesting/-/abtesting-1.1.0.tgz\",\r\n      \"integrity\": \"sha512-sEyWjw28a/9iluA37KLGu8vjxEIlb60uxznfTUmXImy7H5NvbpSO6yYgmgH5KiD7j+zTUUihiST0jEP12IoXow==\",\r\n      \"dev\": true,\r\n      \"license\": \"MIT\",\r\n      \"dependencies\": {\r\n        \"@algolia/client-common\": \"5.35.0\",\r\n        \"@algolia/requester-browser-xhr\": \"5.35.0\",\r\n        \"@algolia/requester-fetch\": \"5.35.0\",\r\n        \"@algolia/requester-node-http\": \"5.35.0\"\r\n      }",
+      "size": 551739,
+      "lines": 15196,
+      "modified": "2025-11-17T09:29:13.480Z",
+      "created": "2025-11-06T20:47:50.537Z",
+      "extension": ".json"
+    },
+    {
+      "path": "src\\auto-docs.html",
+      "content": "<!DOCTYPE html>\r\n<html lang=\"fa\" dir=\"rtl\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>مستندات خودکار پروژه - لابراتوار دندانسازی دیجیتال</title>\r\n    <style>\r\n        * {\r\n            margin: 0;\r\n            padding: 0;\r\n            box-sizing: border-box;\r\n        }\r\n        \r\n        body {\r\n            font-family: 'Vazirmatn', 'Inter', sans-serif;\r\n            line-height: 1.6;\r\n            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\r\n            color: #333;\r\n            min-height: 100vh;\r\n        }\r\n        \r\n        .container {\r\n            max-width: 1200px;\r\n            margin: 0 auto;\r\n            padding: 20px;\r\n        }\r\n        \r\n        .header {\r\n            background: rgba(255, 255, 255, 0.95);\r\n            backdrop-filter: blur(10px);\r\n            padding: 2rem;\r\n            border-radius: 20px;\r\n            margin-bottom: 2rem;\r\n            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);\r\n            text-align: center;\r\n        }\r\n        \r\n        .header h1 {\r\n            color: #2c3e50;\r\n            margin-bottom: 0.5rem;\r\n            font-size: 2.5rem;\r\n        }\r\n        \r\n        .header p {\r\n            color: #7f8c8d;\r\n            font-size: 1.1rem;\r\n        }\r\n        \r\n        .last-update {\r\n            background: #e74c3c;\r\n            color: white;\r\n            padding: 0.5rem 1rem;\r\n            border-radius: 25px;\r\n            display: inline-block;\r\n            margin-top: 1rem;\r\n            font-weight: bold;\r\n        }\r\n        \r\n        .dashboard {\r\n            display: grid;\r\n            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));\r\n            gap: 1.5rem;\r\n            margin-bottom: 2rem;\r\n        }\r\n        \r\n        .card {\r\n            background: rgba(255, 255, 255, 0.95);\r\n            backdrop-filter: blur(10px);\r\n            padding: 1.5rem;\r\n            border-radius: 15px;\r\n            box-shadow: 0 5p",
+      "size": 18305,
+      "lines": 423,
+      "modified": "2025-11-16T10:06:27.357Z",
+      "created": "2025-11-16T10:09:45.925Z",
+      "extension": ".html"
+    },
+    {
+      "path": "package-backup.json",
+      "content": "{\r\n  \"name\": \"digital-dental-lab-v2\",\r\n  \"version\": \"0.0.0\",\r\n  \"scripts\": {\r\n    \"ng\": \"ng\",\r\n    \"start\": \"ng serve\",\r\n    \"build\": \"ng build\",\r\n    \"watch\": \"ng build --watch --configuration development\",\r\n    \"test\": \"ng test\"\r\n  },\r\n  \"prettier\": {\r\n    \"printWidth\": 100,\r\n    \"singleQuote\": true,\r\n    \"overrides\": [\r\n      {\r\n        \"files\": \"*.html\",\r\n        \"options\": {\r\n          \"parser\": \"angular\"\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"private\": true,\r\n  \"dependencies\": {\r\n    \"@angular/common\": \"^20.3.0\",\r\n    \"@angular/compiler\": \"^20.3.0\",\r\n    \"@angular/core\": \"^20.3.0\",\r\n    \"@angular/forms\": \"^20.3.0\",\r\n    \"@angular/platform-browser\": \"^20.3.0\",\r\n    \"@angular/router\": \"^20.3.0\",\r\n    \"@ngx-translate/core\": \"^17.0.0\",\r\n    \"@ngx-translate/http-loader\": \"^17.0.0\",\r\n    \"countup.js\": \"^2.9.0\",\r\n    \"rxjs\": \"~7.8.0\",\r\n    \"tslib\": \"^2.3.0\",\r\n    \"vazirmatn\": \"^33.0.3\",\r\n    \"zone.js\": \"~0.15.0\"\r\n  },\r\n  \"devDependencies\": {\r\n    \"@angular-devkit/build-angular\": \"^20.3.9\",\r\n    \"@angular-devkit/core\": \"^20.3.9\",\r\n    \"@angular-devkit/schematics\": \"^20.3.9\",\r\n    \"@angular/build\": \"^20.3.9\",\r\n    \"@angular/cli\": \"^20.3.9\",\r\n    \"@angular/compiler-cli\": \"^20.3.0\",\r\n    \"@types/jasmine\": \"~5.1.0\",\r\n    \"jasmine-core\": \"~5.9.0\",\r\n    \"karma\": \"~6.4.0\",\r\n    \"karma-chrome-launcher\": \"~3.2.0\",\r\n    \"karma-coverage\": \"~2.2.0\",\r\n    \"karma-jasmine\": \"~5.1.0\",\r\n    \"karma-jasmine-html-reporter\": \"~2.1.0\",\r\n    \"typescript\": \"~5.9.2\"\r\n  }\r\n}\r\n{\r\n  \"scripts\": {\r\n    \"ng\": \"ng\",\r\n    \"start\": \"ng serve\",\r\n    \"build\": \"ng build\", \r\n    \"watch\": \"ng build --watch --configuration development\",\r\n    \"test\": \"ng test\",\r\n    \"docs:update\": \"node update-docs.js\",\r\n    \"docs:serve\": \"ng serve & npm run docs:update -- --watch\",\r\n    \"dev\": \"npm run docs:update && ng serve\"\r\n  }\r\n}",
+      "size": 1805,
+      "lines": 67,
+      "modified": "2025-11-16T09:58:36.768Z",
+      "created": "2025-11-16T10:05:51.618Z",
+      "extension": ".json"
+    },
+    {
+      "path": "src\\app\\app.config.ts",
+      "content": "import { ApplicationConfig, importProvidersFrom } from '@angular/core';\r\nimport { provideRouter } from '@angular/router';\r\nimport { routes } from './app.routes';\r\nimport { provideHttpClient } from '@angular/common/http';\r\nimport { TranslateModule } from '@ngx-translate/core';\r\n\r\nexport const appConfig: ApplicationConfig = {\r\n  providers: [\r\n    provideRouter(routes),\r\n    provideHttpClient(),\r\n    importProvidersFrom(\r\n      TranslateModule.forRoot()\r\n    )\r\n  ]\r\n};",
+      "size": 470,
+      "lines": 15,
+      "modified": "2025-11-15T17:30:14.607Z",
+      "created": "2025-11-12T11:54:07.616Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\styles.scss",
+      "content": "/* تنظیمات فونت برای کل پروژه */\r\n* {\r\n  font-family: 'Vazirmatn', 'Inter', sans-serif;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  font-family: 'Vazirmatn', 'Inter', sans-serif;\r\n  font-weight: 400;\r\n  line-height: 1.6;\r\n  direction: rtl;\r\n  text-align: right;\r\n  margin: 0;\r\n  padding: 0;\r\n  background-color: #ffffff;\r\n  color: #334155;\r\n}\r\n\r\n/* هدرها */\r\nh1, h2, h3, h4, h5, h6 {\r\n  font-family: 'Vazirmatn', 'Inter', sans-serif;\r\n  font-weight: 700;\r\n  line-height: 1.3;\r\n  color: #1e293b;\r\n  margin: 0 0 1rem 0;\r\n}\r\n\r\nh1 {\r\n  font-size: 2.5rem;\r\n  font-weight: 800;\r\n}\r\n\r\nh2 {\r\n  font-size: 2rem;\r\n  font-weight: 700;\r\n}\r\n\r\nh3 {\r\n  font-size: 1.5rem;\r\n  font-weight: 600;\r\n}\r\n\r\nh4 {\r\n  font-size: 1.25rem;\r\n  font-weight: 600;\r\n}\r\n\r\n/* متن‌های معمولی */\r\np, span, div, li {\r\n  font-family: 'Vazirmatn', 'Inter', sans-serif;\r\n  font-weight: 400;\r\n  line-height: 1.6;\r\n}\r\n\r\np {\r\n  margin: 0 0 1rem 0;\r\n}\r\n\r\n/* دکمه‌ها */\r\nbutton, .btn {\r\n  font-family: 'Vazirmatn', 'Inter', sans-serif;\r\n  font-weight: 600;\r\n}\r\n\r\n/* input ها */\r\ninput, textarea, select {\r\n  font-family: 'Vazirmatn', 'Inter', sans-serif;\r\n}\r\n\r\n/* لینک‌ها */\r\na {\r\n  font-family: 'Vazirmatn', 'Inter', sans-serif;\r\n  text-decoration: none;\r\n  color: inherit;\r\n}\r\n\r\n/* لیست‌ها */\r\nul, ol {\r\n  padding-right: 1.5rem;\r\n  margin: 0 0 1rem 0;\r\n}\r\n\r\nli {\r\n  margin-bottom: 0.5rem;\r\n}\r\n\r\n/* وزن‌های مختلف برای استفاده در کامپوننت‌ها */\r\n.font-light { font-weight: 300; }\r\n.font-normal { font-weight: 400; }\r\n.font-medium { font-weight: 500; }\r\n.font-semibold { font-weight: 600; }\r\n.font-bold { font-weight: 700; }\r\n.font-extrabold { font-weight: 800; }\r\n\r\n/* رسپانسیو تایپوگرافی */\r\n@media (max-width: 768px) {\r\n  h1 { font-size: 2rem; }\r\n  h2 { font-size: 1.75rem; }\r\n  h3 { font-size: 1.25rem; }\r\n  body { font-size: 0.95rem; }\r\n}\r\n\r\n/* ===== رفع قطعی مشکل فاصله هدر ===== */\r\n\r\n/* رفع فاصله برای تگ main */\r\nmain {\r\n  margin-top: 0 !important;\r\n  padding-top: 0 !important;\r\n  display: block;\r\n}\r\n\r\n/* رفع فاصله برای تمام المنت‌های ب",
+      "size": 4548,
+      "lines": 228,
+      "modified": "2025-11-12T07:51:17.810Z",
+      "created": "2025-11-06T18:37:24.221Z",
+      "extension": ".scss"
+    },
+    {
+      "path": "src\\app\\app.html",
+      "content": "<app-header></app-header>\r\n\r\n<main>\r\n  <router-outlet></router-outlet>\r\n</main>\r\n\r\n<app-footer></app-footer>",
+      "size": 108,
+      "lines": 7,
+      "modified": "2025-11-12T07:50:52.300Z",
+      "created": "2025-11-06T18:37:24.226Z",
+      "extension": ".html"
+    },
+    {
+      "path": "src\\app\\components\\footer\\footer.component.ts",
+      "content": "import { Component } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { RouterModule } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-footer',\r\n  standalone: true,\r\n  imports: [CommonModule, RouterModule],\r\n  templateUrl: './footer.component.html',\r\n  styleUrl: './footer.component.scss'\r\n})\r\nexport class FooterComponent {\r\n  // اگر نیاز به منطق خاصی دارید اینجا اضافه کنید\r\n}",
+      "size": 454,
+      "lines": 14,
+      "modified": "2025-11-11T17:40:15.078Z",
+      "created": "2025-11-06T19:35:12.949Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\footer\\footer.component.html",
+      "content": "<footer class=\"footer\">\r\n  <div class=\"footer-container\">\r\n    <div class=\"footer-content\">\r\n      <!-- درباره ما -->\r\n      <div class=\"footer-section\">\r\n        <h3>درباره ما / About Us</h3>\r\n        <p>\r\n          لابراتوار تخصصی دندانپزشکی دیجیتال با استفاده از پیشرفته‌ترین تکنولوژی‌های روز دنیا\r\n        </p>\r\n        <div class=\"social-links\">\r\n          <a href=\"#\" aria-label=\"Instagram\">📷</a>\r\n          <a href=\"#\" aria-label=\"Telegram\">✈️</a>\r\n          <a href=\"#\" aria-label=\"WhatsApp\">💬</a>\r\n        </div>\r\n      </div>\r\n\r\n      <!-- خدمات -->\r\n      <div class=\"footer-section\">\r\n        <h3>خدمات / Services</h3>\r\n        <ul class=\"footer-links\">\r\n          <li><a [routerLink]=\"['/services', 'crown-bridge']\">Crown & Bridge</a></li>\r\n          <li><a [routerLink]=\"['/services', 'veneers']\">Veneers</a></li>\r\n          <li><a [routerLink]=\"['/services', 'implant-solutions']\">Implant Solutions</a></li>\r\n          <li><a [routerLink]=\"['/services', 'digital-dentistry']\">Digital Dentistry</a></li>\r\n        </ul>\r\n      </div>\r\n\r\n      <!-- لینک‌های سریع -->\r\n      <div class=\"footer-section\">\r\n        <h3>لینک‌ها / Links</h3>\r\n        <ul class=\"footer-links\">\r\n          <li><a [routerLink]=\"['/home']\">خانه / Home</a></li>\r\n          <li><a [routerLink]=\"['/technology']\">تکنولوژی / Technology</a></li>\r\n          <li><a [routerLink]=\"['/gallery']\">گالری / Gallery</a></li>\r\n          <li><a [routerLink]=\"['/blog']\">بلاگ / Blog</a></li>\r\n          <li><a [routerLink]=\"['/contact']\">تماس / Contact</a></li>\r\n        </ul>\r\n      </div>\r\n\r\n      <!-- تماس با ما -->\r\n      <div class=\"footer-section\">\r\n        <h3>تماس / Contact</h3>\r\n        <ul class=\"contact-info\">\r\n          <li> 021-12345678</li>\r\n          <li> 0912-345-6789</li>\r\n          <li> info@digitallab.com</li>\r\n          <li> تهران، خیابان نمونه</li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n\r\n    <!-- فوتر پایین -->\r\n    <div class=\"footer-bottom\">\r\n      <div class=\"copyright\">\r\n        © 2024 Digi",
+      "size": 2498,
+      "lines": 64,
+      "modified": "2025-11-11T17:37:43.128Z",
+      "created": "2025-11-06T19:35:12.950Z",
+      "extension": ".html"
+    },
+    {
+      "path": "src\\app\\components\\footer\\footer.component.scss",
+      "content": ":host {\r\n  --primary-color: #ef394e;\r\n  --primary-dark: #d23f57;\r\n  --primary-light: #ffeff1;\r\n  --secondary-color: #19bfd3;\r\n  --text-primary: #232933;\r\n  --text-secondary: #62666d;\r\n  --text-light: #81858b;\r\n  --background: #f9f9f9;\r\n  --white: #ffffff;\r\n  --border: #e0e0e6;\r\n  --border-light: #f0f0f1;\r\n  --footer-bg: #2c3e50;\r\n  --footer-text: #ecf0f1;\r\n  --footer-border: #34495e;\r\n}\r\n\r\n.footer {\r\n  background: var(--footer-bg);\r\n  color: var(--footer-text);\r\n  margin-top: auto;\r\n}\r\n\r\n.footer-container {\r\n  max-width: 1200px;\r\n  margin: 0 auto;\r\n  padding: 2rem 1rem;\r\n}\r\n\r\n.footer-content {\r\n  display: grid;\r\n  grid-template-columns: repeat(4, 1fr);\r\n  gap: 2rem;\r\n  margin-bottom: 2rem;\r\n}\r\n\r\n.footer-section {\r\n  h3 {\r\n    font-size: 1.125rem;\r\n    font-weight: 600;\r\n    margin-bottom: 1rem;\r\n    color: var(--white);\r\n  }\r\n  \r\n  p {\r\n    font-size: 0.875rem;\r\n    line-height: 1.6;\r\n    color: var(--footer-text);\r\n    margin-bottom: 1rem;\r\n  }\r\n}\r\n\r\n.footer-links {\r\n  list-style: none;\r\n  padding: 0;\r\n  margin: 0;\r\n  \r\n  li {\r\n    margin-bottom: 0.5rem;\r\n    \r\n    &:last-child {\r\n      margin-bottom: 0;\r\n    }\r\n  }\r\n  \r\n  a {\r\n    color: var(--footer-text);\r\n    text-decoration: none;\r\n    font-size: 0.875rem;\r\n    transition: color 0.3s ease;\r\n    \r\n    &:hover {\r\n      color: var(--primary-light);\r\n    }\r\n  }\r\n}\r\n\r\n.contact-info {\r\n  list-style: none;\r\n  padding: 0;\r\n  margin: 0;\r\n  \r\n  li {\r\n    display: flex;\r\n    align-items: flex-start;\r\n    gap: 0.5rem;\r\n    margin-bottom: 0.75rem;\r\n    font-size: 0.875rem;\r\n    line-height: 1.5;\r\n    \r\n    &:last-child {\r\n      margin-bottom: 0;\r\n    }\r\n  }\r\n}\r\n\r\n.social-links {\r\n  display: flex;\r\n  gap: 0.75rem;\r\n  margin-top: 1rem;\r\n  \r\n  a {\r\n    display: flex;\r\n    align-items: center;\r\n    justify-content: center;\r\n    width: 36px;\r\n    height: 36px;\r\n    background: rgba(255, 255, 255, 0.1);\r\n    border-radius: 50%;\r\n    color: var(--footer-text);\r\n    text-decoration: none;\r\n    transition: all 0.3s ease;\r\n    \r\n   ",
+      "size": 3150,
+      "lines": 178,
+      "modified": "2025-11-11T17:37:09.841Z",
+      "created": "2025-11-06T19:35:12.950Z",
+      "extension": ".scss"
+    },
+    {
+      "path": "src\\app\\components\\services\\service-detail\\service-detail.component.ts",
+      "content": "import { Component, OnInit } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { ActivatedRoute, Router, RouterModule } from '@angular/router';\r\n\r\ninterface Service {\r\n  id: number;\r\n  title: string;\r\n  description: string;\r\n  features: string[];\r\n  indications: string[];\r\n  duration: string;\r\n  warranty: string;\r\n  image: string;\r\n  brands: string[];\r\n  selectedBrand: string;\r\n  category: string;\r\n  detailedDescription?: string;\r\n  technicalSpecs?: { [key: string]: string };\r\n  beforeAfterImages?: string[];\r\n  benefits?: string[];\r\n  contraindications?: string[];\r\n  maintenance?: string[];\r\n}\r\n\r\n@Component({\r\n  selector: 'app-service-detail',\r\n  standalone: true,\r\n  imports: [CommonModule, RouterModule],\r\n  templateUrl: './service-detail.component.html',\r\n  styleUrl: './service-detail.component.scss'\r\n})\r\nexport class ServiceDetailComponent implements OnInit {\r\n\r\n  serviceData: { [key: string]: { [key: number]: Service } } = {\r\n    'crown-bridge': {\r\n      1: {\r\n        id: 1,\r\n        title: 'روکش زیرکونیا (Zirconia Crown)',\r\n        description: 'روکش تمام زیرکونیا با استحکام فوق‌العاده و زیبایی طبیعی',\r\n        detailedDescription: 'روکش زیرکونیا با استفاده از پیشرفته‌ترین تکنولوژی CAD/CAM ساخته می‌شود. این روکش‌ها دارای استحکام بسیار بالا (۱۴۰۰-۱۲۰۰ مگاپاسکال) و در عین حال شفافیت مناسب برای شبیه‌سازی دندان طبیعی هستند. زیرکونیا به دلیل خواص مکانیکی عالی، برای دندان‌های خلفی و بریج‌های کوتاه ایده‌آل است. مواد استفاده شده کاملاً زیست سازگار و فاقد فلز می‌باشند.',\r\n        features: [\r\n          'استحکام ۱۴۰۰-۱۲۰۰ مگاپاسکال',\r\n          'شفافیت بالا مشابه دندان طبیعی',\r\n          'سازگاری کامل با بافت لثه',\r\n          'مقاومت در برابر شکست',\r\n          'رنگ‌پذیری عالی',\r\n          'فاقد فلز و کاملاً زیست سازگار'\r\n        ],\r\n        indications: [\r\n          'دندان‌های خلفی',\r\n          'بریج‌های کوتاه', \r\n          'بازسازی کامل تاج',\r\n          'دندان‌های با سطح اکلوزال بالا',\r\n          'بیماران با حساسیت به فلزات'\r\n        ],\r\n    ",
+      "size": 24221,
+      "lines": 495,
+      "modified": "2025-11-11T12:48:26.002Z",
+      "created": "2025-11-11T09:00:41.018Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\services\\service-category\\service-category.component.ts",
+      "content": "import { Component, OnInit } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { ActivatedRoute, Router, RouterModule } from '@angular/router';\r\n\r\ninterface Service {\r\n  id: number;\r\n  title: string;\r\n  description: string;\r\n  features: string[];\r\n  indications: string[];\r\n  duration: string;\r\n  warranty: string;\r\n  image: string;\r\n  brands: string[];\r\n  selectedBrand: string;\r\n  category: string;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-service-category',\r\n  standalone: true,\r\n  imports: [CommonModule, RouterModule],\r\n  templateUrl: './service-category.component.html',\r\n  styleUrl: './service-category.component.scss'\r\n})\r\nexport class ServiceCategoryComponent implements OnInit {\r\n\r\n  categoryData: { [key: string]: any } = {\r\n    'crown-bridge': {\r\n      title: 'Crown & Bridge',\r\n      description: 'روکش و بریج‌های دائمی با کیفیت بالا و زیبایی طبیعی',\r\n      image: '/assets/images/services/zirconia-crown.jpg',\r\n      services: [\r\n        {\r\n          id: 1,\r\n          title: 'روکش زیرکونیا (Zirconia Crown)',\r\n          description: 'روکش تمام زیرکونیا با استحکام فوق‌العاده و زیبایی طبیعی برای دندان‌های خلفی',\r\n          features: ['استحکام ۱۴۰۰-۱۲۰۰ مگاپاسکال', 'شفافیت بالا', 'سازگاری کامل با بافت لثه', 'مقاومت در برابر شکست'],\r\n          indications: ['دندان‌های خلفی', 'بریج‌های کوتاه', 'بازسازی کامل تاج'],\r\n          duration: '۲-۳ روز کاری',\r\n          warranty: '۱۰ سال',\r\n          image: '/assets/images/services/zirconia-crown.jpg',\r\n          brands: ['Katana', 'Lava Plus', 'BruxZir', 'Prettau'],\r\n          selectedBrand: 'Katana',\r\n          category: 'crown-bridge'\r\n        },\r\n        {\r\n          id: 2,\r\n          title: 'روکش IPS e.max',\r\n          description: 'روکش سرامیکی با شفافیت استثنایی برای دندان‌های قدامی',\r\n          features: ['شفافیت بسیار بالا', 'استحکام ۴۰۰ مگاپاسکال', 'تطابق رنگ کامل', 'زیبایی بی‌نظیر'],\r\n          indications: ['دندان‌های جلو', 'لمینیت', 'ونیر', 'اینله و انله'],\r\n          duration: '۳-۴ روز کاری',",
+      "size": 11536,
+      "lines": 238,
+      "modified": "2025-11-11T12:44:01.209Z",
+      "created": "2025-11-11T08:54:39.495Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\services\\services.component.ts",
+      "content": "import { Component, OnInit } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { RouterModule } from '@angular/router';\r\n\r\ninterface ServiceCategory {\r\n  title: string;\r\n  description: string;\r\n  slug: string;\r\n  image: string;\r\n  servicesCount: number;\r\n  imageLoaded?: boolean;\r\n  imageError?: boolean;\r\n}\r\n\r\n@Component({\r\n  selector: 'app-services',\r\n  standalone: true,\r\n  imports: [CommonModule, RouterModule],\r\n  templateUrl: './services.component.html',\r\n  styleUrl: './services.component.scss'\r\n})\r\nexport class ServicesComponent implements OnInit {\r\n\r\n  serviceCategories: ServiceCategory[] = [\r\n    {\r\n      title: 'Crown & Bridge',\r\n      description: 'روکش و بریج‌های دائمی با بالاترین کیفیت و زیبایی طبیعی',\r\n      slug: 'crown-bridge',\r\n      image: '/assets/images/services/zirconia-crown.jpg',\r\n      servicesCount: 2\r\n    },\r\n    {\r\n      title: 'Veneers',\r\n      description: 'ونیرهای سرامیکی برای ایجاد لبخندی زیبا و طبیعی',\r\n      slug: 'veneers',\r\n      image: '/assets/images/services/ceramic-veneer.jpg',\r\n      servicesCount: 1\r\n    },\r\n    {\r\n      title: 'Occlusal Appliances',\r\n      description: 'دستگاه‌های محافظتی برای دندان قروچه و سایش دندانی',\r\n      slug: 'occlusal-appliances',\r\n      image: '/assets/images/services/night-guard.jpg',\r\n      servicesCount: 1\r\n    },\r\n    {\r\n      title: 'Digital Dentistry',\r\n      description: 'خدمات دندانپزشکی دیجیتال و طراحی لبخند',\r\n      slug: 'digital-dentistry',\r\n      image: '/assets/images/services/waxup-design.jpg',\r\n      servicesCount: 1\r\n    },\r\n    {\r\n      title: 'Implant Solutions',\r\n      description: 'راه‌حل‌های کامل ایمپلنت دندان با زیبایی طبیعی',\r\n      slug: 'implant-solutions',\r\n      image: '/assets/images/services/implant-prosthetic.jpg',\r\n      servicesCount: 1\r\n    },\r\n    {\r\n      title: 'Provisionals',\r\n      description: 'روکش‌های موقت با کیفیت بالا برای دوره درمان',\r\n      slug: 'provisionals',\r\n      image: '/assets/images/services/pmma-temporary.jpg',\r\n      ",
+      "size": 3995,
+      "lines": 130,
+      "modified": "2025-11-11T12:30:16.327Z",
+      "created": "2025-11-06T19:18:17.975Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\services\\services.component.html",
+      "content": "<section class=\"services-page\">\r\n  <!-- Hero Section -->\r\n  <div class=\"services-hero\">\r\n    <div class=\"container\">\r\n      <div class=\"hero-content\">\r\n        <h1 class=\"hero-title\">خدمات تخصصی دندانپزشکی دیجیتال</h1>\r\n        <p class=\"hero-description\">\r\n          با کامل‌ترین مجموعه خدمات دندانپزشکی دیجیتال، بهترین راه‌حل‌ها را برای بیماران خود ارائه دهید\r\n        </p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Main Content -->\r\n  <section class=\"categories-section\">\r\n    <div class=\"container\">\r\n      <div class=\"section-header\">\r\n        <h2>تمام راه‌حل‌های دندانپزشکی در یک مکان</h2>\r\n        <p>از روکش‌های دائمی تا دستگاه‌های محافظتی، همه چیز برای موفقیت شما</p>\r\n      </div>\r\n\r\n      <div class=\"categories-grid\">\r\n        <a \r\n          class=\"category-card\" \r\n          *ngFor=\"let category of serviceCategories\"\r\n          [routerLink]=\"['/services', category.slug]\">\r\n          \r\n          <div class=\"category-image-container\">\r\n            <!-- اسکلت لودر -->\r\n            <div class=\"image-skeleton\" *ngIf=\"!category.imageLoaded\"></div>\r\n            \r\n            <!-- تصویر اصلی -->\r\n            <img \r\n              [src]=\"category.image\" \r\n              [alt]=\"category.title\"\r\n              [class]=\"getImageClass(category)\"\r\n              (load)=\"handleImageLoad($event, category)\"\r\n              (error)=\"handleImageError($event, category)\"\r\n              *ngIf=\"!category.imageError\">\r\n            \r\n            <!-- جایگزین برای خطا -->\r\n            <div class=\"image-placeholder\" *ngIf=\"category.imageError\">\r\n              <div class=\"placeholder-icon\">🦷</div>\r\n              <div class=\"placeholder-text\">{{ category.title }}</div>\r\n            </div>\r\n          </div>\r\n          \r\n          <div class=\"category-content\">\r\n            <h3 class=\"category-title\">{{ category.title }}</h3>\r\n            <p class=\"category-description\">{{ category.description }}</p>\r\n            <div class=\"category-footer\">\r\n              <span class=\"services-count\">{{ categ",
+      "size": 2500,
+      "lines": 62,
+      "modified": "2025-11-11T09:51:08.090Z",
+      "created": "2025-11-06T19:18:17.977Z",
+      "extension": ".html"
+    },
+    {
+      "path": "src\\app\\components\\services\\services.component.scss",
+      "content": ":host {\r\n  --primary-color: #ef394e;\r\n  --primary-dark: #d23f57;\r\n  --text-primary: #232933;\r\n  --text-secondary: #62666d;\r\n  --text-light: #81858b;\r\n  --background: #f9f9f9;\r\n  --white: #ffffff;\r\n  --border: #e0e0e6;\r\n  --border-light: #f0f0f1;\r\n  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);\r\n  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n// جلوگیری از هر گونه پرش و حرکت ناخواسته\r\n.services-page {\r\n  background: var(--background);\r\n  min-height: 100vh;\r\n  direction: rtl;\r\n  font-family: 'Yekan Bakh', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\r\n  overflow-x: hidden;\r\n  \r\n  * {\r\n    box-sizing: border-box;\r\n  }\r\n}\r\n\r\n.container {\r\n  max-width: 1200px;\r\n  margin: 0 auto;\r\n  padding: 0 1rem;\r\n  position: relative;\r\n}\r\n\r\n// Hero Section - کاملاً ثابت\r\n.services-hero {\r\n  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);\r\n  padding: 4rem 0;\r\n  text-align: center;\r\n  color: white;\r\n  position: relative;\r\n  \r\n  .hero-content {\r\n    position: relative;\r\n    z-index: 1;\r\n  }\r\n  \r\n  .hero-title {\r\n    font-size: 2.5rem;\r\n    font-weight: 700;\r\n    margin-bottom: 1rem;\r\n    line-height: 1.3;\r\n  }\r\n  \r\n  .hero-description {\r\n    font-size: 1.1rem;\r\n    opacity: 0.9;\r\n    max-width: 600px;\r\n    margin: 0 auto;\r\n    line-height: 1.6;\r\n  }\r\n}\r\n\r\n// Categories Section - ثابت\r\n.categories-section {\r\n  padding: 3rem 0;\r\n  position: relative;\r\n}\r\n\r\n.section-header {\r\n  text-align: center;\r\n  margin-bottom: 3rem;\r\n  \r\n  h2 {\r\n    font-size: 2rem;\r\n    font-weight: 700;\r\n    color: var(--text-primary);\r\n    margin-bottom: 1rem;\r\n  }\r\n  \r\n  p {\r\n    font-size: 1.1rem;\r\n    color: var(--text-secondary);\r\n    max-width: 600px;\r\n    margin: 0 auto;\r\n    line-height: 1.6;\r\n  }\r\n}\r\n\r\n// Grid ثابت\r\n.categories-grid {\r\n  display: grid;\r\n  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));\r\n  gap: 2rem;\r\n  position: relative;\r\n}\r\n\r\n.category-card {\r\n  background: var(--white);\r\n  border: 1px sol",
+      "size": 8864,
+      "lines": 442,
+      "modified": "2025-11-11T09:50:37.249Z",
+      "created": "2025-11-06T19:18:17.975Z",
+      "extension": ".scss"
+    },
+    {
+      "path": "src\\app\\components\\services\\service-detail\\service-detail.component.html",
+      "content": "<section class=\"service-detail-page\" *ngIf=\"currentService\">\r\n  <!-- Breadcrumb Navigation -->\r\n  <div class=\"container\">\r\n    <div class=\"breadcrumb-nav\">\r\n      <div class=\"breadcrumb\">\r\n        <a [routerLink]=\"['/services']\">خدمات</a>\r\n        <span class=\"separator\">/</span>\r\n        <a [routerLink]=\"['/services', categorySlug]\">{{ getCategoryTitle() }}</a>\r\n        <span class=\"separator\">/</span>\r\n        <span class=\"current\">{{ currentService.title }}</span>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Service Hero -->\r\n  <div class=\"container\">\r\n    <div class=\"service-hero\">\r\n      <div class=\"hero-content\">\r\n        <div class=\"service-info\">\r\n          <h1 class=\"service-title\">{{ currentService.title }}</h1>\r\n          <p class=\"service-description\">{{ currentService.description }}</p>\r\n          <p class=\"detailed-description\" *ngIf=\"currentService.detailedDescription\">\r\n            {{ currentService.detailedDescription }}\r\n          </p>\r\n        </div>\r\n        \r\n        <div class=\"service-image-side\">\r\n          <img \r\n  [src]=\"currentService.image\" \r\n  [alt]=\"currentService.title\"\r\n  class=\"main-image\"\r\n  (error)=\"currentService.image = '/assets/images/placeholder.jpg'\">\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Brand Selection -->\r\n  <div class=\"container\" *ngIf=\"currentService.brands && currentService.brands.length > 0\">\r\n    <div class=\"brand-section\">\r\n      <h2 class=\"section-title\">انتخاب برند</h2>\r\n      <div class=\"brands-grid\">\r\n        <div \r\n          class=\"brand-option\" \r\n          *ngFor=\"let brand of currentService.brands\"\r\n          [class.selected]=\"currentService.selectedBrand === brand\"\r\n          (click)=\"changeBrand(brand)\">\r\n          <div class=\"brand-name\">{{ brand }}</div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Service Details -->\r\n  <div class=\"container\">\r\n    <div class=\"details-grid\">\r\n      <div class=\"detail-card\">\r\n        <div class=\"detail-label\">مدت زمان ساخت</div>\r\n  ",
+      "size": 4685,
+      "lines": 127,
+      "modified": "2025-11-11T09:08:30.964Z",
+      "created": "2025-11-11T09:00:41.003Z",
+      "extension": ".html"
+    },
+    {
+      "path": "src\\app\\components\\services\\service-category\\service-category.component.html",
+      "content": "<section class=\"category-page\" *ngIf=\"currentCategory\">\r\n  <!-- Category Hero -->\r\n  <div class=\"category-hero\">\r\n    <div class=\"container\">\r\n      <div class=\"hero-content\">\r\n        <h1 class=\"category-title\">{{ currentCategory.title }}</h1>\r\n        <p class=\"category-description\">{{ currentCategory.description }}</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Back Navigation -->\r\n  <div class=\"container\">\r\n    <div class=\"back-nav\">\r\n      <a [routerLink]=\"['/services']\" class=\"back-button\">\r\n        ← بازگشت به صفحه خدمات\r\n      </a>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Services Grid -->\r\n  <section class=\"services-section\">\r\n    <div class=\"container\">\r\n      <div class=\"services-grid\">\r\n        <div \r\n          class=\"service-card\" \r\n          *ngFor=\"let service of currentCategory.services\"\r\n          (click)=\"navigateToService(service.id)\">\r\n          <img \r\n            [src]=\"service.image\" \r\n            [alt]=\"service.title\"\r\n            class=\"service-image\"\r\n            (error)=\"service.image = '/assets/images/placeholder.jpg'\">\r\n          <div class=\"service-content\">\r\n            <h3 class=\"service-title\">{{ service.title }}</h3>\r\n            <p class=\"service-description\">{{ service.description }}</p>\r\n            \r\n            <div class=\"service-features\">\r\n              <span class=\"feature-tag\" *ngFor=\"let feature of service.features.slice(0, 2)\">\r\n                {{ feature }}\r\n              </span>\r\n            </div>\r\n            \r\n            <div class=\"service-meta\">\r\n              <div class=\"duration\">\r\n                <strong>زمان:</strong> {{ service.duration }}\r\n              </div>\r\n              <div class=\"warranty\">\r\n                <strong>گارانتی:</strong> {{ service.warranty }}\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </section>\r\n</section>",
+      "size": 1901,
+      "lines": 57,
+      "modified": "2025-11-11T09:06:46.485Z",
+      "created": "2025-11-11T08:55:18.887Z",
+      "extension": ".html"
+    },
+    {
+      "path": "src\\app\\components\\services\\service-detail\\service-detail.component.scss",
+      "content": ":host {\r\n  --primary-color: #1e88e5;\r\n  --primary-dark: #1565c0;\r\n  --primary-light: #64b5f6;\r\n  --secondary-color: #f44336;\r\n  --text-primary: #424750;\r\n  --text-secondary: #5a5f69;\r\n  --text-light: #81858b;\r\n  --background: #f5f7f9;\r\n  --white: #ffffff;\r\n  --border: #e0e0e6;\r\n  --border-light: #f0f0f1;\r\n  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);\r\n  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n.service-detail-page {\r\n  background: var(--background);\r\n  min-height: 100vh;\r\n  direction: rtl;\r\n  font-family: 'Yekan Bakh', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\r\n}\r\n\r\n.container {\r\n  max-width: 1200px;\r\n  margin: 0 auto;\r\n  padding: 0 1rem;\r\n}\r\n\r\n// Breadcrumb Navigation\r\n.breadcrumb-nav {\r\n  padding: 1.5rem 0;\r\n  \r\n  .breadcrumb {\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 0.5rem;\r\n    font-size: 0.9rem;\r\n    \r\n    a {\r\n      color: var(--primary-color);\r\n      text-decoration: none;\r\n      transition: all 0.3s ease;\r\n      \r\n      &:hover {\r\n        color: var(--primary-dark);\r\n      }\r\n    }\r\n    \r\n    .separator {\r\n      color: var(--text-light);\r\n    }\r\n    \r\n    .current {\r\n      color: var(--text-secondary);\r\n      font-weight: 600;\r\n    }\r\n  }\r\n}\r\n\r\n// Service Hero\r\n.service-hero {\r\n  background: var(--white);\r\n  border-radius: 12px;\r\n  padding: 2rem;\r\n  margin-bottom: 2rem;\r\n  border: 1px solid var(--border);\r\n}\r\n\r\n.hero-content {\r\n  display: grid;\r\n  grid-template-columns: 1fr 400px;\r\n  gap: 3rem;\r\n  \r\n  @media (max-width: 768px) {\r\n    grid-template-columns: 1fr;\r\n    gap: 2rem;\r\n  }\r\n}\r\n\r\n.service-info {\r\n  .service-title {\r\n    font-size: 2rem;\r\n    font-weight: 700;\r\n    color: var(--text-primary);\r\n    margin-bottom: 1rem;\r\n    line-height: 1.3;\r\n  }\r\n  \r\n  .service-description {\r\n    font-size: 1.1rem;\r\n    color: var(--text-secondary);\r\n    line-height: 1.6;\r\n    margin-bottom: 1.5rem;\r\n  }\r\n  \r\n  .detailed-description {\r\n    font-size: 0.95rem;\r\n    color: var(--text-secondary);",
+      "size": 7695,
+      "lines": 400,
+      "modified": "2025-11-11T09:02:17.711Z",
+      "created": "2025-11-11T09:00:41.013Z",
+      "extension": ".scss"
+    },
+    {
+      "path": "src\\app\\components\\services\\service-category\\service-category.component.scss",
+      "content": ":host {\r\n  --primary-color: #1e88e5;\r\n  --primary-dark: #1565c0;\r\n  --primary-light: #64b5f6;\r\n  --secondary-color: #f44336;\r\n  --text-primary: #424750;\r\n  --text-secondary: #5a5f69;\r\n  --text-light: #81858b;\r\n  --background: #f5f7f9;\r\n  --white: #ffffff;\r\n  --border: #e0e0e6;\r\n  --border-light: #f0f0f1;\r\n  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);\r\n  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n.category-page {\r\n  background: var(--background);\r\n  min-height: 100vh;\r\n  direction: rtl;\r\n  font-family: 'Yekan Bakh', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\r\n}\r\n\r\n.container {\r\n  max-width: 1200px;\r\n  margin: 0 auto;\r\n  padding: 0 1rem;\r\n}\r\n\r\n// Category Hero\r\n.category-hero {\r\n  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);\r\n  padding: 3rem 0;\r\n  color: var(--white);\r\n  text-align: center;\r\n  \r\n  .hero-content {\r\n    .category-title {\r\n      font-size: 2.5rem;\r\n      font-weight: 700;\r\n      margin-bottom: 1rem;\r\n    }\r\n    \r\n    .category-description {\r\n      font-size: 1.1rem;\r\n      opacity: 0.9;\r\n      max-width: 600px;\r\n      margin: 0 auto;\r\n      line-height: 1.6;\r\n    }\r\n  }\r\n}\r\n\r\n// Services Grid\r\n.services-section {\r\n  padding: 3rem 0;\r\n}\r\n\r\n.services-grid {\r\n  display: grid;\r\n  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));\r\n  gap: 2rem;\r\n}\r\n\r\n.service-card {\r\n  background: var(--white);\r\n  border: 1px solid var(--border);\r\n  border-radius: 12px;\r\n  overflow: hidden;\r\n  transition: all 0.3s ease;\r\n  cursor: pointer;\r\n  \r\n  &:hover {\r\n    transform: translateY(-4px);\r\n    box-shadow: var(--shadow-lg);\r\n    border-color: var(--primary-color);\r\n  }\r\n  \r\n  .service-image {\r\n    width: 100%;\r\n    height: 200px;\r\n    object-fit: cover;\r\n    background: var(--background);\r\n  }\r\n  \r\n  .service-content {\r\n    padding: 1.5rem;\r\n    \r\n    .service-title {\r\n      font-size: 1.25rem;\r\n      font-weight: 700;\r\n      color: var(--text-primary);\r\n      margin-",
+      "size": 3665,
+      "lines": 179,
+      "modified": "2025-11-11T08:56:03.982Z",
+      "created": "2025-11-11T08:55:45.673Z",
+      "extension": ".scss"
+    },
+    {
+      "path": "src\\app\\components\\technology\\technology.component.ts",
+      "content": "import { Component, OnInit } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-technology',\r\n  imports: [CommonModule],\r\n  templateUrl: './technology.component.html',\r\n  styleUrl: './technology.component.scss'\r\n})\r\nexport class TechnologyComponent implements OnInit {\r\n\r\n  technologies = [\r\n    {\r\n      id: 1,\r\n      title: 'اسکنرهای دیجیتال سه‌بعدی',\r\n      description: 'دقیق‌ترین تکنولوژی اسکن داخل دهانی با دقت ۵ میکرون',\r\n      features: [\r\n        'اسکن فول آرک در کمتر از ۲ دقیقه',\r\n        'قابلیت اسکن رنگ برای تطابق کامل با دندان طبیعی',\r\n        'خروجی STL با بالاترین کیفیت',\r\n        'سازگاری با تمام سیستم‌های CAD/CAM'\r\n      ],\r\n      specifications: {\r\n        accuracy: '5 میکرون',\r\n        scanTime: '2 دقیقه',\r\n        resolution: '20 مگاپیکسل'\r\n      },\r\n      active: false\r\n    },\r\n    {\r\n      id: 2,\r\n      title: 'سیستم CAD/CAM پیشرفته',\r\n      description: 'طراحی و ساخت دیجیتال با نرم‌افزارهای تخصصی دندانپزشکی',\r\n      features: [\r\n        'طراحی بیومکانیکال دندان',\r\n        'شبیه‌سازی اکلوژن دینامیک',\r\n        'آنالیز استرس و فشار',\r\n        'کتابخانه دیجیتال دندان‌های طبیعی'\r\n      ],\r\n      specifications: {\r\n        software: '3Shape, Exocad',\r\n        designTime: '15-30 دقیقه',\r\n        compatibility: 'تمام مواد دندانی'\r\n      },\r\n      active: false\r\n    },\r\n    {\r\n      id: 3,\r\n      title: 'فرزینگ CNC 5 محوره',\r\n      description: 'دستگاه‌های فرز با دقت ۱۰ میکرون برای ساخت پروتزهای دندانی',\r\n      features: [\r\n        'فرز همزمان ۵ محوره',\r\n        'قابلیت کار با زیرکونیا و تیتانیوم',\r\n        'سیستم خنک‌کننده پیشرفته',\r\n        'کنترل کیفیت آنلاین'\r\n      ],\r\n      specifications: {\r\n        accuracy: '10 میکرون',\r\n        materials: 'زیرکونیا، تیتانیوم، کبالت-کروم',\r\n        axis: '5 محوره'\r\n      },\r\n      active: false\r\n    },\r\n    {\r\n      id: 4,\r\n      title: 'پرینتر سه‌بعدی DLP/LCD',\r\n      description: 'پرینت رزینی با رزولوشن ۴K برای مدل‌های جراحی و پروتز',\r\n      features: [\r\n    ",
+      "size": 6704,
+      "lines": 199,
+      "modified": "2025-11-11T07:29:17.946Z",
+      "created": "2025-11-06T19:18:34.353Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\technology\\technology.component.html",
+      "content": "<section class=\"technology-page\">\r\n  <!-- Hero Section -->\r\n  <div class=\"technology-hero\">\r\n    <div class=\"container\">\r\n      <div class=\"hero-content\">\r\n        <h1 class=\"hero-title\">تکنولوژی‌های پیشرفته دندانپزشکی دیجیتال</h1>\r\n        <p class=\"hero-description\">\r\n          با استفاده از مدرن‌ترین تجهیزات و نرم‌افزارهای تخصصی، بالاترین کیفیت خدمات دندانپزشکی دیجیتال را ارائه می‌دهیم\r\n        </p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Main Content -->\r\n  <section class=\"technology-main\">\r\n    <div class=\"container\">\r\n      <!-- Technologies Section -->\r\n      <div class=\"section-header\">\r\n        <h2>تجهیزات و تکنولوژی‌های ما</h2>\r\n        <p>مجهز به آخرین دستاوردهای تکنولوژی دندانپزشکی دیجیتال</p>\r\n      </div>\r\n\r\n      <div class=\"technologies-grid\">\r\n        <!-- Technology Card 1 -->\r\n        <div class=\"technology-card\" \r\n             [class.active]=\"technologies[0].active\"\r\n             (click)=\"toggleTechnology(1)\">\r\n          <div class=\"card-header\">\r\n            <h3 class=\"card-title\">اسکنرهای دیجیتال سه‌بعدی</h3>\r\n            <span class=\"card-badge\">دقت ۵ میکرون</span>\r\n          </div>\r\n          <div class=\"card-content\">\r\n            <p class=\"card-description\">\r\n              دقیق‌ترین تکنولوژی اسکن داخل دهانی با دقت ۵ میکرون برای ثبت کامل آناتومی دندان\r\n            </p>\r\n            <div class=\"card-features\">\r\n              <ul class=\"feature-list\">\r\n                <li>اسکن فول آرک در کمتر از ۲ دقیقه</li>\r\n                <li>قابلیت اسکن رنگ برای تطابق کامل</li>\r\n                <li>خروجی STL با بالاترین کیفیت</li>\r\n                <li>سازگاری با تمام سیستم‌های CAD/CAM</li>\r\n              </ul>\r\n            </div>\r\n            <div class=\"specifications\">\r\n              <div class=\"specs-grid\">\r\n                <div class=\"spec-item\">\r\n                  <div class=\"spec-label\">دقت</div>\r\n                  <div class=\"spec-value\">۵ میکرون</div>\r\n                </div>\r\n                <div class=\"spec-item\">\r\n                  <div cla",
+      "size": 18972,
+      "lines": 433,
+      "modified": "2025-11-11T07:26:18.501Z",
+      "created": "2025-11-06T19:18:34.354Z",
+      "extension": ".html"
+    },
+    {
+      "path": "src\\app\\components\\technology\\technology.component.scss",
+      "content": ":host {\r\n  --primary-color: #1e88e5;\r\n  --primary-dark: #1565c0;\r\n  --primary-light: #64b5f6;\r\n  --secondary-color: #f44336;\r\n  --text-primary: #424750;\r\n  --text-secondary: #5a5f69;\r\n  --text-light: #81858b;\r\n  --background: #f5f7f9;\r\n  --white: #ffffff;\r\n  --border: #e0e0e6;\r\n  --border-light: #f0f0f1;\r\n  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);\r\n  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);\r\n  --gradient: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);\r\n}\r\n\r\n.technology-page {\r\n  background: var(--background);\r\n  min-height: 100vh;\r\n  direction: rtl;\r\n  font-family: 'Yekan Bakh', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\r\n}\r\n\r\n.container {\r\n  max-width: 1200px;\r\n  margin: 0 auto;\r\n  padding: 0 1rem;\r\n}\r\n\r\n// Hero Section\r\n.technology-hero {\r\n  background: var(--gradient);\r\n  padding: 2.5rem 0;\r\n  position: relative;\r\n  overflow: hidden;\r\n  \r\n  .hero-content {\r\n    text-align: center;\r\n    position: relative;\r\n    z-index: 2;\r\n    \r\n    .hero-title {\r\n      font-size: 1.75rem;\r\n      font-weight: 700;\r\n      color: var(--white);\r\n      margin-bottom: 0.75rem;\r\n      line-height: 1.3;\r\n    }\r\n    \r\n    .hero-description {\r\n      font-size: 0.95rem;\r\n      color: rgba(255, 255, 255, 0.9);\r\n      line-height: 1.6;\r\n      margin-bottom: 0;\r\n      max-width: 600px;\r\n      margin-left: auto;\r\n      margin-right: auto;\r\n    }\r\n  }\r\n}\r\n\r\n// Main Content\r\n.technology-main {\r\n  padding: 2rem 0;\r\n}\r\n\r\n.section-header {\r\n  text-align: center;\r\n  margin-bottom: 2rem;\r\n  \r\n  h2 {\r\n    font-size: 1.375rem;\r\n    font-weight: 700;\r\n    color: var(--text-primary);\r\n    margin-bottom: 0.5rem;\r\n  }\r\n  \r\n  p {\r\n    font-size: 0.875rem;\r\n    color: var(--text-secondary);\r\n  }\r\n}\r\n\r\n// Technologies Grid\r\n.technologies-grid {\r\n  display: grid;\r\n  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));\r\n  gap: 1rem;\r\n  margin-bottom: 3rem;\r\n}\r\n\r\n.technology-card {\r\n  background: var(--white);\r\n  border:",
+      "size": 9998,
+      "lines": 523,
+      "modified": "2025-11-11T07:21:29.427Z",
+      "created": "2025-11-06T19:18:34.354Z",
+      "extension": ".scss"
+    },
+    {
+      "path": "src\\app\\components\\contact\\contact.component.html",
+      "content": "<section class=\"contact-page\">\r\n  <!-- Hero Section -->\r\n  <div class=\"contact-hero\" [style.--hero-background]=\"'url(/assets/images/contact-bg.jpg)'\">\r\n    <div class=\"container\">\r\n      <div class=\"hero-content\">\r\n        <h1 class=\"hero-title\">در تماس باشید</h1>\r\n        <p class=\"hero-description\">\r\n          ما اینجا هستیم تا به سوالات شما پاسخ دهیم و بهترین خدمات را ارائه کنیم\r\n        </p>\r\n        <div class=\"hero-actions\">\r\n          <button class=\"btn btn-primary\" (click)=\"scrollToForm()\">\r\n            ارسال پیام\r\n          </button>\r\n          <button class=\"btn btn-secondary\" (click)=\"scrollToInfo()\">\r\n            اطلاعات تماس\r\n          </button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- Contact Info -->\r\n  <section class=\"contact-info\" id=\"contact-info\">\r\n    <div class=\"container\">\r\n      <div class=\"info-grid\">\r\n        <!-- Info Card 1 -->\r\n        <div class=\"info-card\">\r\n          <div class=\"card-content\">\r\n            <h3>آدرس ما</h3>\r\n            <p>تهران، خیابان ولیعصر، پلاک ۱۲۳۴</p>\r\n            <p>طبقه دوم، واحد ۵</p>\r\n            <button class=\"card-link\" (click)=\"openMap()\">\r\n              مشاهده روی نقشه\r\n            </button>\r\n          </div>\r\n        </div>\r\n\r\n        <!-- Info Card 2 -->\r\n        <div class=\"info-card\">\r\n          <div class=\"card-content\">\r\n            <h3>تلفن تماس</h3>\r\n            <p class=\"phone-number\">۰۲۱-۱۲۳۴۵۶۷۸</p>\r\n            <p class=\"phone-number\">۰۹۱۲-۱۲۳-۴۵۶۷</p>\r\n            <button class=\"card-link\" (click)=\"makeCall('02112345678')\">\r\n              تماس تلفنی\r\n            </button>\r\n          </div>\r\n        </div>\r\n\r\n        <!-- Info Card 3 -->\r\n        <div class=\"info-card\">\r\n          <div class=\"card-content\">\r\n            <h3>ایمیل ما</h3>\r\n            <p>info@dentallab.com</p>\r\n            <p>support@dentallab.com</p>\r\n            <button class=\"card-link\" (click)=\"sendEmail('info@dentallab.com')\">\r\n              ارسال ایمیل\r\n            </button>\r\n          </div>\r\n       ",
+      "size": 12131,
+      "lines": 311,
+      "modified": "2025-11-11T07:06:12.736Z",
+      "created": "2025-11-06T19:18:37.752Z",
+      "extension": ".html"
+    },
+    {
+      "path": "src\\app\\components\\contact\\contact.component.scss",
+      "content": ":host {\r\n  --primary-color: #1e88e5;\r\n  --primary-dark: #1565c0;\r\n  --primary-light: #64b5f6;\r\n  --secondary-color: #f44336;\r\n  --text-primary: #424750;\r\n  --text-secondary: #5a5f69;\r\n  --text-light: #81858b;\r\n  --background: #f5f7f9;\r\n  --white: #ffffff;\r\n  --border: #e0e0e6;\r\n  --border-light: #f0f0f1;\r\n  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);\r\n  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n.contact-page {\r\n  background: var(--background);\r\n  min-height: 100vh;\r\n  direction: rtl;\r\n  font-family: 'Yekan Bakh', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\r\n}\r\n\r\n.container {\r\n  max-width: 1200px;\r\n  margin: 0 auto;\r\n  padding: 0 1rem;\r\n}\r\n\r\n// Contact Hero با پس‌زمینه قابل تنظیم\r\n.contact-hero {\r\n  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);\r\n  padding: 3rem 0;\r\n  position: relative;\r\n  overflow: hidden;\r\n  \r\n  &::before {\r\n    content: '';\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background-image: var(--hero-background, none);\r\n    background-size: cover;\r\n    background-position: center;\r\n    opacity: 0.1;\r\n  }\r\n  \r\n  .hero-content {\r\n    text-align: center;\r\n    position: relative;\r\n    z-index: 2;\r\n    \r\n    .hero-title {\r\n      font-size: 2rem;\r\n      font-weight: 700;\r\n      color: var(--white);\r\n      margin-bottom: 0.75rem;\r\n      line-height: 1.3;\r\n    }\r\n    \r\n    .hero-description {\r\n      font-size: 1rem;\r\n      color: rgba(255, 255, 255, 0.9);\r\n      line-height: 1.6;\r\n      margin-bottom: 2rem;\r\n      max-width: 600px;\r\n      margin-left: auto;\r\n      margin-right: auto;\r\n    }\r\n  }\r\n}\r\n\r\n.hero-actions {\r\n  display: flex;\r\n  gap: 0.75rem;\r\n  justify-content: center;\r\n  flex-wrap: wrap;\r\n}\r\n\r\n// Contact Info - طراحی کارت‌های شبیه دیجی‌کالا\r\n.contact-info {\r\n  padding: 2.5rem 0;\r\n  background: var(--white);\r\n  \r\n  #contact-info {\r\n    scroll-margin-top: 2rem;\r\n  }\r\n}\r\n\r\n.info-grid {\r\n  display: grid;\r\n  grid-",
+      "size": 14233,
+      "lines": 744,
+      "modified": "2025-11-11T07:04:43.383Z",
+      "created": "2025-11-06T19:18:37.750Z",
+      "extension": ".scss"
+    },
+    {
+      "path": "src\\app\\components\\contact\\contact.component.ts",
+      "content": "import { Component, OnInit } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'app-contact',\r\n  imports: [CommonModule, ReactiveFormsModule],\r\n  templateUrl: './contact.component.html',\r\n  styleUrl: './contact.component.scss'\r\n})\r\nexport class ContactComponent implements OnInit {\r\n  \r\n  contactForm!: FormGroup;\r\n  isSubmitting = false;\r\n  \r\n  // سوالات متداول\r\n  faqs = [\r\n    {\r\n      question: 'مدت زمان پاسخگویی به پیام‌ها چقدر است؟',\r\n      answer: 'پیام‌های شما حداکثر تا ۲۴ ساعت کاری پاسخ داده می‌شوند. در موارد فوری از طریق تلفن تماس بگیرید.',\r\n      open: false\r\n    },\r\n    {\r\n      question: 'آیا مشاوره اولیه رایگان است؟',\r\n      answer: 'بله، مشاوره تلفنی و آنلاین به صورت کاملاً رایگان ارائه می‌شود.',\r\n      open: false\r\n    },\r\n    {\r\n      question: 'ساعات کاری شما چه زمانی است؟',\r\n      answer: 'شنبه تا چهارشنبه از ۸ صبح تا ۶ عصر و پنجشنبه‌ها تا ۲ بعدازظهر آماده خدمات‌رسانی هستیم.',\r\n      open: false\r\n    },\r\n    {\r\n      question: 'آیا امکان مراجعه فوری وجود دارد؟',\r\n      answer: 'برای موارد اورژانسی با شماره موبایل تماس بگیرید تا هماهنگی‌های لازم انجام شود.',\r\n      open: false\r\n    }\r\n  ];\r\n\r\n  constructor(private fb: FormBuilder) {}\r\n\r\n  ngOnInit() {\r\n    this.initForm();\r\n  }\r\n\r\n  initForm() {\r\n    this.contactForm = this.fb.group({\r\n      firstName: ['', [Validators.required, Validators.minLength(2)]],\r\n      lastName: ['', [Validators.required, Validators.minLength(2)]],\r\n      phone: ['', [Validators.required, Validators.pattern(/^09[0-9]{9}$/)]],\r\n      email: ['', [Validators.email]],\r\n      serviceType: [''],\r\n      message: ['', [Validators.required, Validators.minLength(10)]]\r\n    });\r\n  }\r\n\r\n  // بررسی اعتبار فیلد\r\n  isFieldInvalid(fieldName: string): boolean {\r\n    const field = this.contactForm.get(fieldName);\r\n    return !!(field && field.invalid && (field.dirty || field.touched));\r\n  }\r\n\r\n  // ارسا",
+      "size": 4147,
+      "lines": 121,
+      "modified": "2025-11-11T06:53:29.430Z",
+      "created": "2025-11-06T19:18:37.750Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\blog\\post\\post.component.ts",
+      "content": "import { Component, OnInit } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { ActivatedRoute, RouterModule } from '@angular/router';\r\nimport { Router } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-post',\r\n  standalone: true,\r\n  imports: [CommonModule, RouterModule],\r\n  templateUrl: './post.component.html',\r\n  styleUrls: ['./post.component.scss']\r\n})\r\nexport class PostComponent implements OnInit {\r\n  \r\n  post: any = null;\r\n  relatedPosts: any[] = [];\r\n\r\n  constructor(\r\n    private route: ActivatedRoute,\r\n    private router: Router\r\n  ) {}\r\n\r\n  ngOnInit() {\r\n    this.route.paramMap.subscribe(params => {\r\n      const slug = params.get('slug');\r\n      this.loadPost(slug);\r\n    });\r\n  }\r\n\r\n  loadPost(slug: string | null) {\r\n    const allPosts = this.getAllPosts();\r\n    this.post = allPosts.find(p => p.slug === slug);\r\n    \r\n    if (!this.post) {\r\n      this.router.navigate(['/blog']);\r\n      return;\r\n    }\r\n\r\n    this.loadRelatedPosts();\r\n  }\r\n\r\n  getAllPosts() {\r\n    return [\r\n      {\r\n        id: 1,\r\n        title: 'روکش زیرکونیا: انقلابی در دندانپزشکی مدرن',\r\n        excerpt: 'بررسی مزایا، معایب و کاربردهای روکش زیرکونیا در دندانپزشکی دیجیتال.',\r\n        content: `\r\n          <h2>مقدمه</h2>\r\n          <p>روکش زیرکونیا یکی از پیشرفته‌ترین تکنولوژی‌ها در زمینه دندانپزشکی مدرن است که تحول بزرگی در صنعت دندانپزشکی ایجاد کرده است. این ماده با دارا بودن خواص منحصر به فرد، جایگزین مناسبی برای روکش‌های سنتی شده است.</p>\r\n          \r\n          <h2>مزایای روکش زیرکونیا</h2>\r\n          <ul>\r\n            <li><strong>استحکام فوق‌العاده:</strong> زیرکونیا دارای استحکام فشاری بالایی است که آن را برای دندان‌های عقب ایده‌آل می‌کند.</li>\r\n            <li><strong>بیوکامپتیبیلیتی:</strong> سازگاری عالی با بافت‌های دهانی و عدم ایجاد حساسیت.</li>\r\n            <li><strong>شفافیت طبیعی:</strong> با تکنولوژی‌های جدید، زیرکونیا ظاهری کاملاً طبیعی پیدا کرده است.</li>\r\n            <li><strong>دوام بالا:</strong> مقاومت عالی در برابر سایش و شکستگی.</li",
+      "size": 6744,
+      "lines": 152,
+      "modified": "2025-11-11T05:49:06.332Z",
+      "created": "2025-11-10T12:55:06.514Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\blog\\blog.component.ts",
+      "content": "import { Component, OnInit } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule } from '@angular/forms';\r\nimport { RouterModule } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-blog',\r\n  standalone: true,\r\n  imports: [CommonModule, FormsModule, RouterModule],\r\n  templateUrl: './blog.component.html',\r\n  styleUrls: ['./blog.component.scss']\r\n})\r\nexport class BlogComponent implements OnInit {\r\n\r\n  // مقالات منتخب - با استفاده از عکس‌های موجود\r\n  featuredPosts = [\r\n    {\r\n      id: 1,\r\n      title: 'روکش زیرکونیا: انقلابی در دندانپزشکی مدرن',\r\n      excerpt: 'بررسی مزایا، معایب و کاربردهای روکش زیرکونیا در دندانپزشکی دیجیتال. چگونه این تکنولوژی تحول بزرگی در صنعت دندانپزشکی ایجاد کرده است.',\r\n      image: 'assets/images/blog/zirconia-crown.jpg',\r\n      category: 'تکنولوژی',\r\n      date: '۱۴۰۲/۱۰/۱۵',\r\n      readTime: '۵ دقیقه',\r\n      author: 'دکتر محمدی',\r\n      slug: 'zirconia-crown-revolution'\r\n    },\r\n    {\r\n      id: 2,\r\n      title: 'لمینیت سرامیکی vs کامپوزیت ونیر',\r\n      excerpt: 'مقایسه کامل لمینیت سرامیکی و کامپوزیت ونیر از نظر ماندگاری، زیبایی و هزینه. کدام گزینه برای لبخند شما مناسب‌تر است؟',\r\n      image: 'assets/images/blog/veneer-comparison.jpg',\r\n      category: 'مقایسه',\r\n      date: '۱۴۰۲/۱۰/۱۲',\r\n      readTime: '۷ دقیقه',\r\n      author: 'دکتر رضایی',\r\n      slug: 'veneer-vs-composite-comparison'\r\n    }\r\n  ];\r\n\r\n  // مقالات اخیر\r\n  recentPosts = [\r\n    {\r\n      id: 3,\r\n      title: 'مراقبت از ایمپلنت دندان',\r\n      excerpt: 'راهنمای کامل مراقبت و نگهداری از ایمپلنت دندان برای افزایش طول عمر. نکات طلایی برای حفظ سلامت ایمپلنت‌های دندانی.',\r\n      image: 'assets/images/blog/implant-care.jpg',\r\n      category: 'مراقبت',\r\n      date: '۱۴۰۲/۱۰/۱۰',\r\n      readTime: '۴ دقیقه',\r\n      author: 'دکتر کریمی',\r\n      slug: 'dental-implant-care'\r\n    },\r\n    {\r\n      id: 4,\r\n      title: 'CAD/CAM در دندانپزشکی دیجیتال',\r\n      excerpt: 'نقش تکنولوژی CAD/CAM در تحول لابراتوارهای دندانپزشکی. چگونه این تکنولوژی د",
+      "size": 9333,
+      "lines": 244,
+      "modified": "2025-11-11T05:48:38.781Z",
+      "created": "2025-11-07T19:09:15.990Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\blog\\blog.component.scss",
+      "content": ":host {\r\n  --primary-color: #1e88e5;\r\n  --primary-dark: #1565c0;\r\n  --primary-light: #64b5f6;\r\n  --text-primary: #212121;\r\n  --text-secondary: #757575;\r\n  --text-light: #9e9e9e;\r\n  --background: #fafafa;\r\n  --white: #ffffff;\r\n  --border: #e0e0e0;\r\n  --border-light: #f5f5f5;\r\n  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n  --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);\r\n  --shadow-lg: 0 4px 20px rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.blog-section {\r\n  background: var(--background);\r\n  min-height: 100vh;\r\n  direction: rtl;\r\n  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\r\n}\r\n\r\n.blog-header {\r\n  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));\r\n  color: var(--white);\r\n  padding: 4rem 1rem 3rem;\r\n  text-align: center;\r\n  position: relative;\r\n  overflow: hidden;\r\n\r\n  &::before {\r\n    content: '';\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1000 100\" fill=\"%23ffffff\" opacity=\"0.05\"><polygon points=\"0,0 1000,50 1000,100 0,100\"/></svg>');\r\n    background-size: cover;\r\n  }\r\n\r\n  .blog-title {\r\n    font-size: 2.5rem;\r\n    font-weight: 700;\r\n    margin-bottom: 1rem;\r\n    position: relative;\r\n    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);\r\n  }\r\n\r\n  .blog-subtitle {\r\n    font-size: 1.1rem;\r\n    opacity: 0.9;\r\n    max-width: 600px;\r\n    margin: 0 auto;\r\n    line-height: 1.6;\r\n    position: relative;\r\n    font-weight: 300;\r\n  }\r\n}\r\n\r\n.blog-content {\r\n  max-width: 1200px;\r\n  margin: 0 auto;\r\n  padding: 2rem 1rem;\r\n  display: grid;\r\n  grid-template-columns: 1fr 300px;\r\n  grid-template-areas: \r\n    \"featured featured\"\r\n    \"latest sidebar\"\r\n    \"posts sidebar\"\r\n    \"pagination pagination\";\r\n  gap: 2rem;\r\n  align-items: start;\r\n}\r\n\r\n.featured-section {\r\n  grid-area: featured;\r\n  margin-bottom: 0;\r\n\r\n  .section-title {\r\n    font-size: 1.5rem;\r\n    font-weight: 700;\r\n    color: var(--text-primary);\r\n    margin-bottom: 1.5re",
+      "size": 17511,
+      "lines": 858,
+      "modified": "2025-11-11T05:14:03.236Z",
+      "created": "2025-11-07T19:13:06.605Z",
+      "extension": ".scss"
+    },
+    {
+      "path": "src\\app\\components\\blog\\post\\post.component.html",
+      "content": "<section class=\"post-section\" *ngIf=\"post\">\r\n  <!-- هدر مقاله -->\r\n  <header class=\"post-header\">\r\n    <button class=\"back-button\" routerLink=\"/blog\">← بازگشت به بلاگ</button>\r\n    \r\n    <span class=\"post-category\">{{ post.category }}</span>\r\n    <h1 class=\"post-title\">{{ post.title }}</h1>\r\n    <p class=\"post-excerpt\">{{ post.excerpt }}</p>\r\n    \r\n    <div class=\"post-meta\">\r\n      <div class=\"meta-item author\">\r\n        <span>نویسنده: {{ post.author }}</span>\r\n      </div>\r\n      <div class=\"meta-item date\">\r\n        <span>{{ post.date }}</span>\r\n      </div>\r\n      <div class=\"meta-item read-time\">\r\n        <span>{{ post.readTime }} مطالعه</span>\r\n      </div>\r\n    </div>\r\n  </header>\r\n\r\n  <!-- محتوای مقاله -->\r\n  <div class=\"post-content\">\r\n    <div class=\"post-image\" [style.background-image]=\"'url(' + post.image + ')'\"></div>\r\n    \r\n    <article class=\"article-content\" [innerHTML]=\"post.content\"></article>\r\n\r\n    <!-- تگ‌ها و اشتراک‌گذاری -->\r\n    <div class=\"post-actions\">\r\n      <div class=\"tags\">\r\n        <span class=\"tag\" *ngFor=\"let tag of post.tags\">{{ tag }}</span>\r\n      </div>\r\n      \r\n      <div class=\"share-buttons\">\r\n        <button class=\"share-btn twitter\" (click)=\"shareOnSocialMedia('twitter')\">\r\n          توییتر\r\n        </button>\r\n        <button class=\"share-btn linkedin\" (click)=\"shareOnSocialMedia('linkedin')\">\r\n          لینکدین\r\n        </button>\r\n        <button class=\"share-btn telegram\" (click)=\"shareOnSocialMedia('telegram')\">\r\n          تلگرام\r\n        </button>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n  <!-- مقالات مرتبط -->\r\n  <section class=\"related-posts\" *ngIf=\"relatedPosts.length > 0\">\r\n    <h2 class=\"section-title\">مقالات مرتبط</h2>\r\n    <div class=\"related-grid\">\r\n      <article class=\"related-card\" \r\n               *ngFor=\"let relatedPost of relatedPosts\"\r\n               [routerLink]=\"getPostUrl(relatedPost.slug)\">\r\n        <div class=\"related-image-container\">\r\n          <div class=\"related-image\" [style.background-image]=\"'ur",
+      "size": 2610,
+      "lines": 70,
+      "modified": "2025-11-10T13:05:20.032Z",
+      "created": "2025-11-10T12:55:06.514Z",
+      "extension": ".html"
+    },
+    {
+      "path": "src\\app\\components\\blog\\post\\post.component.scss",
+      "content": ":host {\r\n  --primary-color: #1e88e5;\r\n  --primary-dark: #1565c0;\r\n  --primary-light: #64b5f6;\r\n  --text-primary: #212121;\r\n  --text-secondary: #757575;\r\n  --text-light: #9e9e9e;\r\n  --background: #fafafa;\r\n  --white: #ffffff;\r\n  --border: #e0e0e0;\r\n  --border-light: #f5f5f5;\r\n  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n  --shadow-hover: 0 8px 25px rgba(0, 0, 0, 0.15);\r\n}\r\n\r\n.post-section {\r\n  background: var(--background);\r\n  min-height: 100vh;\r\n  direction: rtl;\r\n  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\r\n}\r\n\r\n.post-header {\r\n  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));\r\n  color: var(--white);\r\n  padding: 3rem 1rem;\r\n  text-align: center;\r\n  position: relative;\r\n  overflow: hidden;\r\n\r\n  &::before {\r\n    content: '';\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1000 100\" fill=\"%23ffffff\" opacity=\"0.05\"><polygon points=\"0,0 1000,50 1000,100 0,100\"/></svg>');\r\n    background-size: cover;\r\n  }\r\n\r\n  .back-button {\r\n    position: absolute;\r\n    top: 2rem;\r\n    right: 2rem;\r\n    background: rgba(255, 255, 255, 0.2);\r\n    color: var(--white);\r\n    border: none;\r\n    padding: 0.7rem 1.2rem;\r\n    border-radius: 25px;\r\n    cursor: pointer;\r\n    transition: all 0.3s ease;\r\n    font-weight: 500;\r\n    backdrop-filter: blur(10px);\r\n\r\n    &:hover {\r\n      background: rgba(255, 255, 255, 0.3);\r\n      transform: translateX(-5px);\r\n    }\r\n  }\r\n\r\n  .post-category {\r\n    display: inline-block;\r\n    background: rgba(255, 255, 255, 0.2);\r\n    color: var(--white);\r\n    padding: 0.5rem 1.2rem;\r\n    border-radius: 20px;\r\n    font-size: 0.8rem;\r\n    font-weight: 600;\r\n    margin-bottom: 1rem;\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.5px;\r\n    backdrop-filter: blur(10px);\r\n  }\r\n\r\n  .post-title {\r\n    font-size: 2.2rem;\r\n    font-weight: 700;\r\n    margin-bottom: 1rem;\r\n    line-height: 1.3;\r\n  ",
+      "size": 10352,
+      "lines": 520,
+      "modified": "2025-11-10T13:05:01.713Z",
+      "created": "2025-11-10T12:55:06.514Z",
+      "extension": ".scss"
+    },
+    {
+      "path": "src\\app\\components\\blog\\blog.component.html",
+      "content": "<section class=\"blog-section\">\r\n  <!-- هدر بلاگ -->\r\n  <header class=\"blog-header\">\r\n    <h1 class=\"blog-title\">مجله تخصصی دندانپزشکی</h1>\r\n    <p class=\"blog-subtitle\">آخرین مقالات، آموزش‌ها و اخبار حوزه دندانپزشکی و لابراتوار</p>\r\n  </header>\r\n\r\n  <!-- محتوای اصلی -->\r\n  <div class=\"blog-content\">\r\n    \r\n    <!-- مقالات منتخب -->\r\n    <section class=\"featured-section\">\r\n      <h2 class=\"section-title\">مقالات منتخب</h2>\r\n      <div class=\"featured-grid\">\r\n        <article class=\"featured-post\" \r\n                 *ngFor=\"let post of featuredPosts\"\r\n                 [routerLink]=\"getPostUrl(post.slug)\">\r\n          <div class=\"post-image-container\">\r\n            <div class=\"post-image\" [style.background-image]=\"'url(' + post.image + ')'\"></div>\r\n          </div>\r\n          <div class=\"post-content\">\r\n            <span class=\"post-category\">{{ post.category }}</span>\r\n            <h3 class=\"post-title\">{{ post.title }}</h3>\r\n            <p class=\"post-excerpt\">{{ post.excerpt }}</p>\r\n            <div class=\"post-meta\">\r\n              <span class=\"post-date\">{{ post.date }}</span>\r\n              <span class=\"read-time\">{{ post.readTime }} مطالعه</span>\r\n            </div>\r\n          </div>\r\n        </article>\r\n      </div>\r\n    </section>\r\n\r\n    <!-- سایدبار -->\r\n    <aside class=\"sidebar\">\r\n      \r\n      <!-- جستجو -->\r\n      <div class=\"sidebar-widget search-box\">\r\n        <h3 class=\"widget-title\">جستجوی مقاله</h3>\r\n        <div class=\"search-input-container\">\r\n          <input \r\n            type=\"text\" \r\n            class=\"search-input\" \r\n            placeholder=\"عنوان مقاله یا نویسنده...\"\r\n            [(ngModel)]=\"searchTerm\">\r\n        </div>\r\n      </div>\r\n\r\n      <!-- دسته‌بندی‌ها -->\r\n      <div class=\"sidebar-widget\">\r\n        <h3 class=\"widget-title\">دسته‌بندی‌ها</h3>\r\n        <div class=\"categories-list\">\r\n          <div \r\n            class=\"category-item\" \r\n            [class.active]=\"selectedCategory === 'همه'\"\r\n            (click)=\"filterByCategory('همه')\">",
+      "size": 5971,
+      "lines": 161,
+      "modified": "2025-11-10T13:03:36.565Z",
+      "created": "2025-11-07T19:09:15.990Z",
+      "extension": ".html"
+    },
+    {
+      "path": "src\\app\\components\\blog\\post\\post.component.spec.ts",
+      "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\r\n\r\nimport { Post } from './post';\r\n\r\ndescribe('Post', () => {\r\n  let component: Post;\r\n  let fixture: ComponentFixture<Post>;\r\n\r\n  beforeEach(async () => {\r\n    await TestBed.configureTestingModule({\r\n      imports: [Post]\r\n    })\r\n    .compileComponents();\r\n\r\n    fixture = TestBed.createComponent(Post);\r\n    component = fixture.componentInstance;\r\n    fixture.detectChanges();\r\n  });\r\n\r\n  it('should create', () => {\r\n    expect(component).toBeTruthy();\r\n  });\r\n});\r\n",
+      "size": 537,
+      "lines": 24,
+      "modified": "2025-11-10T12:55:06.514Z",
+      "created": "2025-11-10T12:55:06.514Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\gallery\\gallery.component.html",
+      "content": "<section class=\"gallery-section\">\r\n  \r\n  <!-- هدر اصلی -->\r\n  <div class=\"gallery-header\">\r\n    <h1 class=\"section-title\">گالری تخصصی لابراتوار دندانپزشکی</h1>\r\n    <p class=\"section-subtitle\">نمایش نمونه کارهای انجام شده با جدیدترین تکنولوژی‌های روز دنیا</p>\r\n  </div>\r\n\r\n  <!-- تب‌های اصلی -->\r\n  <div class=\"gallery-tabs\">\r\n    <button \r\n      class=\"tab-btn\" \r\n      [class.active]=\"activeTab === 'gallery'\"\r\n      (click)=\"setActiveTab('gallery')\">\r\n      گالری عکس\r\n    </button>\r\n    <button \r\n      class=\"tab-btn\" \r\n      [class.active]=\"activeTab === 'videos'\"\r\n      (click)=\"setActiveTab('videos')\">\r\n      ویدئوهای آموزشی\r\n    </button>\r\n  </div>\r\n\r\n  <!-- محتوای تب گالری عکس -->\r\n  <div class=\"tab-content\" *ngIf=\"activeTab === 'gallery'\">\r\n    \r\n    <!-- فیلتر دسته‌بندی -->\r\n    <div class=\"gallery-filters\">\r\n      <button \r\n        *ngFor=\"let category of categories\" \r\n        [class.active]=\"selectedCategory === category\"\r\n        (click)=\"filterGallery(category)\"\r\n        class=\"filter-btn\">\r\n        {{ category }}\r\n      </button>\r\n    </div>\r\n\r\n    <!-- گالری عکس‌ها -->\r\n    <div class=\"gallery-grid\">\r\n      <div class=\"gallery-item\" \r\n           *ngFor=\"let item of filteredItems\" \r\n           [class.featured]=\"item.featured\">\r\n        \r\n        <div class=\"gallery-card\">\r\n          <!-- هدر کارت -->\r\n          <div class=\"gallery-card-header\">\r\n            <h3 class=\"gallery-category\">{{ item.category }}</h3>\r\n            <div class=\"tech-badge\">{{ item.technology }}</div>\r\n          </div>\r\n\r\n          <!-- بدنه کارت -->\r\n          <div class=\"gallery-image-container\">\r\n            <div class=\"image-comparison\">\r\n              <!-- تصویر قبل -->\r\n              <div class=\"image-half before\" (click)=\"openLightbox(item, 'before')\">\r\n                <div class=\"image-placeholder before\" \r\n                     [style.background]=\"'url(' + item.before.image + ')'\">\r\n                  <div class=\"image-badge before-badge\">قبل</div>\r\n                  <div cla",
+      "size": 8083,
+      "lines": 208,
+      "modified": "2025-11-10T11:21:32.124Z",
+      "created": "2025-11-06T19:18:36.013Z",
+      "extension": ".html"
+    },
+    {
+      "path": "src\\app\\components\\gallery\\gallery.component.scss",
+      "content": "// متغیرهای طراحی حرفه‌ای\r\n:host {\r\n  --primary-blue: #1e40af;\r\n  --medical-teal: #0d9488;\r\n  --pure-white: #ffffff;\r\n  --gray-lighter: #f8fafc;\r\n  --gray-light: #e2e8f0;\r\n  --gray-medium: #64748b;\r\n  --gray-dark: #334155;\r\n  --dark-charcoal: #1e293b;\r\n  \r\n  --gradient-primary: linear-gradient(135deg, #1e40af, #0d9488);\r\n  --gradient-before: linear-gradient(135deg, #6366f1, #8b5cf6);\r\n  --gradient-after: linear-gradient(135deg, #06b6d4, #10b981);\r\n  \r\n  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);\r\n  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);\r\n  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);\r\n  \r\n  --radius-sm: 4px;\r\n  --radius-md: 6px;\r\n  --radius-lg: 8px;\r\n  --radius-xl: 10px;\r\n}\r\n\r\n// استایل‌های اصلی\r\n.gallery-section {\r\n  padding: 2rem 0;\r\n  background: #fafafa;\r\n  min-height: 100vh;\r\n  direction: rtl;\r\n  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\r\n}\r\n\r\n// هدر اصلی\r\n.gallery-header {\r\n  text-align: center;\r\n  margin-bottom: 2rem;\r\n  \r\n  .section-title {\r\n    font-size: 1.5rem;\r\n    font-weight: 600;\r\n    color: var(--dark-charcoal);\r\n    margin-bottom: 0.5rem;\r\n  }\r\n  \r\n  .section-subtitle {\r\n    font-size: 0.9rem;\r\n    color: var(--gray-medium);\r\n    line-height: 1.5;\r\n    max-width: 500px;\r\n    margin: 0 auto;\r\n  }\r\n}\r\n\r\n// تب‌های اصلی\r\n.gallery-tabs {\r\n  display: flex;\r\n  justify-content: center;\r\n  margin-bottom: 1.5rem;\r\n  gap: 0.5rem;\r\n  flex-wrap: wrap;\r\n\r\n  .tab-btn {\r\n    background: var(--pure-white);\r\n    border: 1px solid var(--gray-light);\r\n    padding: 0.6rem 1.2rem;\r\n    border-radius: var(--radius-lg);\r\n    cursor: pointer;\r\n    transition: all 0.2s ease;\r\n    font-weight: 500;\r\n    color: var(--gray-dark);\r\n    font-size: 0.85rem;\r\n\r\n    &:hover {\r\n      border-color: var(--primary-blue);\r\n      color: var(--primary-blue);\r\n    }\r\n\r\n    &.active {\r\n      background: var(--primary-blue);\r\n      color: var(--pure-white);\r\n      border-color: var(--primary-blue);\r\n    }\r\n  }\r\n}\r\n\r\n.tab-content {\r\n  animation: fadeIn 0.3s ease;\r\n}\r\n\r",
+      "size": 18389,
+      "lines": 934,
+      "modified": "2025-11-10T11:13:07.000Z",
+      "created": "2025-11-06T19:18:36.013Z",
+      "extension": ".scss"
+    },
+    {
+      "path": "src\\app\\components\\gallery\\gallery.component.ts",
+      "content": "import { Component, HostListener } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'app-gallery',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './gallery.component.html',\r\n  styleUrls: ['./gallery.component.scss']\r\n})\r\nexport class GalleryComponent {\r\n\r\n  // خدمات واقعی لابراتوار دندانپزشکی\r\n  galleryItems = [\r\n    {\r\n      id: 1,\r\n      category: 'روکش زیرکونیا',\r\n      before: {\r\n        title: 'قبل از درمان',\r\n        description: 'دندان آسیاب فرسوده',\r\n        image: 'assets/images/gallery/zirconia/before-1.jpg',\r\n        placeholder: 'دندان آسیاب فرسوده'\r\n      },\r\n      after: {\r\n        title: 'بعد از درمان', \r\n        description: 'روکش زیرکونیای کامل',\r\n        image: 'assets/images/gallery/zirconia/after-1.jpg',\r\n        placeholder: 'روکش زیرکونیا'\r\n      },\r\n      description: 'روکش کامل زیرکونیا برای دندان آسیاب با استحکام و زیبایی بالا',\r\n      featured: true,\r\n      technology: 'CAD/CAM',\r\n      duration: '۲ روز',\r\n      material: 'زیرکونیای پرچگال'\r\n    },\r\n    {\r\n      id: 2,\r\n      category: 'روکش IPS Emax',\r\n      before: {\r\n        title: 'قبل از درمان',\r\n        description: 'دندان جلو شکسته',\r\n        image: 'assets/images/gallery/emax/before-1.jpg',\r\n        placeholder: 'دندان جلو شکسته'\r\n      },\r\n      after: {\r\n        title: 'بعد از درمان',\r\n        description: 'روکش Emax شفاف',\r\n        image: 'assets/images/gallery/emax/after-1.jpg',\r\n        placeholder: 'روکش IPS Emax'\r\n      },\r\n      description: 'روکش IPS Emax برای دندان‌های جلو با شفافیت طبیعی',\r\n      featured: true,\r\n      technology: 'CAD/CAM',\r\n      duration: '۳ روز',\r\n      material: 'سرامیک شیشه‌ای'\r\n    },\r\n    {\r\n      id: 3,\r\n      category: 'لمینیت سرامیکی',\r\n      before: {\r\n        title: 'قبل از درمان',\r\n        description: 'لبخند نامتقارن',\r\n        image: 'assets/images/gallery/veneer/before-1.jpg',\r\n        placeholder: 'لبخند نامتقارن'\r\n      },\r\n      after: {\r\n        title: 'بعد از درمان",
+      "size": 10866,
+      "lines": 316,
+      "modified": "2025-11-10T11:08:48.649Z",
+      "created": "2025-11-06T19:18:36.010Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\index.html",
+      "content": "<!doctype html>\r\n<html lang=\"fa\" dir=\"rtl\">\r\n<head>\r\n  <meta charset=\"utf-8\">\r\n  <title>لابراتوار دندانپزشکی دیجیتال | Digital Dental Lab</title>\r\n  <base href=\"/\">\r\n  \r\n  <!-- Viewport برای رسپانسیو -->\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n  \r\n  <!-- Favicon -->\r\n  <link rel=\"icon\" type=\"image/x-icon\" href=\"favicon.ico\">\r\n  \r\n  <!-- Meta Tags برای سئو -->\r\n  <meta name=\"description\" content=\"لابراتوار تخصصی دندانپزشکی دیجیتال - ارائه خدمات لمینیت سرامیکی، روکش دیجیتال، ایمپلنت و پروتزهای دندانی با پیشرفته‌ترین تکنولوژی‌ها\">\r\n  <meta name=\"keywords\" content=\"لابراتوار دندانپزشکی, لمینیت سرامیکی, روکش دیجیتال, ایمپلنت, پروتز دندانی, دندانپزشکی دیجیتال\">\r\n  <meta name=\"author\" content=\"Digital Dental Lab\">\r\n  \r\n  <!-- Open Graph برای شبکه‌های اجتماعی -->\r\n  <meta property=\"og:title\" content=\"لابراتوار دندانپزشکی دیجیتال\">\r\n  <meta property=\"og:description\" content=\"خدمات تخصصی دندانپزشکی دیجیتال با بالاترین کیفیت\">\r\n  <meta property=\"og:type\" content=\"website\">\r\n  <meta property=\"og:locale\" content=\"fa_IR\">\r\n  \r\n  <!-- فونت Vazirmatn برای فارسی -->\r\n  <link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/vazirmatn@33.003/miscellaneous/Farsi-Digits/font-face.css\">\r\n  \r\n  <!-- فونت Inter برای انگلیسی -->\r\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\r\n  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\r\n  <link href=\"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap\" rel=\"stylesheet\">\r\n  \r\n  <!-- استایل اولیه برای فونت‌ها -->\r\n  <style>\r\n    /* پیش‌بارگذاری فونت‌ها */\r\n    html {\r\n      font-family: 'Vazirmatn', 'Inter', sans-serif;\r\n    }\r\n    \r\n    /* جلوگیری از فلیکر در لود فونت */\r\n    .fonts-loading * {\r\n      visibility: hidden;\r\n    }\r\n    \r\n    .fonts-loaded * {\r\n      visibility: visible;\r\n    }\r\n  </style>\r\n  \r\n  <!-- Structured Data برای سئو -->\r\n  <script type=\"application/ld+json\">\r\n  {\r\n    \"@context\": \"https://schema.org\",\r\n    \"@type\": \"Denta",
+      "size": 3593,
+      "lines": 89,
+      "modified": "2025-11-08T10:10:16.159Z",
+      "created": "2025-11-06T18:37:24.216Z",
+      "extension": ".html"
+    },
+    {
+      "path": "src\\app\\components\\blog\\blog.component.spec.ts",
+      "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\r\n\r\nimport { Blog } from './blog';\r\n\r\ndescribe('Blog', () => {\r\n  let component: Blog;\r\n  let fixture: ComponentFixture<Blog>;\r\n\r\n  beforeEach(async () => {\r\n    await TestBed.configureTestingModule({\r\n      imports: [Blog]\r\n    })\r\n    .compileComponents();\r\n\r\n    fixture = TestBed.createComponent(Blog);\r\n    component = fixture.componentInstance;\r\n    fixture.detectChanges();\r\n  });\r\n\r\n  it('should create', () => {\r\n    expect(component).toBeTruthy();\r\n  });\r\n});\r\n",
+      "size": 537,
+      "lines": 24,
+      "modified": "2025-11-07T19:09:15.990Z",
+      "created": "2025-11-07T19:09:15.983Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\hero\\hero.component.scss",
+      "content": ".hero {\r\n  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\r\n  color: white;\r\n  padding: 8rem 2rem 6rem;\r\n  position: relative;\r\n  overflow: hidden;\r\n\r\n  &::before {\r\n    content: '';\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1000 1000\"><polygon fill=\"rgba(255,255,255,0.05)\" points=\"0,1000 1000,0 1000,1000\"/></svg>');\r\n    background-size: cover;\r\n  }\r\n}\r\n\r\n.hero-content {\r\n  max-width: 1400px;\r\n  margin: 0 auto;\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  gap: 4rem;\r\n  align-items: center;\r\n  position: relative;\r\n  z-index: 2;\r\n}\r\n\r\n.hero-text {\r\n  .hero-title {\r\n    font-size: 3.5rem;\r\n    font-weight: 800;\r\n    margin-bottom: 1.5rem;\r\n    line-height: 1.2;\r\n    background: linear-gradient(135deg, #ffffff, #e3f2fd);\r\n    -webkit-background-clip: text;\r\n    -webkit-text-fill-color: transparent;\r\n    background-clip: text;\r\n\r\n    @media (max-width: 768px) {\r\n      font-size: 2.5rem;\r\n    }\r\n  }\r\n\r\n  .hero-subtitle {\r\n    font-size: 1.3rem;\r\n    margin-bottom: 2.5rem;\r\n    opacity: 0.9;\r\n    line-height: 1.6;\r\n    font-weight: 400;\r\n  }\r\n}\r\n\r\n.hero-buttons {\r\n  display: flex;\r\n  gap: 1.5rem;\r\n  align-items: center;\r\n\r\n  .btn {\r\n    padding: 1.2rem 2.5rem;\r\n    font-size: 1.1rem;\r\n    font-weight: 600;\r\n\r\n    &-primary {\r\n      background: linear-gradient(135deg, #ff6b6b, #ffa726);\r\n      box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);\r\n\r\n      &:hover {\r\n        transform: translateY(-3px);\r\n        box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);\r\n      }\r\n    }\r\n\r\n    &-secondary {\r\n      background: transparent;\r\n      color: white;\r\n      border: 2px solid rgba(255, 255, 255, 0.3);\r\n\r\n      &:hover {\r\n        background: white;\r\n        color: #667eea;\r\n        border-color: white;\r\n      }\r\n    }\r\n  }\r\n\r\n  .hero-stats {\r\n    display: flex;\r\n    gap: 2rem;\r\n    margin-left: 2rem;\r\n\r\n    .stat {\r\n      ",
+      "size": 4833,
+      "lines": 245,
+      "modified": "2025-11-07T19:03:22.030Z",
+      "created": "2025-11-06T19:14:08.795Z",
+      "extension": ".scss"
+    },
+    {
+      "path": "src\\app\\app.scss",
+      "content": "/* ===== RESET & BASE STYLES ===== */\r\n* {\r\n  margin: 0;\r\n  padding: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\n:root {\r\n  /* Color System - Modern Dental Clinic Colors */\r\n  --primary-blue: #1a73e8;\r\n  --primary-dark: #1565c0;\r\n  --medical-teal: #00bcd4;\r\n  --medical-light: #80deea;\r\n  --accent-gold: #ffb300;\r\n  --accent-coral: #ff6b6b;\r\n  \r\n  /* Neutral Colors */\r\n  --dark-charcoal: #2c3e50;\r\n  --gray-dark: #34495e;\r\n  --gray-medium: #7f8c8d;\r\n  --gray-light: #bdc3c7;\r\n  --gray-lighter: #ecf0f1;\r\n  --pure-white: #ffffff;\r\n  \r\n  /* Gradients */\r\n  --gradient-primary: linear-gradient(135deg, var(--primary-blue), var(--medical-teal));\r\n  --gradient-dark: linear-gradient(135deg, var(--dark-charcoal), var(--gray-dark));\r\n  --gradient-accent: linear-gradient(135deg, var(--accent-gold), var(--accent-coral));\r\n  \r\n  /* Shadows */\r\n  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.08);\r\n  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);\r\n  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);\r\n  --shadow-xl: 0 25px 50px rgba(0, 0, 0, 0.2);\r\n  \r\n  /* Border Radius */\r\n  --radius-sm: 8px;\r\n  --radius-md: 12px;\r\n  --radius-lg: 16px;\r\n  --radius-xl: 24px;\r\n  --radius-full: 50px;\r\n  \r\n  /* Spacing */\r\n  --space-xs: 0.5rem;\r\n  --space-sm: 1rem;\r\n  --space-md: 1.5rem;\r\n  --space-lg: 2rem;\r\n  --space-xl: 3rem;\r\n  --space-2xl: 4rem;\r\n  \r\n  /* Typography */\r\n  --font-primary: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\r\n  --font-heading: 'Poppins', var(--font-primary);\r\n}\r\n\r\nhtml {\r\n  scroll-behavior: smooth;\r\n  font-size: 16px;\r\n}\r\n\r\nbody {\r\n  font-family: var(--font-primary);\r\n  line-height: 1.7;\r\n  color: var(--dark-charcoal);\r\n  background: var(--pure-white);\r\n  overflow-x: hidden;\r\n}\r\n\r\n/* ===== TYPOGRAPHY ===== */\r\nh1, h2, h3, h4, h5, h6 {\r\n  font-family: var(--font-heading);\r\n  font-weight: 700;\r\n  line-height: 1.3;\r\n  margin-bottom: var(--space-md);\r\n  color: var(--dark-charcoal);\r\n}\r\n\r\nh1 {\r\n  font-size: 3.5rem;\r\n  background: var(--gradient-primary);\r\n  -webkit-background-clip: text;\r\n",
+      "size": 7974,
+      "lines": 389,
+      "modified": "2025-11-07T18:57:40.353Z",
+      "created": "2025-11-06T18:37:24.224Z",
+      "extension": ".scss"
+    },
+    {
+      "path": "src\\app\\app.ts",
+      "content": "import { Component } from '@angular/core';\r\nimport { RouterOutlet } from '@angular/router';\r\nimport { HeaderComponent } from './components/header/header.component';\r\nimport { FooterComponent } from './components/footer/footer.component';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  imports: [RouterOutlet, HeaderComponent, FooterComponent],\r\n  templateUrl: './app.html',\r\n  styleUrl: './app.scss'\r\n})\r\nexport class App {\r\n  title = 'digital-dental-lab';\r\n}",
+      "size": 456,
+      "lines": 14,
+      "modified": "2025-11-07T18:36:18.005Z",
+      "created": "2025-11-06T18:37:24.224Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\main.ts",
+      "content": "import { bootstrapApplication } from '@angular/platform-browser';\r\nimport { appConfig } from './app/app.config';\r\nimport { App } from './app/app';\r\n\r\nbootstrapApplication(App, appConfig)\r\n  .catch((err) => console.error(err));\r\n",
+      "size": 228,
+      "lines": 7,
+      "modified": "2025-11-07T18:28:12.490Z",
+      "created": "2025-11-06T18:37:24.216Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "README.md",
+      "content": "# \\# لابراتوار دندانپزشکی دیجیتال 🦷\r\n\r\n# \r\n\r\n# یک وبسایت مدرن و دو زبانه برای لابراتوار دندانپزشکی دیجیتال\r\n\r\n# \r\n\r\n# \\## 🚀 ویژگی‌ها\r\n\r\n# \r\n\r\n# \\- ✅ طراحی مدرن و ریسپانسیو\r\n\r\n# \\- ✅ سیستم دو زبانه (فارسی/انگلیسی)\r\n\r\n# \\- ✅ کاملاً SPA (Single Page Application)\r\n\r\n# \\- ✅ بهینه‌شده برای SEO\r\n\r\n# \\- ✅ فرم تماس تعاملی\r\n\r\n# \\- ✅ گالری کارها\r\n\r\n# \\- ✅ خدمات تخصصی\r\n\r\n# \r\n\r\n# \\## 🛠 تکنولوژی‌ها\r\n\r\n# \r\n\r\n# \\- \\*\\*Frontend:\\*\\* Angular 20, TypeScript, SCSS\r\n\r\n# \\- \\*\\*Build Tool:\\*\\* Angular CLI\r\n\r\n# \\- \\*\\*Deployment:\\*\\* قابل deploy روی هر platform\r\n\r\n# \r\n\r\n# \\## 📦 نصب و راه‌اندازی\r\n\r\n# \r\n\r\n# ```bash\r\n\r\n# \\# نصب dependencies\r\n\r\n# npm install\r\n\r\n# \r\n\r\n# \\# اجرای پروژه در محیط توسعه\r\n\r\n# ng serve\r\n\r\n# \r\n\r\n# \\# ساخت نسخه production\r\n\r\n# ng build --configuration=production\r\n\r\n",
+      "size": 1048,
+      "lines": 63,
+      "modified": "2025-11-07T18:28:12.045Z",
+      "created": "2025-11-06T18:37:24.205Z",
+      "extension": ".md"
+    },
+    {
+      "path": "src\\environments\\environment.prod.ts",
+      "content": "export const environment = {\r\n  production: true,\r\n  apiUrl: 'https://api.dentallab.com/api',\r\n  appName: 'Digital Dental Lab',\r\n  contactEmail: 'info@dentallab.com',\r\n  contactPhone: '021-12345678'\r\n};",
+      "size": 202,
+      "lines": 7,
+      "modified": "2025-11-06T20:38:59.104Z",
+      "created": "2025-11-06T20:38:47.806Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\environments\\environment.development.ts",
+      "content": "export const environment = {\n  production: false,\n  apiUrl: 'http://localhost:3000/api',\n  appName: 'Digital Dental Lab - Development',\n  contactEmail: 'info@dentallab.com',\n  contactPhone: '021-12345678'\n};",
+      "size": 207,
+      "lines": 7,
+      "modified": "2025-11-06T20:38:33.186Z",
+      "created": "2025-11-06T20:32:28.079Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\environments\\environment.ts",
+      "content": "export const environment = {\n  production: false,\n  apiUrl: 'http://localhost:3000/api',\n  appName: 'Digital Dental Lab - Development',\n  contactEmail: 'info@dentallab.com',\n  contactPhone: '021-12345678'\n};",
+      "size": 207,
+      "lines": 7,
+      "modified": "2025-11-06T20:38:22.453Z",
+      "created": "2025-11-06T20:32:28.073Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\home\\home.component.spec.ts",
+      "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\r\n\r\nimport { Home } from './home';\r\n\r\ndescribe('Home', () => {\r\n  let component: Home;\r\n  let fixture: ComponentFixture<Home>;\r\n\r\n  beforeEach(async () => {\r\n    await TestBed.configureTestingModule({\r\n      imports: [Home]\r\n    })\r\n    .compileComponents();\r\n\r\n    fixture = TestBed.createComponent(Home);\r\n    component = fixture.componentInstance;\r\n    fixture.detectChanges();\r\n  });\r\n\r\n  it('should create', () => {\r\n    expect(component).toBeTruthy();\r\n  });\r\n});\r\n",
+      "size": 537,
+      "lines": 24,
+      "modified": "2025-11-06T20:24:18.747Z",
+      "created": "2025-11-06T20:24:18.747Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\hero\\hero.component.html",
+      "content": "<section class=\"hero\">\r\n  <div class=\"hero-content\">\r\n    <div class=\"hero-text\">\r\n      <h1 class=\"hero-title\">{{ translation.translate('HERO.TITLE') }}</h1>\r\n      <p class=\"hero-subtitle\">{{ translation.translate('HERO.SUBTITLE') }}</p>\r\n      <div class=\"hero-buttons\">\r\n        <button class=\"btn btn-primary\">{{ translation.translate('HERO.CTA_PRIMARY') }}</button>\r\n        <button class=\"btn btn-secondary\">{{ translation.translate('HERO.CTA_SECONDARY') }}</button>\r\n      </div>\r\n    </div>\r\n    <div class=\"hero-image\">\r\n      <div class=\"placeholder-image\">\r\n        🦷 {{ translation.getCurrentLanguage() === 'fa' ? 'تصویر خدمات دندانپزشکی' : 'Dental Services Image' }}\r\n      </div>\r\n    </div>\r\n  </div>\r\n</section>",
+      "size": 751,
+      "lines": 17,
+      "modified": "2025-11-06T20:10:09.268Z",
+      "created": "2025-11-06T19:14:08.796Z",
+      "extension": ".html"
+    },
+    {
+      "path": "src\\app\\services\\translation.spec.ts",
+      "content": "import { TestBed } from '@angular/core/testing';\r\n\r\nimport { Translation } from './translation';\r\n\r\ndescribe('Translation', () => {\r\n  let service: Translation;\r\n\r\n  beforeEach(() => {\r\n    TestBed.configureTestingModule({});\r\n    service = TestBed.inject(Translation);\r\n  });\r\n\r\n  it('should be created', () => {\r\n    expect(service).toBeTruthy();\r\n  });\r\n});\r\n",
+      "size": 362,
+      "lines": 17,
+      "modified": "2025-11-06T20:07:52.253Z",
+      "created": "2025-11-06T20:07:52.253Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\footer\\footer.component.spec.ts",
+      "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\r\n\r\nimport { Footer } from './footer';\r\n\r\ndescribe('Footer', () => {\r\n  let component: Footer;\r\n  let fixture: ComponentFixture<Footer>;\r\n\r\n  beforeEach(async () => {\r\n    await TestBed.configureTestingModule({\r\n      imports: [Footer]\r\n    })\r\n    .compileComponents();\r\n\r\n    fixture = TestBed.createComponent(Footer);\r\n    component = fixture.componentInstance;\r\n    fixture.detectChanges();\r\n  });\r\n\r\n  it('should create', () => {\r\n    expect(component).toBeTruthy();\r\n  });\r\n});\r\n",
+      "size": 551,
+      "lines": 24,
+      "modified": "2025-11-06T19:35:12.943Z",
+      "created": "2025-11-06T19:35:12.943Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\contact\\contact.component.spec.ts",
+      "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\r\n\r\nimport { Contact } from './contact';\r\n\r\ndescribe('Contact', () => {\r\n  let component: Contact;\r\n  let fixture: ComponentFixture<Contact>;\r\n\r\n  beforeEach(async () => {\r\n    await TestBed.configureTestingModule({\r\n      imports: [Contact]\r\n    })\r\n    .compileComponents();\r\n\r\n    fixture = TestBed.createComponent(Contact);\r\n    component = fixture.componentInstance;\r\n    fixture.detectChanges();\r\n  });\r\n\r\n  it('should create', () => {\r\n    expect(component).toBeTruthy();\r\n  });\r\n});\r\n",
+      "size": 558,
+      "lines": 24,
+      "modified": "2025-11-06T19:18:37.750Z",
+      "created": "2025-11-06T19:18:37.750Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\gallery\\gallery.component.spec.ts",
+      "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\r\n\r\nimport { Gallery } from './gallery';\r\n\r\ndescribe('Gallery', () => {\r\n  let component: Gallery;\r\n  let fixture: ComponentFixture<Gallery>;\r\n\r\n  beforeEach(async () => {\r\n    await TestBed.configureTestingModule({\r\n      imports: [Gallery]\r\n    })\r\n    .compileComponents();\r\n\r\n    fixture = TestBed.createComponent(Gallery);\r\n    component = fixture.componentInstance;\r\n    fixture.detectChanges();\r\n  });\r\n\r\n  it('should create', () => {\r\n    expect(component).toBeTruthy();\r\n  });\r\n});\r\n",
+      "size": 558,
+      "lines": 24,
+      "modified": "2025-11-06T19:18:36.010Z",
+      "created": "2025-11-06T19:18:36.010Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\technology\\technology.component.spec.ts",
+      "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\r\n\r\nimport { Technology } from './technology';\r\n\r\ndescribe('Technology', () => {\r\n  let component: Technology;\r\n  let fixture: ComponentFixture<Technology>;\r\n\r\n  beforeEach(async () => {\r\n    await TestBed.configureTestingModule({\r\n      imports: [Technology]\r\n    })\r\n    .compileComponents();\r\n\r\n    fixture = TestBed.createComponent(Technology);\r\n    component = fixture.componentInstance;\r\n    fixture.detectChanges();\r\n  });\r\n\r\n  it('should create', () => {\r\n    expect(component).toBeTruthy();\r\n  });\r\n});\r\n",
+      "size": 579,
+      "lines": 24,
+      "modified": "2025-11-06T19:18:34.353Z",
+      "created": "2025-11-06T19:18:34.352Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\services\\services.component.spec.ts",
+      "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\r\n\r\nimport { Services } from './services';\r\n\r\ndescribe('Services', () => {\r\n  let component: Services;\r\n  let fixture: ComponentFixture<Services>;\r\n\r\n  beforeEach(async () => {\r\n    await TestBed.configureTestingModule({\r\n      imports: [Services]\r\n    })\r\n    .compileComponents();\r\n\r\n    fixture = TestBed.createComponent(Services);\r\n    component = fixture.componentInstance;\r\n    fixture.detectChanges();\r\n  });\r\n\r\n  it('should create', () => {\r\n    expect(component).toBeTruthy();\r\n  });\r\n});\r\n",
+      "size": 565,
+      "lines": 24,
+      "modified": "2025-11-06T19:18:17.974Z",
+      "created": "2025-11-06T19:18:17.974Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\hero\\hero.component.spec.ts",
+      "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\r\n\r\nimport { Hero } from './hero';\r\n\r\ndescribe('Hero', () => {\r\n  let component: Hero;\r\n  let fixture: ComponentFixture<Hero>;\r\n\r\n  beforeEach(async () => {\r\n    await TestBed.configureTestingModule({\r\n      imports: [Hero]\r\n    })\r\n    .compileComponents();\r\n\r\n    fixture = TestBed.createComponent(Hero);\r\n    component = fixture.componentInstance;\r\n    fixture.detectChanges();\r\n  });\r\n\r\n  it('should create', () => {\r\n    expect(component).toBeTruthy();\r\n  });\r\n});\r\n",
+      "size": 537,
+      "lines": 24,
+      "modified": "2025-11-06T19:14:08.792Z",
+      "created": "2025-11-06T19:14:08.792Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\components\\header\\header.component.spec.ts",
+      "content": "import { ComponentFixture, TestBed } from '@angular/core/testing';\r\n\r\nimport { Header } from './header';\r\n\r\ndescribe('Header', () => {\r\n  let component: Header;\r\n  let fixture: ComponentFixture<Header>;\r\n\r\n  beforeEach(async () => {\r\n    await TestBed.configureTestingModule({\r\n      imports: [Header]\r\n    })\r\n    .compileComponents();\r\n\r\n    fixture = TestBed.createComponent(Header);\r\n    component = fixture.componentInstance;\r\n    fixture.detectChanges();\r\n  });\r\n\r\n  it('should create', () => {\r\n    expect(component).toBeTruthy();\r\n  });\r\n});\r\n",
+      "size": 551,
+      "lines": 24,
+      "modified": "2025-11-06T18:54:37.793Z",
+      "created": "2025-11-12T12:06:55.670Z",
+      "extension": ".ts"
+    },
+    {
+      "path": "src\\app\\app.spec.ts",
+      "content": "import { TestBed } from '@angular/core/testing';\r\nimport { App } from './app';\r\n\r\ndescribe('App', () => {\r\n  beforeEach(async () => {\r\n    await TestBed.configureTestingModule({\r\n      imports: [App],\r\n    }).compileComponents();\r\n  });\r\n\r\n  it('should create the app', () => {\r\n    const fixture = TestBed.createComponent(App);\r\n    const app = fixture.componentInstance;\r\n    expect(app).toBeTruthy();\r\n  });\r\n\r\n  it('should render title', () => {\r\n    const fixture = TestBed.createComponent(App);\r\n    fixture.detectChanges();\r\n    const compiled = fixture.nativeElement as HTMLElement;\r\n    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, digital-dental-lab-v2');\r\n  });\r\n});\r\n",
+      "size": 702,
+      "lines": 24,
+      "modified": "2025-11-06T18:37:24.222Z",
+      "created": "2025-11-06T18:37:24.222Z",
+      "extension": ".ts"
+    },
+    {
+      "path": ".vscode\\extensions.json",
+      "content": "{\r\n  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=827846\r\n  \"recommendations\": [\"angular.ng-template\"]\r\n}\r\n",
+      "size": 134,
+      "lines": 5,
+      "modified": "2025-11-06T18:37:24.216Z",
+      "created": "2025-11-06T18:37:24.216Z",
+      "extension": ".json"
+    },
+    {
+      "path": ".vscode\\launch.json",
+      "content": "{\r\n  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387\r\n  \"version\": \"0.2.0\",\r\n  \"configurations\": [\r\n    {\r\n      \"name\": \"ng serve\",\r\n      \"type\": \"chrome\",\r\n      \"request\": \"launch\",\r\n      \"preLaunchTask\": \"npm: start\",\r\n      \"url\": \"http://localhost:4200/\"\r\n    },\r\n    {\r\n      \"name\": \"ng test\",\r\n      \"type\": \"chrome\",\r\n      \"request\": \"launch\",\r\n      \"preLaunchTask\": \"npm: test\",\r\n      \"url\": \"http://localhost:9876/debug.html\"\r\n    }\r\n  ]\r\n}\r\n",
+      "size": 490,
+      "lines": 21,
+      "modified": "2025-11-06T18:37:24.216Z",
+      "created": "2025-11-06T18:37:24.216Z",
+      "extension": ".json"
+    },
+    {
+      "path": ".vscode\\tasks.json",
+      "content": "{\r\n  // For more information, visit: https://go.microsoft.com/fwlink/?LinkId=733558\r\n  \"version\": \"2.0.0\",\r\n  \"tasks\": [\r\n    {\r\n      \"type\": \"npm\",\r\n      \"script\": \"start\",\r\n      \"isBackground\": true,\r\n      \"problemMatcher\": {\r\n        \"owner\": \"typescript\",\r\n        \"pattern\": \"$tsc\",\r\n        \"background\": {\r\n          \"activeOnStart\": true,\r\n          \"beginsPattern\": {\r\n            \"regexp\": \"(.*?)\"\r\n          },\r\n          \"endsPattern\": {\r\n            \"regexp\": \"bundle generation complete\"\r\n          }\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"type\": \"npm\",\r\n      \"script\": \"test\",\r\n      \"isBackground\": true,\r\n      \"problemMatcher\": {\r\n        \"owner\": \"typescript\",\r\n        \"pattern\": \"$tsc\",\r\n        \"background\": {\r\n          \"activeOnStart\": true,\r\n          \"beginsPattern\": {\r\n            \"regexp\": \"(.*?)\"\r\n          },\r\n          \"endsPattern\": {\r\n            \"regexp\": \"bundle generation complete\"\r\n          }\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}\r\n",
+      "size": 980,
+      "lines": 43,
+      "modified": "2025-11-06T18:37:24.216Z",
+      "created": "2025-11-06T18:37:24.216Z",
+      "extension": ".json"
+    },
+    {
+      "path": "tsconfig.spec.json",
+      "content": "/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */\r\n/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */\r\n{\r\n  \"extends\": \"./tsconfig.json\",\r\n  \"compilerOptions\": {\r\n    \"outDir\": \"./out-tsc/spec\",\r\n    \"types\": [\r\n      \"jasmine\"\r\n    ]\r\n  },\r\n  \"include\": [\r\n    \"src/**/*.ts\"\r\n  ]\r\n}\r\n",
+      "size": 422,
+      "lines": 15,
+      "modified": "2025-11-06T18:37:24.216Z",
+      "created": "2025-11-06T18:37:24.216Z",
+      "extension": ".json"
+    },
+    {
+      "path": "tsconfig.app.json",
+      "content": "/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */\r\n/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */\r\n{\r\n  \"extends\": \"./tsconfig.json\",\r\n  \"compilerOptions\": {\r\n    \"outDir\": \"./out-tsc/app\",\r\n    \"types\": []\r\n  },\r\n  \"include\": [\r\n    \"src/**/*.ts\"\r\n  ],\r\n  \"exclude\": [\r\n    \"src/**/*.spec.ts\"\r\n  ]\r\n}\r\n",
+      "size": 444,
+      "lines": 16,
+      "modified": "2025-11-06T18:37:24.205Z",
+      "created": "2025-11-06T18:37:24.205Z",
+      "extension": ".json"
+    },
+    {
+      "path": "tsconfig.json",
+      "content": "/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */\r\n/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */\r\n{\r\n  \"compileOnSave\": false,\r\n  \"compilerOptions\": {\r\n    \"strict\": true,\r\n    \"noImplicitOverride\": true,\r\n    \"noPropertyAccessFromIndexSignature\": true,\r\n    \"noImplicitReturns\": true,\r\n    \"noFallthroughCasesInSwitch\": true,\r\n    \"skipLibCheck\": true,\r\n    \"isolatedModules\": true,\r\n    \"experimentalDecorators\": true,\r\n    \"importHelpers\": true,\r\n    \"target\": \"ES2022\",\r\n    \"module\": \"preserve\"\r\n  },\r\n  \"angularCompilerOptions\": {\r\n    \"enableI18nLegacyMessageIdFormat\": false,\r\n    \"strictInjectionParameters\": true,\r\n    \"strictInputAccessModifiers\": true,\r\n    \"typeCheckHostBindings\": true,\r\n    \"strictTemplates\": true\r\n  },\r\n  \"files\": [],\r\n  \"references\": [\r\n    {\r\n      \"path\": \"./tsconfig.app.json\"\r\n    },\r\n    {\r\n      \"path\": \"./tsconfig.spec.json\"\r\n    }\r\n  ]\r\n}\r\n",
+      "size": 1026,
+      "lines": 35,
+      "modified": "2025-11-06T18:37:24.205Z",
+      "created": "2025-11-06T18:37:24.205Z",
+      "extension": ".json"
+    }
+  ],
+  "components": [
+    {
+      "name": "app.component",
+      "path": "project-build\\src\\app\\app.component.ts",
+      "lines": 38,
+      "size": 997,
+      "hasTemplate": false,
+      "hasStyles": false
+    },
+    {
+      "name": "blog.component.spec",
+      "path": "src\\app\\components\\blog\\blog.component.spec.ts",
+      "lines": 24,
+      "size": 537,
+      "hasTemplate": false,
+      "hasStyles": false
+    },
+    {
+      "name": "blog.component",
+      "path": "src\\app\\components\\blog\\blog.component.ts",
+      "lines": 244,
+      "size": 9333,
+      "hasTemplate": true,
+      "hasStyles": false
+    },
+    {
+      "name": "post.component.spec",
+      "path": "src\\app\\components\\blog\\post\\post.component.spec.ts",
+      "lines": 24,
+      "size": 537,
+      "hasTemplate": false,
+      "hasStyles": false
+    },
+    {
+      "name": "post.component",
+      "path": "src\\app\\components\\blog\\post\\post.component.ts",
+      "lines": 152,
+      "size": 6744,
+      "hasTemplate": true,
+      "hasStyles": false
+    },
+    {
+      "name": "contact.component.spec",
+      "path": "src\\app\\components\\contact\\contact.component.spec.ts",
+      "lines": 24,
+      "size": 558,
+      "hasTemplate": false,
+      "hasStyles": false
+    },
+    {
+      "name": "contact.component",
+      "path": "src\\app\\components\\contact\\contact.component.ts",
+      "lines": 121,
+      "size": 4147,
+      "hasTemplate": true,
+      "hasStyles": false
+    },
+    {
+      "name": "docs.component",
+      "path": "src\\app\\components\\docs\\docs.component.ts",
+      "lines": 49,
+      "size": 1285,
+      "hasTemplate": false,
+      "hasStyles": false
+    },
+    {
+      "name": "footer.component.spec",
+      "path": "src\\app\\components\\footer\\footer.component.spec.ts",
+      "lines": 24,
+      "size": 551,
+      "hasTemplate": false,
+      "hasStyles": false
+    },
+    {
+      "name": "footer.component",
+      "path": "src\\app\\components\\footer\\footer.component.ts",
+      "lines": 14,
+      "size": 454,
+      "hasTemplate": true,
+      "hasStyles": false
+    },
+    {
+      "name": "gallery.component.spec",
+      "path": "src\\app\\components\\gallery\\gallery.component.spec.ts",
+      "lines": 24,
+      "size": 558,
+      "hasTemplate": false,
+      "hasStyles": false
+    },
+    {
+      "name": "gallery.component",
+      "path": "src\\app\\components\\gallery\\gallery.component.ts",
+      "lines": 316,
+      "size": 10866,
+      "hasTemplate": true,
+      "hasStyles": false
+    },
+    {
+      "name": "header.component.spec",
+      "path": "src\\app\\components\\header\\header.component.spec.ts",
+      "lines": 24,
+      "size": 551,
+      "hasTemplate": false,
+      "hasStyles": false
+    },
+    {
+      "name": "header.component",
+      "path": "src\\app\\components\\header\\header.component.ts",
+      "lines": 99,
+      "size": 2487,
+      "hasTemplate": true,
+      "hasStyles": false
+    },
+    {
+      "name": "hero.component.spec",
+      "path": "src\\app\\components\\hero\\hero.component.spec.ts",
+      "lines": 24,
+      "size": 537,
+      "hasTemplate": false,
+      "hasStyles": false
+    },
+    {
+      "name": "hero.component",
+      "path": "src\\app\\components\\hero\\hero.component.ts",
+      "lines": 140,
+      "size": 3170,
+      "hasTemplate": true,
+      "hasStyles": false
+    },
+    {
+      "name": "home.component.spec",
+      "path": "src\\app\\components\\home\\home.component.spec.ts",
+      "lines": 24,
+      "size": 537,
+      "hasTemplate": false,
+      "hasStyles": false
+    },
+    {
+      "name": "home.component",
+      "path": "src\\app\\components\\home\\home.component.ts",
+      "lines": 320,
+      "size": 11423,
+      "hasTemplate": true,
+      "hasStyles": false
+    },
+    {
+      "name": "service-category.component",
+      "path": "src\\app\\components\\services\\service-category\\service-category.component.ts",
+      "lines": 238,
+      "size": 11536,
+      "hasTemplate": true,
+      "hasStyles": false
+    },
+    {
+      "name": "service-detail.component",
+      "path": "src\\app\\components\\services\\service-detail\\service-detail.component.ts",
+      "lines": 495,
+      "size": 24221,
+      "hasTemplate": true,
+      "hasStyles": false
+    },
+    {
+      "name": "services.component.spec",
+      "path": "src\\app\\components\\services\\services.component.spec.ts",
+      "lines": 24,
+      "size": 565,
+      "hasTemplate": false,
+      "hasStyles": false
+    },
+    {
+      "name": "services.component",
+      "path": "src\\app\\components\\services\\services.component.ts",
+      "lines": 130,
+      "size": 3995,
+      "hasTemplate": true,
+      "hasStyles": false
+    },
+    {
+      "name": "technology.component.spec",
+      "path": "src\\app\\components\\technology\\technology.component.spec.ts",
+      "lines": 24,
+      "size": 579,
+      "hasTemplate": false,
+      "hasStyles": false
+    },
+    {
+      "name": "technology.component",
+      "path": "src\\app\\components\\technology\\technology.component.ts",
+      "lines": 199,
+      "size": 6704,
+      "hasTemplate": true,
+      "hasStyles": false
+    }
+  ],
+  "routes": [
+    {
+      "path": "services",
+      "file": "project-build\\src\\app\\app.routes.ts"
+    },
+    {
+      "path": "services/:category",
+      "file": "project-build\\src\\app\\app.routes.ts"
+    },
+    {
+      "path": "services/detail/:id",
+      "file": "project-build\\src\\app\\app.routes.ts"
+    },
+    {
+      "path": "gallery",
+      "file": "project-build\\src\\app\\app.routes.ts"
+    },
+    {
+      "path": "blog",
+      "file": "project-build\\src\\app\\app.routes.ts"
+    },
+    {
+      "path": "blog/post/:id",
+      "file": "project-build\\src\\app\\app.routes.ts"
+    },
+    {
+      "path": "technology",
+      "file": "project-build\\src\\app\\app.routes.ts"
+    },
+    {
+      "path": "contact",
+      "file": "project-build\\src\\app\\app.routes.ts"
+    },
+    {
+      "path": "home",
+      "file": "src\\app\\app.routes.ts"
+    },
+    {
+      "path": "docs",
+      "file": "src\\app\\app.routes.ts"
+    },
+    {
+      "path": "services",
+      "file": "src\\app\\app.routes.ts"
+    },
+    {
+      "path": "contact",
+      "file": "src\\app\\app.routes.ts"
+    },
+    {
+      "path": "gallery",
+      "file": "src\\app\\app.routes.ts"
+    },
+    {
+      "path": "blog",
+      "file": "src\\app\\app.routes.ts"
+    },
+    {
+      "path": "technology",
+      "file": "src\\app\\app.routes.ts"
+    },
+    {
+      "path": "ai-docs",
+      "file": "src\\app\\app.routes.ts"
+    },
+    {
+      "path": "project-memory",
+      "file": "src\\app\\app.routes.ts"
+    },
+    {
+      "path": "changelog",
+      "file": "src\\app\\app.routes.ts"
+    },
+    {
+      "path": "**",
+      "file": "src\\app\\app.routes.ts"
+    }
+  ],
+  "services": [
+    {
+      "name": "translation.service",
+      "path": "project-build\\src\\app\\services\\translation.service.ts",
+      "lines": 100,
+      "size": 2777
+    },
+    {
+      "name": "translation.service",
+      "path": "src\\app\\services\\translation.service.ts",
+      "lines": 53,
+      "size": 1673
+    }
+  ],
+  "knownIssues": [
+    "فایل project-build\\AI_NOTES.md بسیار کوچک است (3 خط)",
+    "فایل project-build\\TODO.md بسیار کوچک است (3 خط)",
+    "کامپوننت src\\app\\components\\blog\\blog.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)",
+    "کامپوننت src\\app\\components\\blog\\post\\post.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)",
+    "کامپوننت src\\app\\components\\contact\\contact.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)",
+    "کامپوننت src\\app\\components\\footer\\footer.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)",
+    "کامپوننت src\\app\\components\\gallery\\gallery.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)",
+    "کامپوننت src\\app\\components\\header\\header.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)",
+    "کامپوننت src\\app\\components\\hero\\hero.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)",
+    "کامپوننت src\\app\\components\\home\\home.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)",
+    "کامپوننت src\\app\\components\\services\\services.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)",
+    "کامپوننت src\\app\\components\\technology\\technology.component.spec.ts ممکن است مشکل داشته باشد (فاقد @Component)"
+  ],
+  "nextSteps": [
+    "تکمیل سیستم چندزبانه",
+    "رفع مشکلات navigation",
+    "اضافه کردن انیمیشن‌ها",
+    "تست responsiveness"
+  ],
+  "aiContext": {
+    "currentFocus": "تکمیل سیستم مستندسازی و رفع مشکلات موجود",
+    "priority": "high",
+    "workingFiles": [
+      "src\\app\\components\\home\\home.component.scss",
+      "package.json",
+      "ai-documentation-hub.html",
+      "CHANGELOG.md",
+      "project-memory.json"
+    ],
+    "recentActivity": "سیستم مستندسازی راه‌اندازی شد - اسکن 97 فایل",
+    "projectHealth": "good",
+    "recommendations": [
+      "برخی کامپوننت‌ها template ندارند",
+      "سیستم چندزبانه شناسایی شد - نیاز به تکمیل",
+      "Translate service شناسایی شد - بررسی عملکرد"
+    ],
+    "techStack": {
+      "framework": "Angular",
+      "version": "^17.3.0",
+      "hasTranslation": true,
+      "hasRouting": true
+    },
+    "colorPalette": {
+      "white_clean": "#ffffff",
+      "white_off": "#f8f9fa",
+      "gray_light": "#e9ecef",
+      "navy_blue": "#1a237e",
+      "medical_blue": "#1565c0",
+      "teal_modern": "#00695c",
+      "ice_blue": "#4fc3f7",
+      "black_luxury": "#212121",
+      "charcoal": "#424242"
+    },
+    "projectType": "dental_lab",
+    "targetAudience": "dentists",
+    "specialNotes": "فقط دکمه 'ورود به پنل لابراتوار' برای دندانپزشکان"
+  }
+}

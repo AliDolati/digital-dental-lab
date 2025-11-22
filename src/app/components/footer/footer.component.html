@@ -1,27 +1,64 @@
 <footer class="footer">
-  <div class="container">
+  <div class="footer-container">
     <div class="footer-content">
+      <!-- درباره ما -->
       <div class="footer-section">
-        <h3>لبراتوار دندانپزشکی دیجیتال</h3>
-        <p>ارائه پیشرفته‌ترین خدمات دندانپزشکی با تکنولوژی روز دنیا</p>
+        <h3>درباره ما / About Us</h3>
+        <p>
+          لابراتوار تخصصی دندانپزشکی دیجیتال با استفاده از پیشرفته‌ترین تکنولوژی‌های روز دنیا
+        </p>
+        <div class="social-links">
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="Telegram">✈️</a>
+          <a href="#" aria-label="WhatsApp">💬</a>
+        </div>
       </div>
-      
+
+      <!-- خدمات -->
       <div class="footer-section">
-        <h4>تماس با ما</h4>
-        <p>📞 ۰۲۱-۱۲۳۴۵۶۷۸</p>
-        <p>📧 info@dentallab.com</p>
-        <p>📍 تهران، خیابان ولیعصر</p>
+        <h3>خدمات / Services</h3>
+        <ul class="footer-links">
+          <li><a [routerLink]="['/services', 'crown-bridge']">Crown & Bridge</a></li>
+          <li><a [routerLink]="['/services', 'veneers']">Veneers</a></li>
+          <li><a [routerLink]="['/services', 'implant-solutions']">Implant Solutions</a></li>
+          <li><a [routerLink]="['/services', 'digital-dentistry']">Digital Dentistry</a></li>
+        </ul>
       </div>
-      
+
+      <!-- لینک‌های سریع -->
       <div class="footer-section">
-        <h4>ساعات کاری</h4>
-        <p>شنبه تا چهارشنبه: ۸ صبح تا ۶ عصر</p>
-        <p>پنجشنبه: ۸ صبح تا ۲ ظهر</p>
+        <h3>لینک‌ها / Links</h3>
+        <ul class="footer-links">
+          <li><a [routerLink]="['/home']">خانه / Home</a></li>
+          <li><a [routerLink]="['/technology']">تکنولوژی / Technology</a></li>
+          <li><a [routerLink]="['/gallery']">گالری / Gallery</a></li>
+          <li><a [routerLink]="['/blog']">بلاگ / Blog</a></li>
+          <li><a [routerLink]="['/contact']">تماس / Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- تماس با ما -->
+      <div class="footer-section">
+        <h3>تماس / Contact</h3>
+        <ul class="contact-info">
+          <li> 021-12345678</li>
+          <li> 0912-345-6789</li>
+          <li> info@digitallab.com</li>
+          <li> تهران، خیابان نمونه</li>
+        </ul>
       </div>
     </div>
-    
+
+    <!-- فوتر پایین -->
     <div class="footer-bottom">
-      <p>© {{ currentYear }} لبراتوار دندانپزشکی دیجیتال. تمام حقوق محفوظ است.</p>
+      <div class="copyright">
+        © 2024 Digital Dental Lab. تمام حقوق محفوظ است.
+      </div>
+      <div class="footer-bottom-links">
+        <a href="#">حریم خصوصی</a>
+        <a href="#">قوانین و مقررات</a>
+        <a href="#">سوالات متداول</a>
+      </div>
     </div>
   </div>
 </footer>

@@ -1,0 +1,165 @@
+// scripts/ai-docs-generator.js
+const fs = require('fs');
+const path = require('path');
+
+class AIDocsGenerator {
+    constructor() {
+        this.projectRoot = process.cwd();
+        this.hubFile = path.join(this.projectRoot, 'ai-project-hub.html');
+    }
+
+    generateAIHub() {
+        console.log('🧠 ساخت AI Documentation Hub...');
+        
+        const projectData = this.scanProjectDeep();
+        const html = this.createHubHTML(projectData);
+        
+        fs.writeFileSync(this.hubFile, html);
+        console.log('✅ AI Hub ایجاد شد: ai-project-hub.html');
+        console.log('🌐 دسترسی: http://localhost:4200/ai-project-hub.html');
+    }
+
+    scanProjectDeep() {
+        // اسکن عمیق واقعی پروژه
+        const files = [];
+        
+        const scanDir = (dir) => {
+            if (!fs.existsSync(dir)) return;
+            
+            const items = fs.readdirSync(dir);
+            items.forEach(item => {
+                if (item === 'node_modules' || item === '.git') return;
+                
+                const fullPath = path.join(dir, item);
+                const stat = fs.statSync(fullPath);
+                
+                if (stat.isDirectory()) {
+                    scanDir(fullPath);
+                } else if (this.isCodeFile(item)) {
+                    try {
+                        const content = fs.readFileSync(fullPath, 'utf8');
+                        files.push({
+                            path: fullPath.replace(this.projectRoot + path.sep, ''),
+                            content: content,
+                            size: stat.size,
+                            modified: stat.mtime,
+                            lines: content.split('\n').length
+                        });
+                    } catch (e) {
+                        // skip unreadable files
+                    }
+                }
+            });
+        };
+        
+        scanDir(this.projectRoot);
+        return files;
+    }
+
+    isCodeFile(filename) {
+        const ext = path.extname(filename);
+        return ['.ts', '.js', '.html', '.css', '.scss', '.json', '.md'].includes(ext);
+    }
+
+    createHubHTML(projectData) {
+        // برگردوندن HTML کاملی که طراحی کردید - adapt شده برای پروژه دندانپزشکی
+        return `<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="utf-8">
+    <title>AI Documentation Hub - Digital Dental Lab</title>
+    <style>
+        /* استایل‌های کامل از طرح شما */
+        :root{ --bg:#f7f9fb; --card:#ffffff; --accent:#0a84ff; --muted:#556; }
+        body { font-family: Tahoma, sans-serif; direction: rtl; background: var(--bg); margin: 0; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        .header { background: var(--card); padding: 2rem; border-radius: 15px; margin-bottom: 2rem; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+        .panel { background: var(--card); padding: 1.5rem; border-radius: 10px; box-shadow: 0 3px 15px rgba(0,0,0,0.08); }
+        .file-list { max-height: 400px; overflow-y: auto; border: 1px solid #eee; border-radius: 8px; padding: 1rem; }
+        .file-item { padding: 0.8rem; border-bottom: 1px solid #f0f0f0; }
+        .code-view { background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: 8px; font-family: monospace; white-space: pre-wrap; max-height: 500px; overflow-y: auto; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 AI Documentation Hub</h1>
+            <p>Digital Dental Lab v2 - سیستم مستندسازی هوشمند</p>
+            <div class="meta">
+                <strong>آخرین بروزرسانی:</strong> ${new Date().toLocaleString('fa-IR')} | 
+                <strong>تعداد فایل‌ها:</strong> ${projectData.length} |
+                <strong>ورژن:</strong> 2.0.0
+            </div>
+        </div>
+
+        <div class="grid">
+            <!-- بخش سمت راست: خلاصه پروژه -->
+            <div class="panel">
+                <h2>📋 خلاصه پروژه</h2>
+                <div class="project-summary">
+                    <p><strong>پروژه:</strong> لابراتوار دندانپزشکی دیجیتال - Angular 17</p>
+                    <p><strong>هدف:</strong> ساخت سیستم مدیریت کامل کلینیک دندانپزشکی</p>
+                    <p><strong>وضعیت:</strong> در حال توسعه - بخش‌های اصلی تکمیل شده</p>
+                </div>
+            </div>
+
+            <!-- بخش سمت چپ: معماری -->
+            <div class="panel">
+                <h2>🏗️ معماری سیستم</h2>
+                <div class="architecture">
+                    <p><strong>فریم‌ورک:</strong> Angular 17 + Standalone Components</p>
+                    <p><strong>قابلیت‌ها:</strong> چندزبانه (فارسی/انگلیسی), Responsive, PWA</p>
+                    <p><strong>ساختار:</strong> کامپوننت‌محور + سرویس‌های ماژولار</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- لیست فایل‌ها -->
+        <div class="panel">
+            <h2>📁 فایل‌های پروژه (${projectData.length} فایل)</h2>
+            <div class="file-list">
+                ${projectData.map(file => `
+                    <div class="file-item">
+                        <strong>${file.path}</strong>
+                        <div style="font-size: 0.9rem; color: #666;">
+                            ${file.lines} خط | ${file.size} بایت | 
+                           修改: ${new Date(file.modified).toLocaleString('fa-IR')}
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+
+        <!-- TODO و اقدامات بعدی -->
+        <div class="panel">
+            <h2>✅ اقدامات بعدی</h2>
+            <div class="todo-list">
+                <ul>
+                    <li>رفع مشکل translate pipe در header</li>
+                    <li>تکمیل سیستم چندزبانه</li>
+                    <li>اضافه کردن انیمیشن‌های صفحه‌بندی</li>
+                    <li>تست cross-browser</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- راهنمای AI -->
+        <div class="panel" style="background: #e3f2fd;">
+            <h2>🎯 راهنمای هوش مصنوعی</h2>
+            <div class="ai-guide">
+                <p><strong>برای ادامه کار:</strong> این صفحه رو کامل بخونید</p>
+                <p><strong>تمرکز فعلی:</strong> رفع مشکلات چندزبانه</p>
+                <p><strong>فایل‌های کلیدی:</strong> header.component.ts, home.component.ts, fa.json</p>
+                <p><strong>آخرین تغییرات:</strong> بروزرسانی routing و ساختار کامپوننت‌ها</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>`;
+    }
+}
+
+// اجرا
+const generator = new AIDocsGenerator();
+generator.generateAIHub();

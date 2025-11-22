@@ -1,6 +1,6 @@
 <section class="contact-page">
   <!-- Hero Section -->
-  <div class="contact-hero">
+  <div class="contact-hero" [style.--hero-background]="'url(/assets/images/contact-bg.jpg)'">
     <div class="container">
       <div class="hero-content">
         <h1 class="hero-title">در تماس باشید</h1>
@@ -25,62 +25,42 @@
       <div class="info-grid">
         <!-- Info Card 1 -->
         <div class="info-card">
-          <div class="card-icon">
-            <div class="icon-wrapper">
-              📍
-            </div>
-          </div>
           <div class="card-content">
             <h3>آدرس ما</h3>
             <p>تهران، خیابان ولیعصر، پلاک ۱۲۳۴</p>
             <p>طبقه دوم، واحد ۵</p>
             <button class="card-link" (click)="openMap()">
-              مشاهده روی نقشه →
+              مشاهده روی نقشه
             </button>
           </div>
         </div>
 
         <!-- Info Card 2 -->
         <div class="info-card">
-          <div class="card-icon">
-            <div class="icon-wrapper">
-              📞
-            </div>
-          </div>
           <div class="card-content">
             <h3>تلفن تماس</h3>
             <p class="phone-number">۰۲۱-۱۲۳۴۵۶۷۸</p>
             <p class="phone-number">۰۹۱۲-۱۲۳-۴۵۶۷</p>
             <button class="card-link" (click)="makeCall('02112345678')">
-              تماس تلفنی →
+              تماس تلفنی
             </button>
           </div>
         </div>
 
         <!-- Info Card 3 -->
         <div class="info-card">
-          <div class="card-icon">
-            <div class="icon-wrapper">
-              ✉️
-            </div>
-          </div>
           <div class="card-content">
             <h3>ایمیل ما</h3>
             <p>info@dentallab.com</p>
             <p>support@dentallab.com</p>
             <button class="card-link" (click)="sendEmail('info@dentallab.com')">
-              ارسال ایمیل →
+              ارسال ایمیل
             </button>
           </div>
         </div>
 
         <!-- Info Card 4 -->
         <div class="info-card">
-          <div class="card-icon">
-            <div class="icon-wrapper">
-              ⏰
-            </div>
-          </div>
           <div class="card-content">
             <h3>ساعات کاری</h3>
             <p>شنبه تا چهارشنبه: ۸:۰۰ - ۱۸:۰۰</p>
@@ -179,7 +159,7 @@
                 id="message" 
                 formControlName="message"
                 placeholder="پیام خود را بنویسید..."
-                rows="5"
+                rows="4"
                 [class.error]="isFieldInvalid('message')"></textarea>
               <div class="error-message" *ngIf="isFieldInvalid('message')">
                 پیام الزامی است
@@ -209,21 +189,18 @@
             <p>برای پاسخگویی فوری با شماره‌های زیر تماس بگیرید</p>
             <div class="quick-numbers">
               <a href="tel:+982112345678" class="quick-number">
-                <span class="number-icon">📞</span>
                 <span class="number-info">
                   <span class="number-label">تلفن ثابت</span>
                   <span class="number">۰۲۱-۱۲۳۴۵۶۷۸</span>
                 </span>
               </a>
               <a href="tel:+989121234567" class="quick-number">
-                <span class="number-icon">📱</span>
                 <span class="number-info">
                   <span class="number-label">موبایل</span>
                   <span class="number">۰۹۱۲-۱۲۳-۴۵۶۷</span>
                 </span>
               </a>
               <a href="https://wa.me/989121234567" class="quick-number" target="_blank">
-                <span class="number-icon">💬</span>
                 <span class="number-info">
                   <span class="number-label">واتساپ</span>
                   <span class="number">ارسال پیام</span>
@@ -253,16 +230,13 @@
             <h3>ما را دنبال کنید</h3>
             <p>در شبکه‌های اجتماعی با ما در ارتباط باشید</p>
             <div class="social-links">
-              <a href="#" class="social-link instagram">
-                <span class="social-icon">📷</span>
+              <a href="#" class="social-link">
                 <span>اینستاگرام</span>
               </a>
-              <a href="#" class="social-link telegram">
-                <span class="social-icon">✈️</span>
+              <a href="#" class="social-link">
                 <span>تلگرام</span>
               </a>
-              <a href="#" class="social-link linkedin">
-                <span class="social-icon">💼</span>
+              <a href="#" class="social-link">
                 <span>لینکدین</span>
               </a>
             </div>
@@ -283,7 +257,6 @@
       <div class="map-container">
         <div class="map-placeholder">
           <div class="placeholder-content">
-            <div class="map-icon">🗺️</div>
             <h3>نقشه دسترسی</h3>
             <p>آدرس: تهران، خیابان ولیعصر، پلاک ۱۲۳۴</p>
             <button class="btn btn-outline" (click)="openMap()">
@@ -294,7 +267,6 @@
         
         <div class="map-info">
           <div class="info-item">
-            <div class="info-icon">🚇</div>
             <div class="info-content">
               <h4>دسترسی مترو</h4>
               <p>ایستگاه مترو ولیعصر - ۵ دقیقه پیاده‌روی</p>
@@ -302,7 +274,6 @@
           </div>
           
           <div class="info-item">
-            <div class="info-icon">🚌</div>
             <div class="info-content">
               <h4>اتوبوس</h4>
               <p>خطوط BRT ولیعصر - ایستگاه پارک وی</p>
@@ -310,7 +281,6 @@
           </div>
           
           <div class="info-item">
-            <div class="info-icon">🅿️</div>
             <div class="info-content">
               <h4>پارکینگ</h4>
               <p>پارکینگ عمومی در مجاورت مطب موجود است</p>
@@ -329,10 +299,10 @@
         <p>همین حالا با ما تماس بگیرید یا فرم را پر کنید تا مشاوره رایگان دریافت کنید</p>
         <div class="cta-actions">
           <a href="tel:+982112345678" class="btn btn-large btn-primary">
-            📞 تماس فوری
+            تماس فوری
           </a>
           <button class="btn btn-large btn-secondary" (click)="scrollToForm()">
-            ✍️ پر کردن فرم
+            پر کردن فرم
           </button>
         </div>
       </div>

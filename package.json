@@ -2,54 +2,48 @@
   "name": "digital-dental-lab-v2",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
+     "start": "npx ng serve --poll=1000 --no-watch",
+    "dev": "echo 'Use: npm start (for dev) OR npm run docs (for documentation)'",
+    "docs": "node scripts/ai-docs-generator.js",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true,
-    "overrides": [
-      {
-        "files": "*.html",
-        "options": {
-          "parser": "angular"
-        }
-      }
-    ]
-  },
+    "serve:ssr": "node dist/digital-dental-lab-v2/server/server.mjs",
+    "dev:clean": "npx ng cache clean && npm run dev",
+    "serve:only": "npx ng serve --poll=1000 --no-watch",
+    "docs:only": "node scripts/ai-docs-generator.js",
+    "docs:ai": "node scripts/ai-docs-generator.js",
+    "docs:smart": "node scripts/smart-docs.js || echo 'Smart docs script running...'",
+    "docs:update": "node scripts/update-docs.js || echo 'Docs script not found, continuing...'",
+    "docs:scan": "node scripts/project-scanner.js",
+    "serve:ssr": "node dist/digital-dental-lab-v2/server/server.mjs",
+    "build:ssr": "ng build && ng run digital-dental-lab-v2:server", 
+    "prerender": "ng run digital-dental-lab-v2:prerender"
+  
+},
   "private": true,
   "dependencies": {
-    "@angular/common": "^20.3.0",
-    "@angular/compiler": "^20.3.0",
-    "@angular/core": "^20.3.0",
-    "@angular/forms": "^20.3.0",
-    "@angular/platform-browser": "^20.3.0",
-    "@angular/router": "^20.3.0",
-    "@ngx-translate/core": "^17.0.0",
-    "@ngx-translate/http-loader": "^17.0.0",
-    "countup.js": "^2.9.0",
+    "@angular/animations": "^17.3.0",
+    "@angular/common": "^17.3.0",
+    "@angular/compiler": "^17.3.0",
+    "@angular/core": "^17.3.0",
+    "@angular/forms": "^17.3.0",
+    "@angular/platform-browser": "^17.3.0",
+    "@angular/platform-browser-dynamic": "^17.3.0",
+    "@angular/platform-server": "^17.3.0",
+    "@angular/router": "^17.3.0",
+    "@angular/ssr": "^17.3.8",
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
+    "express": "^4.18.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
-    "vazirmatn": "^33.0.3",
-    "zone.js": "~0.15.0"
+    "zone.js": "~0.14.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^20.3.9",
-    "@angular-devkit/core": "^20.3.9",
-    "@angular-devkit/schematics": "^20.3.9",
-    "@angular/build": "^20.3.9",
-    "@angular/cli": "^20.3.9",
-    "@angular/compiler-cli": "^20.3.0",
-    "@types/jasmine": "~5.1.0",
-    "jasmine-core": "~5.9.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.9.2"
+    "@angular-devkit/build-angular": "^17.3.0",
+    "@angular/cli": "^17.3.0",
+    "@angular/compiler-cli": "^17.3.0",
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.18.0",
+    "typescript": "~5.3.0"
   }
 }

@@ -1,236 +1,161 @@
-<section class="blog-page">
-  <!-- Hero Section -->
-  <div class="blog-hero">
-    <div class="container">
-      <div class="hero-content">
-        <h1 class="hero-title">مقالات تخصصی دندانپزشکی</h1>
-        <p class="hero-description">
-          جدیدترین مقالات، آموزش‌ها و اخبار حوزه دندانپزشکی و تکنولوژی‌های مدرن لابراتواری
-        </p>
-        <div class="hero-search">
-          <div class="search-box">
-            <input type="text" placeholder="جستجو در مقالات..." class="search-input">
-            <button class="search-btn">🔍</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="blog-section">
+  <!-- هدر بلاگ -->
+  <header class="blog-header">
+    <h1 class="blog-title">مجله تخصصی دندانپزشکی</h1>
+    <p class="blog-subtitle">آخرین مقالات، آموزش‌ها و اخبار حوزه دندانپزشکی و لابراتوار</p>
+  </header>
 
-  <!-- Featured Posts -->
-  <section class="featured-posts">
-    <div class="container">
-      <div class="section-header">
-        <h2>مقالات برتر</h2>
-        <p>مهم‌ترین و پرطرفدارترین مقالات آموزشی</p>
-      </div>
-
+  <!-- محتوای اصلی -->
+  <div class="blog-content">
+    
+    <!-- مقالات منتخب -->
+    <section class="featured-section">
+      <h2 class="section-title">مقالات منتخب</h2>
       <div class="featured-grid">
-        <article class="featured-post main-featured" *ngFor="let post of featuredPosts.slice(0,1)">
-          <div class="post-image">
-            <div class="image-placeholder featured-placeholder">
-              <div class="placeholder-content">
-                <div class="placeholder-icon">📚</div>
-                <span>مقاله ویژه</span>
-              </div>
-            </div>
-            <div class="post-badge">مقاله ویژه</div>
+        <article class="featured-post" 
+                 *ngFor="let post of featuredPosts"
+                 [routerLink]="getPostUrl(post.slug)">
+          <div class="post-image-container">
+            <div class="post-image" [style.background-image]="'url(' + post.image + ')'"></div>
           </div>
           <div class="post-content">
-            <div class="post-meta">
-              <span class="category">{{ post.category }}</span>
-              <span class="date">{{ post.date }}</span>
-              <span class="read-time">{{ post.readTime }}</span>
-            </div>
+            <span class="post-category">{{ post.category }}</span>
             <h3 class="post-title">{{ post.title }}</h3>
             <p class="post-excerpt">{{ post.excerpt }}</p>
-            <div class="post-footer">
-              <div class="author">
-                <div class="author-avatar">
-                  <div class="avatar-placeholder">👨‍⚕️</div>
-                </div>
-                <div class="author-info">
-                  <span class="author-name">{{ post.author }}</span>
-                  <span class="author-role">{{ post.authorRole }}</span>
-                </div>
-              </div>
-              <button class="read-more-btn" (click)="readPost(post.id)">
-                مطالعه مقاله →
-              </button>
+            <div class="post-meta">
+              <span class="post-date">{{ post.date }}</span>
+              <span class="read-time">{{ post.readTime }} مطالعه</span>
             </div>
           </div>
         </article>
+      </div>
+    </section>
 
-        <div class="secondary-featured">
-          <article class="featured-post secondary" *ngFor="let post of featuredPosts.slice(1)">
-            <div class="post-image">
-              <div class="image-placeholder secondary-placeholder">
-                <div class="placeholder-content">
-                  <div class="placeholder-icon">📖</div>
-                </div>
-              </div>
-            </div>
-            <div class="post-content">
-              <div class="post-meta">
-                <span class="category">{{ post.category }}</span>
-                <span class="date">{{ post.date }}</span>
-              </div>
-              <h4 class="post-title">{{ post.title }}</h4>
-              <button class="read-more-btn small" (click)="readPost(post.id)">
-                مطالعه →
-              </button>
-            </div>
-          </article>
+    <!-- سایدبار -->
+    <aside class="sidebar">
+      
+      <!-- جستجو -->
+      <div class="sidebar-widget search-box">
+        <h3 class="widget-title">جستجوی مقاله</h3>
+        <div class="search-input-container">
+          <input 
+            type="text" 
+            class="search-input" 
+            placeholder="عنوان مقاله یا نویسنده..."
+            [(ngModel)]="searchTerm">
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Blog Content -->
-  <section class="blog-content">
-    <div class="container">
-      <div class="content-grid">
-        <!-- Main Posts -->
-        <div class="posts-section">
-          <div class="section-header">
-            <h2>همه مقالات</h2>
-            <div class="filter-tabs">
-              <button class="filter-btn active" (click)="filterPosts('all')">همه</button>
-              <button class="filter-btn" (click)="filterPosts('technology')">تکنولوژی</button>
-              <button class="filter-btn" (click)="filterPosts('education')">آموزشی</button>
-              <button class="filter-btn" (click)="filterPosts('news')">اخبار</button>
-              <button class="filter-btn" (click)="filterPosts('tips')">نکات کاربردی</button>
-            </div>
+      <!-- دسته‌بندی‌ها -->
+      <div class="sidebar-widget">
+        <h3 class="widget-title">دسته‌بندی‌ها</h3>
+        <div class="categories-list">
+          <div 
+            class="category-item" 
+            [class.active]="selectedCategory === 'همه'"
+            (click)="filterByCategory('همه')">
+            <span>همه مقالات</span>
+            <span class="category-count">{{ recentPosts.length }}</span>
           </div>
-
-          <div class="posts-grid">
-            <article class="blog-post" *ngFor="let post of filteredPosts" 
-                     [class.featured]="post.featured">
-              <div class="post-image">
-                <div class="image-placeholder post-placeholder">
-                  <div class="placeholder-content">
-                    <div class="placeholder-icon">{{ post.icon }}</div>
-                  </div>
-                </div>
-                <div class="post-badge" *ngIf="post.featured">ویژه</div>
-              </div>
-              
-              <div class="post-content">
-                <div class="post-meta">
-                  <span class="category">{{ post.category }}</span>
-                  <span class="date">{{ post.date }}</span>
-                  <span class="read-time">{{ post.readTime }}</span>
-                </div>
-                
-                <h3 class="post-title">{{ post.title }}</h3>
-                <p class="post-excerpt">{{ post.excerpt }}</p>
-                
-                <div class="post-tags">
-                  <span class="tag" *ngFor="let tag of post.tags">{{ tag }}</span>
-                </div>
-                
-                <div class="post-footer">
-                  <div class="author">
-                    <div class="author-avatar">
-                      <div class="avatar-placeholder">👨‍⚕️</div>
-                    </div>
-                    <span class="author-name">{{ post.author }}</span>
-                  </div>
-                  <button class="read-more-btn" (click)="readPost(post.id)">
-                    مطالعه مقاله
-                  </button>
-                </div>
-              </div>
-            </article>
-          </div>
-
-          <!-- Load More -->
-          <div class="load-more-section">
-            <button class="load-more-btn" (click)="loadMorePosts()" *ngIf="hasMorePosts">
-              بارگذاری مقالات بیشتر
-            </button>
+          <div 
+            class="category-item" 
+            *ngFor="let cat of categories"
+            [class.active]="selectedCategory === cat.name"
+            (click)="filterByCategory(cat.name)">
+            <span>{{ cat.name }}</span>
+            <span class="category-count">{{ cat.count }}</span>
           </div>
         </div>
-
-        <!-- Sidebar -->
-        <aside class="blog-sidebar">
-          <!-- About Blog -->
-          <div class="sidebar-widget about-widget">
-            <h3>درباره بلاگ</h3>
-            <p>منبعی تخصصی برای مقالات آموزشی، اخبار و تکنولوژی‌های روز دندانپزشکی</p>
-            <div class="blog-stats">
-              <div class="stat">
-                <span class="number">+150</span>
-                <span class="label">مقاله منتشر شده</span>
-              </div>
-              <div class="stat">
-                <span class="number">+10K</span>
-                <span class="label">خواننده ماهانه</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Categories -->
-          <div class="sidebar-widget categories-widget">
-            <h3>دسته‌بندی‌ها</h3>
-            <ul class="categories-list">
-              <li *ngFor="let category of categories">
-                <a href="#" class="category-link">
-                  <span class="category-name">{{ category.name }}</span>
-                  <span class="post-count">({{ category.count }})</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Popular Posts -->
-          <div class="sidebar-widget popular-widget">
-            <h3>پربازدیدترین‌ها</h3>
-            <div class="popular-posts">
-              <article class="popular-post" *ngFor="let post of popularPosts">
-                <div class="post-thumb">
-                  <div class="thumb-placeholder">📊</div>
-                </div>
-                <div class="post-info">
-                  <h4 class="post-title">{{ post.title }}</h4>
-                  <div class="post-meta">
-                    <span class="date">{{ post.date }}</span>
-                    <span class="views">👁️ {{ post.views }}</span>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-
-          <!-- Newsletter -->
-          <div class="sidebar-widget newsletter-widget">
-            <h3>عضویت در خبرنامه</h3>
-            <p>جدیدترین مقالات را در ایمیل خود دریافت کنید</p>
-            <div class="newsletter-form">
-              <input type="email" placeholder="آدرس ایمیل شما" class="email-input">
-              <button class="subscribe-btn">عضویت</button>
-            </div>
-          </div>
-        </aside>
       </div>
-    </div>
-  </section>
 
-  <!-- CTA Section -->
-  <section class="blog-cta">
-    <div class="container">
-      <div class="cta-content">
-        <h2>آماده‌ای دانش خودت رو افزایش بدی؟</h2>
-        <p>هر هفته مقالات جدید و آموزشی در حوزه دندانپزشکی منتشر می‌کنیم</p>
-        <div class="cta-actions">
-          <button class="btn btn-primary" (click)="navigateToContact()">
-            پیشنهاد موضوع مقاله
-          </button>
-          <button class="btn btn-secondary">
-            دانلود مقالات ویژه
-          </button>
+      <!-- تگ‌های محبوب -->
+      <div class="sidebar-widget">
+        <h3 class="widget-title">تگ‌های محبوب</h3>
+        <div class="tags-cloud">
+          <span class="tag" *ngFor="let tag of popularTags">{{ tag }}</span>
         </div>
       </div>
+
+    </aside>
+
+    <!-- جدیدترین اخبار و مقاله‌ها -->
+    <section class="latest-news-section">
+      <div class="section-header">
+        <h2 class="section-title">جدیدترین اخبار و مقاله‌ها</h2>
+      </div>
+      <div class="latest-news-grid">
+        <article class="news-card" 
+                 *ngFor="let post of latestPosts"
+                 [routerLink]="getPostUrl(post.slug)">
+          <div class="news-image-container">
+            <div class="news-image" [style.background-image]="'url(' + post.image + ')'"></div>
+          </div>
+          <div class="news-content">
+            <span class="news-category">{{ post.category }}</span>
+            <h3 class="news-title">{{ post.title }}</h3>
+            <p class="news-excerpt">{{ post.excerpt }}</p>
+            <div class="news-meta">
+              <span class="news-date">{{ post.date }}</span>
+              <span class="read-time">{{ post.readTime }}</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- مقالات برگزیده -->
+    <section class="posts-section">
+      <div class="section-header">
+        <h2 class="section-title">مقالات برگزیده</h2>
+        <span class="posts-count">{{ filteredPosts.length }} مقاله</span>
+      </div>
+
+      <div class="posts-grid">
+        <article class="post-card" 
+                 *ngFor="let post of paginatedPosts"
+                 [routerLink]="getPostUrl(post.slug)">
+          <div class="post-image-container">
+            <div class="post-image" [style.background-image]="'url(' + post.image + ')'"></div>
+          </div>
+          <div class="post-content">
+            <span class="post-category">{{ post.category }}</span>
+            <h3 class="post-title">{{ post.title }}</h3>
+            <p class="post-excerpt">{{ post.excerpt }}</p>
+            <div class="post-meta">
+              <span class="author">نویسنده: {{ post.author }}</span>
+              <span class="read-time">{{ post.readTime }}</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- صفحه‌بندی -->
+    <div class="pagination" *ngIf="totalPages > 1">
+      <button 
+        class="page-btn prev" 
+        [class.disabled]="currentPage === 1"
+        (click)="changePage(currentPage - 1)">
+        قبلی
+      </button>
+      
+      <div class="page-numbers">
+        <button 
+          class="page-btn" 
+          *ngFor="let page of [].constructor(totalPages); let i = index"
+          [class.active]="currentPage === i + 1"
+          (click)="changePage(i + 1)">
+          {{ i + 1 }}
+        </button>
+      </div>
+
+      <button 
+        class="page-btn next" 
+        [class.disabled]="currentPage === totalPages"
+        (click)="changePage(currentPage + 1)">
+        بعدی
+      </button>
     </div>
-  </section>
+
+  </div>
 </section>

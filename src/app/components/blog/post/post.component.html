@@ -1,0 +1,70 @@
+<section class="post-section" *ngIf="post">
+  <!-- هدر مقاله -->
+  <header class="post-header">
+    <button class="back-button" routerLink="/blog">← بازگشت به بلاگ</button>
+    
+    <span class="post-category">{{ post.category }}</span>
+    <h1 class="post-title">{{ post.title }}</h1>
+    <p class="post-excerpt">{{ post.excerpt }}</p>
+    
+    <div class="post-meta">
+      <div class="meta-item author">
+        <span>نویسنده: {{ post.author }}</span>
+      </div>
+      <div class="meta-item date">
+        <span>{{ post.date }}</span>
+      </div>
+      <div class="meta-item read-time">
+        <span>{{ post.readTime }} مطالعه</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- محتوای مقاله -->
+  <div class="post-content">
+    <div class="post-image" [style.background-image]="'url(' + post.image + ')'"></div>
+    
+    <article class="article-content" [innerHTML]="post.content"></article>
+
+    <!-- تگ‌ها و اشتراک‌گذاری -->
+    <div class="post-actions">
+      <div class="tags">
+        <span class="tag" *ngFor="let tag of post.tags">{{ tag }}</span>
+      </div>
+      
+      <div class="share-buttons">
+        <button class="share-btn twitter" (click)="shareOnSocialMedia('twitter')">
+          توییتر
+        </button>
+        <button class="share-btn linkedin" (click)="shareOnSocialMedia('linkedin')">
+          لینکدین
+        </button>
+        <button class="share-btn telegram" (click)="shareOnSocialMedia('telegram')">
+          تلگرام
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- مقالات مرتبط -->
+  <section class="related-posts" *ngIf="relatedPosts.length > 0">
+    <h2 class="section-title">مقالات مرتبط</h2>
+    <div class="related-grid">
+      <article class="related-card" 
+               *ngFor="let relatedPost of relatedPosts"
+               [routerLink]="getPostUrl(relatedPost.slug)">
+        <div class="related-image-container">
+          <div class="related-image" [style.background-image]="'url(' + relatedPost.image + ')'"></div>
+        </div>
+        <div class="related-content">
+          <span class="related-category">{{ relatedPost.category }}</span>
+          <h3 class="related-title">{{ relatedPost.title }}</h3>
+          <div class="related-meta">
+            <span class="related-date">{{ relatedPost.date }}</span>
+            <span class="read-time">{{ relatedPost.readTime }}</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+</section>

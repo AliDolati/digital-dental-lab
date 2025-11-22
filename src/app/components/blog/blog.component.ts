@@ -1,225 +1,244 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './blog.component.html',
-  styleUrl: './blog.component.scss'
+  styleUrls: ['./blog.component.scss']
 })
 export class BlogComponent implements OnInit {
-  
-  currentFilter = 'all';
-  displayedPosts = 6;
-  postsPerLoad = 6;
 
-  // مقالات ویژه
+  // مقالات منتخب - با استفاده از عکس‌های موجود
   featuredPosts = [
     {
       id: 1,
-      title: 'تکنولوژی CAD/CAM در دندانپزشکی دیجیتال - راهنمای کامل',
-      excerpt: 'هر آنچه باید درباره طراحی و ساخت دیجیتال پروتزهای دندانی بدانید. از اسکن تا ساخت نهایی...',
+      title: 'روکش زیرکونیا: انقلابی در دندانپزشکی مدرن',
+      excerpt: 'بررسی مزایا، معایب و کاربردهای روکش زیرکونیا در دندانپزشکی دیجیتال. چگونه این تکنولوژی تحول بزرگی در صنعت دندانپزشکی ایجاد کرده است.',
+      image: 'assets/images/blog/zirconia-crown.jpg',
       category: 'تکنولوژی',
-      date: '۲ آبان ۱۴۰۳',
-      readTime: '۸ دقیقه',
+      date: '۱۴۰۲/۱۰/۱۵',
+      readTime: '۵ دقیقه',
       author: 'دکتر محمدی',
-      authorRole: 'متخصص پروتزهای دندانی',
-      featured: true,
-      icon: '💻'
+      slug: 'zirconia-crown-revolution'
     },
     {
       id: 2,
-      title: 'مراقبت‌های بعد از لمینیت سرامیکی',
-      excerpt: 'نکات طلایی برای نگهداری و افزایش عمر لمینیت‌های سرامیکی...',
-      category: 'آموزشی',
-      date: '۲۸ مهر ۱۴۰۳',
-      readTime: '۵ دقیقه',
+      title: 'لمینیت سرامیکی vs کامپوزیت ونیر',
+      excerpt: 'مقایسه کامل لمینیت سرامیکی و کامپوزیت ونیر از نظر ماندگاری، زیبایی و هزینه. کدام گزینه برای لبخند شما مناسب‌تر است؟',
+      image: 'assets/images/blog/veneer-comparison.jpg',
+      category: 'مقایسه',
+      date: '۱۴۰۲/۱۰/۱۲',
+      readTime: '۷ دقیقه',
       author: 'دکتر رضایی',
-      authorRole: 'متخصص زیبایی',
-      featured: true,
-      icon: '🌟'
-    },
-    {
-      id: 3,
-      title: 'جدیدترین مواد دندانپزشکی در سال ۲۰۲۴',
-      excerpt: 'معرفی مواد جدید و پیشرفته در صنعت دندانپزشکی...',
-      category: 'اخبار',
-      date: '۲۵ مهر ۱۴۰۳',
-      readTime: '۶ دقیقه',
-      author: 'دکتر کریمی',
-      authorRole: 'محقق مواد دندانی',
-      featured: true,
-      icon: '🔬'
+      slug: 'veneer-vs-composite-comparison'
     }
   ];
 
-  // همه مقالات
-  allPosts = [
+  // مقالات اخیر
+  recentPosts = [
+    {
+      id: 3,
+      title: 'مراقبت از ایمپلنت دندان',
+      excerpt: 'راهنمای کامل مراقبت و نگهداری از ایمپلنت دندان برای افزایش طول عمر. نکات طلایی برای حفظ سلامت ایمپلنت‌های دندانی.',
+      image: 'assets/images/blog/implant-care.jpg',
+      category: 'مراقبت',
+      date: '۱۴۰۲/۱۰/۱۰',
+      readTime: '۴ دقیقه',
+      author: 'دکتر کریمی',
+      slug: 'dental-implant-care'
+    },
     {
       id: 4,
-      title: 'تفاوت ایمپلنت و بریج دندان - کدام بهتر است؟',
-      excerpt: 'مقایسه کامل ایمپلنت و بریج دندان از نظر هزینه، عمر مفید و نتایج...',
-      category: 'آموزشی',
-      date: '۲۰ مهر ۱۴۰۳',
-      readTime: '۷ دقیقه',
+      title: 'CAD/CAM در دندانپزشکی دیجیتال',
+      excerpt: 'نقش تکنولوژی CAD/CAM در تحول لابراتوارهای دندانپزشکی. چگونه این تکنولوژی دقت و سرعت کار را افزایش داده است.',
+      image: 'assets/images/blog/cad-cam.jpg',
+      category: 'تکنولوژی',
+      date: '۱۴۰۲/۱۰/۰۸',
+      readTime: '۶ دقیقه',
       author: 'دکتر احمدی',
-      tags: ['ایمپلنت', 'بریج', 'مقایسه'],
-      featured: false,
-      icon: '🔩'
+      slug: 'cad-cam-dentistry'
     },
     {
       id: 5,
-      title: '۱۰ نکته برای انتخاب بهترین لابراتوار دندانپزشکی',
-      excerpt: 'معیارهای مهم در انتخاب لابراتوار معتبر و حرفه‌ای...',
-      category: 'نکات کاربردی',
-      date: '۱۸ مهر ۱۴۰۳',
+      title: 'بلیچینگ خانگی vs مطبی',
+      excerpt: 'مقایسه روش‌های مختلف بلیچینگ و انتخاب بهترین گزینه. مزایا و معایب هر روش را بشناسید.',
+      image: 'assets/images/blog/teeth-whitening.jpg',
+      category: 'زیبایی',
+      date: '۱۴۰۲/۱۰/۰۵',
       readTime: '۵ دقیقه',
       author: 'دکتر حسینی',
-      tags: ['انتخاب', 'کیفیت', 'تخصص'],
-      featured: true,
-      icon: '✅'
+      slug: 'teeth-bleaching-comparison'
     },
     {
       id: 6,
-      title: 'چاپ سه بعدی در دندانپزشکی - انقلابی در ساخت پروتز',
-      excerpt: 'کاربردهای چاپ سه بعدی و مزایای آن در دندانپزشکی مدرن...',
+      title: 'پروتزهای متحرک جدید',
+      excerpt: 'آخرین نوآوری‌ها در زمینه پروتزهای متحرک دندانپزشکی. تکنولوژی‌های جدید چه امکاناتی ارائه می‌دهند.',
+      image: 'assets/images/blog/denture.jpg',
       category: 'تکنولوژی',
-      date: '۱۵ مهر ۱۴۰۳',
-      readTime: '۹ دقیقه',
-      author: 'دکتر محمدی',
-      tags: ['چاپ سه بعدی', 'تکنولوژی', 'پروتز'],
-      featured: false,
-      icon: '🖨️'
+      date: '۱۴۰۲/۱۰/۰۳',
+      readTime: '۴ دقیقه',
+      author: 'دکتر محمودی',
+      slug: 'modern-dentures'
     },
     {
       id: 7,
-      title: 'روکش زیرکونیوم vs روکش PFM - مقایسه فنی',
-      excerpt: 'مقایسه تخصصی روکش زیرکونیوم و روکش PFM از نظر استحکام و زیبایی...',
-      category: 'تکنولوژی',
-      date: '۱۲ مهر ۱۴۰۳',
+      title: 'راهنمای انتخاب روکش دندان',
+      excerpt: 'چگونه بهترین جنس روکش را با توجه به نیاز خود انتخاب کنیم. مقایسه زیرکونیا، Emax و روکش‌های فلزی.',
+      image: 'assets/images/blog/crown-guide.jpg',
+      category: 'آموزش',
+      date: '۱۴۰۲/۱۰/۰۱',
       readTime: '۸ دقیقه',
-      author: 'دکتر رضایی',
-      tags: ['زیرکونیوم', 'PFM', 'مقایسه'],
-      featured: false,
-      icon: '🦷'
+      author: 'دکتر علیزاده',
+      slug: 'dental-crown-selection-guide'
     },
     {
       id: 8,
-      title: 'اصول نگهداری از پروتز متحرک',
-      excerpt: 'راهنمای کامل تمیز کردن و نگهداری از پروتزهای متحرک...',
-      category: 'آموزشی',
-      date: '۱۰ مهر ۱۴۰۳',
-      readTime: '۴ دقیقه',
-      author: 'دکتر کریمی',
-      tags: ['پروتز متحرک', 'نگهداری', 'تمیز کردن'],
-      featured: false,
-      icon: '🦿'
+      title: 'مزایای دندانپزشکی دیجیتال',
+      excerpt: 'بررسی کامل مزایای دندانپزشکی دیجیتال نسبت به روش‌های سنتی. چرا دندانپزشکی دیجیتال آینده این صنعت است.',
+      image: 'assets/images/blog/digital-dentistry.jpg',
+      category: 'تکنولوژی',
+      date: '۱۴۰۲/۰۹/۲۸',
+      readTime: '۶ دقیقه',
+      author: 'دکتر جعفری',
+      slug: 'digital-dentistry-benefits'
     },
     {
       id: 9,
-      title: 'تاثیر رنگ‌شناسی در طراحی لبخند (Smile Design)',
-      excerpt: 'نقش رنگ و سایه‌ها در طراحی لبخند طبیعی و جذاب...',
-      category: 'زیبایی',
-      date: '۸ مهر ۱۴۰۳',
-      readTime: '۶ دقیقه',
-      author: 'دکتر احمدی',
-      tags: ['لبخند', 'رنگ', 'زیبایی'],
-      featured: true,
-      icon: '😊'
+      title: 'نایت گارد و اهمیت آن',
+      excerpt: 'چرا استفاده از نایت گارد برای سلامت دندان‌ها ضروری است. محافظت از دندان‌ها در برابر سایش شبانه.',
+      image: 'assets/images/blog/night-guard.jpg',
+      category: 'مراقبت',
+      date: '۱۴۰۲/۰۹/۲۵',
+      readTime: '۳ دقیقه',
+      author: 'دکتر موسوی',
+      slug: 'night-guard-importance'
     },
-    // مقالات بیشتر...
-    ...Array.from({length: 10}, (_, i) => ({
-      id: i + 10,
-      title: `مقاله نمونه ${i + 10} - موضوع تخصصی دندانپزشکی`,
-      excerpt: 'این یک مقاله نمونه با محتوای آموزشی و تخصصی در حوزه دندانپزشکی است...',
-      category: ['تکنولوژی', 'آموزشی', 'اخبار', 'نکات کاربردی'][i % 4],
-      date: `${i + 1} مهر ۱۴۰۳`,
-      readTime: `${5 + (i % 4)} دقیقه`,
-      author: ['دکتر محمدی', 'دکتر رضایی', 'دکتر کریمی', 'دکتر احمدی'][i % 4],
-      tags: ['نمونه', 'آموزش', 'تخصصی'],
-      featured: i % 5 === 0,
-      icon: ['💡', '📚', '🔍', '🎯'][i % 4]
-    }))
+    {
+      id: 10,
+      title: 'ایمپلنت دیجیتال',
+      excerpt: 'فرآیند کاشت ایمپلنت با راهنمای دیجیتال و مزایای آن. دقت بالاتر و نتایج بهتر با تکنولوژی دیجیتال.',
+      image: 'assets/images/blog/digital-implant.jpg',
+      category: 'تکنولوژی',
+      date: '۱۴۰۲/۰۹/۲۲',
+      readTime: '۷ دقیقه',
+      author: 'دکتر کاظمی',
+      slug: 'digital-implant-surgery'
+    },
+    {
+      id: 11,
+      title: 'لمینیت سرامیکی',
+      excerpt: 'همه چیز درباره لمینیت سرامیکی و مراحل ساخت آن. چگونه لبخند هالیوودی خود را داشته باشید.',
+      image: 'assets/images/blog/ceramic-veneer.jpg',
+      category: 'زیبایی',
+      date: '۱۴۰۲/۰۹/۲۰',
+      readTime: '۵ دقیقه',
+      author: 'دکتر رحیمی',
+      slug: 'ceramic-veneers-guide'
+    },
+    {
+      id: 12,
+      title: 'پست و کور زیرکونیا',
+      excerpt: 'کاربردهای پست و کور زیرکونیا در دندان‌های ترمیمی. استحکام و زیبایی در یک قالب.',
+      image: 'assets/images/blog/zirconia-post.jpg',
+      category: 'تکنولوژی',
+      date: '۱۴۰۲/۰۹/۱۸',
+      readTime: '۴ دقیقه',
+      author: 'دکتر امینی',
+      slug: 'zirconia-post-core'
+    }
   ];
 
   // دسته‌بندی‌ها
   categories = [
-    { name: 'تکنولوژی', count: 25 },
-    { name: 'آموزشی', count: 32 },
-    { name: 'اخبار', count: 18 },
-    { name: 'نکات کاربردی', count: 15 },
-    { name: 'زیبایی', count: 12 },
-    { name: 'مواد دندانی', count: 8 }
+    { name: 'تکنولوژی', count: 12 },
+    { name: 'مراقبت', count: 8 },
+    { name: 'زیبایی', count: 6 },
+    { name: 'آموزش', count: 10 },
+    { name: 'مقایسه', count: 5 }
   ];
 
-  // مقالات پربازدید
-  popularPosts = [
-    {
-      title: 'لمینیت سرامیکی - هر آنچه باید بدانید',
-      date: '۵ مهر ۱۴۰۳',
-      views: '۲.۴K'
-    },
-    {
-      title: 'ایمپلنت فوری - مزایا و معایب',
-      date: '۲۸ شهریور ۱۴۰۳',
-      views: '۱.۸K'
-    },
-    {
-      title: 'بلیچینگ دندان - روش‌های مدرن',
-      date: '۲۰ شهریور ۱۴۰۳',
-      views: '۱.۵K'
-    },
-    {
-      title: 'پروتز متحرک دیجیتال - تحولی جدید',
-      date: '۱۵ شهریور ۱۴۰۳',
-      views: '۱.۲K'
-    }
+  // تگ‌های محبوب
+  popularTags = [
+    'زیرکونیا', 'ایمپلنت', 'لمینیت', 'روکش', 'بلیچینگ', 
+    'CAD/CAM', 'دندانپزشکی دیجیتال', 'نایت گارد', 'پروتز'
   ];
+
+  selectedCategory = 'همه';
+  searchTerm = '';
 
   ngOnInit() {
-    // مقداردهی اولیه
+    this.preloadImages();
+  }
+
+  // پیش‌لود عکس‌ها برای عملکرد بهتر
+  preloadImages() {
+    const allPosts = [...this.featuredPosts, ...this.recentPosts];
+    allPosts.forEach(post => {
+      const img = new Image();
+      img.src = post.image;
+    });
+  }
+
+  filterByCategory(category: string) {
+    this.selectedCategory = category;
+    this.currentPage = 1;
   }
 
   get filteredPosts() {
-    let posts = this.allPosts;
-    
-    if (this.currentFilter !== 'all') {
+    let posts = this.recentPosts;
+
+    if (this.selectedCategory !== 'همه') {
+      posts = posts.filter(post => post.category === this.selectedCategory);
+    }
+
+    if (this.searchTerm) {
+      const term = this.searchTerm.toLowerCase();
       posts = posts.filter(post => 
-        post.category === this.currentFilter
+        post.title.toLowerCase().includes(term) ||
+        post.excerpt.toLowerCase().includes(term) ||
+        post.author.toLowerCase().includes(term) ||
+        post.category.toLowerCase().includes(term)
       );
     }
-    
-    return posts.slice(0, this.displayedPosts);
+
+    return posts;
   }
 
-  get hasMorePosts() {
-    let totalPosts = this.allPosts.length;
-    
-    if (this.currentFilter !== 'all') {
-      totalPosts = this.allPosts.filter(post => 
-        post.category === this.currentFilter
-      ).length;
-    }
-    
-    return this.displayedPosts < totalPosts;
+  // مقالات برای بخش جدید (۳ تایی)
+  get latestPosts() {
+    return this.recentPosts.slice(0, 3);
   }
 
-  filterPosts(category: string) {
-    this.currentFilter = category;
-    this.displayedPosts = this.postsPerLoad;
+  // برای صفحات بعدی (pagination)
+  currentPage = 1;
+  itemsPerPage = 6;
+
+  get paginatedPosts() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.filteredPosts.slice(startIndex, startIndex + this.itemsPerPage);
   }
 
-  loadMorePosts() {
-    this.displayedPosts += this.postsPerLoad;
+  get totalPages() {
+    return Math.ceil(this.filteredPosts.length / this.itemsPerPage);
   }
 
-  readPost(postId: number) {
-    // در حالت واقعی به صفحه مقاله هدایت می‌شود
-    console.log('Reading post:', postId);
-    alert(`مقاله ${postId} به زودی بارگذاری خواهد شد!`);
+  changePage(page: number) {
+    this.currentPage = page;
+    window.scrollTo(0, 0);
   }
 
-  navigateToContact() {
-    window.location.href = '/contact';
+  clearFilters() {
+    this.selectedCategory = 'همه';
+    this.searchTerm = '';
+    this.currentPage = 1;
+  }
+
+  // تابع برای گرفتن URL مقاله
+  getPostUrl(slug: string): string {
+    return `/blog/${slug}`;
   }
 }

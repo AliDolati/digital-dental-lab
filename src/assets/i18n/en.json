@@ -1,4 +1,196 @@
 {
+  "SITE": {
+    "TITLE": "Digital Dental Laboratory",
+    "DESCRIPTION": "Advanced digital dental laboratory with the latest technologies"
+  },
+  "NAV": {
+    "HOME": "Home",
+    "SERVICES": "Services",
+    "GALLERY": "Gallery",
+    "BLOG": "Blog",
+    "TECHNOLOGY": "Technology",
+    "CONTACT": "Contact",
+    "LANGUAGE": "Language",
+    "PERSIAN": "Persian",
+    "ENGLISH": "English"
+  },
+  "HOME": {
+    "TITLE": "Digital Dental Laboratory - Home",
+    "HERO": {
+      "TITLE": "Beautiful Smile, Modern Technology",
+      "SUBTITLE": "Our expertise in digital dental prosthetics with micron precision",
+      "BUTTON": "View Services"
+    }
+  },
+  "SERVICES": {
+    "TITLE": "Our Specialized Services",
+    "SUBTITLE": "Using the most advanced CAD/CAM equipment",
+    "CATEGORY_TITLE": "{{category}} Services",
+    "DETAIL_TITLE": "{{service}} Details",
+    "ZIRCONIA_CROWN": {
+      "TITLE": "Zirconia Crown",
+      "DESCRIPTION": "Full zirconia crowns with exceptional strength and natural beauty"
+    },
+    "EMAX_CROWN": {
+      "TITLE": "E-max Crown",
+      "DESCRIPTION": "Ceramic crowns with unmatched transparency and beauty"
+    },
+    "CERAMIC_VENEER": {
+      "TITLE": "Ceramic Veneer",
+      "DESCRIPTION": "Ceramic laminates for a Hollywood smile"
+    },
+    "IMPLANT_PROSTHETIC": {
+      "TITLE": "Implant Prosthetic",
+      "DESCRIPTION": "Fixed and removable prosthetics on implants"
+    },
+    "DENTURE": {
+      "TITLE": "Denture",
+      "DESCRIPTION": "Complete and partial dentures with excellent quality"
+    },
+    "NIGHT_GUARD": {
+      "TITLE": "Night Guard",
+      "DESCRIPTION": "Night protection to prevent teeth grinding"
+    },
+    "CATEGORIES": {
+      "ALL": "All Services",
+      "CROWN_BRIDGE": "Crown & Bridge",
+      "ESTHETIC": "Esthetic",
+      "IMPLANT": "Implant",
+      "PROSTHETIC": "Prosthetic",
+      "PROTECTIVE": "Protective",
+      "DIGITAL_DENTISTRY": "Digital Dentistry",
+      "VENEERS": "Veneers",
+      "OCCLUSAL_APPLIANCES": "Occlusal Appliances",
+      "IMPLANT_SOLUTIONS": "Implant Solutions",
+      "PROVISIONALS": "Provisionals",
+      "THERMOFORMING": "Thermoforming"
+    },
+    "FEATURES": {
+      "HIGH_STRENGTH": "Exceptional Strength",
+      "BIOCOMPATIBLE": "Biocompatible",
+      "AESTHETIC": "Natural Beauty",
+      "HIGH_ESTHETIC": "Unmatched Beauty",
+      "DURABLE": "Durable",
+      "NATURAL_LOOK": "Natural Look",
+      "TRANSFORMATIVE": "Transformative",
+      "STAIN_RESISTANT": "Stain Resistant",
+      "MINIMAL_PREP": "Minimal Preparation",
+      "PERMANENT_SOLUTION": "Permanent Solution",
+      "BONE_PRESERVATION": "Bone Preservation",
+      "FUNCTIONAL": "Functional",
+      "FULL_RECONSTRUCTION": "Full Reconstruction",
+      "COMFORTABLE": "Comfortable",
+      "BRUXISM_PROTECTION": "Bruxism Protection"
+    },
+    "DURATION": {
+      "2_3_DAYS": "2-3 Days",
+      "3_4_DAYS": "3-4 Days",
+      "4_5_DAYS": "4-5 Days",
+      "5_7_DAYS": "5-7 Days",
+      "7_10_DAYS": "7-10 Days"
+    },
+    "PRICE": {
+      "AFFORDABLE": "Affordable",
+      "MEDIUM": "Medium",
+      "HIGH": "High",
+      "PREMIUM": "Premium"
+    }
+  },
+  "GALLERY": {
+    "TITLE": "Our Work Gallery",
+    "SUBTITLE": "Before and after treatment samples",
+    "CROWN_RESTORATION": "Crown Restoration",
+    "VENEER_TRANSFORMATION": "Veneer Transformation",
+    "IMPLANT_RESTORATION": "Implant Restoration",
+    "DENTURE_MAKEOVER": "Denture Makeover",
+    "CROWN_DESCRIPTION": "Tooth restoration with zirconia crown",
+    "VENEER_DESCRIPTION": "Correcting tooth form and color with ceramic veneers",
+    "IMPLANT_DESCRIPTION": "Replacing missing teeth with implants",
+    "DENTURE_DESCRIPTION": "Complete teeth restoration with removable prosthesis",
+    "PROCEDURE": {
+      "ZIRCONIA_CROWN": "Zirconia Crown",
+      "CERAMIC_VENEERS": "Ceramic Veneers",
+      "IMPLANT_CROWN": "Implant Crown",
+      "COMPLETE_DENTURE": "Complete Denture"
+    },
+    "DURATION": {
+      "2_DAYS": "2 Days",
+      "5_DAYS": "5 Days",
+      "10_DAYS": "10 Days",
+      "3_MONTHS": "3 Months"
+    },
+    "CATEGORIES": {
+      "ALL": "All",
+      "CROWNS": "Crowns",
+      "VENEERS": "Veneers",
+      "IMPLANTS": "Implants",
+      "DENTURES": "Dentures"
+    },
+    "BEFORE": "Before",
+    "AFTER": "After"
+  },
+  "TECHNOLOGY": {
+    "TITLE": "Our Technologies",
+    "SUBTITLE": "With the latest digital dental equipment",
+    "CAD_CAM": {
+      "TITLE": "CAD/CAM System",
+      "DESCRIPTION": "Computer-aided design and manufacturing with micron precision"
+    },
+    "DIGITAL_SCANNING": {
+      "TITLE": "Digital Scanner",
+      "DESCRIPTION": "3D scanning without traditional impressions"
+    },
+    "3D_PRINTING": {
+      "TITLE": "3D Printing",
+      "DESCRIPTION": "Precise printing of models and temporary prosthetics"
+    },
+    "MILLING_MACHINE": {
+      "TITLE": "CNC Milling Machine",
+      "DESCRIPTION": "Precision milling of zirconia and ceramic"
+    }
+  },
+  "CONTACT": {
+    "TITLE": "Contact Us",
+    "SUBTITLE": "We are ready to answer your questions",
+    "ADDRESS": "Address",
+    "PHONE": "Phone",
+    "EMAIL": "Email",
+    "WORKING_HOURS": "Working Hours",
+    "NAME": "Name",
+    "EMAIL_PLACEHOLDER": "Your Email",
+    "MESSAGE": "Message",
+    "SEND": "Send Message",
+    "SUCCESS": "Your message has been sent successfully",
+    "FORM_TITLE": "Consultation Request Form",
+    "PHONE_PLACEHOLDER": "Mobile Phone",
+    "SERVICE_TYPE": "Desired Service Type",
+    "SUBMIT": "Submit Request"
+  },
+  "FOOTER": {
+    "DESCRIPTION": "The most advanced digital dental laboratory in the region",
+    "QUICK_LINKS": "Quick Links",
+    "CONTACT_INFO": "Contact Info",
+    "COPYRIGHT": "All rights reserved"
+  },
+  "BUTTONS": {
+    "SEE_MORE": "See More",
+    "CONTACT_US": "Contact Us",
+    "VIEW_ALL": "View All",
+    "READ_MORE": "Read More",
+    "SEND_MESSAGE": "Send Message",
+    "LEARN_MORE": "Learn More",
+    "MORE_INFO": "More Info",
+    "CTA_PRIMARY": "View Services",
+    "CTA_SECONDARY": "Contact Us"
+  },
+  "COMMON": {
+    "LOADING": "Loading...",
+    "ERROR": "Loading Error",
+    "RETRY": "Retry",
+    "CLOSE": "Close",
+    "NEXT": "Next",
+    "PREVIOUS": "Previous"
+  },
   "HEADER": {
     "HOME": "Home",
     "SERVICES": "Services",
@@ -8,32 +200,10 @@
     "CONTACT": "Contact",
     "LANGUAGE": "Language"
   },
-  // ... بقیه ترجمه‌ها
-},
   "HERO": {
     "TITLE": "Digital Dental Laboratory",
     "SUBTITLE": "Advanced digital dental services with the latest world technologies",
     "CTA_PRIMARY": "View Services",
     "CTA_SECONDARY": "Contact Us"
-  },
-  "SERVICES": {
-    "TITLE": "Our Specialized Services",
-    "SUBTITLE": "Using the most advanced technologies in the world",
-    "DIGITAL_CROWN": "Digital Crown",
-    "VENEERS": "Ceramic Veneers",
-    "IMPLANTS": "Implants",
-    "DENTURES": "Removable Dentures",
-    "MORE_INFO": "More Info"
-  },
-  "CONTACT": {
-    "TITLE": "Contact Us",
-    "SUBTITLE": "We are ready to answer your questions",
-    "FORM_TITLE": "Consultation Request Form",
-    "NAME": "Full Name",
-    "EMAIL": "Email",
-    "PHONE": "Phone Number",
-    "MESSAGE": "Message",
-    "SERVICE_TYPE": "Desired Service Type",
-    "SUBMIT": "Submit Request"
   }
 }

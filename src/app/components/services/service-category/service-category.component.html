@@ -1,0 +1,57 @@
+<section class="category-page" *ngIf="currentCategory">
+  <!-- Category Hero -->
+  <div class="category-hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="category-title">{{ currentCategory.title }}</h1>
+        <p class="category-description">{{ currentCategory.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back Navigation -->
+  <div class="container">
+    <div class="back-nav">
+      <a [routerLink]="['/services']" class="back-button">
+        ← بازگشت به صفحه خدمات
+      </a>
+    </div>
+  </div>
+
+  <!-- Services Grid -->
+  <section class="services-section">
+    <div class="container">
+      <div class="services-grid">
+        <div 
+          class="service-card" 
+          *ngFor="let service of currentCategory.services"
+          (click)="navigateToService(service.id)">
+          <img 
+            [src]="service.image" 
+            [alt]="service.title"
+            class="service-image"
+            (error)="service.image = '/assets/images/placeholder.jpg'">
+          <div class="service-content">
+            <h3 class="service-title">{{ service.title }}</h3>
+            <p class="service-description">{{ service.description }}</p>
+            
+            <div class="service-features">
+              <span class="feature-tag" *ngFor="let feature of service.features.slice(0, 2)">
+                {{ feature }}
+              </span>
+            </div>
+            
+            <div class="service-meta">
+              <div class="duration">
+                <strong>زمان:</strong> {{ service.duration }}
+              </div>
+              <div class="warranty">
+                <strong>گارانتی:</strong> {{ service.warranty }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>

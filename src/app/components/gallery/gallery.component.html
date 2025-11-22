@@ -1,33 +1,27 @@
 <section class="gallery-section">
   
+  <!-- هدر اصلی -->
+  <div class="gallery-header">
+    <h1 class="section-title">گالری تخصصی لابراتوار دندانپزشکی</h1>
+    <p class="section-subtitle">نمایش نمونه کارهای انجام شده با جدیدترین تکنولوژی‌های روز دنیا</p>
+  </div>
+
+  <!-- تب‌های اصلی -->
   <div class="gallery-tabs">
     <button 
       class="tab-btn" 
       [class.active]="activeTab === 'gallery'"
       (click)="setActiveTab('gallery')">
-      🖼️ گالری عکس
+      گالری عکس
     </button>
     <button 
       class="tab-btn" 
       [class.active]="activeTab === 'videos'"
       (click)="setActiveTab('videos')">
-      🎥 ویدئوهای آموزشی
+      ویدئوهای آموزشی
     </button>
   </div>
-<!-- بعد از تب‌ها اضافه کن -->
-<div style="background: #f0f8ff; padding: 20px; margin: 20px 0; border: 2px solid blue;">
-  <h3>🔍 تست لود عکس‌ها:</h3>
-  <div style="display: flex; gap: 10px;">
-    <div>
-      <img src="assets/images/gallery/crown-before.jpg" style="width: 100px; border: 2px solid green;">
-      <p>crown-before.jpg</p>
-    </div>
-    <div>
-      <img src="assets/images/gallery/veneer-after.jpg" style="width: 100px; border: 2px solid green;">
-      <p>veneer-after.jpg</p>
-    </div>
-  </div>
-</div>
+
   <!-- محتوای تب گالری عکس -->
   <div class="tab-content" *ngIf="activeTab === 'gallery'">
     
@@ -58,36 +52,25 @@
           <!-- بدنه کارت -->
           <div class="gallery-image-container">
             <div class="image-comparison">
-              <div class="image-half before" (click)="$event.stopPropagation(); openLightbox(item, 'before')">
-                <div class="image-placeholder">
+              <!-- تصویر قبل -->
+              <div class="image-half before" (click)="openLightbox(item, 'before')">
+                <div class="image-placeholder before" 
+                     [style.background]="'url(' + item.before.image + ')'">
                   <div class="image-badge before-badge">قبل</div>
                   <div class="image-content">
-                    <div class="placeholder-icon">📸</div>
                     <span class="placeholder-text">{{ item.before.placeholder }}</span>
                   </div>
                 </div>
               </div>
-              <div class="image-half after" (click)="$event.stopPropagation(); openLightbox(item, 'after')">
-                <div class="image-placeholder">
+              
+              <!-- تصویر بعد -->
+              <div class="image-half after" (click)="openLightbox(item, 'after')">
+                <div class="image-placeholder after" 
+                     [style.background]="'url(' + item.after.image + ')'">
                   <div class="image-badge after-badge">بعد</div>
                   <div class="image-content">
-                    <div class="placeholder-icon">✨</div>
                     <span class="placeholder-text">{{ item.after.placeholder }}</span>
                   </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- overlay برای hover effects -->
-            <div class="gallery-overlay">
-              <div class="overlay-content">
-                <div class="overlay-buttons">
-                  <button class="overlay-btn before-btn" (click)="$event.stopPropagation(); openLightbox(item, 'before')">
-                    مشاهده قبل
-                  </button>
-                  <button class="overlay-btn after-btn" (click)="$event.stopPropagation(); openLightbox(item, 'after')">
-                    مشاهده بعد
-                  </button>
                 </div>
               </div>
             </div>
@@ -99,18 +82,18 @@
             
             <div class="gallery-meta">
               <div class="meta-item">
-                <span class="meta-icon">⏱️</span>
-                <span class="meta-text">مدت درمان: {{ item.duration }}</span>
+                <span class="meta-label">مدت ساخت</span>
+                <span class="meta-value">{{ item.duration }}</span>
               </div>
               <div class="meta-item">
-                <span class="meta-icon">🎯</span>
-                <span class="meta-text">نتیجه: {{ item.result }}</span>
+                <span class="meta-label">جنس ماده</span>
+                <span class="meta-value">{{ item.material }}</span>
               </div>
             </div>
 
             <div class="gallery-actions">
-              <button class="action-btn compare-btn" (click)="$event.stopPropagation(); openLightbox(item, 'before')">
-                مقایسه قبل و بعد
+              <button class="action-btn" (click)="openLightbox(item, 'after')">
+                مشاهده جزئیات
               </button>
             </div>
           </div>
@@ -125,7 +108,8 @@
     <div class="videos-grid">
       <div class="video-card" *ngFor="let video of videoTutorials">
         <div class="video-thumbnail" (click)="openVideo(video)">
-          <div class="thumbnail-placeholder">
+          <div class="thumbnail-placeholder" 
+               [style.background]="'url(' + video.thumbnail + ')'">
             <div class="play-button">
               <div class="play-icon">▶</div>
             </div>
@@ -158,15 +142,19 @@
       <div class="lightbox-image" *ngIf="selectedImage">
         <div class="lightbox-header">
           <h3>{{ selectedImage.item.category }}</h3>
-          <span class="image-type {{selectedImage.type}}-badge">
+          <span class="image-type" 
+                [class.before-badge]="selectedImage.type === 'before'"
+                [class.after-badge]="selectedImage.type === 'after'">
             {{ selectedImage.title }}
           </span>
         </div>
         
         <div class="image-container">
-          <div class="lightbox-placeholder {{selectedImage.type}}-placeholder">
+          <div class="lightbox-placeholder" 
+               [class.before-placeholder]="selectedImage.type === 'before'"
+               [class.after-placeholder]="selectedImage.type === 'after'"
+               [style.background]="'url(' + selectedImage.imageUrl + ')'">
             <div class="placeholder-content">
-              <div class="placeholder-icon">{{ selectedImage.type === 'before' ? '📸' : '✨' }}</div>
               <div class="placeholder-title">{{ selectedImage.title }}</div>
               <div class="placeholder-description">{{ selectedImage.description }}</div>
             </div>
@@ -175,13 +163,16 @@
         
         <div class="lightbox-details">
           <div class="detail-item">
-            <strong>تکنولوژی:</strong> {{ selectedImage.item.technology }}
+            <strong>تکنولوژی ساخت:</strong> {{ selectedImage.item.technology }}
           </div>
           <div class="detail-item">
-            <strong>مدت درمان:</strong> {{ selectedImage.item.duration }}
+            <strong>مدت ساخت:</strong> {{ selectedImage.item.duration }}
           </div>
           <div class="detail-item">
-            <strong>نتیجه:</strong> {{ selectedImage.item.result }}
+            <strong>جنس ماده:</strong> {{ selectedImage.item.material }}
+          </div>
+          <div class="detail-item">
+            <strong>توضیحات:</strong> {{ selectedImage.item.description }}
           </div>
         </div>
       </div>
@@ -202,7 +193,6 @@
         <div class="video-container">
           <div class="video-placeholder">
             <div class="video-placeholder-content">
-              <div class="video-icon">🎥</div>
               <div class="video-message">پخش ویدئو آموزشی</div>
               <div class="video-duration-modal">مدت: {{ selectedVideo.duration }}</div>
             </div>

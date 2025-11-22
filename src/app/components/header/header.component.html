@@ -1,39 +1,121 @@
-<header class="header" [class.scrolled]="isScrolled">
+<!-- src/app/components/header/header.component.html -->
 <header class="header">
-  <nav class="nav">
-    <!-- لوگو -->
+  <div class="header-container">
+    
+    <!-- Logo -->
     <div class="logo">
-      <div class="logo-icon">🦷</div>
-      <h2>دنتال لب</h2>
+      <a [routerLink]="['/home']" class="logo-link" (click)="closeAllMenus()">
+        دیجیتال دنتال لب
+      </a>
     </div>
 
-    <!-- منوی اصلی -->
-    <ul class="nav-links" [class.active]="isMenuOpen">
-      <li><a routerLink="/home" routerLinkActive="active" (click)="onLinkClick()">خانه</a></li>
-      <li><a routerLink="/services" routerLinkActive="active" (click)="onLinkClick()">خدمات</a></li>
-      <li><a routerLink="/technology" routerLinkActive="active" (click)="onLinkClick()">تکنولوژی</a></li>
-      <li><a routerLink="/gallery" routerLinkActive="active" (click)="onLinkClick()">گالری</a></li>
-      <li><a routerLink="/blog" routerLinkActive="active" (click)="onLinkClick()">بلاگ</a></li>
-      <li><a routerLink="/contact" routerLinkActive="active" (click)="onLinkClick()">تماس</a></li>
-    </ul>
-
-    <!-- اقدامات -->
-    <div class="nav-actions">
-      <!-- سوییچ زبان -->
-      <div class="language-switcher">
-        <button (click)="switchLanguage('fa')" [class.active]="translation.getCurrentLanguage() === 'fa'">فا</button>
-        <button (click)="switchLanguage('en')" [class.active]="translation.getCurrentLanguage() === 'en'">EN</button>
-      </div>
-
-      <!-- دکمه CTA -->
-      <button class="cta-button" routerLink="/contact">دریافت مشاوره</button>
-    </div>
-
-    <!-- منوی موبایل -->
-    <div class="mobile-menu" [class.active]="isMenuOpen" (click)="toggleMenu()">
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" (click)="toggleMobileMenu()">
       <span></span>
       <span></span>
       <span></span>
+    </button>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav" [class.mobile-open]="isMobileMenuOpen">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a [routerLink]="['/home']" class="nav-link" (click)="closeAllMenus()">خانه</a>
+        </li>
+
+        <!-- Services Menu -->
+        <li class="nav-item services-menu">
+          <a class="nav-link services-trigger" 
+             (click)="toggleServicesMenu()"
+             (mouseenter)="setActiveCategory(null, $event)">
+            خدمات تخصصی
+            <span class="chevron" [class.rotated]="isServicesMenuOpen">▼</span>
+          </a>
+          
+          <div class="services-dropdown" [class.active]="isServicesMenuOpen">
+            <div class="dropdown-content">
+              <!-- ستون دسته‌بندی‌های اصلی -->
+              <div class="categories-column">
+                <div class="categories-list">
+                  <a *ngFor="let category of serviceCategories"
+                     class="category-item"
+                     [class.active]="activeCategory === category.slug"
+                     (mouseenter)="setActiveCategory(category.slug, $event)"
+                     [routerLink]="['/services', category.slug]"
+                     (click)="closeAllMenus()">
+                    <span class="category-title">{{ category.title }}</span>
+                    <span class="category-arrow">›</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- ستون زیرمنوها -->
+              <div class="submenu-column" *ngIf="activeCategory">
+                <div class="submenu-content">
+                  <div *ngFor="let category of serviceCategories" 
+                       [class.active]="activeCategory === category.slug">
+                    <div *ngIf="activeCategory === category.slug && category.subcategories">
+                      <div *ngFor="let subcategory of category.subcategories" class="subcategory-section">
+                        <h4 class="subcategory-title">{{ subcategory.title }}</h4>
+                        <div class="subcategory-links">
+                          <a *ngFor="let service of subcategory.services"
+                             class="subcategory-link"
+                             [routerLink]="['/services', category.slug]"
+                             (click)="closeAllMenus()">
+                            {{ service }}
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- حالت بدون زیرمنوی فعال -->
+              <div class="welcome-column" *ngIf="!activeCategory">
+                <div class="welcome-content">
+                  <h3>خدمات تخصصی دندانپزشکی</h3>
+                  <p>برای مشاهده خدمات هر دسته‌بندی، موس را روی آن قرار دهید</p>
+                  <div class="welcome-features">
+                    <div class="feature-item">
+                      <span class="feature-icon">🦷</span>
+                      <span>کیفیت بالا</span>
+                    </div>
+                    <div class="feature-item">
+                      <span class="feature-icon">⚡</span>
+                      <span>تحویل سریع</span>
+                    </div>
+                    <div class="feature-item">
+                      <span class="feature-icon">🔬</span>
+                      <span>تکنولوژی پیشرفته</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a [routerLink]="['/technology']" class="nav-link" (click)="closeAllMenus()">تکنولوژی</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/gallery']" class="nav-link" (click)="closeAllMenus()">گالری</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/blog']" class="nav-link" (click)="closeAllMenus()">بلاگ</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/contact']" class="nav-link" (click)="closeAllMenus()">تماس با ما</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="contact-phone">
+      <a href="tel:+982112345678" class="phone-link">
+        <span class="phone-icon">📞</span>
+        <span class="phone-text">۰۲۱-۱۲۳۴۵۶۷۸</span>
+      </a>
     </div>
-  </nav>
+  </div>
 </header>

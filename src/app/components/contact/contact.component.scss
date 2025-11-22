@@ -1,47 +1,39 @@
-// متغیرها
 :host {
-  --primary-blue: #2563eb;
-  --medical-teal: #0d9488;
-  --pure-white: #ffffff;
-  --gray-lighter: #f8fafc;
-  --gray-light: #e2e8f0;
-  --gray-medium: #64748b;
-  --gray-dark: #334155;
-  --dark-charcoal: #1e293b;
-  --accent-green: #10b981;
-  --accent-orange: #f59e0b;
-  --accent-purple: #8b5cf6;
-  
-  --gradient-primary: linear-gradient(135deg, #2563eb, #0d9488);
-  --gradient-contact: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  --gradient-success: linear-gradient(135deg, #10b981, #059669);
-  
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.2);
-  --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.25);
-  --shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.3);
+  --primary-color: #1e88e5;
+  --primary-dark: #1565c0;
+  --primary-light: #64b5f6;
+  --secondary-color: #f44336;
+  --text-primary: #424750;
+  --text-secondary: #5a5f69;
+  --text-light: #81858b;
+  --background: #f5f7f9;
+  --white: #ffffff;
+  --border: #e0e0e6;
+  --border-light: #f0f0f1;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .contact-page {
-  background: var(--gray-lighter);
+  background: var(--background);
   min-height: 100vh;
+  direction: rtl;
+  font-family: 'Yekan Bakh', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
-// Contact Hero
+// Contact Hero با پس‌زمینه قابل تنظیم
 .contact-hero {
-  background: var(--gradient-contact);
-  color: white;
-  padding: 6rem 0 4rem;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  padding: 3rem 0;
   position: relative;
   overflow: hidden;
-  text-align: center;
   
   &::before {
     content: '';
@@ -50,129 +42,111 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><path d="M0,70 Q250,30 500,70 T1000,70 L1000,100 L0,100 Z"/></svg>');
+    background-image: var(--hero-background, none);
     background-size: cover;
-    background-position: bottom;
+    background-position: center;
+    opacity: 0.1;
   }
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 800px;
-  margin: 0 auto;
   
-  .hero-title {
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    animation: fadeInUp 0.8s ease;
+  .hero-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
     
-    @media (max-width: 768px) {
-      font-size: 2.5rem;
+    .hero-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
     }
-  }
-  
-  .hero-description {
-    font-size: 1.3rem;
-    margin-bottom: 3rem;
-    opacity: 0.9;
-    line-height: 1.6;
-    animation: fadeInUp 0.8s ease 0.2s both;
+    
+    .hero-description {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 }
 
 .hero-actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   justify-content: center;
   flex-wrap: wrap;
-  animation: fadeInUp 0.8s ease 0.4s both;
 }
 
-// Contact Info
+// Contact Info - طراحی کارت‌های شبیه دیجی‌کالا
 .contact-info {
-  padding: 5rem 0;
-  background: var(--pure-white);
+  padding: 2.5rem 0;
+  background: var(--white);
+  
+  #contact-info {
+    scroll-margin-top: 2rem;
+  }
 }
 
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  animation: fadeInUp 0.8s ease;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .info-card {
-  background: var(--pure-white);
-  padding: 2.5rem 2rem;
-  border-radius: 20px;
-  box-shadow: var(--shadow-lg);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
   text-align: center;
-  transition: all 0.4s ease;
-  border: 2px solid transparent;
+  transition: all 0.3s ease;
   position: relative;
-  overflow: hidden;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--gradient-primary);
-  }
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-2xl);
-    border-color: var(--primary-blue);
-  }
-}
-
-.card-icon {
-  margin-bottom: 1.5rem;
-  
-  .icon-wrapper {
-    width: 80px;
-    height: 80px;
-    background: var(--gradient-primary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    margin: 0 auto;
-    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-lg);
   }
 }
 
 .card-content {
   h3 {
-    font-size: 1.4rem;
+    font-size: 1rem;
     font-weight: 700;
-    color: var(--dark-charcoal);
-    margin-bottom: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
   }
   
   p {
-    color: var(--gray-medium);
-    line-height: 1.6;
+    color: var(--text-secondary);
+    line-height: 1.5;
     margin-bottom: 0.5rem;
+    font-size: 0.875rem;
     
     &.phone-number {
-      font-family: 'Courier New', monospace;
+      font-family: inherit;
       font-weight: 600;
-      color: var(--dark-charcoal);
-      font-size: 1.1rem;
+      color: var(--text-primary);
+      font-size: 0.95rem;
     }
     
     &.holiday {
-      color: var(--accent-orange);
-      font-weight: 600;
+      color: var(--secondary-color);
+      font-weight: 500;
     }
   }
 }
@@ -180,58 +154,63 @@
 .card-link {
   background: transparent;
   border: none;
-  color: var(--primary-blue);
+  color: var(--primary-color);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 1rem;
+  margin-top: 0.75rem;
   display: inline-block;
   text-decoration: none;
+  font-size: 0.875rem;
+  padding: 0.25rem 0;
   
   &:hover {
-    color: var(--medical-teal);
-    transform: translateX(-5px);
+    color: var(--primary-dark);
   }
 }
 
-// Contact Main
+// Contact Main - طراحی فرم شبیه دیجی‌کالا
 .contact-main {
-  padding: 5rem 0;
+  padding: 2.5rem 0;
+  background: var(--background);
 }
 
 .content-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 4rem;
+  gap: 1.5rem;
   
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 1.5rem;
   }
 }
 
 .form-section {
-  background: var(--pure-white);
-  padding: 3rem;
-  border-radius: 20px;
-  box-shadow: var(--shadow-lg);
-  animation: fadeInLeft 0.8s ease;
+  background: var(--white);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  
+  #contact-form {
+    scroll-margin-top: 2rem;
+  }
 }
 
 .form-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   
   h2 {
-    font-size: 2.2rem;
+    font-size: 1.375rem;
     font-weight: 700;
-    color: var(--dark-charcoal);
-    margin-bottom: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
   }
   
   p {
-    color: var(--gray-medium);
-    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
   }
 }
 
@@ -239,7 +218,7 @@
   .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    gap: 1rem;
     
     @media (max-width: 768px) {
       grid-template-columns: 1fr;
@@ -248,71 +227,70 @@
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   
   label {
     display: block;
     font-weight: 600;
-    color: var(--dark-charcoal);
+    color: var(--text-primary);
     margin-bottom: 0.5rem;
-    font-size: 0.95rem;
+    font-size: 0.875rem;
   }
   
   input, select, textarea {
     width: 100%;
-    padding: 1rem 1.5rem;
-    border: 2px solid var(--gray-light);
-    border-radius: 12px;
-    font-size: 1rem;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.875rem;
     transition: all 0.3s ease;
-    background: var(--pure-white);
+    background: var(--white);
     font-family: inherit;
     
     &:focus {
       outline: none;
-      border-color: var(--primary-blue);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.1);
     }
     
     &::placeholder {
-      color: var(--gray-medium);
+      color: var(--text-light);
     }
     
     &.error {
-      border-color: #ef4444;
-      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+      border-color: var(--secondary-color);
+      box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.1);
     }
   }
   
   textarea {
     resize: vertical;
-    min-height: 120px;
+    min-height: 100px;
   }
   
   select {
     cursor: pointer;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2362666d'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: left 1rem center;
+    background-position: left 0.75rem center;
     background-size: 1rem;
-    padding-right: 1.5rem;
   }
 }
 
 .error-message {
-  color: #ef4444;
-  font-size: 0.85rem;
-  margin-top: 0.5rem;
+  color: var(--secondary-color);
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
   display: block;
 }
 
 .form-actions {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
-// Contact Sidebar
+// Contact Sidebar - طراحی سایدبار شبیه دیجی‌کالا
 .contact-sidebar {
   @media (max-width: 1024px) {
     order: -1;
@@ -320,69 +298,58 @@
 }
 
 .sidebar-widget {
-  background: var(--pure-white);
-  padding: 2rem;
-  border-radius: 20px;
-  margin-bottom: 2rem;
-  box-shadow: var(--shadow-md);
-  animation: fadeInRight 0.8s ease;
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid var(--border);
   
   h3 {
-    font-size: 1.3rem;
+    font-size: 1.125rem;
     font-weight: 700;
-    color: var(--dark-charcoal);
+    color: var(--text-primary);
     margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--gray-light);
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-light);
   }
   
   p {
-    color: var(--gray-medium);
+    color: var(--text-secondary);
     line-height: 1.6;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
   }
 }
 
 .quick-contact {
-  background: var(--gradient-primary);
-  color: white;
+  background: var(--white);
   
-  h3, p {
-    color: white;
+  h3 {
+    color: var(--text-primary);
   }
 }
 
 .quick-numbers {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .quick-number {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--background);
+  border-radius: 4px;
   text-decoration: none;
-  color: white;
+  color: var(--text-primary);
   transition: all 0.3s ease;
+  border: 1px solid transparent;
   
   &:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateX(-5px);
-  }
-  
-  .number-icon {
-    font-size: 1.5rem;
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: var(--white);
+    border-color: var(--primary-color);
   }
   
   .number-info {
@@ -390,14 +357,15 @@
     flex-direction: column;
     
     .number-label {
-      font-size: 0.9rem;
-      opacity: 0.9;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
       margin-bottom: 0.2rem;
     }
     
     .number {
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 0.875rem;
+      color: var(--text-primary);
     }
   }
 }
@@ -405,7 +373,7 @@
 .faq-widget {
   .faq-list {
     .faq-item {
-      border-bottom: 1px solid var(--gray-light);
+      border-bottom: 1px solid var(--border-light);
       
       &:last-child {
         border-bottom: none;
@@ -416,20 +384,21 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 0;
+      padding: 0.75rem 0;
       cursor: pointer;
       font-weight: 600;
-      color: var(--dark-charcoal);
+      color: var(--text-primary);
       transition: all 0.3s ease;
+      font-size: 0.875rem;
       
       &:hover {
-        color: var(--primary-blue);
+        color: var(--primary-color);
       }
       
       .faq-icon {
-        font-size: 1.2rem;
+        font-size: 1rem;
         font-weight: bold;
-        color: var(--primary-blue);
+        color: var(--primary-color);
         transition: transform 0.3s ease;
       }
     }
@@ -441,13 +410,14 @@
       
       &.open {
         max-height: 200px;
-        padding-bottom: 1rem;
+        padding-bottom: 0.75rem;
       }
       
       p {
         margin: 0;
-        color: var(--gray-medium);
+        color: var(--text-secondary);
         line-height: 1.6;
+        font-size: 0.8rem;
       }
     }
   }
@@ -460,66 +430,58 @@
 .social-links {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.5rem;
 }
 
 .social-link {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.5rem;
-  background: var(--gray-lighter);
-  border-radius: 12px;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  background: var(--background);
+  border-radius: 4px;
   text-decoration: none;
-  color: var(--dark-charcoal);
+  color: var(--text-primary);
   transition: all 0.3s ease;
   font-weight: 500;
+  font-size: 0.875rem;
+  border: 1px solid transparent;
   
   &:hover {
-    background: var(--primary-blue);
-    color: white;
-    transform: translateX(-5px);
-    
-    &.instagram { background: linear-gradient(135deg, #E1306C, #F77737); }
-    &.telegram { background: #0088cc; }
-    &.linkedin { background: #0077b5; }
-  }
-  
-  .social-icon {
-    font-size: 1.2rem;
+    background: var(--white);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
   }
 }
 
-// Map Section
+// Map Section - طراحی ساده‌تر
 .map-section {
-  padding: 5rem 0;
-  background: var(--pure-white);
+  padding: 2.5rem 0;
+  background: var(--white);
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   
   h2 {
-    font-size: 2.5rem;
+    font-size: 1.375rem;
     font-weight: 700;
-    color: var(--dark-charcoal);
-    margin-bottom: 1rem;
-    animation: fadeInUp 0.8s ease;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
   }
   
   p {
-    font-size: 1.2rem;
-    color: var(--gray-medium);
-    animation: fadeInUp 0.8s ease 0.2s both;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
   }
 }
 
 .map-container {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 3rem;
-  animation: fadeInUp 0.8s ease 0.4s both;
+  gap: 1.5rem;
   
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
@@ -527,32 +489,28 @@
 }
 
 .map-placeholder {
-  background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-  border-radius: 20px;
-  height: 400px;
+  background: var(--background);
+  border-radius: 8px;
+  height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
   
   .placeholder-content {
     text-align: center;
-    color: var(--dark-charcoal);
-    
-    .map-icon {
-      font-size: 4rem;
-      margin-bottom: 1.5rem;
-    }
+    color: var(--text-primary);
     
     h3 {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
     
     p {
-      color: var(--gray-dark);
-      margin-bottom: 2rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
     }
   }
 }
@@ -560,148 +518,130 @@
 .map-info {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .info-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1.5rem;
-  background: var(--gray-lighter);
-  border-radius: 15px;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: var(--background);
+  border-radius: 4px;
   transition: all 0.3s ease;
+  border: 1px solid transparent;
   
   &:hover {
-    background: var(--pure-white);
-    box-shadow: var(--shadow-md);
-    transform: translateX(-5px);
-  }
-  
-  .info-icon {
-    font-size: 2rem;
-    width: 60px;
-    height: 60px;
-    background: var(--gradient-primary);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    flex-shrink: 0;
+    background: var(--white);
+    border-color: var(--border);
   }
   
   .info-content {
     h4 {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       font-weight: 600;
-      color: var(--dark-charcoal);
-      margin-bottom: 0.3rem;
+      color: var(--text-primary);
+      margin-bottom: 0.25rem;
     }
     
     p {
-      color: var(--gray-medium);
+      color: var(--text-secondary);
       margin: 0;
-      font-size: 0.9rem;
+      font-size: 0.8rem;
     }
   }
 }
 
-// Contact CTA
+// Contact CTA - طراحی CTA ساده
 .contact-cta {
-  padding: 6rem 0;
-  background: var(--gradient-contact);
-  color: white;
-  text-align: center;
+  padding: 2.5rem 0;
+  background: var(--white);
+  border-top: 1px solid var(--border);
 }
 
 .cta-content {
   max-width: 600px;
   margin: 0 auto;
+  text-align: center;
   
   h2 {
-    font-size: 2.5rem;
+    font-size: 1.375rem;
     font-weight: 700;
-    margin-bottom: 1rem;
-    animation: fadeInUp 0.8s ease;
-    
-    @media (max-width: 768px) {
-      font-size: 2rem;
-    }
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
   }
   
   p {
-    font-size: 1.2rem;
-    margin-bottom: 2.5rem;
-    opacity: 0.9;
-    animation: fadeInUp 0.8s ease 0.2s both;
+    font-size: 0.875rem;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
   }
 }
 
 .cta-actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
   justify-content: center;
   flex-wrap: wrap;
-  animation: fadeInUp 0.8s ease 0.4s both;
 }
 
-// دکمه‌ها
+// دکمه‌ها - طراحی شبیه دیجی‌کالا
 .btn {
-  padding: 1rem 2rem;
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 50px;
+  border-radius: 4px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.875rem;
   text-decoration: none;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 44px;
   
   &.btn-primary {
-    background: rgba(255, 255, 255, 0.9);
-    color: var(--primary-blue);
+    background: var(--primary-color);
+    color: var(--white);
     
     &:hover {
-      background: white;
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
+      background: var(--primary-dark);
     }
     
     &:disabled {
       opacity: 0.6;
       cursor: not-allowed;
-      transform: none;
     }
   }
   
   &.btn-secondary {
-    background: transparent;
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: var(--white);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
     
     &:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: white;
-      transform: translateY(-2px);
-    }
-  }
-  
-  &.btn-outline {
-    background: transparent;
-    color: white;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    
-    &:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: white;
-      transform: translateY(-2px);
+      background: var(--background);
+      border-color: var(--primary-color);
     }
   }
   
   &.btn-large {
-    padding: 1.2rem 2.5rem;
-    font-size: 1.1rem;
+    padding: 0.875rem 1.75rem;
+    font-size: 0.95rem;
+    min-height: 48px;
+  }
+  
+  &.btn-outline {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    
+    &:hover {
+      background: var(--primary-color);
+      color: var(--white);
+    }
   }
 }
 
@@ -714,55 +654,11 @@
   border-top: 2px solid currentColor;
   border-radius: 50%;
   animation: spin 1s linear infinite;
-  margin-left: 0.5rem;
 }
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-
-// انیمیشن‌ها
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 // رسپانسیو
@@ -771,12 +667,25 @@
     padding: 0 1rem;
   }
   
+  .contact-hero {
+    padding: 2rem 0;
+    
+    .hero-title {
+      font-size: 1.75rem;
+    }
+    
+    .hero-description {
+      font-size: 0.95rem;
+    }
+  }
+  
   .form-section {
-    padding: 2rem;
+    padding: 1.5rem;
   }
   
   .info-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
   }
   
   .cta-actions {
@@ -786,7 +695,7 @@
   
   .btn {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
   }
   
   .hero-actions {
@@ -795,10 +704,41 @@
   }
   
   .map-container {
-    gap: 2rem;
+    gap: 1rem;
   }
   
   .info-item {
+    padding: 0.75rem;
+  }
+  
+  .content-grid {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-hero .hero-title {
+    font-size: 1.5rem;
+  }
+  
+  .form-section {
     padding: 1rem;
+  }
+  
+  .info-card {
+    padding: 1rem;
+    min-height: 120px;
+  }
+  
+  .sidebar-widget {
+    padding: 1rem;
+  }
+  
+  .contact-main, .contact-info, .map-section, .contact-cta {
+    padding: 2rem 0;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
   }
 }

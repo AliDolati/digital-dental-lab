@@ -1,255 +1,465 @@
-.header {
- &.scrolled {
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  }
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: all 0.3s ease;
+// src/app/components/header/header.component.scss
+:host {
+  --primary-color: #1e88e5;
+  --primary-dark: #1565c0;
+  --primary-light: #e3f2fd;
+  --primary-lighter: #f3f8ff;
+  --text-primary: #232933;
+  --text-secondary: #62666d;
+  --text-light: #81858b;
+  --background: #f9f9f9;
+  --white: #ffffff;
+  --border: #e0e0e6;
+  --border-light: #f0f0f1;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
-  &.scrolled {
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+.header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow);
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  position: relative;
+}
+
+// لوگو
+.logo {
+  .logo-link {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    
+    &:hover {
+      color: var(--primary-dark);
+    }
   }
 }
 
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  max-width: 1400px;
-  margin: 0 auto;
+// Mobile Menu Button
+.mobile-menu-btn {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  gap: 4px;
+  
+  span {
+    width: 25px;
+    height: 3px;
+    background: var(--text-primary);
+    transition: all 0.3s ease;
+    border-radius: 2px;
+  }
+  
+  @media (max-width: 768px) {
+    display: flex;
+  }
+}
 
-  .logo {
+// منوی اصلی
+.main-nav {
+  .nav-list {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--primary-blue), var(--medical-teal));
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: 700;
-      font-size: 1.2rem;
-    }
-
-    h2 {
-      margin: 0;
-      font-size: 1.5rem;
-      background: linear-gradient(135deg, var(--dark-charcoal), var(--primary-blue));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-  }
-
-  .nav-links {
-    display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 2rem;
+    height: 70px;
+  }
 
-    li {
-      a {
-        color: var(--dark-charcoal);
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-        border-radius: var(--radius-full);
-        transition: all 0.3s ease;
+  .nav-item {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    
+    // لینک‌های معمولی
+    .nav-link {
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      height: 70px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      white-space: nowrap;
+      
+      &:hover {
+        color: var(--primary-color);
+        background: var(--primary-light);
+      }
+    }
+
+    // منوی خدمات
+    &.services-menu {
+      // تریگر خدمات - فقط روی متن hover بشه
+      .services-trigger {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
         position: relative;
-
-        &::before {
-          content: '';
-          position: absolute;
-          bottom: -2px;
-          left: 50%;
-          width: 0;
-          height: 2px;
-          background: var(--gradient-primary);
-          transition: all 0.3s ease;
-          transform: translateX(-50%);
+        z-index: 1001;
+        
+        .chevron {
+          font-size: 0.8rem;
+          color: var(--text-light);
+          transition: transform 0.3s ease;
+          
+          &.rotated {
+            transform: rotate(180deg);
+          }
         }
 
         &:hover {
-          color: var(--primary-blue);
+          color: var(--primary-color);
+        }
+      }
 
-          &::before {
-            width: 80%;
+      // دراپ‌داون خدمات
+      .services-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 800px;
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: var(--shadow-lg);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        
+        &.active {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+        
+        .dropdown-content {
+          display: flex;
+          min-height: 350px;
+        }
+        
+        // ستون دسته‌بندی‌ها
+        .categories-column {
+          flex: 0 0 250px;
+          border-left: 1px solid var(--border-light);
+          background: var(--primary-lighter);
+          
+          .categories-list {
+            padding: 1.5rem 0;
+            
+            .category-item {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 0.75rem 1.5rem;
+              color: var(--text-secondary);
+              text-decoration: none;
+              transition: all 0.2s ease;
+              border-right: 3px solid transparent;
+              cursor: pointer;
+              
+              &:hover,
+              &.active {
+                background: var(--white);
+                color: var(--primary-color);
+                border-right-color: var(--primary-color);
+                
+                .category-arrow {
+                  opacity: 1;
+                  transform: translateX(-3px);
+                }
+              }
+              
+              .category-title {
+                font-weight: 500;
+              }
+              
+              .category-arrow {
+                opacity: 0;
+                transition: all 0.2s ease;
+                color: var(--primary-color);
+              }
+            }
           }
         }
+        
+        // ستون زیرمنوها
+        .submenu-column {
+          flex: 1;
+          padding: 1.5rem;
+          
+          .submenu-content {
+            .subcategory-section {
+              margin-bottom: 1.5rem;
+              
+              &:last-child {
+                margin-bottom: 0;
+              }
+              
+              .subcategory-title {
+                font-size: 1rem;
+                font-weight: 600;
+                color: var(--text-primary);
+                margin-bottom: 0.75rem;
+                padding-bottom: 0.5rem;
+                border-bottom: 2px solid var(--primary-light);
+              }
+              
+              .subcategory-links {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                
+                .subcategory-link {
+                  padding: 0.5rem 0.75rem;
+                  color: var(--text-secondary);
+                  text-decoration: none;
+                  border-radius: 6px;
+                  transition: all 0.2s ease;
+                  font-size: 0.9rem;
+                  
+                  &:hover {
+                    background: var(--primary-light);
+                    color: var(--primary-color);
+                    transform: translateX(5px);
+                  }
+                }
+              }
+            }
+          }
+        }
+        
+        // ستون خوش‌آمدگویی
+        .welcome-column {
+          flex: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 2rem;
+          
+          .welcome-content {
+            text-align: center;
+            
+            h3 {
+              color: var(--text-primary);
+              margin-bottom: 1rem;
+              font-size: 1.25rem;
+            }
+            
+            p {
+              color: var(--text-secondary);
+              margin-bottom: 1.5rem;
+            }
+            
+            .welcome-features {
+              display: flex;
+              gap: 1.5rem;
+              justify-content: center;
+              
+              .feature-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                
+                .feature-icon {
+                  font-size: 1.5rem;
+                }
+                
+                span:last-child {
+                  font-size: 0.8rem;
+                  color: var(--text-light);
+                }
+              }
+            }
+          }
+        }
+      }
 
-        &.active {
-          color: var(--primary-blue);
-          background: rgba(26, 115, 232, 0.1);
-
-          &::before {
-            width: 100%;
+      // منطق hover برای دسکتاپ
+      @media (min-width: 769px) {
+        &:hover {
+          .services-dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+          }
+          
+          .services-trigger .chevron {
+            transform: rotate(180deg);
           }
         }
       }
     }
   }
+}
 
-  .nav-actions {
+// دکمه تماس
+.contact-phone {
+  .phone-link {
     display: flex;
     align-items: center;
-    gap: 1rem;
-
-    .language-switcher {
-      display: flex;
-      background: var(--gray-lighter);
-      border-radius: var(--radius-full);
-      padding: 0.25rem;
-      gap: 0.25rem;
-
-      button {
-        background: transparent;
-        border: none;
-        padding: 0.5rem 1rem;
-        border-radius: var(--radius-full);
-        cursor: pointer;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        color: var(--gray-medium);
-
-        &.active {
-          background: var(--pure-white);
-          color: var(--primary-blue);
-          box-shadow: var(--shadow-sm);
-        }
-
-        &:hover:not(.active) {
-          color: var(--dark-charcoal);
-        }
-      }
-    }
-
-    .cta-button {
-      background: var(--gradient-primary);
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--radius-full);
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-left: 1rem;
-
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-md);
-      }
-    }
-  }
-
-  .mobile-menu {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    padding: 0.5rem;
+    gap: 10px;
+    padding: 10px 20px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    background: var(--white);
+    transition: all 0.2s ease;
     
-    span {
-      width: 25px;
-      height: 3px;
-      background: var(--dark-charcoal);
-      margin: 3px 0;
-      transition: 0.3s;
-      border-radius: 2px;
+    &:hover {
+      background: var(--primary-color);
+      color: var(--white);
+      transform: translateY(-2px);
     }
   }
 }
 
-// استایل برای موبایل
-@media (max-width: 968px) {
-  .nav {
-    padding: 1rem;
+// رسپانسیو
+@media (max-width: 1024px) {
+  .header-container {
+    padding: 0 20px;
+  }
+  
+  .services-menu .services-dropdown {
+    width: 700px;
+  }
+}
 
-    .nav-links {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: var(--pure-white);
+@media (max-width: 768px) {
+  .header-container {
+    height: 60px;
+    padding: 0 16px;
+  }
+  
+  .logo .logo-link {
+    font-size: 1.3rem;
+  }
+  
+  .main-nav {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    
+    &.mobile-open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .nav-list {
       flex-direction: column;
-      padding: 2rem;
-      gap: 0;
-      box-shadow: var(--shadow-lg);
-      border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-
-      &.active {
-        display: flex;
-      }
-
-      li {
+      height: auto;
+      padding: 1rem 0;
+    }
+    
+    .nav-item {
+      height: auto;
+      width: 100%;
+      
+      .nav-link {
+        height: 50px;
+        padding: 0 1.5rem;
         width: 100%;
-        
-        a {
-          display: block;
-          padding: 1rem 1.5rem;
-          border-radius: var(--radius-md);
-          margin-bottom: 0.5rem;
-
-          &:hover {
-            background: rgba(26, 115, 232, 0.1);
+        font-size: 1.1rem;
+      }
+      
+      &.services-menu {
+        .services-dropdown {
+          position: static;
+          width: 100%;
+          box-shadow: none;
+          border: none;
+          border-top: 1px solid var(--border-light);
+          border-radius: 0;
+          transform: none;
+          
+          &.active {
+            transform: none;
+          }
+          
+          .dropdown-content {
+            flex-direction: column;
+            min-height: auto;
+          }
+          
+          .categories-column {
+            border-left: none;
+            border-bottom: 1px solid var(--border-light);
+            
+            .categories-list {
+              padding: 1rem 0;
+            }
+          }
+          
+          .submenu-column,
+          .welcome-column {
+            padding: 1rem 1.5rem;
           }
         }
       }
     }
-
-    .nav-actions {
-      .cta-button {
-        display: none;
-      }
-
-      .language-switcher {
-        display: none;
-      }
-    }
-
-    .mobile-menu {
-      display: flex;
-
-      &.active span:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-      }
-
-      &.active span:nth-child(2) {
-        opacity: 0;
-      }
-
-      &.active span:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
-      }
-    }
+  }
+  
+  .contact-phone {
+    display: none;
   }
 }
 
-// استایل برای تبلت
-@media (min-width: 769px) and (max-width: 1024px) {
-  .nav {
-    padding: 1rem;
-
-    .nav-links {
-      gap: 1rem;
-    }
-
-    .logo h2 {
-      font-size: 1.3rem;
+@media (max-width: 480px) {
+  .logo .logo-link {
+    font-size: 1.1rem;
+  }
+  
+  .header-container {
+    padding: 0 12px;
+  }
+  
+  .services-menu .services-dropdown {
+    .dropdown-content {
+      .categories-column {
+        .categories-list {
+          .category-item {
+            padding: 0.75rem 1rem;
+          }
+        }
+      }
     }
   }
 }

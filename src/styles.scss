@@ -99,3 +99,130 @@ li {
   h3 { font-size: 1.25rem; }
   body { font-size: 0.95rem; }
 }
+
+/* ===== رفع قطعی مشکل فاصله هدر ===== */
+
+/* رفع فاصله برای تگ main */
+main {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  display: block;
+}
+
+/* رفع فاصله برای تمام المنت‌های بعد از هدر */
+app-header ~ main,
+app-header ~ *,
+app-header + * {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* رفع فاصله برای router-outlet و محتوای داینامیک */
+router-outlet {
+  display: block;
+  
+  & + * {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+
+/* اطمینان از عدم وجود فاصله در کامپوننت‌های صفحه */
+app-home,
+app-services,
+app-technology,
+app-gallery,
+app-blog,
+app-contact {
+  display: block;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* رفع فاصله برای سکشن‌ها و کانتینرها */
+section,
+.container,
+.section,
+.hero-section,
+.content-wrapper,
+.page-container {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* رفع فاصله برای هدر خود کامپوننت */
+app-header {
+  display: block;
+  margin: 0 !important;
+  padding: 0 !important;
+  
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+/* ===== تنظیمات کلی Layout ===== */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* رفع مشکل اسکرول */
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+/* ===== استایل‌های اضافی برای اطمینان ===== */
+
+/* رفع فاصله برای اولین المنت در هر صفحه */
+.hero-section:first-child,
+.section:first-child,
+.container:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* رفع فاصله برای تمام کلاس‌های ممکن */
+[class*="hero"],
+[class*="section"],
+[class*="container"],
+[class*="content"],
+[class*="page"],
+[class*="wrapper"] {
+  margin-top: 0 !important;
+}
+
+/* رفع فاصله برای حالت‌های مختلف */
+:host {
+  display: block;
+}
+
+*:first-child {
+  margin-top: 0 !important;
+}
+
+/* ===== Media Query برای رسپانسیو ===== */
+@media (max-width: 768px) {
+  main {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  app-header ~ main,
+  app-header ~ * {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
